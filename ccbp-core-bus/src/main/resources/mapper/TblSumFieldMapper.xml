@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccbp.core.bus.mapper.TblSumFieldMapper" >
+  <resultMap id="BaseResultMap" type="java.util.Map" >
+    <result column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="SUMMARY_CODE" property="summaryCode" jdbcType="VARCHAR" />
+    <result column="FIELD" property="field" jdbcType="VARCHAR" />
+    <result column="FIELD_VALUE" property="fieldValue" jdbcType="VARCHAR" />
+    <result column="FIELD_TP" property="fieldTp" jdbcType="VARCHAR" />
+    <result column="START_INDEX" property="startIndex" jdbcType="VARCHAR" />
+    <result column="STOP_INDEX" property="stopIndex" jdbcType="VARCHAR" />
+    <result column="TAG" property="tag" jdbcType="VARCHAR" />
+    <result column="USAGE" property="usage" jdbcType="VARCHAR" />
+    <result column="MISC" property="misc" jdbcType="VARCHAR" />
+    <result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
+     <result column="ALL_FLG" property="allFlg" jdbcType="VARCHAR" />
+     <result column="TLV_FLG" property="tlvFlg" jdbcType="VARCHAR" />
+     
+    <result column="TXN_CD" property="txnCd" jdbcType="VARCHAR" />
+    <result column="SUMMARY_INFO" property="summaryInfo" jdbcType="VARCHAR" />
+    
+    <result column="OP_SMY_CD" property="opSmyCd" jdbcType="VARCHAR" />
+    <result column="OP_SMY_INFO" property="opSmyInfo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List">
+  	ID, SUMMARY_CODE, FIELD, 
+      FIELD_VALUE, FIELD_TP, START_INDEX, 
+      STOP_INDEX, TAG, USAGE, MISC, DESCRIPTION,ALL_FLG,TLV_FLG
+  </sql>
+  <insert id="insert" parameterType="java.util.Map" >
+    insert into TBL_SUMM_FIELD (ID, SUMMARY_CODE, FIELD, 
+      FIELD_VALUE, FIELD_TP, START_INDEX, 
+      STOP_INDEX, TAG, USAGE, 
+      MISC, DESCRIPTION,ALL_FLG,TLV_FLG)
+    values (#{id,jdbcType=VARCHAR}, #{summaryCode,jdbcType=VARCHAR}, #{field,jdbcType=VARCHAR}, 
+      #{fieldValue,jdbcType=VARCHAR}, #{fieldTp,jdbcType=VARCHAR}, #{startIndex,jdbcType=VARCHAR}, 
+      #{stopIndex,jdbcType=VARCHAR}, #{tag,jdbcType=VARCHAR}, #{usage,jdbcType=VARCHAR}, 
+      #{misc,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR},
+      #{allFlg,jdbcType=VARCHAR},#{tlvFlg,jdbcType=VARCHAR}
+      
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="java.util.Map" >
+    insert into TBL_SUMM_FIELD
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="summaryCode != null" >
+        SUMMARY_CODE,
+      </if>
+      <if test="field != null" >
+        FIELD,
+      </if>
+      <if test="fieldValue != null" >
+        FIELD_VALUE,
+      </if>
+      <if test="fieldTp != null" >
+        FIELD_TP,
+      </if>
+      <if test="startIndex != null" >
+        START_INDEX,
+      </if>
+      <if test="stopIndex != null" >
+        STOP_INDEX,
+      </if>
+      <if test="tag != null" >
+        TAG,
+      </if>
+      <if test="usage != null" >
+        USAGE,
+      </if>
+      <if test="misc != null" >
+        MISC,
+      </if>
+      <if test="description != null" >
+        DESCRIPTION,
+      </if>
+      <if test="allFlg != null" >
+        ALL_FLG,
+      </if>
+      <if test="tlvFlg != null" >
+        TLV_FLG,
+      </if>
+      
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="summaryCode != null" >
+        #{summaryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="field != null" >
+        #{field,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldValue != null" >
+        #{fieldValue,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldTp != null" >
+        #{fieldTp,jdbcType=VARCHAR},
+      </if>
+      <if test="startIndex != null" >
+        #{startIndex,jdbcType=VARCHAR},
+      </if>
+      <if test="stopIndex != null" >
+        #{stopIndex,jdbcType=VARCHAR},
+      </if>
+      <if test="tag != null" >
+        #{tag,jdbcType=VARCHAR},
+      </if>
+      <if test="usage != null" >
+        #{usage,jdbcType=VARCHAR},
+      </if>
+      <if test="misc != null" >
+        #{misc,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+       <if test="allFlg != null" >
+        #{allFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="tlvFlg != null" >
+        #{tlvFlg,jdbcType=VARCHAR},
+      </if>
+       
+    </trim>
+  </insert>
+  <!-- 根据交易代码获取摘要 -->
+  <select id="selectByTxnCd"    resultMap="BaseResultMap">
+  	select 
+	     	t.ID, t.SUMMARY_CODE, t.FIELD, t.FIELD_VALUE, t.FIELD_TP, t.START_INDEX,
+	     	t.STOP_INDEX, t.TAG, t.USAGE, t.MISC, t.DESCRIPTION,t.ALL_FLG,t.TLV_FLG,
+	     	s.SUMMARY_INFO,s.OP_SMY_CD,s.OP_SMY_INFO
+	from 
+		TBL_SUMM_FIELD t  
+	LEFT JOIN 
+		TBL_SUMMMARY s 
+	ON 
+		s.SUMMARY_CODE = t.SUMMARY_CODE 
+	WHERE
+		s.TXN_CD = #{txnCd}
+  </select>
+  <!-- 根据摘要码获取所有规则 -->
+   <select id="selectBySummaryCode"    resultMap="BaseResultMap">
+  	select 
+	     	<include refid="Base_Column_List" />
+	from 
+		TBL_SUMM_FIELD  
+	 
+	 
+	WHERE
+		 SUMMARY_CODE = #{summaryCode}
+  </select>
+  
+  
+</mapper>

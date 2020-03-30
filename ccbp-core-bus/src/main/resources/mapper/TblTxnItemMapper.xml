@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbp.core.bus.mapper.TxnItemMapper">
+  <resultMap id="BaseResultMap" type="java.util.Map">
+    <result column="TXN_CD" jdbcType="VARCHAR" property="txnCd" />
+    <result column="TXN_LX" jdbcType="VARCHAR" property="txnLx" />
+    <result column="TRANS_DIRECTION" jdbcType="VARCHAR" property="transDirection" />
+    <result column="DET_NUM" jdbcType="VARCHAR" property="detNum" />
+    <result column="ITEM_CD" jdbcType="VARCHAR" property="itemCd" />
+    <result column="JD_FLG" jdbcType="VARCHAR" property="jdFlg" />
+    <result column="MISC" jdbcType="VARCHAR" property="misc" />
+    <result column="MISC1" jdbcType="VARCHAR" property="misc1" />
+    <result column="MISC2" jdbcType="VARCHAR" property="misc2" />
+	<result column="ACCOUNT" jdbcType="VARCHAR" property="account" />
+	<result column="ITEM_NAME" jdbcType="VARCHAR" property="itemName" />
+    <result column="ACC_TP" jdbcType="VARCHAR" property="accTp" />
+    <result column="INSTIT" property="instit" jdbcType="VARCHAR" />
+     <result column="CASH_TFR_FLG" property="cashTfrFlg" jdbcType="VARCHAR" />
+       <result column="CASH_ITM_CD" property="cashItmCd" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+    TXN_CD,TXN_LX,TRANS_DIRECTION,DET_NUM, ITEM_CD,JD_FLG,MISC,MISC1,MISC2,ACC_TP,INSTIT,CASH_TFR_FLG,CASH_ITM_CD
+  </sql>
+   
+  <select id="selectByTxnCdAndTd" resultMap="BaseResultMap">
+    SELECT 
+    	 t.TXN_CD ,t.TXN_LX,t.TRANS_DIRECTION,t.DET_NUM,t.ITEM_CD,t.JD_FLG,t.CASH_TFR_FLG,t.CASH_ITM_CD,
+    	 a.ACCOUNT,a.ITEM_NAME,a.ACC_TP
+    FROM 
+    	TBL_TXN_ITEM t
+    LEFT JOIN 
+    	TBL_AC_ITEM a 
+    ON 
+    	a.ITEM_CD = t.ITEM_CD 
+    WHERE
+    	t.TXN_CD = #{txnCd}
+    AND
+    	t.TRANS_DIRECTION = #{transDirection}
+    ORDER BY
+    	t.DET_NUM
+    ASC
+  </select>
+  
+  <!-- 根据交易码、传输方向、机构代码查数据 -->
+   <select id="selectByTxnCdAndTdAndInstit" resultMap="BaseResultMap">
+    SELECT 
+    	 t.TXN_CD ,t.TXN_LX,t.TRANS_DIRECTION,t.DET_NUM,t.ITEM_CD,t.JD_FLG,t.CASH_TFR_FLG,t.CASH_ITM_CD,
+    	 a.ACCOUNT,a.ITEM_NAME,a.ACC_TP,a.INSTIT
+    FROM 
+    	TBL_TXN_ITEM t
+    LEFT JOIN 
+    	TBL_AC_ITEM a 
+    ON 
+    	a.ITEM_CD = t.ITEM_CD 
+    WHERE
+    	t.TXN_CD = #{txnCd}
+    AND
+    	t.TRANS_DIRECTION = #{transDirection}
+     AND
+    	a.INSTIT = #{instit}
+    ORDER BY
+    	t.DET_NUM
+    ASC
+  </select>
+  <!-- 根据交易码、传输方向、机构代码、交易类型 查数据 -->
+   <select id="selectByTxnCdAndTdAndInstitAndTp" resultMap="BaseResultMap">
+    SELECT 
+    	 t.TXN_CD ,t.TXN_LX,t.TRANS_DIRECTION,t.DET_NUM,t.ITEM_CD,t.JD_FLG,t.CASH_TFR_FLG,t.CASH_ITM_CD,
+    	 a.ACCOUNT,a.ITEM_NAME,a.ACC_TP,a.INSTIT
+    FROM 
+    	TBL_TXN_ITEM t
+    LEFT JOIN 
+    	TBL_AC_ITEM a 
+    ON 
+    	a.ITEM_CD = t.ITEM_CD 
+    WHERE
+    	t.TXN_CD = #{txnCd}
+    AND
+    	t.TRANS_DIRECTION = #{transDirection}
+     AND t.TXN_LX = #{txnLx}
+     AND
+    	a.INSTIT = #{instit}
+    ORDER BY
+    	t.DET_NUM
+    ASC
+  </select>
+  
+  <select id="selectByTxnCdAndTdAndTxnLx" resultMap="BaseResultMap">
+    SELECT 
+    	 t.TXN_CD ,t.TXN_LX,t.TRANS_DIRECTION,t.DET_NUM,t.ITEM_CD,t.JD_FLG,t.CASH_TFR_FLG,t.CASH_ITM_CD,
+    	 a.ACCOUNT,a.ITEM_NAME,a.ACC_TP
+    FROM 
+    	TBL_TXN_ITEM t
+    LEFT JOIN 
+    	TBL_AC_ITEM a 
+    ON 
+    	a.ITEM_CD = t.ITEM_CD 
+     
+    WHERE t.TXN_CD = #{txnCd}
+    AND t.TRANS_DIRECTION = #{transDirection}
+    AND t.TXN_LX = #{txnLx}
+    	
+  </select>
+  <!-- 根据交易科目信息，查出对应科目的账户号 -->
+  <select id="getAccountByTransactionSubject" resultType="java.lang.String">
+    select B.Account
+	  from tbl_txn_item A
+	  left join tbl_ac_item B
+	    on A.Item_Cd = B.Item_Cd
+	 where A.Txn_Cd = #{txnCd}
+	   and A.Trans_Direction = #{transDirection}
+	   and A.Jd_Flg = #{jdFlg}
+	   and A.Det_Num = #{detNum}
+  </select>
+  
+  <!-- 根据交易科目的txnCd，查出对应科目的现金项目代码 -->
+  <select id="getCashCodeByTransactionSubject" resultType="java.lang.String">
+    select A.cash_itm_cd 
+    from tbl_txn_item A 
+    where A.Txn_Cd = #{txnCd}
+       and A.Trans_Direction = #{transDirection}
+       and A.Jd_Flg = #{jdFlg}
+       and A.Det_Num = #{detNum}
+  </select>
+</mapper>

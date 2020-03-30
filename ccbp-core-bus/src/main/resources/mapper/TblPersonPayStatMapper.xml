@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbp.core.bus.mapper.TblPersonPayStatMapper">
+
+	<resultMap id="BaseResultMap" type="java.util.Map">
+		<id column="CARD_NO" jdbcType="VARCHAR" property="cardNo" />
+		<id column="CURRENT_DT" jdbcType="VARCHAR" property="currentDt" />
+		<id column="TXN_CD" jdbcType="VARCHAR" property="txnCd" />
+		<result column="IDENT_NO" jdbcType="VARCHAR" property="identNo" />
+		<result column="CUS_NAME" jdbcType="VARCHAR" property="cusName" />
+		<result column="TXN_DAY_CNT" jdbcType="INTEGER" property="txnDayCnt" />
+		<result column="TXN_DAY_AMT" jdbcType="DOUBLE" property="txnDayAmt" />
+		<result column="CRT_OPR" jdbcType="VARCHAR" property="crtOpr" />
+	    <result column="CRT_DT" jdbcType="VARCHAR" property="crtDt" />
+	    <result column="UPD_OPR" jdbcType="VARCHAR" property="updOpr" />
+	    <result column="UPD_DT" jdbcType="VARCHAR" property="updDt" />
+	    <result column="MISC" jdbcType="VARCHAR" property="misc" />
+	    <result column="SELF_FLG" jdbcType="VARCHAR" property="selfFlg" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		CARD_NO, CURRENT_DT, IDENT_NO, CUS_NAME, TXN_DAY_CNT, TXN_DAY_AMT, TXN_CD, 
+		CRT_OPR, CRT_DT, UPD_OPR, UPD_DT, MISC,SELF_FLG
+	</sql>
+	
+	<select id="selectByPrimaryKey" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_PERSON_PAY_STAT
+		where CARD_NO = #{cardNo,jdbcType=VARCHAR} and CURRENT_DT = #{currentDt,jdbcType=VARCHAR}
+		and TXN_CD = #{txnCd, jdbcType=VARCHAR}
+	</select>
+	
+	<select id="query" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_PERSON_PAY_STAT
+		<where>
+			<if test="cardNo != null"> and CARD_NO = #{cardNo,jdbcType=VARCHAR} </if>
+			<if test="currentDt != null"> and CURRENT_DT = #{currentDt,jdbcType=VARCHAR} </if>
+			<if test="txnCd"> and TXN_CD = #{txnCd, jdbcType=VARCHAR} </if>
+			<if test="identNo != null"> and IDENT_NO = #{identNo,jdbcType=VARCHAR} </if>
+			<if test="cusName != null"> and CUS_NAME = #{cusName,jdbcType=VARCHAR} </if>
+			<if test="selfFlg != null"> and SELF_FLG = #{selfFlg,jdbcType=VARCHAR} </if>
+		</where> 
+	</select>
+	
+	<select id="queryByParams" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_PERSON_PAY_STAT
+		<where>
+			<if test="cardNo != null"> and CARD_NO = #{cardNo,jdbcType=VARCHAR} </if>
+			<if test="currentDt != null"> and CURRENT_DT = #{currentDt,jdbcType=VARCHAR} </if>
+			<if test="txnCd"> and TXN_CD = #{txnCd, jdbcType=VARCHAR} </if>
+			<if test="selfFlg != null"> and SELF_FLG = #{selfFlg,jdbcType=VARCHAR} </if>
+		</where> 
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.util.Map">
+		delete from TBL_PERSON_PAY_STAT
+		where CARD_NO = #{cardNo,jdbcType=VARCHAR} and CURRENT_DT = #{currentDt,jdbcType=VARCHAR}
+		and TXN_CD = #{txnCd, jdbcType=VARCHAR}
+	</delete>
+	
+	<insert id="insert" parameterType="java.util.Map">
+		insert into TBL_PERSON_PAY_STAT
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="cardNo != null"> CARD_NO, </if>
+			<if test="currentDt != null"> CURRENT_DT, </if>
+			<if test="identNo != null"> IDENT_NO, </if>
+			<if test="cusName != null"> CUS_NAME, </if>
+			<if test="txnDayCnt != null"> TXN_DAY_CNT, </if>
+			<if test="txnDayAmt != null"> TXN_DAY_AMT, </if>
+			<if test="txnCd != null"> TXN_CD, </if>
+			<if test="crtOpr != null"> CRT_OPR,	</if>
+			<if test="crtDt != null"> CRT_DT, </if>
+			<if test="updOpr != null"> UPD_OPR,	</if>
+			<if test="updDt != null"> UPD_DT, </if>
+			<if test="misc != null"> MISC, </if>
+			<if test="selfFlg != null"> SELF_FLG, </if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="cardNo != null"> #{cardNo,jdbcType=VARCHAR}, </if>
+			<if test="currentDt != null"> #{currentDt,jdbcType=VARCHAR}, </if>
+			<if test="identNo != null"> #{identNo,jdbcType=VARCHAR}, </if>
+			<if test="cusName != null"> #{cusName,jdbcType=VARCHAR}, </if>
+			<if test="txnDayCnt != null"> #{txnDayCnt,jdbcType=INTEGER}, </if>
+			<if test="txnDayAmt != null"> #{txnDayAmt,jdbcType=DOUBLE}, </if>
+			<if test="txnCd != null"> #{txnCd, jdbcType=VARCHAR}, </if>
+			<if test="crtOpr != null"> #{crtOpr,jdbcType=VARCHAR}, </if>
+			<if test="crtDt != null"> #{crtDt,jdbcType=VARCHAR}, </if>
+			<if test="updOpr != null"> #{updOpr,jdbcType=VARCHAR}, </if>
+			<if test="updDt != null"> #{updDt,jdbcType=VARCHAR}, </if>
+			<if test="misc != null"> #{misc,jdbcType=VARCHAR}, </if>
+			<if test="selfFlg != null"> #{selfFlg,jdbcType=VARCHAR}, </if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+		update TBL_PERSON_PAY_STAT
+		<set>
+			<if test="identNo != null"> IDENT_NO = #{identNo,jdbcType=VARCHAR}, </if>
+			<if test="cusMame != null"> CUS_NAME = #{cusName,jdbcType=VARCHAR}, </if>
+			<if test="txnDayCnt != null"> TXN_DAY_CNT = #{txnDayCnt,jdbcType=INTEGER}, </if>
+			<if test="txnDayAmt != null"> TXN_DAY_AMT = #{txnDayAmt,jdbcType=DOUBLE}, </if>
+			<if test="updOpr != null"> UPD_OPR = #{updOpr,jdbcType=VARCHAR}, </if>
+			<if test="updDt != null"> UPD_DT = #{updDt,jdbcType=VARCHAR}, </if>
+			<if test="misc != null"> MISC = #{misc,jdbcType=VARCHAR}, </if>
+			<if test="selfFlg != null"> SELF_FLG = #{selfFlg,jdbcType=VARCHAR}, </if>
+		</set>
+		where CARD_NO = #{cardNo,jdbcType=VARCHAR} and CURRENT_DT = #{currentDt,jdbcType=VARCHAR}
+		and TXN_CD = #{txnCd, jdbcType=VARCHAR}
+	</update>
+</mapper>

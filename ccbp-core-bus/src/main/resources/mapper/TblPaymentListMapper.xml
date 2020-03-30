@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbp.core.bus.mapper.TblPaymentListMapper">
+  <resultMap id="BaseResultMap" type="java.util.Map">
+    <result column="PAY_ORG_ID" jdbcType="VARCHAR" property="payOrgId" />
+    <result column="PAY_ACT_NM" jdbcType="VARCHAR" property="payActNm" />
+    <result column="INSERT_TYPE" jdbcType="CHAR" property="insertType" />
+    <result column="OPR_ID" jdbcType="VARCHAR" property="oprId" />
+    <result column="OPR_NAME" jdbcType="VARCHAR" property="oprName" />
+    <result column="OPR_DATE" jdbcType="VARCHAR" property="oprDate" />
+    <result column="OPR_TM" jdbcType="VARCHAR" property="oprTm" />
+    <result column="UPD_NAME" jdbcType="VARCHAR" property="updName" />
+    <result column="UPD_ID" jdbcType="VARCHAR" property="updId" />
+    <result column="UPD_DATE" jdbcType="VARCHAR" property="updDate" />
+    <result column="UPD_TM" jdbcType="VARCHAR" property="updTm" />
+    <result column="MISC1" jdbcType="VARCHAR" property="misc1" />
+    <result column="MISC2" jdbcType="VARCHAR" property="misc2" />
+    <result column="MISC3" jdbcType="VARCHAR" property="misc3" />
+    <result column="MISC4" jdbcType="VARCHAR" property="misc4" />
+    <result column="STATE" jdbcType="CHAR" property="state" />
+    <result column="SINGLE_AMT_LIMIT" jdbcType="DECIMAL" property="singleAmtLimit" />
+    <result column="DAY_AMT_LIMIT" jdbcType="DECIMAL" property="dayAmtLimit" />
+    <result column="MON_AMT_LIMIT" jdbcType="DECIMAL" property="monAmtLimit" />
+    <result column="EPCC_ORG_ID" jdbcType="VARCHAR" property="epccOrgId" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+    PAY_ORG_ID,PAY_ACT_NM,INSERT_TYPE,OPR_ID,OPR_NAME,OPR_DATE,OPR_TM,UPD_NAME,UPD_ID,UPD_DATE,
+    UPD_TM,MISC1,MISC2,MISC3,MISC4,STATE,SINGLE_AMT_LIMIT,DAY_AMT_LIMIT,MON_AMT_LIMIT,EPCC_ORG_ID
+  </sql>
+  
+  <insert id="insert" parameterType="java.util.Map">
+    insert into TBL_PAYMENT_LIST (PAY_ORG_ID, PAY_ACT_NM, INSERT_TYPE, 
+      OPR_ID, OPR_NAME, OPR_DATE, 
+      OPR_TM, UPD_NAME, UPD_ID, 
+      UPD_DATE, UPD_TM, MISC1, 
+      MISC2, MISC3, MISC4, 
+      STATE, SINGLE_AMT_LIMIT, DAY_AMT_LIMIT, 
+      MON_AMT_LIMIT, EPCC_ORG_ID)
+    values (#{payOrgId,jdbcType=VARCHAR}, #{payActNm,jdbcType=VARCHAR}, #{insertType,jdbcType=CHAR}, 
+      #{oprId,jdbcType=VARCHAR}, #{oprName,jdbcType=VARCHAR}, #{oprDate,jdbcType=VARCHAR}, 
+      #{oprTm,jdbcType=VARCHAR}, #{updName,jdbcType=VARCHAR}, #{updId,jdbcType=VARCHAR}, 
+      #{updDate,jdbcType=VARCHAR}, #{updTm,jdbcType=VARCHAR}, #{misc1,jdbcType=VARCHAR}, 
+      #{misc2,jdbcType=VARCHAR}, #{misc3,jdbcType=VARCHAR}, #{misc4,jdbcType=VARCHAR}, 
+      #{state,jdbcType=CHAR}, #{singleAmtLimit,jdbcType=DECIMAL}, #{dayAmtLimit,jdbcType=DECIMAL}, 
+      #{monAmtLimit,jdbcType=DECIMAL}, #{epccOrgId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="java.util.Map">
+    insert into TBL_PAYMENT_LIST
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="payOrgId != null">
+        PAY_ORG_ID,
+      </if>
+      <if test="payActNm != null">
+        PAY_ACT_NM,
+      </if>
+      <if test="insertType != null">
+        INSERT_TYPE,
+      </if>
+      <if test="oprId != null">
+        OPR_ID,
+      </if>
+      <if test="oprName != null">
+        OPR_NAME,
+      </if>
+      <if test="oprDate != null">
+        OPR_DATE,
+      </if>
+      <if test="oprTm != null">
+        OPR_TM,
+      </if>
+      <if test="updName != null">
+        UPD_NAME,
+      </if>
+      <if test="updId != null">
+        UPD_ID,
+      </if>
+      <if test="updDate != null">
+        UPD_DATE,
+      </if>
+      <if test="updTm != null">
+        UPD_TM,
+      </if>
+      <if test="misc1 != null">
+        MISC1,
+      </if>
+      <if test="misc2 != null">
+        MISC2,
+      </if>
+      <if test="misc3 != null">
+        MISC3,
+      </if>
+      <if test="misc4 != null">
+        MISC4,
+      </if>
+      <if test="state != null">
+        STATE,
+      </if>
+      <if test="singleAmtLimit != null">
+        SINGLE_AMT_LIMIT,
+      </if>
+      <if test="dayAmtLimit != null">
+        DAY_AMT_LIMIT,
+      </if>
+      <if test="monAmtLimit != null">
+        MON_AMT_LIMIT,
+      </if>
+      <if test="epccOrgId != null">
+        EPCC_ORG_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="payOrgId != null">
+        #{payOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="payActNm != null">
+        #{payActNm,jdbcType=VARCHAR},
+      </if>
+      <if test="insertType != null">
+        #{insertType,jdbcType=CHAR},
+      </if>
+      <if test="oprId != null">
+        #{oprId,jdbcType=VARCHAR},
+      </if>
+      <if test="oprName != null">
+        #{oprName,jdbcType=VARCHAR},
+      </if>
+      <if test="oprDate != null">
+        #{oprDate,jdbcType=VARCHAR},
+      </if>
+      <if test="oprTm != null">
+        #{oprTm,jdbcType=VARCHAR},
+      </if>
+      <if test="updName != null">
+        #{updName,jdbcType=VARCHAR},
+      </if>
+      <if test="updId != null">
+        #{updId,jdbcType=VARCHAR},
+      </if>
+      <if test="updDate != null">
+        #{updDate,jdbcType=VARCHAR},
+      </if>
+      <if test="updTm != null">
+        #{updTm,jdbcType=VARCHAR},
+      </if>
+      <if test="misc1 != null">
+        #{misc1,jdbcType=VARCHAR},
+      </if>
+      <if test="misc2 != null">
+        #{misc2,jdbcType=VARCHAR},
+      </if>
+      <if test="misc3 != null">
+        #{misc3,jdbcType=VARCHAR},
+      </if>
+      <if test="misc4 != null">
+        #{misc4,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=CHAR},
+      </if>
+      <if test="singleAmtLimit != null">
+        #{singleAmtLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="dayAmtLimit != null">
+        #{dayAmtLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="monAmtLimit != null">
+        #{monAmtLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="epccOrgId != null">
+        #{epccOrgId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <!-- 通过银联机构号获取数据 -->
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TBL_PAYMENT_LIST
+    where PAY_ORG_ID = #{payOrgId,jdbcType=VARCHAR}
+  </select>
+  
+  <!-- 通过网联机构号获取数据 -->
+  <select id="selectEpccOrgId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TBL_PAYMENT_LIST
+    where EPCC_ORG_ID = #{epccOrgId,jdbcType=VARCHAR}
+  </select>
+  
+</mapper>

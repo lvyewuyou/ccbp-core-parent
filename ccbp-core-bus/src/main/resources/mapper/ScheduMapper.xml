@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccbp.core.bus.mapper.ScheduMapper" >
+  <resultMap id="BaseResultMap" type="com.ccbp.core.bus.model.Schedu" >
+    <id column="EXECUTE_TIME" property="executeTime" jdbcType="VARCHAR" />
+    <id column="EXECUTE_NAME" property="executeName" jdbcType="VARCHAR" />
+    <result column="HOST_IP" property="hostIp" jdbcType="VARCHAR" />
+    <result column="CRT_DT" property="crtDt" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    EXECUTE_TIME, EXECUTE_NAME, HOST_IP, CRT_DT
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.ccbp.core.bus.model.ScheduKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from TBL_SCHEDU
+    where EXECUTE_TIME = #{executeTime,jdbcType=VARCHAR}
+      and EXECUTE_NAME = #{executeName,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.ccbp.core.bus.model.ScheduKey" >
+    delete from TBL_SCHEDU
+    where EXECUTE_TIME = #{executeTime,jdbcType=VARCHAR}
+      and EXECUTE_NAME = #{executeName,jdbcType=VARCHAR}
+  </delete>
+  
+  <!-- 根据 执行时间时间和任务名称及IP删除-->
+  <delete id="deleteByPkAndIP" parameterType="com.ccbp.core.bus.model.ScheduKey" >
+    delete from TBL_SCHEDU
+    where EXECUTE_TIME = #{executeTime,jdbcType=VARCHAR}
+      and EXECUTE_NAME = #{executeName,jdbcType=VARCHAR}
+       and  HOST_IP = #{hostIp,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ccbp.core.bus.model.Schedu" >
+    insert into TBL_SCHEDU (EXECUTE_TIME, EXECUTE_NAME, HOST_IP, 
+      CRT_DT)
+    values (#{executeTime,jdbcType=VARCHAR}, #{executeName,jdbcType=VARCHAR}, #{hostIp,jdbcType=VARCHAR}, 
+      #{crtDt,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ccbp.core.bus.model.Schedu" >
+    insert into TBL_SCHEDU
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="executeTime != null" >
+        EXECUTE_TIME,
+      </if>
+      <if test="executeName != null" >
+        EXECUTE_NAME,
+      </if>
+      <if test="hostIp != null" >
+        HOST_IP,
+      </if>
+      <if test="crtDt != null" >
+        CRT_DT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="executeTime != null" >
+        #{executeTime,jdbcType=VARCHAR},
+      </if>
+      <if test="executeName != null" >
+        #{executeName,jdbcType=VARCHAR},
+      </if>
+      <if test="hostIp != null" >
+        #{hostIp,jdbcType=VARCHAR},
+      </if>
+      <if test="crtDt != null" >
+        #{crtDt,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ccbp.core.bus.model.Schedu" >
+    update TBL_SCHEDU
+    <set >
+      <if test="hostIp != null" >
+        HOST_IP = #{hostIp,jdbcType=VARCHAR},
+      </if>
+      <if test="crtDt != null" >
+        CRT_DT = #{crtDt,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where EXECUTE_TIME = #{executeTime,jdbcType=VARCHAR}
+      and EXECUTE_NAME = #{executeName,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ccbp.core.bus.model.Schedu" >
+    update TBL_SCHEDU
+    set HOST_IP = #{hostIp,jdbcType=VARCHAR},
+      CRT_DT = #{crtDt,jdbcType=VARCHAR}
+    where EXECUTE_TIME = #{executeTime,jdbcType=VARCHAR}
+      and EXECUTE_NAME = #{executeName,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbp.core.bus.mapper.TblMchtTerminalInfMapper">
+
+	<resultMap id="BaseResultMap" type="java.util.Map">
+		<id column="MCHT_ID" jdbcType="VARCHAR" property="mchtId" />
+		<id column="TERM_ID" jdbcType="VARCHAR" property="termId" />
+		<result column="TXN_TP" jdbcType="VARCHAR" property="txnTp" />
+		<result column="CRT_OPR" jdbcType="VARCHAR" property="crtOpr" />
+	    <result column="CRT_DT" jdbcType="VARCHAR" property="crtDt" />
+	    <result column="UPD_OPR" jdbcType="VARCHAR" property="updOpr" />
+	    <result column="UPD_DT" jdbcType="VARCHAR" property="updDt" />
+	    <result column="MISC" jdbcType="VARCHAR" property="misc" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		MCHT_ID, TERM_ID, TXN_TP, CRT_OPR, CRT_DT, UPD_OPR, UPD_DT, MISC
+	</sql>
+	
+	<select id="selectByPrimaryKey" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_MCHT_TERMINAL_INF
+		where MCHT_ID = #{mchtId,jdbcType=VARCHAR} and TERM_ID = #{termId,jdbcType=VARCHAR}
+	</select>
+
+	<select id="selectByMchtId" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_MCHT_TERMINAL_INF
+		where MCHT_ID = #{mchtId,jdbcType=VARCHAR}
+	</select>
+
+	<select id="selectByTermId" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_MCHT_TERMINAL_INF
+		where TERM_ID = #{termId,jdbcType=VARCHAR}
+	</select>
+
+	<select id="selectByMchtNameAndTermId" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select
+			t.*
+		from TBL_MCHT_TERMINAL_INF t, TBL_MCHT_INF mt 
+		where t.MCHT_ID = mt.MCHT_ID 
+			and mt.MCHT_NAME = #{mchtName,jdbcType=VARCHAR} 
+			and t.TERM_ID = #{termId,jdbcType=VARCHAR}
+	</select>
+		
+	<delete id="deleteByPrimaryKey" parameterType="java.util.Map">
+		delete from TBL_MCHT_TERMINAL_INF
+		where MCHT_ID = #{mchtId,jdbcType=VARCHAR} and TERM_ID = #{termId,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="java.util.Map">
+		insert into TBL_MCHT_TERMINAL_INF
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="mchtId != null"> MCHT_ID, </if>
+			<if test="termId != null"> TERM_ID, </if>
+			<if test="txnTp != null"> TXN_TP, </if>
+			<if test="crtOpr != null"> CRT_OPR,	</if>
+			<if test="crtDt != null"> CRT_DT, </if>
+			<if test="updOpr != null"> UPD_OPR,	</if>
+			<if test="updDt != null"> UPD_DT, </if>
+			<if test="misc != null"> MISC, </if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="mchtId != null"> #{mchtId,jdbcType=VARCHAR}, </if>
+			<if test="termId != null"> #{termId,jdbcType=VARCHAR}, </if>
+			<if test="txnTp != null"> #{txnTp,jdbcType=VARCHAR}, </if>
+			<if test="crtOpr != null"> #{crtOpr,jdbcType=VARCHAR}, </if>
+			<if test="crtDt != null"> #{crtDt,jdbcType=VARCHAR}, </if>
+			<if test="updOpr != null"> #{updOpr,jdbcType=VARCHAR}, </if>
+			<if test="updDt != null"> #{updDt,jdbcType=VARCHAR}, </if>
+			<if test="misc != null"> #{misc,jdbcType=VARCHAR}, </if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+		update TBL_MCHT_TERMINAL_INF
+		<set>
+			<if test="txnTp != null"> TXN_TP = #{txnTp,jdbcType=VARCHAR}, </if>
+			<if test="updOpr != null"> UPD_OPR = #{updOpr,jdbcType=VARCHAR}, </if>
+			<if test="updDt != null"> UPD_DT = #{updDt,jdbcType=VARCHAR}, </if>
+			<if test="misc != null"> MISC = #{misc,jdbcType=VARCHAR}, </if>
+		</set>
+		where MCHT_ID = #{mchtId,jdbcType=VARCHAR} and TERM_ID = #{termId,jdbcType=VARCHAR}
+	</update>
+</mapper>

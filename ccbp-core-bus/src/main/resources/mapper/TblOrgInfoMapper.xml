@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbp.core.bus.mapper.TblOrgInfoMapper">
+
+	<resultMap id="BaseResultMap" type="java.util.Map">
+		<id column="ORG_CD" property="orgCd" jdbcType="VARCHAR"/>
+		<result column="ORG_NAME" property="orgName" jdbcType="VARCHAR"/>
+		<result column="ORG_SHORT_NAME" property="orgShortName" jdbcType="VARCHAR"/>
+		<result column="ITEM_CD" property="itemCd" jdbcType="VARCHAR"/>
+		<result column="TYPE" property="type" jdbcType="VARCHAR"/>
+		<result column="AREA_CD" property="areaCd" jdbcType="VARCHAR"/>
+		<result column="CUPS_CD" property="cupsCd" jdbcType="VARCHAR"/>
+		<result column="EN_NAME" property="enName" jdbcType="VARCHAR"/>
+		<result column="CRT_OPR" property="crtOpr" jdbcType="VARCHAR"/>
+	    <result column="CRT_DT" property="crtDt" jdbcType="VARCHAR"/>
+	    <result column="UPD_OPR" property="updOpr" jdbcType="VARCHAR"/>
+	    <result column="UPD_DT" property="updDt" jdbcType="VARCHAR"/>
+		<result column="MISC" property="misc" jdbcType="VARCHAR"/>
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		ORG_CD, ORG_NAME, ORG_SHORT_NAME, ITEM_CD, TYPE, AREA_CD, CUPS_CD, EN_NAME, CRT_OPR, CRT_DT, UPD_OPR, UPD_DT, MISC
+	</sql>
+
+	<select id="selectByPrimaryKey" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_ORG_INFO
+		where ORG_CD = #{orgCd,jdbcType=VARCHAR} 
+	</select>
+	
+	<select id="query" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_ORG_INFO
+		<where>
+			<if test="orgCd != null"> and ORG_CD = #{orgCd,jdbcType=VARCHAR} </if>
+			<if test="orgName != null"> and ORG_NAME = #{orgName,jdbcType=VARCHAR} </if>
+			<if test="orgShortName != null"> and ORG_SHORT_NAME = #{orgShortName,jdbcType=VARCHAR} </if>
+			<if test="enName != null"> and EN_NAME = #{enName,jdbcType=VARCHAR} </if>
+		</where>  
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.util.Map">
+		delete from TBL_ORG_INFO
+		where ORG_CD = #{orgCd,jdbcType=VARCHAR}
+	</delete>
+	
+	<insert id="insert" parameterType="java.util.Map">
+		insert into TBL_ORG_INFO
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="orgCd != null"> ORG_CD, </if>
+			<if test="orgName != null"> ORG_NAME, </if>
+			<if test="orgShortName != null"> ORG_SHORT_NAME,</if>
+			<if test="itemCd != null"> ITEM_CD, </if>
+			<if test="type != null"> TYPE, </if>
+			<if test="areaCd != null"> AREA_CD, </if>
+			<if test="cupsCd != null"> CUPS_CD, </if>
+			<if test="enName != null"> EN_NAME, </if>
+			<if test="crtOpr != null"> CRT_OPR,	</if>
+			<if test="crtDt != null"> CRT_DT, </if>
+			<if test="updOpr != null"> UPD_OPR,	</if>
+			<if test="updDt != null"> UPD_DT, </if>
+			<if test="misc != null"> MISC, </if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="orgCd != null"> #{orgCd,jdbcType=VARCHAR}, </if>
+			<if test="orgName != null"> #{orgName,jdbcType=VARCHAR}, </if>
+			<if test="orgShortName != null"> #{orgShortName,jdbcType=VARCHAR}, </if>
+			<if test="itemCd != null"> #{itemCd, jdbcType=VARCHAR}, </if>
+			<if test="type != null"> #{type,jdbcType=VARCHAR}, </if>
+			<if test="areaCd != null"> #{areaCd,jdbcType=VARCHAR}, </if>
+			<if test="cupsCd != null"> #{cupsCd,jdbcType=VARCHAR}, </if>
+			<if test="enName != null"> #{enName,jdbcType=VARCHAR}, </if>
+			<if test="crtOpr != null"> #{crtOpr,jdbcType=VARCHAR}, </if>
+			<if test="crtDt != null"> #{crtDt,jdbcType=VARCHAR}, </if>
+			<if test="updOpr != null"> #{updOpr,jdbcType=VARCHAR}, </if>
+			<if test="updDt != null"> #{updDt,jdbcType=VARCHAR}, </if>
+			<if test="misc != null"> #{misc,jdbcType=VARCHAR}, </if>
+		</trim>
+	</insert>
+	
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+		update TBL_ORG_INFO
+		<set>
+			<if test="orgName != null"> ORG_NAME = #{orgName,jdbcType=VARCHAR}, </if>
+			<if test="orgShortName != null"> ORG_SHORT_NAME = #{orgShortName,jdbcType=VARCHAR},</if>
+			<if test="itemCd != null"> ITEM_CD = #{itemCd,jdbcType=VARCHAR}, </if>
+			<if test="type != null"> TYPE = #{type,jdbcType=VARCHAR}, </if>
+			<if test="areaCd != null"> AREA_CD = #{areaCd,jdbcType=VARCHAR}, </if>
+			<if test="cupsCd != null"> CUPS_CD = #{cupsCd,jdbcType=VARCHAR}, </if>
+			<if test="enName != null"> EN_NAME = #{enName,jdbcType=VARCHAR}, </if>
+			<if test="updOpr != null"> UPD_OPR = #{updOpr,jdbcType=VARCHAR},	</if>
+			<if test="updDt != null"> UPD_DT = #{updDt,jdbcType=VARCHAR}, </if>
+			<if test="misc != null"> MISC = #{misc,jdbcType=VARCHAR}, </if>
+		</set>
+		where ORG_CD = #{orgCd,jdbcType=VARCHAR} 
+	</update>
+	
+</mapper>

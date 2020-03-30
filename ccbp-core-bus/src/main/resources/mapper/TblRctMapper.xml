@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbp.core.bus.mapper.TblRctMapper">
+  <resultMap id="BaseResultMap" type="java.util.Map">
+    <id column="SYS_DT" jdbcType="VARCHAR" property="sysDt" />
+    <id column="SYS_SEQ" jdbcType="VARCHAR" property="sysSeq" />
+    <result column="MSG_TP" jdbcType="VARCHAR" property="msgTp" />
+    <result column="PAN" jdbcType="VARCHAR" property="pan" />
+    <result column="TXN_DT_TM" jdbcType="VARCHAR" property="txnDtTm" />
+    <result column="CUP_SSN" jdbcType="VARCHAR" property="cupSsn" />
+    <result column="LCL_TM" jdbcType="VARCHAR" property="lclTm" />
+    <result column="LCL_DT" jdbcType="VARCHAR" property="lclDt" />
+    <result column="STLM_DT" jdbcType="VARCHAR" property="stlmDt" />
+    <result column="MCHT_TP" jdbcType="VARCHAR" property="mchtTp" />
+    <result column="CD_SEQ_NO" jdbcType="VARCHAR" property="cdSeqNo" />
+    <result column="FWD_INS_CD" jdbcType="VARCHAR" property="fwdInsCd" />
+    <result column="RETL_REF" jdbcType="VARCHAR" property="retlRef" />
+    <result column="CUPS_RSP_CD" jdbcType="VARCHAR" property="cupsRspCd" />
+    <result column="ACQ_INS_CD" jdbcType="VARCHAR" property="acqInsCd" />
+    <result column="ACQ_TERM_ID" jdbcType="VARCHAR" property="acqTermId" />
+    <result column="ACQ_ID" jdbcType="VARCHAR" property="acqId" />
+    <result column="ACQ_NM" jdbcType="VARCHAR" property="acqNm" />
+    <result column="ADD_DATA_PRT" jdbcType="VARCHAR" property="addDataPrt" />
+    <result column="NET_MNG_CCD" jdbcType="VARCHAR" property="netMngCcd" />
+    <result column="RCV_INS_CD" jdbcType="VARCHAR" property="rcvInsCd" />
+    <result column="ADD_DATA" jdbcType="VARCHAR" property="addData" />
+    <result column="CRT_OPR" jdbcType="VARCHAR" property="crtOpr" />
+    <result column="CRT_DT" jdbcType="VARCHAR" property="crtDt" />
+    <result column="UPD_OPR" jdbcType="VARCHAR" property="updOpr" />
+    <result column="UPD_DT" jdbcType="VARCHAR" property="updDt" />
+    <result column="MISC" jdbcType="VARCHAR" property="misc" />
+    <result column="COND_CD" jdbcType="VARCHAR" property="condCd" />
+    <result column="TRANS_DIRECTION" jdbcType="CHAR" property="transDirection" />
+    <result column="HOST_TXN_CD" property="hostTxnCd" jdbcType="VARCHAR"/>
+    <result column="REQ_SEQ" property="reqSeq" jdbcType="VARCHAR"/>
+    <result column="M_IP" property="mIp" jdbcType="VARCHAR" />
+    <result column="CHANNEL_SEQ" property="channelSeq" jdbcType="VARCHAR" />
+    <result column="HOST_SSN" property="hostSsn" jdbcType="VARCHAR" />
+    <result column="HOST_DT" property="hostDt" jdbcType="VARCHAR" />
+    <result column="HOST_TP" property="hostTp" jdbcType="VARCHAR" />
+    <result column="HOST_ERR_CD" property="hostErrCd" jdbcType="VARCHAR" />
+    <result column="HOST_ERR_MSSG" property="hostErrMssg" jdbcType="VARCHAR" /> 
+  </resultMap>
+  <sql id="Base_Column_List">
+    SYS_DT, SYS_SEQ, MSG_TP, PAN, TXN_DT_TM, CUP_SSN, LCL_TM, LCL_DT, STLM_DT, MCHT_TP, 
+    CD_SEQ_NO, FWD_INS_CD, RETL_REF, CUPS_RSP_CD, ACQ_INS_CD, ACQ_TERM_ID, ACQ_ID, ACQ_NM, 
+    ADD_DATA_PRT, NET_MNG_CCD, RCV_INS_CD, ADD_DATA, CRT_OPR, CRT_DT, UPD_OPR, UPD_DT, 
+    MISC,COND_CD,TRANS_DIRECTION ,HOST_TXN_CD ,REQ_SEQ ,M_IP ,CHANNEL_SEQ ,HOST_SSN ,HOST_DT ,HOST_TP ,HOST_ERR_CD ,HOST_ERR_MSSG
+  </sql>
+  <select id="selectByPrimaryKey"  resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TBL_RCT
+    where SYS_DT = #{sysDt,jdbcType=VARCHAR}
+      and SYS_SEQ = #{sysSeq,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" >
+    delete from TBL_RCT
+    where SYS_DT = #{sysDt,jdbcType=VARCHAR}
+      and SYS_SEQ = #{sysSeq,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="java.util.Map">
+    insert into TBL_RCT (SYS_DT, SYS_SEQ, MSG_TP, 
+      PAN, TXN_DT_TM, CUP_SSN, 
+      LCL_TM, LCL_DT, STLM_DT, 
+      MCHT_TP, CD_SEQ_NO, FWD_INS_CD, 
+      RETL_REF, CUPS_RSP_CD, ACQ_INS_CD, 
+      ACQ_TERM_ID, ACQ_ID, ACQ_NM, 
+      ADD_DATA_PRT, NET_MNG_CCD, RCV_INS_CD, 
+      ADD_DATA, CRT_OPR, CRT_DT, 
+      UPD_OPR, UPD_DT, MISC,COND_CD,TRANS_DIRECTION ,HOST_TXN_CD ,REQ_SEQ ,M_IP ,CHANNEL_SEQ ,HOST_SSN ,HOST_DT ,HOST_TP ,HOST_ERR_CD ,HOST_ERR_MSSG
+      )
+    values (#{sysDt,jdbcType=VARCHAR}, #{sysSeq,jdbcType=VARCHAR}, #{msgTp,jdbcType=VARCHAR}, 
+      #{pan,jdbcType=VARCHAR}, #{txnDtTm,jdbcType=VARCHAR}, #{cupSsn,jdbcType=VARCHAR}, 
+      #{lclTm,jdbcType=VARCHAR}, #{lclDt,jdbcType=VARCHAR}, #{stlmDt,jdbcType=VARCHAR}, 
+      #{mchtTp,jdbcType=VARCHAR}, #{cdSeqNo,jdbcType=VARCHAR}, #{fwdInsCd,jdbcType=VARCHAR}, 
+      #{retlRef,jdbcType=VARCHAR}, #{cupsRspCd,jdbcType=VARCHAR}, #{acqInsCd,jdbcType=VARCHAR}, 
+      #{acqTermId,jdbcType=VARCHAR}, #{acqId,jdbcType=VARCHAR}, #{acqNm,jdbcType=VARCHAR}, 
+      #{addDataPrt,jdbcType=VARCHAR}, #{netMngCcd,jdbcType=VARCHAR}, #{rcvInsCd,jdbcType=VARCHAR}, 
+      #{addData,jdbcType=VARCHAR}, #{crtOpr,jdbcType=VARCHAR}, #{crtDt,jdbcType=VARCHAR}, 
+      #{updOpr,jdbcType=VARCHAR}, #{updDt,jdbcType=VARCHAR}, #{misc,jdbcType=VARCHAR},
+       #{condCd,jdbcType=VARCHAR},#{transDirection,jdbcType=CHAR},#{hostTxnCd,jdbcType=VARCHAR},#{reqSeq,jdbcType=VARCHAR},#{mIp,jdbcType=VARCHAR},#{channelSeq,jdbcType=VARCHAR},#{hostSsn,jdbcType=VARCHAR},#{hostDt,jdbcType=VARCHAR},#{hostTp,jdbcType=VARCHAR},#{hostErrCd,jdbcType=VARCHAR},#{hostErrMssg,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="java.util.Map">
+    insert into TBL_RCT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sysDt != null">
+        SYS_DT,
+      </if>
+      <if test="sysSeq != null">
+        SYS_SEQ,
+      </if>
+      <if test="msgTp != null">
+        MSG_TP,
+      </if>
+      <if test="pan != null">
+        PAN,
+      </if>
+      <if test="txnDtTm != null">
+        TXN_DT_TM,
+      </if>
+      <if test="cupSsn != null">
+        CUP_SSN,
+      </if>
+      <if test="lclTm != null">
+        LCL_TM,
+      </if>
+      <if test="lclDt != null">
+        LCL_DT,
+      </if>
+      <if test="stlmDt != null">
+        STLM_DT,
+      </if>
+      <if test="mchtTp != null">
+        MCHT_TP,
+      </if>
+      <if test="cdSeqNo != null">
+        CD_SEQ_NO,
+      </if>
+      <if test="fwdInsCd != null">
+        FWD_INS_CD,
+      </if>
+      <if test="retlRef != null">
+        RETL_REF,
+      </if>
+      <if test="cupsRspCd != null">
+        CUPS_RSP_CD,
+      </if>
+      <if test="acqInsCd != null">
+        ACQ_INS_CD,
+      </if>
+      <if test="acqTermId != null">
+        ACQ_TERM_ID,
+      </if>
+      <if test="acqId != null">
+        ACQ_ID,
+      </if>
+      <if test="acqNm != null">
+        ACQ_NM,
+      </if>
+      <if test="addDataPrt != null">
+        ADD_DATA_PRT,
+      </if>
+      <if test="netMngCcd != null">
+        NET_MNG_CCD,
+      </if>
+      <if test="rcvInsCd != null">
+        RCV_INS_CD,
+      </if>
+      <if test="addData != null">
+        ADD_DATA,
+      </if>
+      <if test="crtOpr != null">
+        CRT_OPR,
+      </if>
+      <if test="crtDt != null">
+        CRT_DT,
+      </if>
+      <if test="updOpr != null">
+        UPD_OPR,
+      </if>
+      <if test="updDt != null">
+        UPD_DT,
+      </if>
+      <if test="misc != null">
+        MISC,
+      </if>
+      <if test="condCd != null">
+        COND_CD,
+      </if>
+      <if test="transDirection != null">
+        TRANS_DIRECTION,
+      </if>
+      <if test="hostTxnCd != null">
+        HOST_TXN_CD,
+      </if>
+      <if test="reqSeq != null">
+        REQ_SEQ,
+      </if>
+      <if test="mIp != null">
+        M_IP,
+      </if>
+      <if test="channelSeq != null">
+        CHANNEL_SEQ,
+      </if>
+      <if test="hostSsn != null">
+        HOST_SSN,
+      </if>
+      <if test="hostDt != null">
+        HOST_DT,
+      </if>
+      <if test="hostTp != null">
+        HOST_TP,
+      </if>
+      <if test="hostErrCd != null">
+        HOST_ERR_CD,
+      </if>
+      <if test="hostErrMssg != null">
+        HOST_ERR_MSSG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sysDt != null">
+        #{sysDt,jdbcType=VARCHAR},
+      </if>
+      <if test="sysSeq != null">
+        #{sysSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="msgTp != null">
+        #{msgTp,jdbcType=VARCHAR},
+      </if>
+      <if test="pan != null">
+        #{pan,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDtTm != null">
+        #{txnDtTm,jdbcType=VARCHAR},
+      </if>
+      <if test="cupSsn != null">
+        #{cupSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="lclTm != null">
+        #{lclTm,jdbcType=VARCHAR},
+      </if>
+      <if test="lclDt != null">
+        #{lclDt,jdbcType=VARCHAR},
+      </if>
+      <if test="stlmDt != null">
+        #{stlmDt,jdbcType=VARCHAR},
+      </if>
+      <if test="mchtTp != null">
+        #{mchtTp,jdbcType=VARCHAR},
+      </if>
+      <if test="cdSeqNo != null">
+        #{cdSeqNo,jdbcType=VARCHAR},
+      </if>
+      <if test="fwdInsCd != null">
+        #{fwdInsCd,jdbcType=VARCHAR},
+      </if>
+      <if test="retlRef != null">
+        #{retlRef,jdbcType=VARCHAR},
+      </if>
+      <if test="cupsRspCd != null">
+        #{cupsRspCd,jdbcType=VARCHAR},
+      </if>
+      <if test="acqInsCd != null">
+        #{acqInsCd,jdbcType=VARCHAR},
+      </if>
+      <if test="acqTermId != null">
+        #{acqTermId,jdbcType=VARCHAR},
+      </if>
+      <if test="acqId != null">
+        #{acqId,jdbcType=VARCHAR},
+      </if>
+      <if test="acqNm != null">
+        #{acqNm,jdbcType=VARCHAR},
+      </if>
+      <if test="addDataPrt != null">
+        #{addDataPrt,jdbcType=VARCHAR},
+      </if>
+      <if test="netMngCcd != null">
+        #{netMngCcd,jdbcType=VARCHAR},
+      </if>
+      <if test="rcvInsCd != null">
+        #{rcvInsCd,jdbcType=VARCHAR},
+      </if>
+      <if test="addData != null">
+        #{addData,jdbcType=VARCHAR},
+      </if>
+      <if test="crtOpr != null">
+        #{crtOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="crtDt != null">
+        #{crtDt,jdbcType=VARCHAR},
+      </if>
+      <if test="updOpr != null">
+        #{updOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="updDt != null">
+        #{updDt,jdbcType=VARCHAR},
+      </if>
+      <if test="misc != null">
+        #{misc,jdbcType=VARCHAR},
+      </if>
+       <if test="condCd != null">
+        #{condCd,jdbcType=VARCHAR},
+      </if>
+      <if test="transDirection != null">
+        #{transDirection,jdbcType=CHAR},
+      </if>
+      <if test="hostTxnCd != null">
+        #{hostTxnCd,jdbcType=VARCHAR},
+      </if>
+      <if test="reqSeq != null">
+        #{reqSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="mIp != null">
+        #{mIp,jdbcType=VARCHAR},
+      </if>
+      <if test="channelSeq != null">
+        #{channelSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="hostSsn != null">
+        #{hostSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="hostDt != null">
+        #{hostDt,jdbcType=VARCHAR},
+      </if>
+      <if test="hostTp != null">
+        #{hostTp,jdbcType=VARCHAR},
+      </if>
+      <if test="hostErrCd != null">
+        #{hostErrCd,jdbcType=VARCHAR},
+      </if>
+      <if test="hostErrMssg != null">
+        #{hostErrMssg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="java.util.Map">
+    update TBL_RCT
+    <set>
+      <if test="msgTp != null">
+        MSG_TP = #{msgTp,jdbcType=VARCHAR},
+      </if>
+      <if test="pan != null">
+        PAN = #{pan,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDtTm != null">
+        TXN_DT_TM = #{txnDtTm,jdbcType=VARCHAR},
+      </if>
+      <if test="cupSsn != null">
+        CUP_SSN = #{cupSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="lclTm != null">
+        LCL_TM = #{lclTm,jdbcType=VARCHAR},
+      </if>
+      <if test="lclDt != null">
+        LCL_DT = #{lclDt,jdbcType=VARCHAR},
+      </if>
+      <if test="stlmDt != null">
+        STLM_DT = #{stlmDt,jdbcType=VARCHAR},
+      </if>
+      <if test="mchtTp != null">
+        MCHT_TP = #{mchtTp,jdbcType=VARCHAR},
+      </if>
+      <if test="cdSeqNo != null">
+        CD_SEQ_NO = #{cdSeqNo,jdbcType=VARCHAR},
+      </if>
+      <if test="fwdInsCd != null">
+        FWD_INS_CD = #{fwdInsCd,jdbcType=VARCHAR},
+      </if>
+      <if test="retlRef != null">
+        RETL_REF = #{retlRef,jdbcType=VARCHAR},
+      </if>
+      <if test="cupsRspCd != null">
+        CUPS_RSP_CD = #{cupsRspCd,jdbcType=VARCHAR},
+      </if>
+      <if test="acqInsCd != null">
+        ACQ_INS_CD = #{acqInsCd,jdbcType=VARCHAR},
+      </if>
+      <if test="acqTermId != null">
+        ACQ_TERM_ID = #{acqTermId,jdbcType=VARCHAR},
+      </if>
+      <if test="acqId != null">
+        ACQ_ID = #{acqId,jdbcType=VARCHAR},
+      </if>
+      <if test="acqNm != null">
+        ACQ_NM = #{acqNm,jdbcType=VARCHAR},
+      </if>
+      <if test="addDataPrt != null">
+        ADD_DATA_PRT = #{addDataPrt,jdbcType=VARCHAR},
+      </if>
+      <if test="netMngCcd != null">
+        NET_MNG_CCD = #{netMngCcd,jdbcType=VARCHAR},
+      </if>
+      <if test="rcvInsCd != null">
+        RCV_INS_CD = #{rcvInsCd,jdbcType=VARCHAR},
+      </if>
+      <if test="addData != null">
+        ADD_DATA = #{addData,jdbcType=VARCHAR},
+      </if>
+      <if test="crtOpr != null">
+        CRT_OPR = #{crtOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="crtDt != null">
+        CRT_DT = #{crtDt,jdbcType=VARCHAR},
+      </if>
+      <if test="updOpr != null">
+        UPD_OPR = #{updOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="updDt != null">
+        UPD_DT = #{updDt,jdbcType=VARCHAR},
+      </if>
+      <if test="misc != null">
+        MISC = #{misc,jdbcType=VARCHAR},
+      </if>
+       <if test="condCd != null">
+        COND_CD = #{condCd,jdbcType=VARCHAR},
+      </if>
+      <if test="transDirection != null">
+        TRANS_DIRECTION = #{transDirection,jdbcType=CHAR},
+      </if>
+      <if test="hostTxnCd != null">
+        HOST_TXN_CD = #{hostTxnCd,jdbcType=VARCHAR},
+      </if>
+      <if test="reqSeq != null">
+        REQ_SEQ = #{reqSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="mIp != null">
+        M_IP = #{mIp,jdbcType=VARCHAR},
+      </if>
+      <if test="channelSeq != null">
+        CHANNEL_SEQ = #{channelSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="hostSsn != null">
+        HOST_SSN = #{hostSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="hostDt != null">
+        HOST_DT = #{hostDt,jdbcType=VARCHAR},
+      </if>
+      <if test="hostTp != null">
+        HOST_TP = #{hostTp,jdbcType=VARCHAR},
+      </if>
+      <if test="hostErrCd != null">
+        HOST_ERR_CD = #{hostErrCd,jdbcType=VARCHAR},
+      </if>
+      <if test="hostErrMssg != null">
+        HOST_ERR_MSSG = #{hostErrMssg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SYS_DT = #{sysDt,jdbcType=VARCHAR}
+      and SYS_SEQ = #{sysSeq,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="java.util.Map">
+    update TBL_RCT
+    set MSG_TP = #{msgTp,jdbcType=VARCHAR},
+      PAN = #{pan,jdbcType=VARCHAR},
+      TXN_DT_TM = #{txnDtTm,jdbcType=VARCHAR},
+      CUP_SSN = #{cupSsn,jdbcType=VARCHAR},
+      LCL_TM = #{lclTm,jdbcType=VARCHAR},
+      LCL_DT = #{lclDt,jdbcType=VARCHAR},
+      STLM_DT = #{stlmDt,jdbcType=VARCHAR},
+      MCHT_TP = #{mchtTp,jdbcType=VARCHAR},
+      CD_SEQ_NO = #{cdSeqNo,jdbcType=VARCHAR},
+      FWD_INS_CD = #{fwdInsCd,jdbcType=VARCHAR},
+      RETL_REF = #{retlRef,jdbcType=VARCHAR},
+      CUPS_RSP_CD = #{cupsRspCd,jdbcType=VARCHAR},
+      ACQ_INS_CD = #{acqInsCd,jdbcType=VARCHAR},
+      ACQ_TERM_ID = #{acqTermId,jdbcType=VARCHAR},
+      ACQ_ID = #{acqId,jdbcType=VARCHAR},
+      ACQ_NM = #{acqNm,jdbcType=VARCHAR},
+      ADD_DATA_PRT = #{addDataPrt,jdbcType=VARCHAR},
+      NET_MNG_CCD = #{netMngCcd,jdbcType=VARCHAR},
+      RCV_INS_CD = #{rcvInsCd,jdbcType=VARCHAR},
+      ADD_DATA = #{addData,jdbcType=VARCHAR},
+      CRT_OPR = #{crtOpr,jdbcType=VARCHAR},
+      CRT_DT = #{crtDt,jdbcType=VARCHAR},
+      UPD_OPR = #{updOpr,jdbcType=VARCHAR},
+      UPD_DT = #{updDt,jdbcType=VARCHAR},
+      MISC = #{misc,jdbcType=VARCHAR},
+       COND_CD = #{condCd,jdbcType=VARCHAR},
+      TRANS_DIRECTION = #{transDirection,jdbcType=CHAR},
+      HOST_TXN_CD = #{hostTxnCd,jdbcType=VARCHAR},
+      REQ_SEQ = #{reqSeq,jdbcType=VARCHAR},
+      M_IP = #{mIp,jdbcType=VARCHAR},
+      CHANNEL_SEQ = #{channelSeq,jdbcType=VARCHAR},
+      HOST_SSN = #{hostSsn,jdbcType=VARCHAR},
+      HOST_DT = #{hostDt,jdbcType=VARCHAR},
+      HOST_TP = #{hostTp,jdbcType=VARCHAR},
+      HOST_ERR_CD = #{hostErrCd,jdbcType=VARCHAR},
+      HOST_ERR_MSSG = #{hostErrMssg,jdbcType=VARCHAR}
+    where SYS_DT = #{sysDt,jdbcType=VARCHAR}
+      and SYS_SEQ = #{sysSeq,jdbcType=VARCHAR}
+  </update>
+</mapper>

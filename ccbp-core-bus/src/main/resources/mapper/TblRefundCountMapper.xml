@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbp.core.bus.mapper.TblRefundCountMapper">
+  <resultMap id="BaseResultMap" type="java.util.Map">
+    <id column="TXN_SEQ" jdbcType="VARCHAR" property="txnSeq" />
+    <id column="TXN_CD" jdbcType="VARCHAR" property="txnCd" />
+    <result column="REFUND_AMOUNT" jdbcType="DECIMAL" property="refundAmount" />   
+    <result column="TXN_AMT" jdbcType="DECIMAL" property="txnAmt" />
+    <result column="CURRENCY" jdbcType="VARCHAR" property="currency" />
+    <result column="REFUND_COUNT" jdbcType="DECIMAL" property="refundCount" />
+    <result column="RECORD_STAT" jdbcType="CHAR" property="recordStat" />
+    <result column="INSERT_TIME" jdbcType="VARCHAR" property="insertTime" />
+    <result column="UPDATE_TIME" jdbcType="VARCHAR" property="updateTime" />
+    <result column="MISC1" jdbcType="VARCHAR" property="misc1" />
+    <result column="MISC2" jdbcType="VARCHAR" property="misc2" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    TXN_SEQ, TXN_CD, REFUND_AMOUNT, TXN_AMT, CURRENCY, REFUND_COUNT, RECORD_STAT, INSERT_TIME, UPDATE_TIME, MISC1, MISC2
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_refund_count
+    where TXN_SEQ = #{txnSeq,jdbcType=VARCHAR}
+      and TXN_CD = #{txnCd,jdbcType=VARCHAR}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.util.Map">
+    delete from tbl_refund_count
+    where TXN_SEQ = #{txnSeq,jdbcType=VARCHAR}
+      and TXN_CD = #{txnCd,jdbcType=VARCHAR}
+  </delete>
+  
+  <insert id="insertSelective" parameterType="java.util.Map">
+    insert into tbl_refund_count
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="txnSeq != null">
+        TXN_SEQ,
+      </if>
+      <if test="txnCd != null">
+        TXN_CD,
+      </if>
+      <if test="refundAmount != null">
+        REFUND_AMOUNT,
+      </if>
+      <if test="txnAmt != null">
+        TXN_AMT,
+      </if>
+      <if test="currency != null">
+        CURRENCY,
+      </if>
+      <if test="refundCount != null">
+        REFUND_COUNT,
+      </if>
+      <if test="recordStat != null">
+        RECORD_STAT,
+      </if>
+      <if test="insertTime != null">
+        INSERT_TIME,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+      <if test="misc1 != null">
+        MISC1,
+      </if>
+      <if test="misc2 != null">
+        MISC2,
+      </if>                       
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="txnSeq != null">
+        #{txnSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="txnCd != null">
+        #{txnCd,jdbcType=VARCHAR},
+      </if>
+      <if test="refundAmount != null">
+        #{refundAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="txnAmt != null">
+        #{txnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="currency != null">
+        #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="refundCount != null">
+        #{refundCount,jdbcType=DECIMAL},
+      </if>
+      <if test="recordStat != null">
+        #{recordStat,jdbcType=CHAR},
+      </if>
+      <if test="insertTime != null">
+        #{insertTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="misc1 != null">
+        #{misc1,jdbcType=VARCHAR},
+      </if>
+       <if test="misc2 != null">
+        #{misc2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="java.util.Map">
+    update tbl_refund_count
+    <set>
+      <if test="refundAmount != null">
+        REFUND_AMOUNT =#{refundAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="txnAmt != null">
+        TXN_AMT =#{txnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="currency != null">
+        CURRENCY =#{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="refundCount != null">
+        REFUND_COUNT =#{refundCount,jdbcType=DECIMAL},
+      </if>
+      <if test="recordStat != null">
+        RECORD_STAT =#{recordStat,jdbcType=CHAR},
+      </if>
+      <if test="insertTime != null">
+        INSERT_TIME = #{insertTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="misc1 != null">
+        MISC1 = #{misc1,jdbcType=VARCHAR},
+      </if>
+      <if test="misc2 != null">
+        MISC2 = #{misc2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where TXN_SEQ = #{txnSeq,jdbcType=VARCHAR}
+      and TXN_CD = #{txnCd,jdbcType=VARCHAR}
+  </update>
+  
+</mapper>

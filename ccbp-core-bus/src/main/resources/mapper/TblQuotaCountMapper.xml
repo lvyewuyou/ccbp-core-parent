@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccbp.core.bus.mapper.TblQuotaCountMapper">
+	<resultMap id="BaseResultMap" type="java.util.Map">
+		<result column="SUMMARY_CODE" property="summaryCode" jdbcType="VARCHAR" />
+		<result column="CONTR_TP" property="contrTp" jdbcType="VARCHAR" />
+		<result column="DAY_AMT_COUNT" property="dayAmtCount" jdbcType="VARCHAR" />
+		<result column="DAY_NUM_COUNT" property="dayNumCount" jdbcType="VARCHAR" />
+		<result column="CURRENT_DT" property="currentDt" jdbcType="VARCHAR" />
+		<result column="CRT_DT" property="crtDt" jdbcType="VARCHAR" />
+		<result column="UPD_DT" property="updDt" jdbcType="VARCHAR" />
+		<result column="MISC" property="misc" jdbcType="VARCHAR" />
+		<result column="PAN" property="pan" jdbcType="VARCHAR" />
+		<result column="CONTR_VALUE" property="contrValue" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		SUMMARY_CODE, CONTR_TP,CONTR_VALUE, DAY_AMT_COUNT, DAY_NUM_COUNT, CURRENT_DT,
+		CRT_DT, UPD_DT,
+		MISC,PAN
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_QUOTA_COUNT
+		where SUMMARY_CODE = #{summaryCode,jdbcType=VARCHAR}
+		and CONTR_TP = #{contrTp,jdbcType=VARCHAR}
+	</select>
+	<!-- 根据摘要码和控制类型查数据 -->
+	<select id="selectBySmyCdAndCtrTp" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_QUOTA_COUNT
+		where SUMMARY_CODE = #{summaryCode,jdbcType=VARCHAR}
+		and CONTR_TP = #{contrTp,jdbcType=VARCHAR}
+		and CONTR_VALUE = #{contrValue,jdbcType=VARCHAR}
+		and CURRENT_DT = #{currentDt,jdbcType=VARCHAR}
+		and PAN = #{pan,jdbcType=VARCHAR}
+	</select>
+	<!-- 根据摘要码和控制类型及控制值查当天数据 -->
+	<select id="selectByCondition" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_QUOTA_COUNT
+		<where>
+			<if test="summaryCode != null and summaryCode != ''"> and SUMMARY_CODE = #{summaryCode,jdbcType=VARCHAR} </if>
+			<if test="contrTp != null and contrTp != ''"> and CONTR_TP = #{contrTp,jdbcType=VARCHAR} </if>
+			<if test="contrValue != null and contrValue != ''"> and CONTR_VALUE = #{contrValue,jdbcType=VARCHAR} </if>
+			<if test="currentDt != null and currentDt != ''"> and CURRENT_DT = #{currentDt,jdbcType=VARCHAR} </if>
+			<if test="pan != null and pan != ''"> and PAN = #{pan,jdbcType=VARCHAR} </if>
+		</where> 
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.util.Map">
+		delete from TBL_QUOTA_COUNT
+		where
+		SUMMARY_CODE = #{summaryCode,jdbcType=VARCHAR}
+		and CONTR_TP = #{contrTp,jdbcType=VARCHAR}
+		and CURRENT_DT = #{currentDt,jdbcType=VARCHAR}
+		and CONTR_VALUE = #{contrValue,jdbcType=VARCHAR}
+		and PAN = #{pan, jdbcType=VARCHAR}
+	</delete>
+	<insert id="insertSelective" parameterType="java.util.Map">
+		insert into TBL_QUOTA_COUNT
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="summaryCode != null">
+				SUMMARY_CODE,
+			</if>
+			<if test="contrTp != null">
+				CONTR_TP,
+			</if>
+			<if test="contrValue != null">
+				CONTR_VALUE,
+			</if>
+			<if test="dayAmtCount != null">
+				DAY_AMT_COUNT,
+			</if>
+			<if test="dayNumCount != null">
+				DAY_NUM_COUNT,
+			</if>
+			<if test="currentDt != null">
+				CURRENT_DT,
+			</if>
+			<if test="crtDt != null">
+				CRT_DT,
+			</if>
+			<if test="updDt != null">
+				UPD_DT,
+			</if>
+			<if test="misc != null"> MISC,</if>
+			<if test="pan != null"> PAN, </if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="summaryCode != null">
+				#{summaryCode,jdbcType=VARCHAR},
+			</if>
+			<if test="contrTp != null">
+				#{contrTp,jdbcType=VARCHAR},
+			</if>
+			<if test="contrValue != null">
+				#{contrValue,jdbcType=VARCHAR},
+			</if>
+			<if test="dayAmtCount != null">
+				#{dayAmtCount,jdbcType=VARCHAR},
+			</if>
+			<if test="dayNumCount != null">
+				#{dayNumCount,jdbcType=VARCHAR},
+			</if>
+			<if test="currentDt != null">
+				#{currentDt,jdbcType=VARCHAR},
+			</if>
+			<if test="crtDt != null">
+				#{crtDt,jdbcType=VARCHAR},
+			</if>
+			<if test="updDt != null">
+				#{updDt,jdbcType=VARCHAR},
+			</if>
+			<if test="misc != null">
+				#{misc,jdbcType=VARCHAR},
+			</if>
+			<if test="pan != null"> #{pan,jdbcType=VARCHAR}, </if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="java.util.Map">
+		update TBL_QUOTA_COUNT
+		<set>
+			<if test="dayAmtCount != null">
+				DAY_AMT_COUNT = #{dayAmtCount,jdbcType=VARCHAR},
+			</if>
+			<if test="dayNumCount != null">
+				DAY_NUM_COUNT = #{dayNumCount,jdbcType=VARCHAR},
+			</if>
+			<if test="currentDt != null">
+				CURRENT_DT = #{currentDt,jdbcType=VARCHAR},
+			</if>
+			<if test="crtDt != null">
+				CRT_DT = #{crtDt,jdbcType=VARCHAR},
+			</if>
+			<if test="updDt != null">
+				UPD_DT = #{updDt,jdbcType=VARCHAR},
+			</if>
+			<if test="misc != null">
+				MISC = #{misc,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where SUMMARY_CODE = #{summaryCode,jdbcType=VARCHAR}
+		and CONTR_TP = #{contrTp,jdbcType=VARCHAR}
+		and CONTR_VALUE = #{contrValue,jdbcType=VARCHAR}
+		and PAN = #{pan,jdbcType=VARCHAR}
+	</update>
+
+</mapper>

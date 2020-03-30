@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbp.core.bus.mapper.TblBusinessMapper">
+	
+	<resultMap id="BaseResultMap" type="java.util.Map">
+		<id column="TYPE" jdbcType="VARCHAR" property="type" />
+		<result column="DESCRIPTION" jdbcType="VARCHAR" property="description" />
+		<result column="ACCT_STOP_PYMT_FLG" jdbcType="VARCHAR" property="acctStopPymtFlg" />
+		<result column="CRT_OPR" jdbcType="VARCHAR" property="crtOpr" />
+	    <result column="CRT_DT" jdbcType="VARCHAR" property="crtDt" />
+	    <result column="UPD_OPR" jdbcType="VARCHAR" property="updOpr" />
+	    <result column="UPD_DT" jdbcType="VARCHAR" property="updDt" />
+	    <result column="MISC" jdbcType="VARCHAR" property="misc" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		TYPE, DESCRIPTION, ACCT_STOP_PYMT_FLG, CRT_OPR, CRT_DT, UPD_OPR, UPD_DT, MISC
+	</sql>
+	
+	<select id="selectByPrimaryKey" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_BUSINESS
+		where TYPE = #{type,jdbcType=VARCHAR}
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.util.Map">
+		delete from TBL_BUSINESS
+		where TYPE = #{type,jdbcType=VARCHAR}
+	</delete>
+	
+	<insert id="insert" parameterType="java.util.Map">
+		insert into TBL_BUSINESS
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="type != null"> TYPE,	</if>
+			<if test="description != null"> DESCRIPTION, </if>
+			<if test="acctStopPymtFlg != null"> ACCT_STOP_PYMT_FLG, </if>
+			<if test="crtOpr != null"> CRT_OPR,	</if>
+			<if test="crtDt != null"> CRT_DT, </if>
+			<if test="updOpr != null"> UPD_OPR,	</if>
+			<if test="updDt != null"> UPD_DT, </if>
+			<if test="misc != null"> MISC, </if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="type != null"> #{type,jdbcType=VARCHAR}, </if>
+			<if test="description != null">	#{description,jdbcType=VARCHAR}, </if>
+			<if test="acctStopPymtFlg != null"> #{acctStopPymtFlg,jdbcType=VARCHAR}, </if>
+			<if test="crtOpr != null"> #{crtOpr,jdbcType=VARCHAR}, </if>
+			<if test="crtDt != null"> #{crtDt,jdbcType=VARCHAR}, </if>
+			<if test="updOpr != null"> #{updOpr,jdbcType=VARCHAR}, </if>
+			<if test="updDt != null"> #{updDt,jdbcType=VARCHAR}, </if>
+			<if test="misc != null"> #{misc,jdbcType=VARCHAR}, </if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+		update TBL_BUSINESS
+		<set>
+			<if test="description != null">	DESCRIPTION = #{description,jdbcType=VARCHAR},	</if>
+			<if test="acctStopPymtFlg != null">	ACCT_STOP_PYMT_FLG = #{acctStopPymtFlg,jdbcType=VARCHAR},	</if>
+			<if test="updOpr != null"> UPD_OPR = #{updOpr,jdbcType=VARCHAR}, </if>
+			<if test="updDt != null"> UPD_DT = #{updDt,jdbcType=VARCHAR}, </if>
+			<if test="misc != null"> MISC = #{misc,jdbcType=VARCHAR}, </if>
+		</set>
+		where CARD_NO = #{type,jdbcType=VARCHAR}
+	</update>
+</mapper>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbp.core.bus.mapper.TblEsbRouteMapper">
+	<resultMap id="BaseResultMap" type="java.util.Map">
+		<id column="TF_ID" jdbcType="INTEGER" property="id" />
+		<result column="TF_TXN_CD" jdbcType="VARCHAR" property="txnCd" />
+		<result column="TF_ADAPTER" jdbcType="VARCHAR" property="adapter" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		TF_ID, TF_TXN_CD, TF_ADAPTER
+	</sql>
+	<select id="selectAdapterName" resultType="java.lang.String">
+
+		select a.tf_adapter
+		from TBL_ESB_ROUTE_ADAPTER a
+		left join TBL_ESB_ROUTE_COMPONENT b
+		on (a.tf_component_id = b.tf_id)
+		where a.tf_txn_cd = #{txnCd,jdbcType=VARCHAR}
+		and b.tf_component = #{component,jdbcType=VARCHAR}
+
+	</select>
+
+	<select id="selectHandleId" resultType="java.lang.String">
+		select a.tf_handle_id
+		from TBL_ESB_ROUTE_TURN a
+		left join TBL_ESB_ROUTE_COMPONENT b
+		on (a.tf_component_id = b.tf_id)
+		where a.tf_txn_cd = #{txnCd,jdbcType=VARCHAR}
+		and b.tf_component = #{component,jdbcType=VARCHAR}
+	</select>
+
+</mapper>

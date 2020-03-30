@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbp.core.bus.mapper.TblCityCdMapper">
+  <resultMap id="BaseResultMap" type="java.util.Map">
+    <result column="CITY_CDG" jdbcType="VARCHAR" property="cityCdg" />
+    <result column="CITY_CDY" jdbcType="VARCHAR" property="cityCdy" />
+    <result column="CITY_JM" jdbcType="VARCHAR" property="cityJm" />
+    <result column="CITY_LEVEL" jdbcType="VARCHAR" property="cityLevel" />
+    <result column="CITY_NM" jdbcType="VARCHAR" property="cityNm" />
+    <result column="CRT_DT" jdbcType="VARCHAR" property="crtDt" />
+    <result column="CRT_OPR" jdbcType="VARCHAR" property="crtOpr" />
+    <result column="MISC" jdbcType="VARCHAR" property="misc" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="RGON_FLG" jdbcType="VARCHAR" property="rgonFlg" />
+	<result column="UPD_DT" jdbcType="VARCHAR" property="updDt" /> 
+	<result column="UPD_OPR" jdbcType="VARCHAR" property="updOpr" /> 
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+    CITY_CDG,CITY_CDY,CITY_JM,CITY_LEVEL,CITY_NM,CRT_DT,
+    CRT_OPR,MISC,REMARK,RGON_FLG,UPD_DT,UPD_OPR
+  </sql>
+   
+   <!-- 根据地区码查找数据 -->
+  <select id="selectByCityCd" resultMap="BaseResultMap">
+    SELECT
+    	<include refid="Base_Column_List" />
+    FROM
+    	TBL_CITY_CD
+    WHERE
+    	CITY_CDY = #{cityCdy}
+  </select>
+</mapper>

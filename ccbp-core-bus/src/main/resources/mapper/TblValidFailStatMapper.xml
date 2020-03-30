@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbp.core.bus.mapper.TblValidFailStatMapper">
+
+	<resultMap id="BaseResultMap" type="java.util.Map">
+		<id column="TXN_CD" jdbcType="VARCHAR" property="txnCd" />
+		<id column="PAN" jdbcType="VARCHAR" property="pan" />
+		<id column="IS_NOTE" jdbcType="VARCHAR" property="isNote" />
+		<id column="CURRENT_DT" jdbcType="VARCHAR" property="currentDt" />
+		<result column="TXN_COUNT" jdbcType="INTEGER" property="txnCount" />
+		<result column="CRT_OPR" jdbcType="VARCHAR" property="crtOpr" />
+	    <result column="CRT_DT" jdbcType="VARCHAR" property="crtDt" />
+	    <result column="UPD_OPR" jdbcType="VARCHAR" property="updOpr" />
+	    <result column="UPD_DT" jdbcType="VARCHAR" property="updDt" />
+	    <result column="MISC" jdbcType="VARCHAR" property="misc" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		TXN_CD, CURRENT_DT, PAN, IS_NOTE, TXN_COUNT, CRT_OPR, CRT_DT, UPD_OPR, UPD_DT, MISC
+	</sql>
+	
+	<select id="selectByPrimaryKey" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_VALID_FAIL_STAT
+		where PAN = #{pan,jdbcType=VARCHAR} and CURRENT_DT = #{currentDt,jdbcType=VARCHAR}
+		and TXN_CD = #{txnCd, jdbcType=VARCHAR} and IS_NOTE = #{isNote,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="query" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_VALID_FAIL_STAT
+		<where>
+			<if test="pan != null"> and PAN = #{pan,jdbcType=VARCHAR} </if>
+			<if test="currentDt != null"> and CURRENT_DT = #{currentDt,jdbcType=VARCHAR} </if>
+			<if test="txnCd != null"> and TXN_CD = #{txnCd, jdbcType=VARCHAR} </if>
+			<if test="isNote != null"> and IS_NOTE = #{isNote,jdbcType=VARCHAR} </if>
+		</where> 
+	</select>
+	
+	<select id="queryByParams" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_VALID_FAIL_STAT
+		<where>
+			<if test="pan != null"> and PAN = #{pan,jdbcType=VARCHAR} </if>
+			<if test="currentDt != null"> and CURRENT_DT = #{currentDt,jdbcType=VARCHAR} </if>
+			<if test="txnCd != null"> and TXN_CD = #{txnCd, jdbcType=VARCHAR} </if>
+			<if test="isNote != null"> and IS_NOTE = #{isNote,jdbcType=VARCHAR} </if>
+		</where> 
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.util.Map">
+		delete from TBL_VALID_FAIL_STAT
+		where PAN = #{pan,jdbcType=VARCHAR} and CURRENT_DT = #{currentDt,jdbcType=VARCHAR}
+		and TXN_CD = #{txnCd, jdbcType=VARCHAR} and IS_NOTE = #{isNote,jdbcType=VARCHAR}
+	</delete>
+	
+	<insert id="insert" parameterType="java.util.Map">
+		insert into TBL_VALID_FAIL_STAT
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="pan != null"> PAN, </if>
+			<if test="currentDt != null"> CURRENT_DT, </if>
+			<if test="txnCd != null"> TXN_CD, </if>
+			<if test="isNote != null"> IS_NOTE, </if>
+			<if test="txnCount != null"> TXN_COUNT, </if>
+			<if test="crtOpr != null"> CRT_OPR,	</if>
+			<if test="crtDt != null"> CRT_DT, </if>
+			<if test="updOpr != null"> UPD_OPR,	</if>
+			<if test="updDt != null"> UPD_DT, </if>
+			<if test="misc != null"> MISC, </if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="pan != null"> #{pan,jdbcType=VARCHAR}, </if>
+			<if test="currentDt != null"> #{currentDt,jdbcType=VARCHAR}, </if>
+			<if test="txnCd != null"> #{txnCd, jdbcType=VARCHAR}, </if>
+			<if test="isNote != null"> #{isNote, jdbcType=VARCHAR}, </if>
+			<if test="txnCount != null"> #{txnCount,jdbcType=INTEGER}, </if>
+			<if test="crtOpr != null"> #{crtOpr,jdbcType=VARCHAR}, </if>
+			<if test="crtDt != null"> #{crtDt,jdbcType=VARCHAR}, </if>
+			<if test="updOpr != null"> #{updOpr,jdbcType=VARCHAR}, </if>
+			<if test="updDt != null"> #{updDt,jdbcType=VARCHAR}, </if>
+			<if test="misc != null"> #{misc,jdbcType=VARCHAR}, </if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+		update TBL_VALID_FAIL_STAT
+		<set>
+			<if test="txnCount != null"> TXN_COUNT = #{txnCount,jdbcType=INTEGER}, </if>
+			<if test="updOpr != null"> UPD_OPR = #{updOpr,jdbcType=VARCHAR}, </if>
+			<if test="updDt != null"> UPD_DT = #{updDt,jdbcType=VARCHAR}, </if>
+			<if test="misc != null"> MISC = #{misc,jdbcType=VARCHAR}, </if>
+		</set>
+		where PAN = #{pan,jdbcType=VARCHAR} and CURRENT_DT = #{currentDt,jdbcType=VARCHAR}
+		and TXN_CD = #{txnCd, jdbcType=VARCHAR} and IS_NOTE = #{isNote,jdbcType=VARCHAR}
+	</update>
+</mapper>

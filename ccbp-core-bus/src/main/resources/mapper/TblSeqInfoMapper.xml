@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbp.core.bus.mapper.TblSeqInfoMapper">
+  <resultMap id="BaseResultMap" type="java.util.Map">
+    <id column="SEQ_KEY" jdbcType="VARCHAR" property="seqKey" />
+    <id column="SYS_ID" jdbcType="VARCHAR" property="sysId" />
+    <result column="UP_LIMIT" jdbcType="DECIMAL" property="upLimit" />
+    <result column="DOWN_LIMIT" jdbcType="DECIMAL" property="downLimit" />
+    <result column="MAX_VALUE" jdbcType="DECIMAL" property="maxValue" />
+    <result column="INIT_VALUE" jdbcType="DECIMAL" property="initValue" />
+    <result column="RULE_DEF" jdbcType="VARCHAR" property="ruleDef" />
+    <result column="INC_RULE_VALUE" jdbcType="DECIMAL" property="incRuleValue" />
+    <result column="MISC1" jdbcType="VARCHAR" property="misc1" />
+    <result column="MISC2" jdbcType="VARCHAR" property="misc2" />
+    <result column="MISC3" jdbcType="VARCHAR" property="misc3" />
+    <result column="MISC4" jdbcType="VARCHAR" property="misc4" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+    SEQ_KEY, SYS_ID, UP_LIMIT, DOWN_LIMIT, MAX_VALUE, INIT_VALUE, RULE_DEF, INC_RULE_VALUE, 
+    MISC1, MISC2, MISC3, MISC4
+  </sql>
+  
+  <select id="selectByPrimaryKey" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TBL_SEQ_INFO
+    where SEQ_KEY = #{seqKey,jdbcType=VARCHAR}
+      and SYS_ID = #{sysId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.util.Map">
+    delete from TBL_SEQ_INFO
+    where SEQ_KEY = #{seqKey,jdbcType=VARCHAR}
+      and SYS_ID = #{sysId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="java.util.Map">
+    insert into TBL_SEQ_INFO (SEQ_KEY, SYS_ID, UP_LIMIT, 
+      DOWN_LIMIT, MAX_VALUE, INIT_VALUE, 
+      RULE_DEF, INC_RULE_VALUE, MISC1, 
+      MISC2, MISC3, MISC4
+      )
+    values (#{seqKey,jdbcType=VARCHAR}, #{sysId,jdbcType=VARCHAR}, #{upLimit,jdbcType=DECIMAL}, 
+      #{downLimit,jdbcType=DECIMAL}, #{maxValue,jdbcType=DECIMAL}, #{initValue,jdbcType=DECIMAL}, 
+      #{ruleDef,jdbcType=VARCHAR}, #{incRuleValue,jdbcType=DECIMAL}, #{misc1,jdbcType=VARCHAR}, 
+      #{misc2,jdbcType=VARCHAR}, #{misc3,jdbcType=VARCHAR}, #{misc4,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="java.util.Map">
+    insert into TBL_SEQ_INFO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="seqKey != null">
+        SEQ_KEY,
+      </if>
+      <if test="sysId != null">
+        SYS_ID,
+      </if>
+      <if test="upLimit != null">
+        UP_LIMIT,
+      </if>
+      <if test="downLimit != null">
+        DOWN_LIMIT,
+      </if>
+      <if test="maxValue != null">
+        MAX_VALUE,
+      </if>
+      <if test="initValue != null">
+        INIT_VALUE,
+      </if>
+      <if test="ruleDef != null">
+        RULE_DEF,
+      </if>
+      <if test="incRuleValue != null">
+        INC_RULE_VALUE,
+      </if>
+      <if test="misc1 != null">
+        MISC1,
+      </if>
+      <if test="misc2 != null">
+        MISC2,
+      </if>
+      <if test="misc3 != null">
+        MISC3,
+      </if>
+      <if test="misc4 != null">
+        MISC4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="seqKey != null">
+        #{seqKey,jdbcType=VARCHAR},
+      </if>
+      <if test="sysId != null">
+        #{sysId,jdbcType=VARCHAR},
+      </if>
+      <if test="upLimit != null">
+        #{upLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="downLimit != null">
+        #{downLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="maxValue != null">
+        #{maxValue,jdbcType=DECIMAL},
+      </if>
+      <if test="initValue != null">
+        #{initValue,jdbcType=DECIMAL},
+      </if>
+      <if test="ruleDef != null">
+        #{ruleDef,jdbcType=VARCHAR},
+      </if>
+      <if test="incRuleValue != null">
+        #{incRuleValue,jdbcType=DECIMAL},
+      </if>
+      <if test="misc1 != null">
+        #{misc1,jdbcType=VARCHAR},
+      </if>
+      <if test="misc2 != null">
+        #{misc2,jdbcType=VARCHAR},
+      </if>
+      <if test="misc3 != null">
+        #{misc3,jdbcType=VARCHAR},
+      </if>
+      <if test="misc4 != null">
+        #{misc4,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="java.util.Map">
+    update TBL_SEQ_INFO
+    <set>
+      <if test="upLimit != null">
+        UP_LIMIT = #{upLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="downLimit != null">
+        DOWN_LIMIT = #{downLimit,jdbcType=DECIMAL},
+      </if>
+      <if test="maxValue != null">
+        MAX_VALUE = #{maxValue,jdbcType=DECIMAL},
+      </if>
+      <if test="initValue != null">
+        INIT_VALUE = #{initValue,jdbcType=DECIMAL},
+      </if>
+      <if test="ruleDef != null">
+        RULE_DEF = #{ruleDef,jdbcType=VARCHAR},
+      </if>
+      <if test="incRuleValue != null">
+        INC_RULE_VALUE = #{incRuleValue,jdbcType=DECIMAL},
+      </if>
+      <if test="misc1 != null">
+        MISC1 = #{misc1,jdbcType=VARCHAR},
+      </if>
+      <if test="misc2 != null">
+        MISC2 = #{misc2,jdbcType=VARCHAR},
+      </if>
+      <if test="misc3 != null">
+        MISC3 = #{misc3,jdbcType=VARCHAR},
+      </if>
+      <if test="misc4 != null">
+        MISC4 = #{misc4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SEQ_KEY = #{seqKey,jdbcType=VARCHAR}
+      and SYS_ID = #{sysId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="java.util.Map">
+    update TBL_SEQ_INFO
+    set UP_LIMIT = #{upLimit,jdbcType=DECIMAL},
+      DOWN_LIMIT = #{downLimit,jdbcType=DECIMAL},
+      MAX_VALUE = #{maxValue,jdbcType=DECIMAL},
+      INIT_VALUE = #{initValue,jdbcType=DECIMAL},
+      RULE_DEF = #{ruleDef,jdbcType=VARCHAR},
+      INC_RULE_VALUE = #{incRuleValue,jdbcType=DECIMAL},
+      MISC1 = #{misc1,jdbcType=VARCHAR},
+      MISC2 = #{misc2,jdbcType=VARCHAR},
+      MISC3 = #{misc3,jdbcType=VARCHAR},
+      MISC4 = #{misc4,jdbcType=VARCHAR}
+    where SEQ_KEY = #{seqKey,jdbcType=VARCHAR}
+      and SYS_ID = #{sysId,jdbcType=VARCHAR}
+  </update>
+</mapper>

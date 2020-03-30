@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbp.core.bus.mapper.DicParaMapper">
+	<resultMap id="BaseResultMap" type="java.util.Map">
+		<id column="PARA_IDX" jdbcType="VARCHAR" property="paraIdx" />
+		<result column="PARA_ORG" jdbcType="VARCHAR" property="paraOrg" />
+		<result column="PARA_OWNER" jdbcType="VARCHAR" property="paraOwner" />
+		<result column="PARA_KEY" jdbcType="VARCHAR" property="paraKey" />
+		<result column="PARA_NM" jdbcType="VARCHAR" property="paraNm" />
+		<result column="PARA_STA" jdbcType="VARCHAR" property="paraSta" />
+		<result column="PARA_TYPE" jdbcType="VARCHAR" property="paraType" />
+		<result column="PARA_VAL" jdbcType="VARCHAR" property="paraVal" />
+		<result column="CRT_OPR" jdbcType="VARCHAR" property="crtOpr" />
+		<result column="CRT_DT" jdbcType="VARCHAR" property="crtDt" />
+		<result column="UPD_OPR" jdbcType="VARCHAR" property="updOpr" />
+		<result column="UPD_DT" jdbcType="VARCHAR" property="updDt" />
+		<result column="MISC" jdbcType="VARCHAR" property="misc" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		PARA_IDX, PARA_ORG, PARA_OWNER, PARA_KEY, PARA_NM, PARA_STA, PARA_TYPE,	PARA_VAL,
+		CRT_OPR, CRT_DT, UPD_OPR, UPD_DT, MISC
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_DIC_PARA
+		where PARA_IDX = #{paraIdx,jdbcType=VARCHAR}
+	</select>
+	<select id="selectQuota" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_DIC_PARA
+		where PARA_ORG = #{paraOrg,jdbcType=VARCHAR}
+		and PARA_KEY = #{paraKey,jdbcType=VARCHAR}
+		and PARA_OWNER = #{paraOwner,jdbcType=VARCHAR}
+	</select>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" /> from TBL_DIC_PARA
+  </select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from TBL_DIC_PARA
+		where PARA_IDX = #{paraIdx,jdbcType=VARCHAR}
+	</delete>
+  	<insert id="insert" parameterType="java.util.Map">
+	    insert into TBL_DIC_PARA (PARA_IDX, PARA_ORG, PARA_OWNER, 
+	      PARA_KEY, PARA_NM, PARA_STA, 
+	      PARA_TYPE, PARA_VAL, CRT_OPR, 
+	      CRT_DT, UPD_OPR, UPD_DT, 
+	      MISC)
+	    values (#{paraIdx,jdbcType=VARCHAR}, #{paraOrg,jdbcType=VARCHAR}, #{paraOwner,jdbcType=VARCHAR}, 
+	      #{paraKey,jdbcType=VARCHAR}, #{paraNm,jdbcType=VARCHAR}, #{paraSta,jdbcType=VARCHAR}, 
+	      #{paraType,jdbcType=VARCHAR}, #{paraVal,jdbcType=VARCHAR}, #{crtOpr,jdbcType=VARCHAR}, 
+	      #{crtDt,jdbcType=VARCHAR}, #{updOpr,jdbcType=VARCHAR}, #{updDt,jdbcType=VARCHAR}, 
+	      #{misc,jdbcType=VARCHAR})
+  	</insert>
+	<insert id="insertSelective" parameterType="java.util.Map">
+		insert into TBL_DIC_PARA
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="paraIdx != null">
+				PARA_IDX,
+			</if>
+			<if test="paraOrg != null">
+				PARA_ORG,
+			</if>
+			<if test="paraOwner != null">
+				PARA_OWNER,
+			</if>
+			<if test="paraKey != null">
+				PARA_KEY,
+			</if>
+			<if test="paraNm != null">
+				PARA_NM,
+			</if>
+			<if test="paraSta != null">
+				PARA_STA,
+			</if>
+			<if test="paraType != null">
+				PARA_TYPE,
+			</if>
+			<if test="paraVal != null">
+				PARA_VAL,
+			</if>
+			<if test="crtOpr != null">
+				CRT_OPR,
+			</if>
+			<if test="crtDt != null">
+				CRT_DT,
+			</if>
+			<if test="updOpr != null">
+				UPD_OPR,
+			</if>
+			<if test="updDt != null">
+				UPD_DT,
+			</if>
+			<if test="misc != null">
+				MISC,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="paraIdx != null">
+				#{paraIdx,jdbcType=VARCHAR},
+			</if>
+			<if test="paraOrg != null">
+				#{paraOrg,jdbcType=VARCHAR},
+			</if>
+			<if test="paraOwner != null">
+				#{paraOwner,jdbcType=VARCHAR},
+			</if>
+			<if test="paraKey != null">
+				#{paraKey,jdbcType=VARCHAR},
+			</if>
+			<if test="paraNm != null">
+				#{paraNm,jdbcType=VARCHAR},
+			</if>
+			<if test="paraSta != null">
+				#{paraSta,jdbcType=VARCHAR},
+			</if>
+			<if test="paraType != null">
+				#{paraType,jdbcType=VARCHAR},
+			</if>
+			<if test="paraVal != null">
+				#{paraVal,jdbcType=VARCHAR},
+			</if>
+			<if test="crtOpr != null">
+				#{crtOpr,jdbcType=VARCHAR},
+			</if>
+			<if test="crtDt != null">
+				#{crtDt,jdbcType=VARCHAR},
+			</if>
+			<if test="updOpr != null">
+				#{updOpr,jdbcType=VARCHAR},
+			</if>
+			<if test="updDt != null">
+				#{updDt,jdbcType=VARCHAR},
+			</if>
+			<if test="misc != null">
+				#{misc,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="java.util.Map">
+		update TBL_DIC_PARA
+		<set>
+			<if test="paraOrg != null">
+				PARA_ORG = #{paraOrg,jdbcType=VARCHAR},
+			</if>
+			<if test="paraOwner != null">
+				PARA_OWNER = #{paraOwner,jdbcType=VARCHAR},
+			</if>
+			<if test="paraKey != null">
+				PARA_KEY = #{paraKey,jdbcType=VARCHAR},
+			</if>
+			<if test="paraNm != null">
+				PARA_NM = #{paraNm,jdbcType=VARCHAR},
+			</if>
+			<if test="paraSta != null">
+				PARA_STA = #{paraSta,jdbcType=VARCHAR},
+			</if>
+			<if test="paraType != null">
+				PARA_TYPE = #{paraType,jdbcType=VARCHAR},
+			</if>
+			<if test="paraVal != null">
+				PARA_VAL = #{paraVal,jdbcType=VARCHAR},
+			</if>
+			<if test="crtOpr != null">
+				CRT_OPR = #{crtOpr,jdbcType=VARCHAR},
+			</if>
+			<if test="crtDt != null">
+				CRT_DT = #{crtDt,jdbcType=VARCHAR},
+			</if>
+			<if test="updOpr != null">
+				UPD_OPR = #{updOpr,jdbcType=VARCHAR},
+			</if>
+			<if test="updDt != null">
+				UPD_DT = #{updDt,jdbcType=VARCHAR},
+			</if>
+			<if test="misc != null">
+				MISC = #{misc,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where PARA_IDX = #{paraIdx,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+		update TBL_DIC_PARA
+		set PARA_ORG = #{paraOrg,jdbcType=VARCHAR},
+		PARA_OWNER = #{paraOwner,jdbcType=VARCHAR},
+		PARA_KEY = #{paraKey,jdbcType=VARCHAR},
+		PARA_NM = #{paraNm,jdbcType=VARCHAR},
+		PARA_STA = #{paraSta,jdbcType=VARCHAR},
+		PARA_TYPE = #{paraType,jdbcType=VARCHAR},
+		PARA_VAL = #{paraVal,jdbcType=VARCHAR},
+		CRT_OPR = #{crtOpr,jdbcType=VARCHAR},
+		CRT_DT = #{crtDt,jdbcType=VARCHAR},
+		UPD_OPR = #{updOpr,jdbcType=VARCHAR},
+		UPD_DT = #{updDt,jdbcType=VARCHAR},
+		MISC = #{misc,jdbcType=VARCHAR}
+		where PARA_IDX = #{paraIdx,jdbcType=VARCHAR}
+	</update>
+</mapper>

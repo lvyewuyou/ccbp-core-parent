@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbp.core.bus.mapper.TblTxnSumMapper">
+  <resultMap id="BaseResultMap" type="java.util.Map">
+    <id column="TXN_CD" jdbcType="VARCHAR" property="txnCd" />
+    <id column="LIMIT_TYPE" jdbcType="VARCHAR" property="limitType" />
+    <id column="LIMIT_ID" jdbcType="VARCHAR" property="limitId" />
+    <result column="TXN_DAY_CNT" jdbcType="DECIMAL" property="txnDayCnt" />
+    <result column="TXN_DAY_AMT" jdbcType="DECIMAL" property="txnDayAmt" />
+    <result column="TXN_MON_CNT" jdbcType="DECIMAL" property="txnMonCnt" />
+    <result column="TXN_MON_AMT" jdbcType="DECIMAL" property="txnMonAmt" />
+    <result column="MISC1" jdbcType="VARCHAR" property="misc1" />
+    <result column="MISC2" jdbcType="VARCHAR" property="misc2" />
+    <result column="MISC3" jdbcType="VARCHAR" property="misc3" />
+    <result column="MISC4" jdbcType="VARCHAR" property="misc4" />
+    <result column="LST_UPD_DT" jdbcType="VARCHAR" property="lstUpdDt" />
+    <result column="LST_UPD_TM" jdbcType="VARCHAR" property="lstUpdTm" />
+    <result column="TXN_DAY_FAIL_CNT" jdbcType="DECIMAL" property="txnDayFailCnt" />
+    <result column="DXI_DAY_FAIL_CNT" jdbcType="DECIMAL" property="dxiDayFailCnt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    TXN_CD, LIMIT_TYPE, LIMIT_ID, TXN_DAY_CNT, TXN_DAY_AMT, TXN_MON_CNT, TXN_MON_AMT, 
+    MISC1, MISC2, MISC3, MISC4, LST_UPD_DT, LST_UPD_TM, TXN_DAY_FAIL_CNT, DXI_DAY_FAIL_CNT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TBL_TXN_SUM
+    where TXN_CD = #{txnCd,jdbcType=VARCHAR}
+      and LIMIT_TYPE = #{limitType,jdbcType=VARCHAR}
+      and LIMIT_ID = #{limitId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.util.Map">
+    delete from TBL_TXN_SUM
+    where TXN_CD = #{txnCd,jdbcType=VARCHAR}
+      and LIMIT_TYPE = #{limitType,jdbcType=VARCHAR}
+      and LIMIT_ID = #{limitId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="java.util.Map">
+    insert into TBL_TXN_SUM (TXN_CD, LIMIT_TYPE, LIMIT_ID, 
+      TXN_DAY_CNT, TXN_DAY_AMT, TXN_MON_CNT, 
+      TXN_MON_AMT, MISC1, MISC2, 
+      MISC3, MISC4, LST_UPD_DT, 
+      LST_UPD_TM, TXN_DAY_FAIL_CNT, DXI_DAY_FAIL_CNT
+      )
+    values (#{txnCd,jdbcType=VARCHAR}, #{limitType,jdbcType=VARCHAR}, #{limitId,jdbcType=VARCHAR}, 
+      #{txnDayCnt,jdbcType=DECIMAL}, #{txnDayAmt,jdbcType=DECIMAL}, #{txnMonCnt,jdbcType=DECIMAL}, 
+      #{txnMonAmt,jdbcType=DECIMAL}, #{misc1,jdbcType=VARCHAR}, #{misc2,jdbcType=VARCHAR}, 
+      #{misc3,jdbcType=VARCHAR}, #{misc4,jdbcType=VARCHAR}, #{lstUpdDt,jdbcType=VARCHAR}, 
+      #{lstUpdTm,jdbcType=VARCHAR}, #{txnDayFailCnt,jdbcType=DECIMAL}, #{dxiDayFailCnt,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="java.util.Map">
+    insert into TBL_TXN_SUM
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="txnCd != null">
+        TXN_CD,
+      </if>
+      <if test="limitType != null">
+        LIMIT_TYPE,
+      </if>
+      <if test="limitId != null">
+        LIMIT_ID,
+      </if>
+      <if test="txnDayCnt != null">
+        TXN_DAY_CNT,
+      </if>
+      <if test="txnDayAmt != null">
+        TXN_DAY_AMT,
+      </if>
+      <if test="txnMonCnt != null">
+        TXN_MON_CNT,
+      </if>
+      <if test="txnMonAmt != null">
+        TXN_MON_AMT,
+      </if>
+      <if test="misc1 != null">
+        MISC1,
+      </if>
+      <if test="misc2 != null">
+        MISC2,
+      </if>
+      <if test="misc3 != null">
+        MISC3,
+      </if>
+      <if test="misc4 != null">
+        MISC4,
+      </if>
+      <if test="lstUpdDt != null">
+        LST_UPD_DT,
+      </if>
+      <if test="lstUpdTm != null">
+        LST_UPD_TM,
+      </if>
+      <if test="txnDayFailCnt != null">
+        TXN_DAY_FAIL_CNT,
+      </if>
+      <if test="dxiDayFailCnt != null">
+        DXI_DAY_FAIL_CNT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="txnCd != null">
+        #{txnCd,jdbcType=VARCHAR},
+      </if>
+      <if test="limitType != null">
+        #{limitType,jdbcType=VARCHAR},
+      </if>
+      <if test="limitId != null">
+        #{limitId,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDayCnt != null">
+        #{txnDayCnt,jdbcType=DECIMAL},
+      </if>
+      <if test="txnDayAmt != null">
+        #{txnDayAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="txnMonCnt != null">
+        #{txnMonCnt,jdbcType=DECIMAL},
+      </if>
+      <if test="txnMonAmt != null">
+        #{txnMonAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="misc1 != null">
+        #{misc1,jdbcType=VARCHAR},
+      </if>
+      <if test="misc2 != null">
+        #{misc2,jdbcType=VARCHAR},
+      </if>
+      <if test="misc3 != null">
+        #{misc3,jdbcType=VARCHAR},
+      </if>
+      <if test="misc4 != null">
+        #{misc4,jdbcType=VARCHAR},
+      </if>
+      <if test="lstUpdDt != null">
+        #{lstUpdDt,jdbcType=VARCHAR},
+      </if>
+      <if test="lstUpdTm != null">
+        #{lstUpdTm,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDayFailCnt != null">
+        #{txnDayFailCnt,jdbcType=DECIMAL},
+      </if>
+      <if test="dxiDayFailCnt != null">
+        #{dxiDayFailCnt,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="java.util.Map">
+    update TBL_TXN_SUM
+    <set>
+      <if test="txnDayCnt != null">
+        TXN_DAY_CNT = #{txnDayCnt,jdbcType=DECIMAL},
+      </if>
+      <if test="txnDayAmt != null">
+        TXN_DAY_AMT = #{txnDayAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="txnMonCnt != null">
+        TXN_MON_CNT = #{txnMonCnt,jdbcType=DECIMAL},
+      </if>
+      <if test="txnMonAmt != null">
+        TXN_MON_AMT = #{txnMonAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="misc1 != null">
+        MISC1 = #{misc1,jdbcType=VARCHAR},
+      </if>
+      <if test="misc2 != null">
+        MISC2 = #{misc2,jdbcType=VARCHAR},
+      </if>
+      <if test="misc3 != null">
+        MISC3 = #{misc3,jdbcType=VARCHAR},
+      </if>
+      <if test="misc4 != null">
+        MISC4 = #{misc4,jdbcType=VARCHAR},
+      </if>
+      <if test="lstUpdDt != null">
+        LST_UPD_DT = #{lstUpdDt,jdbcType=VARCHAR},
+      </if>
+      <if test="lstUpdTm != null">
+        LST_UPD_TM = #{lstUpdTm,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDayFailCnt != null">
+        TXN_DAY_FAIL_CNT = #{txnDayFailCnt,jdbcType=DECIMAL},
+      </if>
+      <if test="dxiDayFailCnt != null">
+        DXI_DAY_FAIL_CNT = #{dxiDayFailCnt,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where TXN_CD = #{txnCd,jdbcType=VARCHAR}
+      and LIMIT_TYPE = #{limitType,jdbcType=VARCHAR}
+      and LIMIT_ID = #{limitId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="java.util.Map">
+    update TBL_TXN_SUM
+    set TXN_DAY_CNT = #{txnDayCnt,jdbcType=DECIMAL},
+      TXN_DAY_AMT = #{txnDayAmt,jdbcType=DECIMAL},
+      TXN_MON_CNT = #{txnMonCnt,jdbcType=DECIMAL},
+      TXN_MON_AMT = #{txnMonAmt,jdbcType=DECIMAL},
+      MISC1 = #{misc1,jdbcType=VARCHAR},
+      MISC2 = #{misc2,jdbcType=VARCHAR},
+      MISC3 = #{misc3,jdbcType=VARCHAR},
+      MISC4 = #{misc4,jdbcType=VARCHAR},
+      LST_UPD_DT = #{lstUpdDt,jdbcType=VARCHAR},
+      LST_UPD_TM = #{lstUpdTm,jdbcType=VARCHAR},
+      TXN_DAY_FAIL_CNT = #{txnDayFailCnt,jdbcType=DECIMAL},
+      DXI_DAY_FAIL_CNT = #{dxiDayFailCnt,jdbcType=DECIMAL}
+    where TXN_CD = #{txnCd,jdbcType=VARCHAR}
+      and LIMIT_TYPE = #{limitType,jdbcType=VARCHAR}
+      and LIMIT_ID = #{limitId,jdbcType=VARCHAR}
+  </update>
+  
+  <!-- 锁记录，防止并发 -->
+  <select id="selectByPrimaryKeyLock" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_txn_sum
+    where TXN_CD = #{txnCd,jdbcType=VARCHAR}
+      and LIMIT_TYPE = #{limitType,jdbcType=CHAR}
+      and LIMIT_ID = #{limitId,jdbcType=VARCHAR}
+      <!-- for update -->
+  </select>
+  
+</mapper>

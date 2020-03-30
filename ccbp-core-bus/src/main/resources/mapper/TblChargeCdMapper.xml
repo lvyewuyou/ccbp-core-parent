@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbp.core.bus.mapper.TblChargeCdMapper">
+	<resultMap id="BaseResultMap" type="java.util.Map">
+		<result column="TRANS_DIR" jdbcType="VARCHAR" property="transDir"/>
+		<result column="TRANS_DIR_NM" jdbcType="VARCHAR" property="transDirNm"/>
+		<result column="TXN_CD" jdbcType="VARCHAR" property="txnCd"/>
+		<result column="TXN_CD_NM" jdbcType="VARCHAR" property="txnCdNm"/>
+		<result column="ACCEPT_TYPE" jdbcType="VARCHAR" property="acceptType"/>
+		<result column="ACCEPT_NM" jdbcType="VARCHAR" property="acceptNm"/>
+		<result column="CHARGE_CD" jdbcType="VARCHAR" property="chargeCd"/>
+		<result column="CHARGE_NM" jdbcType="VARCHAR" property="chargeNm"/>
+		<result column="MISC1" jdbcType="VARCHAR" property="misc1"/>
+		<result column="MISC2" jdbcType="VARCHAR" property="misc2"/>
+		<result column="MISC3" jdbcType="VARCHAR" property="misc3"/>
+		<result column="MISC4" jdbcType="VARCHAR" property="misc4"/>
+		<result column="PRDT_CD" jdbcType="VARCHAR" property="prdtCd"/>
+		<result column="PD_DSC" jdbcType="VARCHAR" property="pdDsc"/>
+	</resultMap>
+	<sql id="Base-Column-List">
+		TRANS_DIR,TRANS_DIR_NM,TXN_CD,TXN_CD_NM,ACCEPT_TYPE,ACCEPT_NM,CHARGE_CD,CHARGE_NM,MISC1,MISC2,MISC3,MISC4,PRDT_CD,PD_DSC
+	</sql>
+	<select id="selectByPK" parameterType="java.lang.String" resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base-Column-List"/>
+		FROM TBL_CHARGE_CD
+		WHERE TRANS_DIR = #{transDir,jdbcType=VARCHAR} 
+		AND TXN_CD = #{txnCd,jdbcType=VARCHAR}
+		AND ACCEPT_TYPE = #{acceptType,jdbcType=VARCHAR}
+	</select>
+</mapper>

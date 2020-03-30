@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbp.core.bus.mapper.TblFreeCardInfMapper">
+	
+	<resultMap id="BaseResultMap" type="java.util.Map">
+		<id column="CARD_NO" jdbcType="VARCHAR" property="cardNo" />
+		<result column="IDENT_NO" jdbcType="VARCHAR" property="identNo" />
+		<result column="CUS_NAME" jdbcType="VARCHAR" property="cusName" />
+		<result column="FREE_FLG" jdbcType="VARCHAR" property="freeFlg" />
+		<result column="SINGLE_LIM_AMT" jdbcType="VARCHAR" property="singleLimAmt" />
+		<result column="DAY_LIM_AMT" jdbcType="VARCHAR" property="dayLimAmt" />
+		<result column="SINGLE_FREE_LIM_AMT" jdbcType="VARCHAR" property="singleFreeLimAmt" />
+		<result column="DAY_FREE_LIM_AMT" jdbcType="VARCHAR" property="dayFreeLimAmt" />
+		<result column="PWD" jdbcType="VARCHAR" property="pwd" />
+		<result column="IDENT_TYPE" jdbcType="VARCHAR" property="identType" />	
+		<result column="PHONE" jdbcType="VARCHAR" property="phone" />	
+		<result column="STATUS" jdbcType="VARCHAR" property="status" />
+		<result column="CRT_OPR" jdbcType="VARCHAR" property="crtOpr" />
+	    <result column="CRT_DT" jdbcType="VARCHAR" property="crtDt" />
+	    <result column="UPD_OPR" jdbcType="VARCHAR" property="updOpr" />
+	    <result column="UPD_DT" jdbcType="VARCHAR" property="updDt" />
+	    <result column="MISC" jdbcType="VARCHAR" property="misc" />
+		<result column="CHANNEL_ID" jdbcType="VARCHAR" property="channelId" />
+	    <result column="MISC2" jdbcType="VARCHAR" property="misc2" />
+	    <result column="MISC3" jdbcType="VARCHAR" property="misc3" />
+	    <result column="MISC4" jdbcType="VARCHAR" property="misc4" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		CARD_NO, IDENT_NO, CUS_NAME, FREE_FLG, SINGLE_LIM_AMT, DAY_LIM_AMT, SINGLE_FREE_LIM_AMT,
+		DAY_FREE_LIM_AMT, PWD, IDENT_TYPE, PHONE, CRT_OPR, CRT_DT, UPD_OPR, UPD_DT, MISC, CHANNEL_ID, MISC2, MISC3, MISC4
+	</sql>
+	
+	<select id="selectByPrimaryKey" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_FREE_CARD_INF
+		where CARD_NO = #{cardNo,jdbcType=VARCHAR}
+	</select>
+
+	<select id="selectByCardNoAndStatus" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_FREE_CARD_INF
+		where CARD_NO = #{cardNo,jdbcType=VARCHAR} and STATUS = #{status,jdbcType=VARCHAR} 
+	</select>
+
+	<select id="selectByIdentNo" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_FREE_CARD_INF
+		where IDENT_NO = #{identNo,jdbcType=VARCHAR}
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.util.Map">
+		delete from TBL_FREE_CARD_INF
+		where CARD_NO = #{cardNo,jdbcType=VARCHAR}
+	</delete>
+	
+	<insert id="insert" parameterType="java.util.Map">
+		insert into TBL_FREE_CARD_INF
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="cardNo != null"> CARD_NO,	</if>
+			<if test="identNo != null"> IDENT_NO, </if>
+			<if test="cusName != null"> CUS_NAME, </if>
+			<if test="freeFlg != null">	FREE_FLG, </if>
+			<if test="singleLimAmt != null"> SINGLE_LIM_AMT, </if>
+			<if test="dayLimAmt != null"> DAY_LIM_AMT, </if>
+			<if test="singleFreeLimAmt != null"> SINGLE_FREE_LIM_AMT ,</if>
+			<if test="dayFreeLimAmt != null"> DAY_FREE_LIM_AMT ,</if>
+			<if test="pwd != null">	PWD, </if>
+			<if test="identType != null"> IDENT_TYPE, </if>
+			<if test="phone != null"> PHONE, </if>
+			<if test="status != null"> STATUS, </if>
+			<if test="crtOpr != null"> CRT_OPR,	</if>
+			<if test="crtDt != null"> CRT_DT, </if>
+			<if test="updOpr != null"> UPD_OPR,	</if>
+			<if test="updDt != null"> UPD_DT, </if>
+			<if test="misc != null"> MISC, </if>
+			<if test="channelId != null"> CHANNEL_ID, </if>
+			<if test="misc2 != null"> MISC2, </if>
+			<if test="misc3 != null"> MISC3, </if>
+			<if test="misc4 != null"> MISC4, </if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="cardNo != null"> #{cardNo,jdbcType=VARCHAR}, </if>
+			<if test="identNo != null">	#{identNo,jdbcType=VARCHAR}, </if>
+			<if test="cusName != null"> #{cusName,jdbcType=VARCHAR}, </if>
+			<if test="freeFlg != null">	#{freeFlg,jdbcType=VARCHAR}, </if>
+			<if test="singleLimAmt != null"> #{singleLimAmt,jdbcType=VARCHAR}, </if>
+			<if test="dayLimAmt != null"> #{dayLimAmt,jdbcType=VARCHAR}, </if>
+			<if test="singleFreeLimAmt != null"> #{singleFreeLimAmt,jdbcType=VARCHAR}, </if>
+			<if test="dayFreeLimAmt != null"> #{dayFreeLimAmt,jdbcType=VARCHAR}, </if>
+			<if test="pwd != null"> #{pwd,jdbcType=VARCHAR}, </if>
+			<if test="identType != null"> #{identType,jdbcType=VARCHAR}, </if>
+			<if test="phone != null"> #{phone,jdbcType=VARCHAR}, </if>
+			<if test="status != null"> #{status,jdbcType=VARCHAR}, </if>
+			<if test="crtOpr != null"> #{crtOpr,jdbcType=VARCHAR}, </if>
+			<if test="crtDt != null"> #{crtDt,jdbcType=VARCHAR}, </if>
+			<if test="updOpr != null"> #{updOpr,jdbcType=VARCHAR}, </if>
+			<if test="updDt != null"> #{updDt,jdbcType=VARCHAR}, </if>
+			<if test="misc != null"> #{misc,jdbcType=VARCHAR}, </if>
+			<if test="channelId != null"> #{channelId,jdbcType=VARCHAR}, </if>
+			<if test="misc2 != null"> #{misc2,jdbcType=VARCHAR},  </if>
+			<if test="misc3 != null"> #{misc3,jdbcType=VARCHAR},  </if>
+			<if test="misc4 != null"> #{misc4,jdbcType=VARCHAR},  </if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+		update TBL_FREE_CARD_INF
+		<set>
+			<if test="identNo != null">	IDENT_NO = #{identNo,jdbcType=VARCHAR},	</if>
+			<if test="cusName != null">	CUS_NAME = #{cusName,jdbcType=VARCHAR},	</if>
+			<if test="freeFlg != null">	FREE_FLG = #{freeFlg,jdbcType=VARCHAR},	</if>
+			<if test="singleLimAmt != null"> SINGLE_LIM_AMT = #{singleLimAmt,jdbcType=VARCHAR}, </if>
+			<if test="dayLimAmt != null"> DAY_LIM_AMT = #{dayLimAmt,jdbcType=VARCHAR}, </if>
+			<if test="singleFreeLimAmt != null"> SINGLE_FREE_LIM_AMT = #{singleFreeLimAmt,jdbcType=VARCHAR}, </if>
+			<if test="dayFreeLimAmt != null"> DAY_FREE_LIM_AMT = #{dayFreeLimAmt,jdbcType=VARCHAR}, </if>
+			<if test="pwd != null"> PWD = #{pwd,jdbcType=VARCHAR}, </if>
+			<if test="identType != null"> IDENT_TYPE = #{identType,jdbcType=VARCHAR}, </if>
+			<if test="phone != null"> PHONE = #{phone,jdbcType=VARCHAR}, </if>
+			<if test="status != null"> STATUS = #{status,jdbcType=VARCHAR}, </if>
+			<if test="updOpr != null"> UPD_OPR = #{updOpr,jdbcType=VARCHAR}, </if>
+			<if test="updDt != null"> UPD_DT = #{updDt,jdbcType=VARCHAR}, </if>
+			<if test="misc != null"> MISC = #{misc,jdbcType=VARCHAR}, </if>
+			<if test="channelId != null"> CHANNEL_ID = #{channelId,jdbcType=VARCHAR}, </if>
+			<if test="misc2 != null"> MISC2 = #{misc2,jdbcType=VARCHAR},  </if>
+			<if test="misc3 != null"> MISC3 = #{misc3,jdbcType=VARCHAR},  </if>
+			<if test="misc4 != null"> MISC4 = #{misc4,jdbcType=VARCHAR},  </if>
+		</set>
+		where CARD_NO = #{cardNo,jdbcType=VARCHAR}
+	</update>
+</mapper>

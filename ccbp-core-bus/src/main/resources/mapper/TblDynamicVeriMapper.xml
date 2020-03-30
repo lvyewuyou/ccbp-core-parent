@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbp.core.bus.mapper.TblDynamicVeriMapper">
+	
+	<resultMap id="BaseResultMap" type="java.util.Map">
+		<id column="PAN" jdbcType="VARCHAR" property="pan" />
+		<id column="DYNAMIC_KEY" jdbcType="VARCHAR" property="dynamicKey" />
+		<result column="CODE" jdbcType="VARCHAR" property="code" />
+		<result column="CREATE_TIME" jdbcType="VARCHAR" property="createTime" />
+		<result column="VALID_LIFE" jdbcType="DECIMAL" property="validLife" />
+		<result column="BNK_ORG_ID" jdbcType="VARCHAR" property="bnkOrgId"/>
+		<result column="CRT_OPR" jdbcType="VARCHAR" property="crtOpr" />
+		<result column="CRT_DT" jdbcType="VARCHAR" property="crtDt" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		PAN, DYNAMIC_KEY, CODE, CREATE_TIME, VALID_LIFE, CRT_OPR, CRT_DT,BNK_ORG_ID
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_DYNAMIC_VERI
+		where PAN = #{pan,jdbcType=VARCHAR} and DYNAMIC_KEY = #{dynamicKey,jdbcType=VARCHAR}
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from TBL_DYNAMIC_VERI
+		where PAN = #{pan,jdbcType=VARCHAR}
+		and DYNAMIC_KEY = #{dynamicKey,jdbcType=VARCHAR}
+	</delete>
+	
+	<insert id="insert" parameterType="java.util.Map">
+		insert into TBL_DYNAMIC_VERI (PAN, DYNAMIC_KEY, CODE, CREATE_TIME, VALID_LIFE, CRT_OPR,	CRT_DT,BNK_ORG_ID)
+		values (#{pan,jdbcType=VARCHAR}, #{dynamicKey,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
+		#{createTime,jdbcType=VARCHAR}, #{validLife,jdbcType=DECIMAL}, #{crtOpr,jdbcType=VARCHAR},
+		#{crtDt,jdbcType=VARCHAR},#{bnkOrgId, jdbcType=VARCHAR})
+	</insert>
+	
+	<insert id="insertSelective" parameterType="java.util.Map">
+		insert into TBL_DYNAMIC_VERI
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="pan != null"> PAN,</if>
+			<if test="dynamicKey != null"> DYNAMIC_KEY,</if>
+			<if test="code != null"> CODE,</if>
+			<if test="createTime != null"> CREATE_TIME,</if>
+			<if test="validLife != null"> VALID_LIFE,</if>
+			<if test="crtOpr != null"> CRT_OPR,</if>
+			<if test="crtDt != null"> CRT_DT,</if>
+			<if test="bnkOrgId != null">BNK_ORG_ID,</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="pan != null">	#{pan,jdbcType=VARCHAR},</if>
+			<if test="dynamicKey != null"> #{dynamicKey,jdbcType=VARCHAR},</if>
+			<if test="code != null"> #{code,jdbcType=VARCHAR},</if>
+			<if test="createTime != null"> #{createTime,jdbcType=VARCHAR},</if>
+			<if test="validLife != null"> #{validLife,jdbcType=DECIMAL},</if>
+			<if test="crtOpr != null"> #{crtOpr,jdbcType=VARCHAR},</if>
+			<if test="crtDt != null"> #{crtDt,jdbcType=VARCHAR},</if>
+			<if test="bnkOrgId != null">#{bnkOrgId,jdbcType=VARCHAR},</if>
+		</trim>
+	</insert>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="java.util.Map">
+		update TBL_DYNAMIC_VERI
+		<set>
+			<if test="code != null"> CODE = #{code,jdbcType=VARCHAR},</if>
+			<if test="createTime != null"> CREATE_TIME = #{createTime,jdbcType=VARCHAR},</if>
+			<if test="validLife != null"> VALID_LIFE = #{validLife,jdbcType=DECIMAL},</if>
+			<if test="bnkOrgId != null">BNK_ORG_ID = #{bnkOrgId,jdbcType=VARCHAR},</if>
+		</set>
+		where PAN = #{pan,jdbcType=VARCHAR}
+		and DYNAMIC_KEY = #{dynamicKey,jdbcType=VARCHAR}
+	</update>
+	
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+		update TBL_DYNAMIC_VERI
+		set CODE = #{code,jdbcType=VARCHAR},
+		CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+		VALID_LIFE = #{validLife,jdbcType=DECIMAL},
+		BNK_ORG_ID = #{bnkOrgId,jdbcType=VARCHAR}
+		where PAN = #{pan,jdbcType=VARCHAR}
+		and DYNAMIC_KEY = #{dynamicKey,jdbcType=VARCHAR}
+	</update>
+</mapper>

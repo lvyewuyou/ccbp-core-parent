@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbp.core.bus.mapper.SecInfMapper">
+  <resultMap id="BaseResultMap" type="java.util.Map">
+    <id column="SEC_ID" jdbcType="VARCHAR" property="secId" />
+    <result column="SEC_NM" jdbcType="VARCHAR" property="secNm" />
+    <result column="SEC_KEY1" jdbcType="VARCHAR" property="secKey1" />
+    <result column="SEC_VAL1" jdbcType="VARCHAR" property="secVal1" />
+    <result column="SEC_KEY2" jdbcType="VARCHAR" property="secKey2" />
+    <result column="SEC_VAL2" jdbcType="VARCHAR" property="secVal2" />
+    <result column="SEC_KEY3" jdbcType="VARCHAR" property="secKey3" />
+    <result column="SEC_VAL3" jdbcType="VARCHAR" property="secVal3" />
+    <result column="SEC_KEY4" jdbcType="VARCHAR" property="secKey4" />
+    <result column="SEC_VAL4" jdbcType="VARCHAR" property="secVal4" />
+    <result column="CRT_OPR" jdbcType="VARCHAR" property="crtOpr" />
+    <result column="CRT_DT" jdbcType="VARCHAR" property="crtDt" />
+    <result column="UPD_OPR" jdbcType="VARCHAR" property="updOpr" />
+    <result column="UPD_DT" jdbcType="VARCHAR" property="updDt" />
+    <result column="MISC" jdbcType="VARCHAR" property="misc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    SEC_ID, SEC_NM, SEC_KEY1, SEC_VAL1, SEC_KEY2, SEC_VAL2, SEC_KEY3, SEC_VAL3, SEC_KEY4, 
+    SEC_VAL4, CRT_OPR, CRT_DT, UPD_OPR, UPD_DT, MISC
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TBL_SEC_INF
+    where SEC_ID = #{secId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from TBL_SEC_INF
+    where SEC_ID = #{secId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="java.util.Map">
+    insert into TBL_SEC_INF (SEC_ID, SEC_NM, SEC_KEY1, 
+      SEC_VAL1, SEC_KEY2, SEC_VAL2, 
+      SEC_KEY3, SEC_VAL3, SEC_KEY4, 
+      SEC_VAL4, CRT_OPR, CRT_DT, 
+      UPD_OPR, UPD_DT, MISC
+      )
+    values (#{secId,jdbcType=VARCHAR}, #{secNm,jdbcType=VARCHAR}, #{secKey1,jdbcType=VARCHAR}, 
+      #{secVal1,jdbcType=VARCHAR}, #{secKey2,jdbcType=VARCHAR}, #{secVal2,jdbcType=VARCHAR}, 
+      #{secKey3,jdbcType=VARCHAR}, #{secVal3,jdbcType=VARCHAR}, #{secKey4,jdbcType=VARCHAR}, 
+      #{secVal4,jdbcType=VARCHAR}, #{crtOpr,jdbcType=VARCHAR}, #{crtDt,jdbcType=VARCHAR}, 
+      #{updOpr,jdbcType=VARCHAR}, #{updDt,jdbcType=VARCHAR}, #{misc,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="java.util.Map">
+    insert into TBL_SEC_INF
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="secId != null">
+        SEC_ID,
+      </if>
+      <if test="secNm != null">
+        SEC_NM,
+      </if>
+      <if test="secKey1 != null">
+        SEC_KEY1,
+      </if>
+      <if test="secVal1 != null">
+        SEC_VAL1,
+      </if>
+      <if test="secKey2 != null">
+        SEC_KEY2,
+      </if>
+      <if test="secVal2 != null">
+        SEC_VAL2,
+      </if>
+      <if test="secKey3 != null">
+        SEC_KEY3,
+      </if>
+      <if test="secVal3 != null">
+        SEC_VAL3,
+      </if>
+      <if test="secKey4 != null">
+        SEC_KEY4,
+      </if>
+      <if test="secVal4 != null">
+        SEC_VAL4,
+      </if>
+      <if test="crtOpr != null">
+        CRT_OPR,
+      </if>
+      <if test="crtDt != null">
+        CRT_DT,
+      </if>
+      <if test="updOpr != null">
+        UPD_OPR,
+      </if>
+      <if test="updDt != null">
+        UPD_DT,
+      </if>
+      <if test="misc != null">
+        MISC,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="secId != null">
+        #{secId,jdbcType=VARCHAR},
+      </if>
+      <if test="secNm != null">
+        #{secNm,jdbcType=VARCHAR},
+      </if>
+      <if test="secKey1 != null">
+        #{secKey1,jdbcType=VARCHAR},
+      </if>
+      <if test="secVal1 != null">
+        #{secVal1,jdbcType=VARCHAR},
+      </if>
+      <if test="secKey2 != null">
+        #{secKey2,jdbcType=VARCHAR},
+      </if>
+      <if test="secVal2 != null">
+        #{secVal2,jdbcType=VARCHAR},
+      </if>
+      <if test="secKey3 != null">
+        #{secKey3,jdbcType=VARCHAR},
+      </if>
+      <if test="secVal3 != null">
+        #{secVal3,jdbcType=VARCHAR},
+      </if>
+      <if test="secKey4 != null">
+        #{secKey4,jdbcType=VARCHAR},
+      </if>
+      <if test="secVal4 != null">
+        #{secVal4,jdbcType=VARCHAR},
+      </if>
+      <if test="crtOpr != null">
+        #{crtOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="crtDt != null">
+        #{crtDt,jdbcType=VARCHAR},
+      </if>
+      <if test="updOpr != null">
+        #{updOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="updDt != null">
+        #{updDt,jdbcType=VARCHAR},
+      </if>
+      <if test="misc != null">
+        #{misc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="java.util.Map">
+    update TBL_SEC_INF
+    <set>
+      <if test="secNm != null">
+        SEC_NM = #{secNm,jdbcType=VARCHAR},
+      </if>
+      <if test="secKey1 != null">
+        SEC_KEY1 = #{secKey1,jdbcType=VARCHAR},
+      </if>
+      <if test="secVal1 != null">
+        SEC_VAL1 = #{secVal1,jdbcType=VARCHAR},
+      </if>
+      <if test="secKey2 != null">
+        SEC_KEY2 = #{secKey2,jdbcType=VARCHAR},
+      </if>
+      <if test="secVal2 != null">
+        SEC_VAL2 = #{secVal2,jdbcType=VARCHAR},
+      </if>
+      <if test="secKey3 != null">
+        SEC_KEY3 = #{secKey3,jdbcType=VARCHAR},
+      </if>
+      <if test="secVal3 != null">
+        SEC_VAL3 = #{secVal3,jdbcType=VARCHAR},
+      </if>
+      <if test="secKey4 != null">
+        SEC_KEY4 = #{secKey4,jdbcType=VARCHAR},
+      </if>
+      <if test="secVal4 != null">
+        SEC_VAL4 = #{secVal4,jdbcType=VARCHAR},
+      </if>
+      <if test="crtOpr != null">
+        CRT_OPR = #{crtOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="crtDt != null">
+        CRT_DT = #{crtDt,jdbcType=VARCHAR},
+      </if>
+      <if test="updOpr != null">
+        UPD_OPR = #{updOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="updDt != null">
+        UPD_DT = #{updDt,jdbcType=VARCHAR},
+      </if>
+      <if test="misc != null">
+        MISC = #{misc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SEC_ID = #{secId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="java.util.Map">
+    update TBL_SEC_INF
+    set SEC_NM = #{secNm,jdbcType=VARCHAR},
+      SEC_KEY1 = #{secKey1,jdbcType=VARCHAR},
+      SEC_VAL1 = #{secVal1,jdbcType=VARCHAR},
+      SEC_KEY2 = #{secKey2,jdbcType=VARCHAR},
+      SEC_VAL2 = #{secVal2,jdbcType=VARCHAR},
+      SEC_KEY3 = #{secKey3,jdbcType=VARCHAR},
+      SEC_VAL3 = #{secVal3,jdbcType=VARCHAR},
+      SEC_KEY4 = #{secKey4,jdbcType=VARCHAR},
+      SEC_VAL4 = #{secVal4,jdbcType=VARCHAR},
+      CRT_OPR = #{crtOpr,jdbcType=VARCHAR},
+      CRT_DT = #{crtDt,jdbcType=VARCHAR},
+      UPD_OPR = #{updOpr,jdbcType=VARCHAR},
+      UPD_DT = #{updDt,jdbcType=VARCHAR},
+      MISC = #{misc,jdbcType=VARCHAR}
+    where SEC_ID = #{secId,jdbcType=VARCHAR}
+  </update>
+</mapper>

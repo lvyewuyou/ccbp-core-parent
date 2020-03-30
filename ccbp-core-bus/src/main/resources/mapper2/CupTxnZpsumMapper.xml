@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.icss.instutry.nap.unifiedpay.batch.CupTxnZpsumMapper" >
+  <resultMap id="BaseResultMap" type="com.ccbp.core.bus.model.batch.CupTxnZpsum" >
+    <id column="DATE_SETTLMT" property="dateSettlmt" jdbcType="VARCHAR" />
+    <id column="MER_ID" property="merId" jdbcType="VARCHAR" />
+    
+    <result column="UUID" property="uuid" jdbcType="VARCHAR" />
+    <result column="MER_TYPE" property="merType" jdbcType="VARCHAR" />
+    <result column="MER_NM" property="merNm" jdbcType="VARCHAR" />
+    <result column="OPEN_BANK_NM" property="openBankNm" jdbcType="VARCHAR" />
+    <result column="OPEN_BANK_NB" property="openBankNb" jdbcType="VARCHAR" />
+    <result column="OPEN_BANK_SETTL_NB" property="openBankSettlNb" jdbcType="VARCHAR" />
+    <result column="MER_SETTL_NB" property="merSettlNb" jdbcType="VARCHAR" />
+    <result column="MER_SETTL_NM" property="merSettlNm" jdbcType="VARCHAR" />
+    <result column="MER_AREA" property="merArea" jdbcType="VARCHAR" />
+    <result column="TXN_COUNT" property="txnCount" jdbcType="VARCHAR" />
+    <result column="TXN_AMT" property="txnAmt" jdbcType="DECIMAL" />
+    <result column="TXN_FEE_AMT" property="txnFeeAmt" jdbcType="DECIMAL" />
+    <result column="ERR_TXN_COUNT" property="errTxnCount" jdbcType="VARCHAR" />
+    <result column="ERR_TXN_AMT" property="errTxnAmt" jdbcType="DECIMAL" />
+    <result column="ERR_BACK_AMT" property="errBackAmt" jdbcType="DECIMAL" />
+    <result column="OTHER_AMT" property="otherAmt" jdbcType="DECIMAL" />
+    <result column="SETTL_AMT" property="settlAmt" jdbcType="DECIMAL" />
+    <result column="IN_OUT_AMT" property="inOutAmt" jdbcType="DECIMAL" />
+    <result column="IN_OUT_TYPE" property="inOutType" jdbcType="VARCHAR" />
+    <result column="NOW_RELEASE_AMT" property="nowReleaseAmt" jdbcType="DECIMAL" />
+    <result column="NOW_CHARGE_AMT" property="nowChargeAmt" jdbcType="DECIMAL" />
+    <result column="NOW_BACK_AMT" property="nowBackAmt" jdbcType="DECIMAL" />
+    <result column="RECORDED_AMT" property="recordedAmt" jdbcType="DECIMAL" />
+    <result column="RECORDED_TYPE" property="recordedType" jdbcType="VARCHAR" />
+    <result column="BACK_TYPE" property="backType" jdbcType="VARCHAR" />
+    <result column="MISC1" property="misc1" jdbcType="VARCHAR" />
+    <result column="TXN_TYPE" property="txnType" jdbcType="VARCHAR" />
+    <result column="INTER_BRH_CODE" property="interBrhCode" jdbcType="VARCHAR" />
+    <result column="SEQ_NUM" property="seqNum" jdbcType="DECIMAL" />
+    <result column="OPEN_INST" property="openInst" jdbcType="VARCHAR" />
+    <result column="CARD_TP" property="cardTp" jdbcType="VARCHAR" />
+    <result column="DISPOSE_STATUS" property="disposeStatus" jdbcType="VARCHAR" />
+    <result column="KH_STATUS" property="khStatus" jdbcType="VARCHAR" />
+    <result column="INCOME_STATUS" property="incomeStatus" jdbcType="VARCHAR" />
+    <result column="EXPEND_STATUS" property="expendStatus" jdbcType="VARCHAR" />
+    
+      <result column="TRAN_AMT" property="tranAmt" jdbcType="VARCHAR" />
+      <result column="KEY_CUP" property="keyCup" jdbcType="VARCHAR" />
+ <result column="TRAN_DT" property="tranDt" jdbcType="VARCHAR" />
+
+      
+  </resultMap>
+  <sql id="Base_Column_List" >
+    DATE_SETTLMT, MER_ID, MER_TYPE, MER_NM, OPEN_BANK_NM, OPEN_BANK_NB, OPEN_BANK_SETTL_NB, 
+    MER_SETTL_NB, MER_SETTL_NM, MER_AREA, TXN_COUNT, TXN_AMT, TXN_FEE_AMT, ERR_TXN_COUNT, 
+    ERR_TXN_AMT, ERR_BACK_AMT, OTHER_AMT, SETTL_AMT, IN_OUT_AMT, IN_OUT_TYPE, NOW_RELEASE_AMT, 
+    NOW_CHARGE_AMT, NOW_BACK_AMT, RECORDED_AMT, RECORDED_TYPE, BACK_TYPE, MISC1, TXN_TYPE, 
+    INTER_BRH_CODE, SEQ_NUM, OPEN_INST, CARD_TP, DISPOSE_STATUS, KH_STATUS, INCOME_STATUS, 
+    EXPEND_STATUS
+  </sql>
+
+  <delete id="deleteByPrimaryKey" parameterType="com.ccbp.core.bus.model.batch.CupTxnZpsumKey" >
+    delete from BTH_CUP_TXN_ZPSUM_HIS
+    where DATE_SETTLMT = #{dateSettlmt,jdbcType=VARCHAR}
+      and MER_ID = #{merId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ccbp.core.bus.model.batch.CupTxnZpsum" >
+    insert into BTH_CUP_TXN_ZPSUM_HIS (DATE_SETTLMT, MER_ID, MER_TYPE, 
+      MER_NM, OPEN_BANK_NM, OPEN_BANK_NB, 
+      OPEN_BANK_SETTL_NB, MER_SETTL_NB, MER_SETTL_NM, 
+      MER_AREA, TXN_COUNT, TXN_AMT, 
+      TXN_FEE_AMT, ERR_TXN_COUNT, ERR_TXN_AMT, 
+      ERR_BACK_AMT, OTHER_AMT, SETTL_AMT, 
+      IN_OUT_AMT, IN_OUT_TYPE, NOW_RELEASE_AMT, 
+      NOW_CHARGE_AMT, NOW_BACK_AMT, RECORDED_AMT, 
+      RECORDED_TYPE, BACK_TYPE, MISC1, 
+      TXN_TYPE, INTER_BRH_CODE, SEQ_NUM, 
+      OPEN_INST, CARD_TP, DISPOSE_STATUS, 
+      KH_STATUS, INCOME_STATUS, EXPEND_STATUS
+      )
+    values (#{dateSettlmt,jdbcType=VARCHAR}, #{merId,jdbcType=VARCHAR}, #{merType,jdbcType=VARCHAR}, 
+      #{merNm,jdbcType=VARCHAR}, #{openBankNm,jdbcType=VARCHAR}, #{openBankNb,jdbcType=VARCHAR}, 
+      #{openBankSettlNb,jdbcType=VARCHAR}, #{merSettlNb,jdbcType=VARCHAR}, #{merSettlNm,jdbcType=VARCHAR}, 
+      #{merArea,jdbcType=VARCHAR}, #{txnCount,jdbcType=VARCHAR}, #{txnAmt,jdbcType=DECIMAL}, 
+      #{txnFeeAmt,jdbcType=DECIMAL}, #{errTxnCount,jdbcType=VARCHAR}, #{errTxnAmt,jdbcType=DECIMAL}, 
+      #{errBackAmt,jdbcType=DECIMAL}, #{otherAmt,jdbcType=DECIMAL}, #{settlAmt,jdbcType=DECIMAL}, 
+      #{inOutAmt,jdbcType=DECIMAL}, #{inOutType,jdbcType=VARCHAR}, #{nowReleaseAmt,jdbcType=DECIMAL}, 
+      #{nowChargeAmt,jdbcType=DECIMAL}, #{nowBackAmt,jdbcType=DECIMAL}, #{recordedAmt,jdbcType=DECIMAL}, 
+      #{recordedType,jdbcType=VARCHAR}, #{backType,jdbcType=VARCHAR}, #{misc1,jdbcType=VARCHAR}, 
+      #{txnType,jdbcType=VARCHAR}, #{interBrhCode,jdbcType=VARCHAR}, #{seqNum,jdbcType=DECIMAL}, 
+      #{openInst,jdbcType=VARCHAR}, #{cardTp,jdbcType=VARCHAR}, #{disposeStatus,jdbcType=VARCHAR}, 
+      #{khStatus,jdbcType=VARCHAR}, #{incomeStatus,jdbcType=VARCHAR}, #{expendStatus,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ccbp.core.bus.model.batch.CupTxnZpsum" >
+    insert into BTH_CUP_TXN_ZPSUM_HIS
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dateSettlmt != null" >
+        DATE_SETTLMT,
+      </if>
+      <if test="merId != null" >
+        MER_ID,
+      </if>
+      <if test="merType != null" >
+        MER_TYPE,
+      </if>
+      <if test="merNm != null" >
+        MER_NM,
+      </if>
+      <if test="openBankNm != null" >
+        OPEN_BANK_NM,
+      </if>
+      <if test="openBankNb != null" >
+        OPEN_BANK_NB,
+      </if>
+      <if test="openBankSettlNb != null" >
+        OPEN_BANK_SETTL_NB,
+      </if>
+      <if test="merSettlNb != null" >
+        MER_SETTL_NB,
+      </if>
+      <if test="merSettlNm != null" >
+        MER_SETTL_NM,
+      </if>
+      <if test="merArea != null" >
+        MER_AREA,
+      </if>
+      <if test="txnCount != null" >
+        TXN_COUNT,
+      </if>
+      <if test="txnAmt != null" >
+        TXN_AMT,
+      </if>
+      <if test="txnFeeAmt != null" >
+        TXN_FEE_AMT,
+      </if>
+      <if test="errTxnCount != null" >
+        ERR_TXN_COUNT,
+      </if>
+      <if test="errTxnAmt != null" >
+        ERR_TXN_AMT,
+      </if>
+      <if test="errBackAmt != null" >
+        ERR_BACK_AMT,
+      </if>
+      <if test="otherAmt != null" >
+        OTHER_AMT,
+      </if>
+      <if test="settlAmt != null" >
+        SETTL_AMT,
+      </if>
+      <if test="inOutAmt != null" >
+        IN_OUT_AMT,
+      </if>
+      <if test="inOutType != null" >
+        IN_OUT_TYPE,
+      </if>
+      <if test="nowReleaseAmt != null" >
+        NOW_RELEASE_AMT,
+      </if>
+      <if test="nowChargeAmt != null" >
+        NOW_CHARGE_AMT,
+      </if>
+      <if test="nowBackAmt != null" >
+        NOW_BACK_AMT,
+      </if>
+      <if test="recordedAmt != null" >
+        RECORDED_AMT,
+      </if>
+      <if test="recordedType != null" >
+        RECORDED_TYPE,
+      </if>
+      <if test="backType != null" >
+        BACK_TYPE,
+      </if>
+      <if test="misc1 != null" >
+        MISC1,
+      </if>
+      <if test="txnType != null" >
+        TXN_TYPE,
+      </if>
+      <if test="interBrhCode != null" >
+        INTER_BRH_CODE,
+      </if>
+      <if test="seqNum != null" >
+        SEQ_NUM,
+      </if>
+      <if test="openInst != null" >
+        OPEN_INST,
+      </if>
+      <if test="cardTp != null" >
+        CARD_TP,
+      </if>
+      <if test="disposeStatus != null" >
+        DISPOSE_STATUS,
+      </if>
+      <if test="khStatus != null" >
+        KH_STATUS,
+      </if>
+      <if test="incomeStatus != null" >
+        INCOME_STATUS,
+      </if>
+      <if test="expendStatus != null" >
+        EXPEND_STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dateSettlmt != null" >
+        #{dateSettlmt,jdbcType=VARCHAR},
+      </if>
+      <if test="merId != null" >
+        #{merId,jdbcType=VARCHAR},
+      </if>
+      <if test="merType != null" >
+        #{merType,jdbcType=VARCHAR},
+      </if>
+      <if test="merNm != null" >
+        #{merNm,jdbcType=VARCHAR},
+      </if>
+      <if test="openBankNm != null" >
+        #{openBankNm,jdbcType=VARCHAR},
+      </if>
+      <if test="openBankNb != null" >
+        #{openBankNb,jdbcType=VARCHAR},
+      </if>
+      <if test="openBankSettlNb != null" >
+        #{openBankSettlNb,jdbcType=VARCHAR},
+      </if>
+      <if test="merSettlNb != null" >
+        #{merSettlNb,jdbcType=VARCHAR},
+      </if>
+      <if test="merSettlNm != null" >
+        #{merSettlNm,jdbcType=VARCHAR},
+      </if>
+      <if test="merArea != null" >
+        #{merArea,jdbcType=VARCHAR},
+      </if>
+      <if test="txnCount != null" >
+        #{txnCount,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAmt != null" >
+        #{txnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="txnFeeAmt != null" >
+        #{txnFeeAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="errTxnCount != null" >
+        #{errTxnCount,jdbcType=VARCHAR},
+      </if>
+      <if test="errTxnAmt != null" >
+        #{errTxnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="errBackAmt != null" >
+        #{errBackAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="otherAmt != null" >
+        #{otherAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="settlAmt != null" >
+        #{settlAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="inOutAmt != null" >
+        #{inOutAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="inOutType != null" >
+        #{inOutType,jdbcType=VARCHAR},
+      </if>
+      <if test="nowReleaseAmt != null" >
+        #{nowReleaseAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="nowChargeAmt != null" >
+        #{nowChargeAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="nowBackAmt != null" >
+        #{nowBackAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="recordedAmt != null" >
+        #{recordedAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="recordedType != null" >
+        #{recordedType,jdbcType=VARCHAR},
+      </if>
+      <if test="backType != null" >
+        #{backType,jdbcType=VARCHAR},
+      </if>
+      <if test="misc1 != null" >
+        #{misc1,jdbcType=VARCHAR},
+      </if>
+      <if test="txnType != null" >
+        #{txnType,jdbcType=VARCHAR},
+      </if>
+      <if test="interBrhCode != null" >
+        #{interBrhCode,jdbcType=VARCHAR},
+      </if>
+      <if test="seqNum != null" >
+        #{seqNum,jdbcType=DECIMAL},
+      </if>
+      <if test="openInst != null" >
+        #{openInst,jdbcType=VARCHAR},
+      </if>
+      <if test="cardTp != null" >
+        #{cardTp,jdbcType=VARCHAR},
+      </if>
+      <if test="disposeStatus != null" >
+        #{disposeStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="khStatus != null" >
+        #{khStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="incomeStatus != null" >
+        #{incomeStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="expendStatus != null" >
+        #{expendStatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ccbp.core.bus.model.batch.CupTxnZpsum" >
+    update BTH_CUP_TXN_ZPSUM_HIS
+    <set >
+      <if test="merType != null" >
+        MER_TYPE = #{merType,jdbcType=VARCHAR},
+      </if>
+      <if test="merNm != null" >
+        MER_NM = #{merNm,jdbcType=VARCHAR},
+      </if>
+      <if test="openBankNm != null" >
+        OPEN_BANK_NM = #{openBankNm,jdbcType=VARCHAR},
+      </if>
+      <if test="openBankNb != null" >
+        OPEN_BANK_NB = #{openBankNb,jdbcType=VARCHAR},
+      </if>
+      <if test="openBankSettlNb != null" >
+        OPEN_BANK_SETTL_NB = #{openBankSettlNb,jdbcType=VARCHAR},
+      </if>
+      <if test="merSettlNb != null" >
+        MER_SETTL_NB = #{merSettlNb,jdbcType=VARCHAR},
+      </if>
+      <if test="merSettlNm != null" >
+        MER_SETTL_NM = #{merSettlNm,jdbcType=VARCHAR},
+      </if>
+      <if test="merArea != null" >
+        MER_AREA = #{merArea,jdbcType=VARCHAR},
+      </if>
+      <if test="txnCount != null" >
+        TXN_COUNT = #{txnCount,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAmt != null" >
+        TXN_AMT = #{txnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="txnFeeAmt != null" >
+        TXN_FEE_AMT = #{txnFeeAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="errTxnCount != null" >
+        ERR_TXN_COUNT = #{errTxnCount,jdbcType=VARCHAR},
+      </if>
+      <if test="errTxnAmt != null" >
+        ERR_TXN_AMT = #{errTxnAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="errBackAmt != null" >
+        ERR_BACK_AMT = #{errBackAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="otherAmt != null" >
+        OTHER_AMT = #{otherAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="settlAmt != null" >
+        SETTL_AMT = #{settlAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="inOutAmt != null" >
+        IN_OUT_AMT = #{inOutAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="inOutType != null" >
+        IN_OUT_TYPE = #{inOutType,jdbcType=VARCHAR},
+      </if>
+      <if test="nowReleaseAmt != null" >
+        NOW_RELEASE_AMT = #{nowReleaseAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="nowChargeAmt != null" >
+        NOW_CHARGE_AMT = #{nowChargeAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="nowBackAmt != null" >
+        NOW_BACK_AMT = #{nowBackAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="recordedAmt != null" >
+        RECORDED_AMT = #{recordedAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="recordedType != null" >
+        RECORDED_TYPE = #{recordedType,jdbcType=VARCHAR},
+      </if>
+      <if test="backType != null" >
+        BACK_TYPE = #{backType,jdbcType=VARCHAR},
+      </if>
+      <if test="misc1 != null" >
+        MISC1 = #{misc1,jdbcType=VARCHAR},
+      </if>
+      <if test="txnType != null" >
+        TXN_TYPE = #{txnType,jdbcType=VARCHAR},
+      </if>
+      <if test="interBrhCode != null" >
+        INTER_BRH_CODE = #{interBrhCode,jdbcType=VARCHAR},
+      </if>
+      <if test="seqNum != null" >
+        SEQ_NUM = #{seqNum,jdbcType=DECIMAL},
+      </if>
+      <if test="openInst != null" >
+        OPEN_INST = #{openInst,jdbcType=VARCHAR},
+      </if>
+      <if test="cardTp != null" >
+        CARD_TP = #{cardTp,jdbcType=VARCHAR},
+      </if>
+      <if test="disposeStatus != null" >
+        DISPOSE_STATUS = #{disposeStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="khStatus != null" >
+        KH_STATUS = #{khStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="incomeStatus != null" >
+        INCOME_STATUS = #{incomeStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="expendStatus != null" >
+        EXPEND_STATUS = #{expendStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where DATE_SETTLMT = #{dateSettlmt,jdbcType=VARCHAR}
+      and MER_ID = #{merId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ccbp.core.bus.model.batch.CupTxnZpsum" >
+    update BTH_CUP_TXN_ZPSUM_HIS
+    set MER_TYPE = #{merType,jdbcType=VARCHAR},
+      MER_NM = #{merNm,jdbcType=VARCHAR},
+      OPEN_BANK_NM = #{openBankNm,jdbcType=VARCHAR},
+      OPEN_BANK_NB = #{openBankNb,jdbcType=VARCHAR},
+      OPEN_BANK_SETTL_NB = #{openBankSettlNb,jdbcType=VARCHAR},
+      MER_SETTL_NB = #{merSettlNb,jdbcType=VARCHAR},
+      MER_SETTL_NM = #{merSettlNm,jdbcType=VARCHAR},
+      MER_AREA = #{merArea,jdbcType=VARCHAR},
+      TXN_COUNT = #{txnCount,jdbcType=VARCHAR},
+      TXN_AMT = #{txnAmt,jdbcType=DECIMAL},
+      TXN_FEE_AMT = #{txnFeeAmt,jdbcType=DECIMAL},
+      ERR_TXN_COUNT = #{errTxnCount,jdbcType=VARCHAR},
+      ERR_TXN_AMT = #{errTxnAmt,jdbcType=DECIMAL},
+      ERR_BACK_AMT = #{errBackAmt,jdbcType=DECIMAL},
+      OTHER_AMT = #{otherAmt,jdbcType=DECIMAL},
+      SETTL_AMT = #{settlAmt,jdbcType=DECIMAL},
+      IN_OUT_AMT = #{inOutAmt,jdbcType=DECIMAL},
+      IN_OUT_TYPE = #{inOutType,jdbcType=VARCHAR},
+      NOW_RELEASE_AMT = #{nowReleaseAmt,jdbcType=DECIMAL},
+      NOW_CHARGE_AMT = #{nowChargeAmt,jdbcType=DECIMAL},
+      NOW_BACK_AMT = #{nowBackAmt,jdbcType=DECIMAL},
+      RECORDED_AMT = #{recordedAmt,jdbcType=DECIMAL},
+      RECORDED_TYPE = #{recordedType,jdbcType=VARCHAR},
+      BACK_TYPE = #{backType,jdbcType=VARCHAR},
+      MISC1 = #{misc1,jdbcType=VARCHAR},
+      TXN_TYPE = #{txnType,jdbcType=VARCHAR},
+      INTER_BRH_CODE = #{interBrhCode,jdbcType=VARCHAR},
+      SEQ_NUM = #{seqNum,jdbcType=DECIMAL},
+      OPEN_INST = #{openInst,jdbcType=VARCHAR},
+      CARD_TP = #{cardTp,jdbcType=VARCHAR},
+      DISPOSE_STATUS = #{disposeStatus,jdbcType=VARCHAR},
+      KH_STATUS = #{khStatus,jdbcType=VARCHAR},
+      INCOME_STATUS = #{incomeStatus,jdbcType=VARCHAR},
+      EXPEND_STATUS = #{expendStatus,jdbcType=VARCHAR}
+    where DATE_SETTLMT = #{dateSettlmt,jdbcType=VARCHAR}
+      and MER_ID = #{merId,jdbcType=VARCHAR}
+  </update>
+  
+
+  
+  <select id="selectByCondition" resultMap="BaseResultMap" parameterType="com.ccbp.core.bus.model.batch.QueryErrTxn" >
+		SELECT rn, 
+		  <include refid="Base_Column_List" />,(abs(now_charge_amt) + abs(now_back_amt)) as TRAN_AMT,
+		 (DATE_SETTLMT || MER_ID ) AS UUID,(DATE_SETTLMT || MER_ID ) AS  KEY_CUP,substr(date_settlmt,5) as TRAN_DT
+		  FROM (	 
+			 SELECT  ROWNUM rn,
+				  <include refid="Base_Column_List" />,(abs(now_charge_amt) + abs(now_back_amt)) as TRAN_AMT,
+				 (DATE_SETTLMT || MER_ID ) AS UUID,(DATE_SETTLMT || MER_ID ) AS  KEY_CUP,substr(date_settlmt,5) as TRAN_DT
+				  FROM (
+					   SELECT
+					   		<include refid="Base_Column_List" />
+					   FROM 
+					   		BTH_CUP_TXN_ZPSUM_HIS 
+					   WHERE 
+					   		DATE_SETTLMT = #{dateSettlmt,jdbcType=VARCHAR}
+						     <if test="merId !=null and merId !='' ">
+						       and MER_ID =#{merId}
+						     </if>
+						     
+						      <if test="incomeStatus !=null and incomeStatus !='' ">
+						       and INCOME_STATUS  =#{incomeStatus}
+						     </if>
+						      <if test="expendStatus !=null and expendStatus !='' ">
+						       and  EXPEND_STATUS=#{expendStatus}
+						     </if>
+						     <if test="khStatus !=null and khStatus !='' ">
+						       and KH_STATUS=#{khStatus}
+						     </if>
+						     <if test="disposeStatus !=null and disposeStatus !='' ">
+						       and DISPOSE_STATUS =#{disposeStatus}
+						     </if>
+						     AND 
+						     (
+						     	now_charge_amt != '0.00' or now_back_amt != '0.00'
+						     )
+			      		ORDER BY DATE_SETTLMT  DESC 
+		      		) 
+		      )		
+		 WHERE 
+		 	  rn   <![CDATA[> #{beginNo}]]>    AND  rn   <![CDATA[<= #{endNo}]]> 
+      
+  </select>
+   <select id="countByCondition"   resultType="java.lang.Integer"  parameterType="com.ccbp.core.bus.model.batch.QueryErrTxn" >
+	   
+   		  SELECT count(1)
+   		  
+					   FROM 
+					   		BTH_CUP_TXN_ZPSUM_HIS 
+					   WHERE 
+					   		DATE_SETTLMT = #{dateSettlmt,jdbcType=VARCHAR}
+						     <if test="merId !=null and merId !='' ">
+						       and MER_ID =#{merId}
+						     </if>
+						     
+						      <if test="incomeStatus !=null and incomeStatus !='' ">
+						       and INCOME_STATUS  =#{incomeStatus}
+						     </if>
+						      <if test="expendStatus !=null and expendStatus !='' ">
+						       and  EXPEND_STATUS=#{expendStatus}
+						     </if>
+						     <if test="khStatus !=null and khStatus !='' ">
+						       and KH_STATUS=#{khStatus}
+						     </if>
+						     <if test="disposeStatus !=null and disposeStatus !='' ">
+						       and DISPOSE_STATUS =#{disposeStatus}
+						     </if>
+						     AND 
+						     (
+						     	now_charge_amt != '0.00' or now_back_amt != '0.00'
+						     )
+			      		ORDER BY DATE_SETTLMT  DESC 
+  </select>
+  
+  <update id="updateByPrimaryKeyDisopseSt" parameterType="java.lang.String" >
+    update 
+    	BTH_CUP_TXN_ZPSUM_HIS
+    SET
+        DISPOSE_STATUS =#{disposeStatus}
+    where 
+    	MER_ID = #{merId,jdbcType=VARCHAR}
+    and 
+    	DATE_SETTLMT = #{dateSettlmt,jdbcType=VARCHAR}
+  </update>
+  
+  <update id="updateByPrimaryKeyIncomeSt" parameterType="java.lang.String" >
+    update 
+    	BTH_CUP_TXN_ZPSUM_HIS
+    SET
+        INCOME_STATUS  =#{incomeStatus}
+    where 
+    	MER_ID = #{merId,jdbcType=VARCHAR}
+    and 
+    	DATE_SETTLMT = #{dateSettlmt,jdbcType=VARCHAR}
+  </update>
+  
+   <update id="updateByPrimaryKeyExpendSt" parameterType="java.lang.String" >
+    update 
+    	BTH_CUP_TXN_ZPSUM_HIS
+    SET
+        EXPEND_STATUS=#{expendStatus}
+    where 
+    	MER_ID = #{merId,jdbcType=VARCHAR}
+    and 
+    	DATE_SETTLMT = #{dateSettlmt,jdbcType=VARCHAR}
+  </update>
+  
+   <update id="updateByPrimaryKeyKhSt" parameterType="java.lang.String" >
+    update 
+    	BTH_CUP_TXN_ZPSUM_HIS
+    SET
+        KH_STATUS=#{khStatus}
+    where 
+    	MER_ID = #{merId,jdbcType=VARCHAR}
+    and 
+    	DATE_SETTLMT = #{dateSettlmt,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="selectByPrimaryKey"  resultMap="BaseResultMap" parameterType="java.lang.String" >
+	 		SELECT 
+			   		<include refid="Base_Column_List" />
+			   FROM 
+			   		BTH_CUP_TXN_ZPSUM_HIS 
+			  where 
+		    	MER_ID = #{merId,jdbcType=VARCHAR}
+		    and 
+		    	DATE_SETTLMT = #{dateSettlmt,jdbcType=VARCHAR}
+  </select>
+</mapper>

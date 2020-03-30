@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbp.core.bus.mapper.TblDicParamMapper">
+	<resultMap id="BaseResultMap" type="java.util.Map">
+		<id column="PARA_IDX" jdbcType="DECIMAL" property="paraIdx" />
+		<result column="PARA_ORG" jdbcType="VARCHAR" property="paraOrg" />
+		<result column="PARA_OWNER" jdbcType="VARCHAR" property="paraOwner" />
+		<result column="PARA_KEY" jdbcType="VARCHAR" property="paraKey" />
+		<result column="PARA_NM" jdbcType="VARCHAR" property="paraNm" />
+		<result column="PARA_STA" jdbcType="CHAR" property="paraSta" />
+		<result column="PARA_TYPE" jdbcType="VARCHAR" property="paraType" />
+		<result column="PARA_VAL" jdbcType="VARCHAR" property="paraVal" />
+		<result column="MISC1" jdbcType="VARCHAR" property="misc1" />
+		<result column="MISC2" jdbcType="VARCHAR" property="misc2" />
+		<result column="MISC3" jdbcType="VARCHAR" property="misc3" />
+		<result column="MISC4" jdbcType="VARCHAR" property="misc4" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		PARA_IDX, PARA_ORG, PARA_OWNER, PARA_KEY, PARA_NM, PARA_STA, PARA_TYPE,
+		PARA_VAL,
+		MISC1, MISC2, MISC3, MISC4
+	</sql>
+
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_DIC_PARAM
+		where PARA_IDX = #{paraIdx,jdbcType=DECIMAL}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from TBL_DIC_PARAM
+		where PARA_IDX = #{paraIdx,jdbcType=DECIMAL}
+	</delete>
+	<insert id="insert" parameterType="java.util.Map">
+		insert into TBL_DIC_PARAM (PARA_IDX, PARA_ORG, PARA_OWNER,
+		PARA_KEY, PARA_NM, PARA_STA,
+		PARA_TYPE, PARA_VAL, MISC1,
+		MISC2, MISC3, MISC4
+		)
+		values (#{paraIdx,jdbcType=DECIMAL}, #{paraOrg,jdbcType=VARCHAR},
+		#{paraOwner,jdbcType=VARCHAR},
+		#{paraKey,jdbcType=VARCHAR}, #{paraNm,jdbcType=VARCHAR}, #{paraSta,jdbcType=CHAR},
+		#{paraType,jdbcType=VARCHAR}, #{paraVal,jdbcType=VARCHAR},
+		#{misc1,jdbcType=VARCHAR},
+		#{misc2,jdbcType=VARCHAR}, #{misc3,jdbcType=VARCHAR}, #{misc4,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="java.util.Map">
+		insert into TBL_DIC_PARAM
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="paraIdx != null">
+				PARA_IDX,
+			</if>
+			<if test="paraOrg != null">
+				PARA_ORG,
+			</if>
+			<if test="paraOwner != null">
+				PARA_OWNER,
+			</if>
+			<if test="paraKey != null">
+				PARA_KEY,
+			</if>
+			<if test="paraNm != null">
+				PARA_NM,
+			</if>
+			<if test="paraSta != null">
+				PARA_STA,
+			</if>
+			<if test="paraType != null">
+				PARA_TYPE,
+			</if>
+			<if test="paraVal != null">
+				PARA_VAL,
+			</if>
+			<if test="misc1 != null">
+				MISC1,
+			</if>
+			<if test="misc2 != null">
+				MISC2,
+			</if>
+			<if test="misc3 != null">
+				MISC3,
+			</if>
+			<if test="misc4 != null">
+				MISC4,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="paraIdx != null">
+				#{paraIdx,jdbcType=DECIMAL},
+			</if>
+			<if test="paraOrg != null">
+				#{paraOrg,jdbcType=VARCHAR},
+			</if>
+			<if test="paraOwner != null">
+				#{paraOwner,jdbcType=VARCHAR},
+			</if>
+			<if test="paraKey != null">
+				#{paraKey,jdbcType=VARCHAR},
+			</if>
+			<if test="paraNm != null">
+				#{paraNm,jdbcType=VARCHAR},
+			</if>
+			<if test="paraSta != null">
+				#{paraSta,jdbcType=CHAR},
+			</if>
+			<if test="paraType != null">
+				#{paraType,jdbcType=VARCHAR},
+			</if>
+			<if test="paraVal != null">
+				#{paraVal,jdbcType=VARCHAR},
+			</if>
+			<if test="misc1 != null">
+				#{misc1,jdbcType=VARCHAR},
+			</if>
+			<if test="misc2 != null">
+				#{misc2,jdbcType=VARCHAR},
+			</if>
+			<if test="misc3 != null">
+				#{misc3,jdbcType=VARCHAR},
+			</if>
+			<if test="misc4 != null">
+				#{misc4,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="java.util.Map">
+		update TBL_DIC_PARAM
+		<set>
+			<if test="paraOrg != null">
+				PARA_ORG = #{paraOrg,jdbcType=VARCHAR},
+			</if>
+			<if test="paraOwner != null">
+				PARA_OWNER = #{paraOwner,jdbcType=VARCHAR},
+			</if>
+			<if test="paraKey != null">
+				PARA_KEY = #{paraKey,jdbcType=VARCHAR},
+			</if>
+			<if test="paraNm != null">
+				PARA_NM = #{paraNm,jdbcType=VARCHAR},
+			</if>
+			<if test="paraSta != null">
+				PARA_STA = #{paraSta,jdbcType=CHAR},
+			</if>
+			<if test="paraType != null">
+				PARA_TYPE = #{paraType,jdbcType=VARCHAR},
+			</if>
+			<if test="paraVal != null">
+				PARA_VAL = #{paraVal,jdbcType=VARCHAR},
+			</if>
+			<if test="misc1 != null">
+				MISC1 = #{misc1,jdbcType=VARCHAR},
+			</if>
+			<if test="misc2 != null">
+				MISC2 = #{misc2,jdbcType=VARCHAR},
+			</if>
+			<if test="misc3 != null">
+				MISC3 = #{misc3,jdbcType=VARCHAR},
+			</if>
+			<if test="misc4 != null">
+				MISC4 = #{misc4,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where PARA_IDX = #{paraIdx,jdbcType=DECIMAL}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+		update TBL_DIC_PARAM
+		set PARA_ORG = #{paraOrg,jdbcType=VARCHAR},
+		PARA_OWNER = #{paraOwner,jdbcType=VARCHAR},
+		PARA_KEY = #{paraKey,jdbcType=VARCHAR},
+		PARA_NM = #{paraNm,jdbcType=VARCHAR},
+		PARA_STA = #{paraSta,jdbcType=CHAR},
+		PARA_TYPE = #{paraType,jdbcType=VARCHAR},
+		PARA_VAL = #{paraVal,jdbcType=VARCHAR},
+		MISC1 = #{misc1,jdbcType=VARCHAR},
+		MISC2 = #{misc2,jdbcType=VARCHAR},
+		MISC3 = #{misc3,jdbcType=VARCHAR},
+		MISC4 = #{misc4,jdbcType=VARCHAR}
+		where PARA_IDX = #{paraIdx,jdbcType=DECIMAL}
+	</update>
+
+	<select id="selectQuota" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from tbl_dic_param
+		where
+		PARA_KEY=#{paraKey,jdbcType=VARCHAR}
+		and PARA_ORG = #{paraOrg,jdbcType=VARCHAR}
+		and PARA_OWNER = #{paraOwner,jdbcType=VARCHAR}
+	</select>
+	<!-- 维护更新协议自动增长值 -->
+	<update id="updatePortAutoValue" parameterType="java.util.Map">
+		update tbl_dic_param set PARA_VAL=PARA_VAL+1
+		where PARA_KEY=#{paraKey,jdbcType=VARCHAR}
+		and PARA_ORG = #{paraOrg,jdbcType=VARCHAR}
+		and PARA_OWNER = #{paraOwner,jdbcType=VARCHAR}
+	</update>
+</mapper>

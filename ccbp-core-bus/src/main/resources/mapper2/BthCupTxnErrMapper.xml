@@ -1,0 +1,963 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.icss.instutry.nap.unifiedpay.batch.BthCupTxnErrMapper" >
+  <resultMap id="BaseResultMap" type="com.ccbp.core.bus.model.batch.BthCupTxnErr" >
+    <result column="INTER_BRH_CODE" property="interBrhCode" jdbcType="VARCHAR" />
+    <result column="DATE_SETTLMT" property="dateSettlmt" jdbcType="VARCHAR" />
+    <result column="TXN_NUM" property="txnNum" jdbcType="VARCHAR" />
+    <result column="KEY_CUP" property="keyCup" jdbcType="VARCHAR" />
+     <result column="UUID" property="uuid" jdbcType="VARCHAR" />
+    <result column="FLAG_RESULT" property="flagResult" jdbcType="VARCHAR" />
+    <result column="TRAN_DT" property="tranDt" jdbcType="VARCHAR" />
+    
+    <result column="ACQ_INST_ID_CODE" property="acqInstIdCode" jdbcType="VARCHAR" />
+    <result column="FWD_INST_ID_CODE" property="fwdInstIdCode" jdbcType="VARCHAR" />
+    <result column="CUP_SSN" property="cupSsn" jdbcType="VARCHAR" />
+    <result column="TRANS_DATE_TIME" property="transDateTime" jdbcType="VARCHAR" />
+    <result column="PAN" property="pan" jdbcType="VARCHAR" />
+    <result column="AMT_TRANS" property="amtTrans" jdbcType="VARCHAR" />
+     <result column="TRAN_AMT" property="tranAmt" jdbcType="VARCHAR" />
+  
+    <result column="MSG_TYPE" property="msgType" jdbcType="VARCHAR" />
+    <result column="PROCESSING_CODE" property="processingCode" jdbcType="VARCHAR" />
+    <result column="MCHNT_TYPE" property="mchntType" jdbcType="VARCHAR" />
+    <result column="CARD_ACCP_TERM_ID" property="cardAccpTermId" jdbcType="VARCHAR" />
+    <result column="PRE_TRANS_RETRIVL_REF" property="preTransRetrivlRef" jdbcType="VARCHAR" />
+    <result column="POS_COND_CODE" property="posCondCode" jdbcType="VARCHAR" />
+    <result column="AUTHR_ID_RESP" property="authrIdResp" jdbcType="VARCHAR" />
+    <result column="RCVG_CODE" property="rcvgCode" jdbcType="VARCHAR" />
+    <result column="ISSUER_CODE" property="issuerCode" jdbcType="VARCHAR" />
+    <result column="PRE_TRANS_CUP_SSN" property="preTransCupSsn" jdbcType="VARCHAR" />
+    <result column="RESP_CODE" property="respCode" jdbcType="VARCHAR" />
+    <result column="POS_ENTRY_MODE" property="posEntryMode" jdbcType="VARCHAR" />
+    <result column="FEE_CREDIT" property="feeCredit" jdbcType="DECIMAL" />
+    <result column="FEE_DEBIT" property="feeDebit" jdbcType="DECIMAL" />
+    <result column="STAGE_PAY_ADD_FEE" property="stagePayAddFee" jdbcType="DECIMAL" />
+    <result column="FEE_XFER" property="feeXfer" jdbcType="DECIMAL" />
+    <result column="AMT_CREDIT" property="amtCredit" jdbcType="DECIMAL" />
+    <result column="AMT_DEBIT" property="amtDebit" jdbcType="DECIMAL" />
+    <result column="ERR_REASON" property="errReason" jdbcType="VARCHAR" />
+    <result column="CODE_XFER_O" property="codeXferO" jdbcType="VARCHAR" />
+    <result column="PAN_XFER_O" property="panXferO" jdbcType="VARCHAR" />
+    <result column="CODE_XFER_I" property="codeXferI" jdbcType="VARCHAR" />
+    <result column="PAN_XFER_I" property="panXferI" jdbcType="VARCHAR" />
+    <result column="PRE_TRANS_DATE_TIME" property="preTransDateTime" jdbcType="VARCHAR" />
+    <result column="CARD_SEQ_NUM" property="cardSeqNum" jdbcType="VARCHAR" />
+    <result column="TERM_CAP" property="termCap" jdbcType="VARCHAR" />
+    <result column="CHIP_COND" property="chipCond" jdbcType="VARCHAR" />
+    <result column="PRE_TRANS_LIQ_DATE" property="preTransLiqDate" jdbcType="VARCHAR" />
+    <result column="PRE_TRANS_LIQ_AMT" property="preTransLiqAmt" jdbcType="DECIMAL" />
+    <result column="FLAG_DOMESTIC" property="flagDomestic" jdbcType="VARCHAR" />
+    <result column="ECI_FLAG" property="eciFlag" jdbcType="VARCHAR" />
+    <result column="CARD_ACCP_ID" property="cardAccpId" jdbcType="VARCHAR" />
+    <result column="FWD_INST_LIQ_CODE" property="fwdInstLiqCode" jdbcType="VARCHAR" />
+    <result column="IN_INST_LIQ_CODE" property="inInstLiqCode" jdbcType="VARCHAR" />
+    <result column="PRE_CHANNEL_TYPE" property="preChannelType" jdbcType="VARCHAR" />
+    <result column="MCHNT_NM_ADDR" property="mchntNmAddr" jdbcType="VARCHAR" />
+    <result column="SPECIAL_BILL_TYPE" property="specialBillType" jdbcType="VARCHAR" />
+    <result column="SPECIAL_BILL_CLASS" property="specialBillClass" jdbcType="VARCHAR" />
+    <result column="MISC_1" property="misc1" jdbcType="VARCHAR" />
+    <result column="CARD_PRO_INFO" property="cardProInfo" jdbcType="VARCHAR" />
+    <result column="ORIG_TXN_NUM" property="origTxnNum" jdbcType="VARCHAR" />
+    <result column="TRANS_START_WAY" property="transStartWay" jdbcType="VARCHAR" />
+    <result column="ACC_SETTLEMENT_TYPE" property="accSettlementType" jdbcType="VARCHAR" />
+    <result column="ORDER_NUMBER" property="orderNumber" jdbcType="VARCHAR" />
+    <result column="MISC_2" property="misc2" jdbcType="VARCHAR" />
+    <result column="SEQ_NUM" property="seqNum" jdbcType="DECIMAL" />
+    <result column="TXN_TYPE" property="txnType" jdbcType="VARCHAR" />
+    <result column="ORIG_PROCESSING_CODE" property="origProcessingCode" jdbcType="VARCHAR" />
+    <result column="MER_FEE" property="merFee" jdbcType="DECIMAL" />
+    <result column="MER_STL_BANK" property="merStlBank" jdbcType="VARCHAR" />
+    <result column="MER_STL_BANK_COST" property="merStlBankCost" jdbcType="VARCHAR" />
+    <result column="SERVER_ROLE1" property="serverRole1" jdbcType="VARCHAR" />
+    <result column="SERVER_ROLE1_FEE" property="serverRole1Fee" jdbcType="VARCHAR" />
+    <result column="SERVER_ROLE2" property="serverRole2" jdbcType="VARCHAR" />
+    <result column="SERVER_ROLE2_FEE" property="serverRole2Fee" jdbcType="VARCHAR" />
+    <result column="SERVER_ROLE3" property="serverRole3" jdbcType="VARCHAR" />
+    <result column="SERVER_ROLE3_FEE" property="serverRole3Fee" jdbcType="VARCHAR" />
+    <result column="SERVER_ROLE4" property="serverRole4" jdbcType="VARCHAR" />
+    <result column="SERVER_ROLE4_FEE" property="serverRole4Fee" jdbcType="VARCHAR" />
+    <result column="SERVER_ROLE5" property="serverRole5" jdbcType="VARCHAR" />
+    <result column="SERVER_ROLE5_FEE" property="serverRole5Fee" jdbcType="VARCHAR" />
+    <result column="SERVER_ROLE6" property="serverRole6" jdbcType="VARCHAR" />
+    <result column="SERVER_ROLE6_FEE" property="serverRole6Fee" jdbcType="VARCHAR" />
+    <result column="SERVER_ROLE7" property="serverRole7" jdbcType="VARCHAR" />
+    <result column="SERVER_ROLE7_FEE" property="serverRole7Fee" jdbcType="VARCHAR" />
+    <result column="SERVER_ROLE8" property="serverRole8" jdbcType="VARCHAR" />
+    <result column="SERVER_ROLE8_FEE" property="serverRole8Fee" jdbcType="VARCHAR" />
+    <result column="SERVER_ROLE9" property="serverRole9" jdbcType="VARCHAR" />
+    <result column="SERVER_ROLE9_FEE" property="serverRole9Fee" jdbcType="VARCHAR" />
+    <result column="CUSTOM_FEE1" property="customFee1" jdbcType="VARCHAR" />
+    <result column="CUSTOM_FEE2" property="customFee2" jdbcType="VARCHAR" />
+    <result column="CUSTOM_FEE3" property="customFee3" jdbcType="VARCHAR" />
+    <result column="OPR_TM" property="oprTm" jdbcType="VARCHAR" />
+    <result column="OPR_TYPE" property="oprType" jdbcType="VARCHAR" />
+    <result column="OPR_DESC" property="oprDesc" jdbcType="VARCHAR" />
+    <result column="OPR_RESULT" property="oprResult" jdbcType="VARCHAR" />
+    <result column="FWD_INST_LIQ_CODEN" property="fwdInstLiqCoden" jdbcType="VARCHAR" />
+    <result column="MISC_3" property="misc3" jdbcType="VARCHAR" />
+    <result column="MISC_4" property="misc4" jdbcType="VARCHAR" />
+    <result column="STAGE_PAY_ADD_FEEN" property="stagePayAddFeen" jdbcType="DECIMAL" />
+    <result column="OPEN_INST" property="openInst" jdbcType="VARCHAR" />
+    <result column="RSP_CODE" property="rspCode" jdbcType="VARCHAR" />
+    <result column="RSP_MSG" property="rspMsg" jdbcType="VARCHAR" />
+    <result column="CARD_TP" property="cardTp" jdbcType="VARCHAR" />
+    <result column="INCOME_STATUS" property="incomeStatus" jdbcType="VARCHAR" />
+    <result column="EXPEND_STATUS" property="expendStatus" jdbcType="VARCHAR" />
+    <result column="KH_STATUS" property="khStatus" jdbcType="VARCHAR" />
+    <result column="FUND_FLG" property="fundFlg" jdbcType="VARCHAR" />
+    <result column="pye_Acct_Nb" property="pyeAcctNb" jdbcType="VARCHAR" />
+    <result column="pye_Acct_Svcr" property="pyeAcctSvcr" jdbcType="VARCHAR" />
+	<result column="AUTB_ID" property="autbId" jdbcType="VARCHAR" />
+	<result column="REF_NB" property="refNb" jdbcType="VARCHAR" />
+	<result column="pyr_Acct_Svcr" property="pyrAcctSvcr" jdbcType="VARCHAR" />
+
+	<result column="dispose_Status" property="disposeStatus" jdbcType="VARCHAR" />
+
+    
+  </resultMap>
+  
+    <sql id="Base_Column_List" >
+    INTER_BRH_CODE, DATE_SETTLMT, TXN_NUM, KEY_CUP, FLAG_RESULT, ACQ_INST_ID_CODE, FWD_INST_ID_CODE, 
+    CUP_SSN, TRANS_DATE_TIME, PAN, AMT_TRANS, MSG_TYPE, PROCESSING_CODE, MCHNT_TYPE, 
+    CARD_ACCP_TERM_ID, PRE_TRANS_RETRIVL_REF, POS_COND_CODE, AUTHR_ID_RESP, RCVG_CODE, 
+    ISSUER_CODE, PRE_TRANS_CUP_SSN, RESP_CODE, POS_ENTRY_MODE, FEE_CREDIT, FEE_DEBIT, 
+    STAGE_PAY_ADD_FEE, FEE_XFER, AMT_CREDIT, AMT_DEBIT, ERR_REASON, CODE_XFER_O, PAN_XFER_O, 
+    CODE_XFER_I, PAN_XFER_I, PRE_TRANS_DATE_TIME, CARD_SEQ_NUM, TERM_CAP, CHIP_COND, 
+    PRE_TRANS_LIQ_DATE, PRE_TRANS_LIQ_AMT, FLAG_DOMESTIC, ECI_FLAG, CARD_ACCP_ID, FWD_INST_LIQ_CODE, 
+    IN_INST_LIQ_CODE, PRE_CHANNEL_TYPE, MCHNT_NM_ADDR, SPECIAL_BILL_TYPE, SPECIAL_BILL_CLASS, 
+    MISC_1, CARD_PRO_INFO, ORIG_TXN_NUM, TRANS_START_WAY, ACC_SETTLEMENT_TYPE, ORDER_NUMBER, 
+    MISC_2, SEQ_NUM, TXN_TYPE, ORIG_PROCESSING_CODE, MER_FEE, MER_STL_BANK, MER_STL_BANK_COST, 
+    SERVER_ROLE1, SERVER_ROLE1_FEE, SERVER_ROLE2, SERVER_ROLE2_FEE, SERVER_ROLE3, SERVER_ROLE3_FEE, 
+    SERVER_ROLE4, SERVER_ROLE4_FEE, SERVER_ROLE5, SERVER_ROLE5_FEE, SERVER_ROLE6, SERVER_ROLE6_FEE, 
+    SERVER_ROLE7, SERVER_ROLE7_FEE, SERVER_ROLE8, SERVER_ROLE8_FEE, SERVER_ROLE9, SERVER_ROLE9_FEE, 
+    CUSTOM_FEE1, CUSTOM_FEE2, CUSTOM_FEE3, OPR_TM, OPR_TYPE, OPR_DESC, OPR_RESULT, FWD_INST_LIQ_CODEN, 
+    MISC_3, MISC_4, STAGE_PAY_ADD_FEEN, OPEN_INST, RSP_CODE, RSP_MSG, CARD_TP, INCOME_STATUS, 
+    EXPEND_STATUS, KH_STATUS
+  </sql>
+  
+  <insert id="insert" parameterType="com.ccbp.core.bus.model.batch.BthCupTxnErr" >
+    insert into BTH_CUP_TXN_ERR_HIS (INTER_BRH_CODE, DATE_SETTLMT, TXN_NUM, 
+      KEY_CUP, FLAG_RESULT, ACQ_INST_ID_CODE, 
+      FWD_INST_ID_CODE, CUP_SSN, TRANS_DATE_TIME, 
+      PAN, AMT_TRANS, MSG_TYPE, 
+      PROCESSING_CODE, MCHNT_TYPE, CARD_ACCP_TERM_ID, 
+      PRE_TRANS_RETRIVL_REF, POS_COND_CODE, AUTHR_ID_RESP, 
+      RCVG_CODE, ISSUER_CODE, PRE_TRANS_CUP_SSN, 
+      RESP_CODE, POS_ENTRY_MODE, FEE_CREDIT, 
+      FEE_DEBIT, STAGE_PAY_ADD_FEE, FEE_XFER, 
+      AMT_CREDIT, AMT_DEBIT, ERR_REASON, 
+      CODE_XFER_O, PAN_XFER_O, CODE_XFER_I, 
+      PAN_XFER_I, PRE_TRANS_DATE_TIME, CARD_SEQ_NUM, 
+      TERM_CAP, CHIP_COND, PRE_TRANS_LIQ_DATE, 
+      PRE_TRANS_LIQ_AMT, FLAG_DOMESTIC, ECI_FLAG, 
+      CARD_ACCP_ID, FWD_INST_LIQ_CODE, IN_INST_LIQ_CODE, 
+      PRE_CHANNEL_TYPE, MCHNT_NM_ADDR, SPECIAL_BILL_TYPE, 
+      SPECIAL_BILL_CLASS, MISC_1, CARD_PRO_INFO, 
+      ORIG_TXN_NUM, TRANS_START_WAY, ACC_SETTLEMENT_TYPE, 
+      ORDER_NUMBER, MISC_2, SEQ_NUM, 
+      TXN_TYPE, ORIG_PROCESSING_CODE, MER_FEE, 
+      MER_STL_BANK, MER_STL_BANK_COST, SERVER_ROLE1, 
+      SERVER_ROLE1_FEE, SERVER_ROLE2, SERVER_ROLE2_FEE, 
+      SERVER_ROLE3, SERVER_ROLE3_FEE, SERVER_ROLE4, 
+      SERVER_ROLE4_FEE, SERVER_ROLE5, SERVER_ROLE5_FEE, 
+      SERVER_ROLE6, SERVER_ROLE6_FEE, SERVER_ROLE7, 
+      SERVER_ROLE7_FEE, SERVER_ROLE8, SERVER_ROLE8_FEE, 
+      SERVER_ROLE9, SERVER_ROLE9_FEE, CUSTOM_FEE1, 
+      CUSTOM_FEE2, CUSTOM_FEE3, OPR_TM, 
+      OPR_TYPE, OPR_DESC, OPR_RESULT, 
+      FWD_INST_LIQ_CODEN, MISC_3, MISC_4, 
+      STAGE_PAY_ADD_FEEN, OPEN_INST, RSP_CODE, 
+      RSP_MSG, CARD_TP, INCOME_STATUS, 
+      EXPEND_STATUS, KH_STATUS)
+    values (#{interBrhCode,jdbcType=VARCHAR}, #{dateSettlmt,jdbcType=VARCHAR}, #{txnNum,jdbcType=VARCHAR}, 
+      #{keyCup,jdbcType=VARCHAR}, #{flagResult,jdbcType=VARCHAR}, #{acqInstIdCode,jdbcType=VARCHAR}, 
+      #{fwdInstIdCode,jdbcType=VARCHAR}, #{cupSsn,jdbcType=VARCHAR}, #{transDateTime,jdbcType=VARCHAR}, 
+      #{pan,jdbcType=VARCHAR}, #{amtTrans,jdbcType=VARCHAR}, #{msgType,jdbcType=VARCHAR}, 
+      #{processingCode,jdbcType=VARCHAR}, #{mchntType,jdbcType=VARCHAR}, #{cardAccpTermId,jdbcType=VARCHAR}, 
+      #{preTransRetrivlRef,jdbcType=VARCHAR}, #{posCondCode,jdbcType=VARCHAR}, #{authrIdResp,jdbcType=VARCHAR}, 
+      #{rcvgCode,jdbcType=VARCHAR}, #{issuerCode,jdbcType=VARCHAR}, #{preTransCupSsn,jdbcType=VARCHAR}, 
+      #{respCode,jdbcType=VARCHAR}, #{posEntryMode,jdbcType=VARCHAR}, #{feeCredit,jdbcType=DECIMAL}, 
+      #{feeDebit,jdbcType=DECIMAL}, #{stagePayAddFee,jdbcType=DECIMAL}, #{feeXfer,jdbcType=DECIMAL}, 
+      #{amtCredit,jdbcType=DECIMAL}, #{amtDebit,jdbcType=DECIMAL}, #{errReason,jdbcType=VARCHAR}, 
+      #{codeXferO,jdbcType=VARCHAR}, #{panXferO,jdbcType=VARCHAR}, #{codeXferI,jdbcType=VARCHAR}, 
+      #{panXferI,jdbcType=VARCHAR}, #{preTransDateTime,jdbcType=VARCHAR}, #{cardSeqNum,jdbcType=VARCHAR}, 
+      #{termCap,jdbcType=VARCHAR}, #{chipCond,jdbcType=VARCHAR}, #{preTransLiqDate,jdbcType=VARCHAR}, 
+      #{preTransLiqAmt,jdbcType=DECIMAL}, #{flagDomestic,jdbcType=VARCHAR}, #{eciFlag,jdbcType=VARCHAR}, 
+      #{cardAccpId,jdbcType=VARCHAR}, #{fwdInstLiqCode,jdbcType=VARCHAR}, #{inInstLiqCode,jdbcType=VARCHAR}, 
+      #{preChannelType,jdbcType=VARCHAR}, #{mchntNmAddr,jdbcType=VARCHAR}, #{specialBillType,jdbcType=VARCHAR}, 
+      #{specialBillClass,jdbcType=VARCHAR}, #{misc1,jdbcType=VARCHAR}, #{cardProInfo,jdbcType=VARCHAR}, 
+      #{origTxnNum,jdbcType=VARCHAR}, #{transStartWay,jdbcType=VARCHAR}, #{accSettlementType,jdbcType=VARCHAR}, 
+      #{orderNumber,jdbcType=VARCHAR}, #{misc2,jdbcType=VARCHAR}, #{seqNum,jdbcType=DECIMAL}, 
+      #{txnType,jdbcType=VARCHAR}, #{origProcessingCode,jdbcType=VARCHAR}, #{merFee,jdbcType=DECIMAL}, 
+      #{merStlBank,jdbcType=VARCHAR}, #{merStlBankCost,jdbcType=VARCHAR}, #{serverRole1,jdbcType=VARCHAR}, 
+      #{serverRole1Fee,jdbcType=VARCHAR}, #{serverRole2,jdbcType=VARCHAR}, #{serverRole2Fee,jdbcType=VARCHAR}, 
+      #{serverRole3,jdbcType=VARCHAR}, #{serverRole3Fee,jdbcType=VARCHAR}, #{serverRole4,jdbcType=VARCHAR}, 
+      #{serverRole4Fee,jdbcType=VARCHAR}, #{serverRole5,jdbcType=VARCHAR}, #{serverRole5Fee,jdbcType=VARCHAR}, 
+      #{serverRole6,jdbcType=VARCHAR}, #{serverRole6Fee,jdbcType=VARCHAR}, #{serverRole7,jdbcType=VARCHAR}, 
+      #{serverRole7Fee,jdbcType=VARCHAR}, #{serverRole8,jdbcType=VARCHAR}, #{serverRole8Fee,jdbcType=VARCHAR}, 
+      #{serverRole9,jdbcType=VARCHAR}, #{serverRole9Fee,jdbcType=VARCHAR}, #{customFee1,jdbcType=VARCHAR}, 
+      #{customFee2,jdbcType=VARCHAR}, #{customFee3,jdbcType=VARCHAR}, #{oprTm,jdbcType=VARCHAR}, 
+      #{oprType,jdbcType=VARCHAR}, #{oprDesc,jdbcType=VARCHAR}, #{oprResult,jdbcType=VARCHAR}, 
+      #{fwdInstLiqCoden,jdbcType=VARCHAR}, #{misc3,jdbcType=VARCHAR}, #{misc4,jdbcType=VARCHAR}, 
+      #{stagePayAddFeen,jdbcType=DECIMAL}, #{openInst,jdbcType=VARCHAR}, #{rspCode,jdbcType=VARCHAR}, 
+      #{rspMsg,jdbcType=VARCHAR}, #{cardTp,jdbcType=VARCHAR}, #{incomeStatus,jdbcType=VARCHAR}, 
+      #{expendStatus,jdbcType=VARCHAR}, #{khStatus,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ccbp.core.bus.model.batch.BthCupTxnErr" >
+    insert into BTH_CUP_TXN_ERR_HIS
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="interBrhCode != null" >
+        INTER_BRH_CODE,
+      </if>
+      <if test="dateSettlmt != null" >
+        DATE_SETTLMT,
+      </if>
+      <if test="txnNum != null" >
+        TXN_NUM,
+      </if>
+      <if test="keyCup != null" >
+        KEY_CUP,
+      </if>
+      <if test="flagResult != null" >
+        FLAG_RESULT,
+      </if>
+      <if test="acqInstIdCode != null" >
+        ACQ_INST_ID_CODE,
+      </if>
+      <if test="fwdInstIdCode != null" >
+        FWD_INST_ID_CODE,
+      </if>
+      <if test="cupSsn != null" >
+        CUP_SSN,
+      </if>
+      <if test="transDateTime != null" >
+        TRANS_DATE_TIME,
+      </if>
+      <if test="pan != null" >
+        PAN,
+      </if>
+      <if test="amtTrans != null" >
+        AMT_TRANS,
+      </if>
+      <if test="msgType != null" >
+        MSG_TYPE,
+      </if>
+      <if test="processingCode != null" >
+        PROCESSING_CODE,
+      </if>
+      <if test="mchntType != null" >
+        MCHNT_TYPE,
+      </if>
+      <if test="cardAccpTermId != null" >
+        CARD_ACCP_TERM_ID,
+      </if>
+      <if test="preTransRetrivlRef != null" >
+        PRE_TRANS_RETRIVL_REF,
+      </if>
+      <if test="posCondCode != null" >
+        POS_COND_CODE,
+      </if>
+      <if test="authrIdResp != null" >
+        AUTHR_ID_RESP,
+      </if>
+      <if test="rcvgCode != null" >
+        RCVG_CODE,
+      </if>
+      <if test="issuerCode != null" >
+        ISSUER_CODE,
+      </if>
+      <if test="preTransCupSsn != null" >
+        PRE_TRANS_CUP_SSN,
+      </if>
+      <if test="respCode != null" >
+        RESP_CODE,
+      </if>
+      <if test="posEntryMode != null" >
+        POS_ENTRY_MODE,
+      </if>
+      <if test="feeCredit != null" >
+        FEE_CREDIT,
+      </if>
+      <if test="feeDebit != null" >
+        FEE_DEBIT,
+      </if>
+      <if test="stagePayAddFee != null" >
+        STAGE_PAY_ADD_FEE,
+      </if>
+      <if test="feeXfer != null" >
+        FEE_XFER,
+      </if>
+      <if test="amtCredit != null" >
+        AMT_CREDIT,
+      </if>
+      <if test="amtDebit != null" >
+        AMT_DEBIT,
+      </if>
+      <if test="errReason != null" >
+        ERR_REASON,
+      </if>
+      <if test="codeXferO != null" >
+        CODE_XFER_O,
+      </if>
+      <if test="panXferO != null" >
+        PAN_XFER_O,
+      </if>
+      <if test="codeXferI != null" >
+        CODE_XFER_I,
+      </if>
+      <if test="panXferI != null" >
+        PAN_XFER_I,
+      </if>
+      <if test="preTransDateTime != null" >
+        PRE_TRANS_DATE_TIME,
+      </if>
+      <if test="cardSeqNum != null" >
+        CARD_SEQ_NUM,
+      </if>
+      <if test="termCap != null" >
+        TERM_CAP,
+      </if>
+      <if test="chipCond != null" >
+        CHIP_COND,
+      </if>
+      <if test="preTransLiqDate != null" >
+        PRE_TRANS_LIQ_DATE,
+      </if>
+      <if test="preTransLiqAmt != null" >
+        PRE_TRANS_LIQ_AMT,
+      </if>
+      <if test="flagDomestic != null" >
+        FLAG_DOMESTIC,
+      </if>
+      <if test="eciFlag != null" >
+        ECI_FLAG,
+      </if>
+      <if test="cardAccpId != null" >
+        CARD_ACCP_ID,
+      </if>
+      <if test="fwdInstLiqCode != null" >
+        FWD_INST_LIQ_CODE,
+      </if>
+      <if test="inInstLiqCode != null" >
+        IN_INST_LIQ_CODE,
+      </if>
+      <if test="preChannelType != null" >
+        PRE_CHANNEL_TYPE,
+      </if>
+      <if test="mchntNmAddr != null" >
+        MCHNT_NM_ADDR,
+      </if>
+      <if test="specialBillType != null" >
+        SPECIAL_BILL_TYPE,
+      </if>
+      <if test="specialBillClass != null" >
+        SPECIAL_BILL_CLASS,
+      </if>
+      <if test="misc1 != null" >
+        MISC_1,
+      </if>
+      <if test="cardProInfo != null" >
+        CARD_PRO_INFO,
+      </if>
+      <if test="origTxnNum != null" >
+        ORIG_TXN_NUM,
+      </if>
+      <if test="transStartWay != null" >
+        TRANS_START_WAY,
+      </if>
+      <if test="accSettlementType != null" >
+        ACC_SETTLEMENT_TYPE,
+      </if>
+      <if test="orderNumber != null" >
+        ORDER_NUMBER,
+      </if>
+      <if test="misc2 != null" >
+        MISC_2,
+      </if>
+      <if test="seqNum != null" >
+        SEQ_NUM,
+      </if>
+      <if test="txnType != null" >
+        TXN_TYPE,
+      </if>
+      <if test="origProcessingCode != null" >
+        ORIG_PROCESSING_CODE,
+      </if>
+      <if test="merFee != null" >
+        MER_FEE,
+      </if>
+      <if test="merStlBank != null" >
+        MER_STL_BANK,
+      </if>
+      <if test="merStlBankCost != null" >
+        MER_STL_BANK_COST,
+      </if>
+      <if test="serverRole1 != null" >
+        SERVER_ROLE1,
+      </if>
+      <if test="serverRole1Fee != null" >
+        SERVER_ROLE1_FEE,
+      </if>
+      <if test="serverRole2 != null" >
+        SERVER_ROLE2,
+      </if>
+      <if test="serverRole2Fee != null" >
+        SERVER_ROLE2_FEE,
+      </if>
+      <if test="serverRole3 != null" >
+        SERVER_ROLE3,
+      </if>
+      <if test="serverRole3Fee != null" >
+        SERVER_ROLE3_FEE,
+      </if>
+      <if test="serverRole4 != null" >
+        SERVER_ROLE4,
+      </if>
+      <if test="serverRole4Fee != null" >
+        SERVER_ROLE4_FEE,
+      </if>
+      <if test="serverRole5 != null" >
+        SERVER_ROLE5,
+      </if>
+      <if test="serverRole5Fee != null" >
+        SERVER_ROLE5_FEE,
+      </if>
+      <if test="serverRole6 != null" >
+        SERVER_ROLE6,
+      </if>
+      <if test="serverRole6Fee != null" >
+        SERVER_ROLE6_FEE,
+      </if>
+      <if test="serverRole7 != null" >
+        SERVER_ROLE7,
+      </if>
+      <if test="serverRole7Fee != null" >
+        SERVER_ROLE7_FEE,
+      </if>
+      <if test="serverRole8 != null" >
+        SERVER_ROLE8,
+      </if>
+      <if test="serverRole8Fee != null" >
+        SERVER_ROLE8_FEE,
+      </if>
+      <if test="serverRole9 != null" >
+        SERVER_ROLE9,
+      </if>
+      <if test="serverRole9Fee != null" >
+        SERVER_ROLE9_FEE,
+      </if>
+      <if test="customFee1 != null" >
+        CUSTOM_FEE1,
+      </if>
+      <if test="customFee2 != null" >
+        CUSTOM_FEE2,
+      </if>
+      <if test="customFee3 != null" >
+        CUSTOM_FEE3,
+      </if>
+      <if test="oprTm != null" >
+        OPR_TM,
+      </if>
+      <if test="oprType != null" >
+        OPR_TYPE,
+      </if>
+      <if test="oprDesc != null" >
+        OPR_DESC,
+      </if>
+      <if test="oprResult != null" >
+        OPR_RESULT,
+      </if>
+      <if test="fwdInstLiqCoden != null" >
+        FWD_INST_LIQ_CODEN,
+      </if>
+      <if test="misc3 != null" >
+        MISC_3,
+      </if>
+      <if test="misc4 != null" >
+        MISC_4,
+      </if>
+      <if test="stagePayAddFeen != null" >
+        STAGE_PAY_ADD_FEEN,
+      </if>
+      <if test="openInst != null" >
+        OPEN_INST,
+      </if>
+      <if test="rspCode != null" >
+        RSP_CODE,
+      </if>
+      <if test="rspMsg != null" >
+        RSP_MSG,
+      </if>
+      <if test="cardTp != null" >
+        CARD_TP,
+      </if>
+      <if test="incomeStatus != null" >
+        INCOME_STATUS,
+      </if>
+      <if test="expendStatus != null" >
+        EXPEND_STATUS,
+      </if>
+      <if test="khStatus != null" >
+        KH_STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="interBrhCode != null" >
+        #{interBrhCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dateSettlmt != null" >
+        #{dateSettlmt,jdbcType=VARCHAR},
+      </if>
+      <if test="txnNum != null" >
+        #{txnNum,jdbcType=VARCHAR},
+      </if>
+      <if test="keyCup != null" >
+        #{keyCup,jdbcType=VARCHAR},
+      </if>
+      <if test="flagResult != null" >
+        #{flagResult,jdbcType=VARCHAR},
+      </if>
+      <if test="acqInstIdCode != null" >
+        #{acqInstIdCode,jdbcType=VARCHAR},
+      </if>
+      <if test="fwdInstIdCode != null" >
+        #{fwdInstIdCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cupSsn != null" >
+        #{cupSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="transDateTime != null" >
+        #{transDateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="pan != null" >
+        #{pan,jdbcType=VARCHAR},
+      </if>
+      <if test="amtTrans != null" >
+        #{amtTrans,jdbcType=VARCHAR},
+      </if>
+      <if test="msgType != null" >
+        #{msgType,jdbcType=VARCHAR},
+      </if>
+      <if test="processingCode != null" >
+        #{processingCode,jdbcType=VARCHAR},
+      </if>
+      <if test="mchntType != null" >
+        #{mchntType,jdbcType=VARCHAR},
+      </if>
+      <if test="cardAccpTermId != null" >
+        #{cardAccpTermId,jdbcType=VARCHAR},
+      </if>
+      <if test="preTransRetrivlRef != null" >
+        #{preTransRetrivlRef,jdbcType=VARCHAR},
+      </if>
+      <if test="posCondCode != null" >
+        #{posCondCode,jdbcType=VARCHAR},
+      </if>
+      <if test="authrIdResp != null" >
+        #{authrIdResp,jdbcType=VARCHAR},
+      </if>
+      <if test="rcvgCode != null" >
+        #{rcvgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="issuerCode != null" >
+        #{issuerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="preTransCupSsn != null" >
+        #{preTransCupSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="respCode != null" >
+        #{respCode,jdbcType=VARCHAR},
+      </if>
+      <if test="posEntryMode != null" >
+        #{posEntryMode,jdbcType=VARCHAR},
+      </if>
+      <if test="feeCredit != null" >
+        #{feeCredit,jdbcType=DECIMAL},
+      </if>
+      <if test="feeDebit != null" >
+        #{feeDebit,jdbcType=DECIMAL},
+      </if>
+      <if test="stagePayAddFee != null" >
+        #{stagePayAddFee,jdbcType=DECIMAL},
+      </if>
+      <if test="feeXfer != null" >
+        #{feeXfer,jdbcType=DECIMAL},
+      </if>
+      <if test="amtCredit != null" >
+        #{amtCredit,jdbcType=DECIMAL},
+      </if>
+      <if test="amtDebit != null" >
+        #{amtDebit,jdbcType=DECIMAL},
+      </if>
+      <if test="errReason != null" >
+        #{errReason,jdbcType=VARCHAR},
+      </if>
+      <if test="codeXferO != null" >
+        #{codeXferO,jdbcType=VARCHAR},
+      </if>
+      <if test="panXferO != null" >
+        #{panXferO,jdbcType=VARCHAR},
+      </if>
+      <if test="codeXferI != null" >
+        #{codeXferI,jdbcType=VARCHAR},
+      </if>
+      <if test="panXferI != null" >
+        #{panXferI,jdbcType=VARCHAR},
+      </if>
+      <if test="preTransDateTime != null" >
+        #{preTransDateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="cardSeqNum != null" >
+        #{cardSeqNum,jdbcType=VARCHAR},
+      </if>
+      <if test="termCap != null" >
+        #{termCap,jdbcType=VARCHAR},
+      </if>
+      <if test="chipCond != null" >
+        #{chipCond,jdbcType=VARCHAR},
+      </if>
+      <if test="preTransLiqDate != null" >
+        #{preTransLiqDate,jdbcType=VARCHAR},
+      </if>
+      <if test="preTransLiqAmt != null" >
+        #{preTransLiqAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="flagDomestic != null" >
+        #{flagDomestic,jdbcType=VARCHAR},
+      </if>
+      <if test="eciFlag != null" >
+        #{eciFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="cardAccpId != null" >
+        #{cardAccpId,jdbcType=VARCHAR},
+      </if>
+      <if test="fwdInstLiqCode != null" >
+        #{fwdInstLiqCode,jdbcType=VARCHAR},
+      </if>
+      <if test="inInstLiqCode != null" >
+        #{inInstLiqCode,jdbcType=VARCHAR},
+      </if>
+      <if test="preChannelType != null" >
+        #{preChannelType,jdbcType=VARCHAR},
+      </if>
+      <if test="mchntNmAddr != null" >
+        #{mchntNmAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="specialBillType != null" >
+        #{specialBillType,jdbcType=VARCHAR},
+      </if>
+      <if test="specialBillClass != null" >
+        #{specialBillClass,jdbcType=VARCHAR},
+      </if>
+      <if test="misc1 != null" >
+        #{misc1,jdbcType=VARCHAR},
+      </if>
+      <if test="cardProInfo != null" >
+        #{cardProInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="origTxnNum != null" >
+        #{origTxnNum,jdbcType=VARCHAR},
+      </if>
+      <if test="transStartWay != null" >
+        #{transStartWay,jdbcType=VARCHAR},
+      </if>
+      <if test="accSettlementType != null" >
+        #{accSettlementType,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNumber != null" >
+        #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="misc2 != null" >
+        #{misc2,jdbcType=VARCHAR},
+      </if>
+      <if test="seqNum != null" >
+        #{seqNum,jdbcType=DECIMAL},
+      </if>
+      <if test="txnType != null" >
+        #{txnType,jdbcType=VARCHAR},
+      </if>
+      <if test="origProcessingCode != null" >
+        #{origProcessingCode,jdbcType=VARCHAR},
+      </if>
+      <if test="merFee != null" >
+        #{merFee,jdbcType=DECIMAL},
+      </if>
+      <if test="merStlBank != null" >
+        #{merStlBank,jdbcType=VARCHAR},
+      </if>
+      <if test="merStlBankCost != null" >
+        #{merStlBankCost,jdbcType=VARCHAR},
+      </if>
+      <if test="serverRole1 != null" >
+        #{serverRole1,jdbcType=VARCHAR},
+      </if>
+      <if test="serverRole1Fee != null" >
+        #{serverRole1Fee,jdbcType=VARCHAR},
+      </if>
+      <if test="serverRole2 != null" >
+        #{serverRole2,jdbcType=VARCHAR},
+      </if>
+      <if test="serverRole2Fee != null" >
+        #{serverRole2Fee,jdbcType=VARCHAR},
+      </if>
+      <if test="serverRole3 != null" >
+        #{serverRole3,jdbcType=VARCHAR},
+      </if>
+      <if test="serverRole3Fee != null" >
+        #{serverRole3Fee,jdbcType=VARCHAR},
+      </if>
+      <if test="serverRole4 != null" >
+        #{serverRole4,jdbcType=VARCHAR},
+      </if>
+      <if test="serverRole4Fee != null" >
+        #{serverRole4Fee,jdbcType=VARCHAR},
+      </if>
+      <if test="serverRole5 != null" >
+        #{serverRole5,jdbcType=VARCHAR},
+      </if>
+      <if test="serverRole5Fee != null" >
+        #{serverRole5Fee,jdbcType=VARCHAR},
+      </if>
+      <if test="serverRole6 != null" >
+        #{serverRole6,jdbcType=VARCHAR},
+      </if>
+      <if test="serverRole6Fee != null" >
+        #{serverRole6Fee,jdbcType=VARCHAR},
+      </if>
+      <if test="serverRole7 != null" >
+        #{serverRole7,jdbcType=VARCHAR},
+      </if>
+      <if test="serverRole7Fee != null" >
+        #{serverRole7Fee,jdbcType=VARCHAR},
+      </if>
+      <if test="serverRole8 != null" >
+        #{serverRole8,jdbcType=VARCHAR},
+      </if>
+      <if test="serverRole8Fee != null" >
+        #{serverRole8Fee,jdbcType=VARCHAR},
+      </if>
+      <if test="serverRole9 != null" >
+        #{serverRole9,jdbcType=VARCHAR},
+      </if>
+      <if test="serverRole9Fee != null" >
+        #{serverRole9Fee,jdbcType=VARCHAR},
+      </if>
+      <if test="customFee1 != null" >
+        #{customFee1,jdbcType=VARCHAR},
+      </if>
+      <if test="customFee2 != null" >
+        #{customFee2,jdbcType=VARCHAR},
+      </if>
+      <if test="customFee3 != null" >
+        #{customFee3,jdbcType=VARCHAR},
+      </if>
+      <if test="oprTm != null" >
+        #{oprTm,jdbcType=VARCHAR},
+      </if>
+      <if test="oprType != null" >
+        #{oprType,jdbcType=VARCHAR},
+      </if>
+      <if test="oprDesc != null" >
+        #{oprDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="oprResult != null" >
+        #{oprResult,jdbcType=VARCHAR},
+      </if>
+      <if test="fwdInstLiqCoden != null" >
+        #{fwdInstLiqCoden,jdbcType=VARCHAR},
+      </if>
+      <if test="misc3 != null" >
+        #{misc3,jdbcType=VARCHAR},
+      </if>
+      <if test="misc4 != null" >
+        #{misc4,jdbcType=VARCHAR},
+      </if>
+      <if test="stagePayAddFeen != null" >
+        #{stagePayAddFeen,jdbcType=DECIMAL},
+      </if>
+      <if test="openInst != null" >
+        #{openInst,jdbcType=VARCHAR},
+      </if>
+      <if test="rspCode != null" >
+        #{rspCode,jdbcType=VARCHAR},
+      </if>
+      <if test="rspMsg != null" >
+        #{rspMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="cardTp != null" >
+        #{cardTp,jdbcType=VARCHAR},
+      </if>
+      <if test="incomeStatus != null" >
+        #{incomeStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="expendStatus != null" >
+        #{expendStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="khStatus != null" >
+        #{khStatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  
+  <select id="selectByCondition" resultMap="BaseResultMap" parameterType="com.ccbp.core.bus.model.batch.QueryErrTxn" >
+	   
+    SELECT <include refid="Base_Column_List" />,
+    						KEY_CUP AS UUID,TRAN_DT,
+                           TRAN_AMT,
+                           pye_Acct_Nb,
+                          pye_Acct_Svcr,
+                           AUTB_ID,
+                           REF_NB,
+                           pyr_Acct_Svcr,
+                           dispose_Status,
+                           FUND_FLG
+     FROM (SELECT ROWNUM                rn,b.*
+               FROM (SELECT t.*,
+                           substr(t.date_settlmt, 5) as TRAN_DT,
+                           t.AMT_TRANS as TRAN_AMT,
+                           t.PAN_XFER_I as pye_Acct_Nb,
+                           t.PAN_XFER_I pye_Acct_Svcr,
+                           t.AUTHR_ID_RESP AUTB_ID,
+                           t.PRE_TRANS_RETRIVL_REF as REF_NB,
+                           t.code_xfer_o as pyr_Acct_Svcr,
+                           t.OPR_RESULT as dispose_Status,
+                           inf.misc2 FUND_FLG
+                      FROM BTH_CUP_TXN_ERR_HIS t
+                      JOIN TBL_CUP_TRANS_IFNO inf
+                        ON t.txn_num = inf.txn_num
+                     WHERE 
+	                t.DATE_SETTLMT = #{dateSettlmt,jdbcType=VARCHAR}
+	                 <if test="pan !=null and pan !='' ">
+	                   and t.PAN =#{pan}
+	                 </if>
+	                 <if test="merId !=null and merId !='' ">
+	                   and t.CARD_ACCP_ID =#{merId}
+	                 </if>
+	                 <if test="temId !=null and temId !='' ">
+	                   and t.CARD_ACCP_TERM_ID =#{temId}
+	                 </if>
+	                 <if test="disposeStatus !=null and disposeStatus !='' ">
+	                   and t.opr_result =#{disposeStatus}
+	                 </if>
+	                 
+	                  <if test="incomeStatus !=null and incomeStatus !='' ">
+	                   and t.INCOME_STATUS  =#{incomeStatus}
+	                 </if>
+	                  <if test="expendStatus !=null and expendStatus !='' ">
+	                   and  t.EXPEND_STATUS=#{expendStatus}
+	                 </if>
+	                 <if test="khStatus !=null and khStatus !='' ">
+	                   and t.KH_STATUS=#{khStatus}
+	                 </if>
+	                  <if test="fundFlg !=null and fundFlg !='' ">
+	                   and inf.misc2 =#{fundFlg}
+	                 </if>
+	                 and substr(t.txn_type, 0, 1) = inf.ai_mark
+	                ORDER BY t.DATE_SETTLMT,t.KEY_CUP DESC 
+	              ) b
+	         ) 
+     WHERE 
+        rn   <![CDATA[> #{beginNo}]]>    AND rn   <![CDATA[<= #{endNo}]]>  
+  </select>
+  
+  
+  <select id="countByCondition"   resultType="java.lang.Integer"  parameterType="com.ccbp.core.bus.model.batch.QueryErrTxn" >
+	   
+   		SELECT 
+   			COUNT (1)
+                    FROM BTH_CUP_TXN_ERR_HIS t
+                    JOIN TBL_CUP_TRANS_IFNO inf
+                      ON t.txn_num = inf.txn_num
+                   WHERE 
+               t.DATE_SETTLMT = #{dateSettlmt,jdbcType=VARCHAR}
+                <if test="pan !=null and pan !='' ">
+                  and t.PAN =#{pan}
+                </if>
+                <if test="merId !=null and merId !='' ">
+                  and t.CARD_ACCP_ID =#{merId}
+                </if>
+                <if test="temId !=null and temId !='' ">
+                  and t.CARD_ACCP_TERM_ID =#{temId}
+                </if>
+                <if test="disposeStatus !=null and disposeStatus !='' ">
+                  and t.opr_result =#{disposeStatus}
+                </if>
+                
+                 <if test="incomeStatus !=null and incomeStatus !='' ">
+                  and t.INCOME_STATUS  =#{incomeStatus}
+                </if>
+                 <if test="expendStatus !=null and expendStatus !='' ">
+                  and  t.EXPEND_STATUS=#{expendStatus}
+                </if>
+                <if test="khStatus !=null and khStatus !='' ">
+                  and t.KH_STATUS=#{khStatus}
+                </if>
+                 <if test="fundFlg !=null and fundFlg !='' ">
+                  and inf.misc2 =#{fundFlg}
+                </if>
+                and substr(t.txn_type, 0, 1) = inf.ai_mark
+               ORDER BY t.DATE_SETTLMT,t.KEY_CUP DESC 
+	              
+  </select>
+  
+  <update id="updateByPrimaryKeyDisopseSt" parameterType="java.lang.String" >
+    update 
+    	BTH_CUP_TXN_ERR_HIS
+    SET
+        opr_result =#{disposeStatus}
+    where 
+    	KEY_CUP = #{uuid,jdbcType=VARCHAR}
+     and 
+    	DATE_SETTLMT = #{dateSettlmt,jdbcType=VARCHAR}
+  </update>
+  
+  <update id="updateByPrimaryKeyIncomeSt" parameterType="java.lang.String" >
+    update 
+    	BTH_CUP_TXN_ERR_HIS
+    SET
+        INCOME_STATUS  =#{incomeStatus}
+    where 
+    	KEY_CUP = #{uuid,jdbcType=VARCHAR}
+     and 
+    	DATE_SETTLMT = #{dateSettlmt,jdbcType=VARCHAR}
+  </update>
+  
+   <update id="updateByPrimaryKeyExpendSt" parameterType="java.lang.String" >
+    update 
+    	BTH_CUP_TXN_ERR_HIS
+    SET
+        EXPEND_STATUS=#{expendStatus}
+    where 
+    	KEY_CUP = #{uuid,jdbcType=VARCHAR}
+     and 
+    	DATE_SETTLMT = #{dateSettlmt,jdbcType=VARCHAR}
+  </update>
+  
+   <update id="updateByPrimaryKeyKhSt" parameterType="java.lang.String" >
+    update 
+    	BTH_CUP_TXN_ERR_HIS
+    SET
+        KH_STATUS=#{khStatus}
+    where 
+    	KEY_CUP = #{uuid,jdbcType=VARCHAR}
+     and 
+    	DATE_SETTLMT = #{dateSettlmt,jdbcType=VARCHAR}
+  </update>
+  
+  
+  
+  <select id="selectByPrimaryKey"  resultMap="BaseResultMap" parameterType="java.lang.String" >
+	 
+			   SELECT 
+			   		<include refid="Base_Column_List" />
+			   FROM 
+			   		BTH_CUP_TXN_ERR_HIS 
+			  where 
+		    	KEY_CUP = #{uuid,jdbcType=VARCHAR}
+		     and 
+		    	DATE_SETTLMT = #{dateSettlmt,jdbcType=VARCHAR}
+      
+  </select>
+</mapper>

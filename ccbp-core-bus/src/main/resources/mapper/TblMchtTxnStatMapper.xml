@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbp.core.bus.mapper.TblMchtTxnStatMapper">
+
+	<resultMap id="BaseResultMap" type="java.util.Map">
+		<id column="MCHT_ID" jdbcType="VARCHAR" property="mchtId" />
+		<id column="CURRENT_DT" jdbcType="VARCHAR" property="currentDt" />
+		<result column="MCHT_NAME" jdbcType="VARCHAR" property="mchtName" />
+		<result column="MCC_ID" jdbcType="VARCHAR" property="mccId" />
+		<result column="TXN_DAY_CNT" jdbcType="INTEGER" property="txnDayCnt" />
+		<result column="TXN_DAY_AMT" jdbcType="DOUBLE" property="txnDayAmt" />
+		<result column="CRT_OPR" jdbcType="VARCHAR" property="crtOpr" />
+	    <result column="CRT_DT" jdbcType="VARCHAR" property="crtDt" />
+	    <result column="UPD_OPR" jdbcType="VARCHAR" property="updOpr" />
+	    <result column="UPD_DT" jdbcType="VARCHAR" property="updDt" />
+	    <result column="MISC" jdbcType="VARCHAR" property="misc" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		MCHT_ID, CURRENT_DT, MCHT_NAME, MCC_ID, TXN_DAY_CNT, TXN_DAY_AMT, 
+		CRT_OPR, CRT_DT, UPD_OPR, UPD_DT, MISC
+	</sql>
+	
+	<select id="selectByPrimaryKey" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_MCHT_TXN_STAT
+		where MCHT_ID = #{mchtId,jdbcType=VARCHAR} and CURRENT_DT = #{currentDt,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="selectByMchtNameAndCurrentDt" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_MCHT_TXN_STAT
+		where MCHT_NAME = #{mchtName,jdbcType=VARCHAR} and CURRENT_DT = #{currentDt,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="query" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_MCHT_TXN_STAT
+		<where>
+			<if test="mchtId != null"> and MCHT_ID = #{mchtId,jdbcType=VARCHAR} </if>
+			<if test="currentDt != null"> and CURRENT_DT = #{currentDt,jdbcType=VARCHAR} </if>
+			<if test="mchtName != null"> and MCHT_NAME = #{mchtName,jdbcType=VARCHAR} </if>
+			<if test="mccId != null"> and MCC_ID = #{mccId,jdbcType=VARCHAR} </if>
+		</where> 
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.util.Map">
+		delete from TBL_MCHT_TXN_STAT
+		where MCHT_ID = #{mchtId,jdbcType=VARCHAR} and CURRENT_DT = #{currentDt,jdbcType=VARCHAR}
+	</delete>
+	
+	<insert id="insert" parameterType="java.util.Map">
+		insert into TBL_MCHT_TXN_STAT
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="mchtId != null"> MCHT_ID, </if>
+			<if test="currentDt != null"> CURRENT_DT, </if>
+			<if test="mchtName != null"> MCHT_NAME, </if>
+			<if test="mccId != null"> MCC_ID, </if>
+			<if test="txnDayCnt != null"> TXN_DAY_CNT, </if>
+			<if test="txnDayAmt != null"> TXN_DAY_AMT, </if>
+			<if test="crtOpr != null"> CRT_OPR,	</if>
+			<if test="crtDt != null"> CRT_DT, </if>
+			<if test="updOpr != null"> UPD_OPR,	</if>
+			<if test="updDt != null"> UPD_DT, </if>
+			<if test="misc != null"> MISC, </if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="mchtId != null"> #{mchtId,jdbcType=VARCHAR}, </if>
+			<if test="currentDt != null"> #{currentDt,jdbcType=VARCHAR}, </if>
+			<if test="mchtName != null"> #{mchtName,jdbcType=VARCHAR}, </if>
+			<if test="mccId != null"> #{mccId,jdbcType=VARCHAR}, </if>
+			<if test="txnDayCnt != null"> #{txnDayCnt,jdbcType=INTEGER}, </if>
+			<if test="txnDayAmt != null"> #{txnDayAmt,jdbcType=DOUBLE}, </if>
+			<if test="crtOpr != null"> #{crtOpr,jdbcType=VARCHAR}, </if>
+			<if test="crtDt != null"> #{crtDt,jdbcType=VARCHAR}, </if>
+			<if test="updOpr != null"> #{updOpr,jdbcType=VARCHAR}, </if>
+			<if test="updDt != null"> #{updDt,jdbcType=VARCHAR}, </if>
+			<if test="misc != null"> #{misc,jdbcType=VARCHAR}, </if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+		update TBL_MCHT_TXN_STAT
+		<set>
+			<if test="mchtName != null"> MCHT_NAME = #{mchtName,jdbcType=VARCHAR}, </if>
+			<if test="mccId != null"> MCC_ID = #{mccId,jdbcType=VARCHAR}, </if>
+			<if test="txnDayCnt != null"> TXN_DAY_CNT = #{txnDayCnt,jdbcType=INTEGER}, </if>
+			<if test="txnDayAmt != null"> TXN_DAY_AMT = #{txnDayAmt,jdbcType=DOUBLE}, </if>
+			<if test="updOpr != null"> UPD_OPR = #{updOpr,jdbcType=VARCHAR}, </if>
+			<if test="updDt != null"> UPD_DT = #{updDt,jdbcType=VARCHAR}, </if>
+			<if test="misc != null"> MISC = #{misc,jdbcType=VARCHAR}, </if>
+		</set>
+		where MCHT_ID = #{mchtId,jdbcType=VARCHAR} and CURRENT_DT = #{currentDt,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByMchtNameAndCurrentDt" parameterType="java.util.Map">
+		update TBL_MCHT_TXN_STAT
+		<set>
+			<if test="mccId != null"> MCC_ID = #{mccId,jdbcType=VARCHAR}, </if>
+			<if test="txnDayCnt != null"> TXN_DAY_CNT = #{txnDayCnt,jdbcType=INTEGER}, </if>
+			<if test="txnDayAmt != null"> TXN_DAY_AMT = #{txnDayAmt,jdbcType=DOUBLE}, </if>
+			<if test="updOpr != null"> UPD_OPR = #{updOpr,jdbcType=VARCHAR}, </if>
+			<if test="updDt != null"> UPD_DT = #{updDt,jdbcType=VARCHAR}, </if>
+			<if test="misc != null"> MISC = #{misc,jdbcType=VARCHAR}, </if>
+		</set>
+		where MCHT_NAME = #{mchtName,jdbcType=VARCHAR} and CURRENT_DT = #{currentDt,jdbcType=VARCHAR}
+	</update>
+</mapper>

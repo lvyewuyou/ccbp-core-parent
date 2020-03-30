@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbp.core.bus.mapper.TblSeqStMapper">
+  <resultMap id="BaseResultMap" type="java.util.Map">
+    <id column="TXN_SEQ" jdbcType="VARCHAR" property="txnSeq" />
+    <result column="SEQ_DATA" jdbcType="VARCHAR" property="seqData" />
+    <result column="MISC1" jdbcType="VARCHAR" property="misc1" />
+    <result column="MISC2" jdbcType="VARCHAR" property="misc2" />
+    <result column="MISC3" jdbcType="VARCHAR" property="misc3" />
+    <result column="MISC4" jdbcType="VARCHAR" property="misc4" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    TXN_SEQ, SEQ_DATA, MISC1, MISC2, MISC3, MISC4
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TBL_SEQ_ST
+    where TXN_SEQ = #{txnSeq,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from TBL_SEQ_ST
+    where TXN_SEQ = #{txnSeq,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="java.util.Map">
+    insert into TBL_SEQ_ST (TXN_SEQ, SEQ_DATA_CLOB, MISC1, 
+      MISC2, MISC3, MISC4
+      )
+    values (#{txnSeq,jdbcType=VARCHAR}, #{seqData,jdbcType=VARCHAR}, #{misc1,jdbcType=VARCHAR}, 
+      #{misc2,jdbcType=VARCHAR}, #{misc3,jdbcType=VARCHAR}, #{misc4,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="java.util.Map">
+    insert into TBL_SEQ_ST
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="txnSeq != null">
+        TXN_SEQ,
+      </if>
+      <if test="seqData != null">
+        SEQ_DATA_CLOB,
+      </if>
+      <if test="misc1 != null">
+        MISC1,
+      </if>
+      <if test="misc2 != null">
+        MISC2,
+      </if>
+      <if test="misc3 != null">
+        MISC3,
+      </if>
+      <if test="misc4 != null">
+        MISC4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="txnSeq != null">
+        #{txnSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="seqData != null">
+        #{seqData,jdbcType=VARCHAR},
+      </if>
+      <if test="misc1 != null">
+        #{misc1,jdbcType=VARCHAR},
+      </if>
+      <if test="misc2 != null">
+        #{misc2,jdbcType=VARCHAR},
+      </if>
+      <if test="misc3 != null">
+        #{misc3,jdbcType=VARCHAR},
+      </if>
+      <if test="misc4 != null">
+        #{misc4,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="java.util.Map">
+    update TBL_SEQ_ST
+    <set>
+      <if test="seqData != null">
+        SEQ_DATA_CLOB = #{seqData,jdbcType=VARCHAR},
+      </if>
+      <if test="misc1 != null">
+        MISC1 = #{misc1,jdbcType=VARCHAR},
+      </if>
+      <if test="misc2 != null">
+        MISC2 = #{misc2,jdbcType=VARCHAR},
+      </if>
+      <if test="misc3 != null">
+        MISC3 = #{misc3,jdbcType=VARCHAR},
+      </if>
+      <if test="misc4 != null">
+        MISC4 = #{misc4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where TXN_SEQ = #{txnSeq,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="java.util.Map">
+    update TBL_SEQ_ST
+    set SEQ_DATA_CLOB = #{seqData,jdbcType=VARCHAR},
+      MISC1 = #{misc1,jdbcType=VARCHAR},
+      MISC2 = #{misc2,jdbcType=VARCHAR},
+      MISC3 = #{misc3,jdbcType=VARCHAR},
+      MISC4 = #{misc4,jdbcType=VARCHAR}
+    where TXN_SEQ = #{txnSeq,jdbcType=VARCHAR}
+  </update>
+</mapper>

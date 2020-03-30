@@ -1,0 +1,687 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccbp.core.bus.mapper.TblErrTxnMapper" >
+  <resultMap id="BaseResultMap" type="java.util.Map">
+  <id column="SYS_SEQ" property="sysSeq" jdbcType="VARCHAR" />
+    <id column="SYS_DT" property="sysDt" jdbcType="VARCHAR" />
+    <result column="TXN_CD" property="txnCd" jdbcType="VARCHAR" />
+    <result column="TXN_DESC" property="txnDesc" jdbcType="VARCHAR" />
+    <result column="TXN_ST" property="txnSt" jdbcType="VARCHAR" />
+    <result column="ERR_CD" property="errCd" jdbcType="VARCHAR" />
+    <result column="ERR_MSG" property="errMsg" jdbcType="VARCHAR" />
+    <result column="PAN" property="pan" jdbcType="VARCHAR" />
+    <result column="DATE_SETTLMT" property="dateSettlmt" jdbcType="VARCHAR" />
+    <result column="MER_ID" property="merId" jdbcType="VARCHAR" />
+    <result column="TEM_ID" property="temId" jdbcType="VARCHAR" />
+    <result column="DISPOSE_STATUS" property="disposeStatus" jdbcType="VARCHAR" />
+    <result column="FUND_FLG" property="fundFlg" jdbcType="VARCHAR" />
+    <result column="BEGIN_NO" property="beginNo" jdbcType="VARCHAR" />
+    <result column="QUERY_NO" property="queryNo" jdbcType="VARCHAR" />
+    <result column="UUID" property="uuid" jdbcType="VARCHAR" />
+    <result column="ADJUST_FLG" property="adjustFlg" jdbcType="VARCHAR" />
+    <result column="CZ_PRO" property="czPro" jdbcType="VARCHAR" />
+    <result column="TZ_DT" property="tzDt" jdbcType="VARCHAR" />
+    <result column="HOST_SSN" property="hostSsn" jdbcType="VARCHAR" />
+    <result column="HOST_DT" property="hostDt" jdbcType="VARCHAR" />
+    <result column="HOST_TP" property="hostTp" jdbcType="VARCHAR" />
+    <result column="HOST_ERR_CD" property="hostErrCd" jdbcType="VARCHAR" />
+    <result column="HOST_ERR_MSSG" property="hostErrMssg" jdbcType="VARCHAR" />
+    <result column="CRT_OPR" property="crtOpr" jdbcType="VARCHAR" />
+    <result column="CRT_DT" property="crtDt" jdbcType="VARCHAR" />
+    <result column="UPD_OPR" property="updOpr" jdbcType="VARCHAR" />
+    <result column="UPD_DT" property="updDt" jdbcType="VARCHAR" />
+    <result column="MISC" property="misc" jdbcType="VARCHAR" />
+    <result column="TRANS_DIRECTION" property="transDirection" jdbcType="CHAR" />
+    <result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
+    <result column="TXN_CHNL_TP" property="txnChnlTp" jdbcType="VARCHAR" />
+    <result column="SMY_CD" property="smyCd" jdbcType="NVARCHAR" />
+    <result column="SMY_DSC" property="smyDsc" jdbcType="NVARCHAR" />
+    <result column="RGON_FLG" property="rgonFlg" jdbcType="VARCHAR" />
+    <result column="RGONCD" property="rgoncd" jdbcType="VARCHAR" />
+    <result column="RCNCL_INFO" property="rcnclInfo" jdbcType="VARCHAR" />
+    <result column="FH_PRO" property="fhPro" jdbcType="VARCHAR" />
+    <result column="CHANNEL_SEQ" property="channelSeq" jdbcType="VARCHAR" />
+    <result column="M_IP" property="mIp" jdbcType="VARCHAR" />
+    <result column="SN_FLG" property="snFlg" jdbcType="VARCHAR" />
+    <result column="ACCT_NO" property="acctNo" jdbcType="VARCHAR" />
+    <result column="CHRG_CD" property="chrgCd" jdbcType="VARCHAR" />
+    <result column="TRAN_AMT" property="tranAmt" jdbcType="VARCHAR" />
+    <result column="MGT_ACG_LINE_NO" property="mgtAcgLineNo" jdbcType="VARCHAR" />
+    <result column="REV_FLG" property="revFlg" jdbcType="VARCHAR" />
+    <result column="REV_SEQ" property="revSeq" jdbcType="VARCHAR" />
+    <result column="HOST_TXN_CD" property="hostTxnCd" jdbcType="VARCHAR" />
+    <result column="REQ_SEQ" property="reqSeq" jdbcType="VARCHAR" />
+    <result column="ERR_TYPE" property="errType" jdbcType="VARCHAR" />
+    <result column="KH_STATUS" property="khStatus" jdbcType="VARCHAR" />
+    <result column="INCOME_STATUS" property="incomeStatus" jdbcType="VARCHAR" />
+    <result column="EXPEND_STATUS" property="expendStatus" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SYS_SEQ, SYS_DT, TXN_CD, TXN_DESC, TXN_ST, ERR_CD, ERR_MSG, PAN, DATE_SETTLMT, MER_ID, 
+    TEM_ID, DISPOSE_STATUS, FUND_FLG, BEGIN_NO, QUERY_NO, UUID, ADJUST_FLG, CZ_PRO, TZ_DT, 
+    HOST_SSN, HOST_DT, HOST_TP, HOST_ERR_CD, HOST_ERR_MSSG, CRT_OPR, CRT_DT, UPD_OPR, 
+    UPD_DT, MISC, TRANS_DIRECTION, ORG_ID, TXN_CHNL_TP, SMY_CD, SMY_DSC, RGON_FLG, RGONCD, 
+    RCNCL_INFO, FH_PRO, CHANNEL_SEQ, M_IP, SN_FLG, ACCT_NO, CHRG_CD, TRAN_AMT, MGT_ACG_LINE_NO, 
+    REV_FLG, REV_SEQ, HOST_TXN_CD, REQ_SEQ, ERR_TYPE, KH_STATUS, INCOME_STATUS, EXPEND_STATUS
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from TBL_ERR_TXN
+    where SYS_DT = #{sysDt,jdbcType=VARCHAR}
+      and SYS_SEQ = #{sysSeq,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.util.Map" >
+    delete from TBL_ERR_TXN
+    where SYS_DT = #{sysDt,jdbcType=VARCHAR}
+      and SYS_SEQ = #{sysSeq,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="java.util.Map" >
+    insert into TBL_ERR_TXN (SYS_DT, SYS_SEQ, TXN_CD, 
+      TXN_DESC, TXN_ST, ERR_CD, 
+      ERR_MSG, PAN, DATE_SETTLMT, 
+      MER_ID, TEM_ID, DISPOSE_STATUS, 
+      FUND_FLG, BEGIN_NO, QUERY_NO, 
+      UUID, ADJUST_FLG, CZ_PRO, 
+      TZ_DT, HOST_SSN, HOST_DT, 
+      HOST_TP, HOST_ERR_CD, HOST_ERR_MSSG, 
+      CRT_OPR, CRT_DT, UPD_OPR, 
+      UPD_DT, MISC, TRANS_DIRECTION, 
+      ORG_ID, TXN_CHNL_TP, SMY_CD, 
+      SMY_DSC, RGON_FLG, RGONCD,RCNCL_INFO
+      )
+    values (#{sysDt,jdbcType=VARCHAR}, #{sysSeq,jdbcType=VARCHAR}, #{txnCd,jdbcType=VARCHAR}, 
+      #{txnDesc,jdbcType=VARCHAR}, #{txnSt,jdbcType=VARCHAR}, #{errCd,jdbcType=VARCHAR}, 
+      #{errMsg,jdbcType=VARCHAR}, #{pan,jdbcType=VARCHAR}, #{dateSettlmt,jdbcType=VARCHAR}, 
+      #{merId,jdbcType=VARCHAR}, #{temId,jdbcType=VARCHAR}, #{disposeStatus,jdbcType=VARCHAR}, 
+      #{fundFlg,jdbcType=VARCHAR}, #{beginNo,jdbcType=VARCHAR}, #{queryNo,jdbcType=VARCHAR}, 
+      #{uuid,jdbcType=VARCHAR}, #{adjustFlg,jdbcType=VARCHAR}, #{czPro,jdbcType=VARCHAR}, 
+      #{tzDt,jdbcType=VARCHAR}, #{hostSsn,jdbcType=VARCHAR}, #{hostDt,jdbcType=VARCHAR}, 
+      #{hostTp,jdbcType=VARCHAR}, #{hostErrCd,jdbcType=VARCHAR}, #{hostErrMssg,jdbcType=VARCHAR}, 
+      #{crtOpr,jdbcType=VARCHAR}, #{crtDt,jdbcType=VARCHAR}, #{updOpr,jdbcType=VARCHAR}, 
+      #{updDt,jdbcType=VARCHAR}, #{misc,jdbcType=VARCHAR}, #{transDirection,jdbcType=CHAR}, 
+      #{orgId,jdbcType=VARCHAR}, #{txnChnlTp,jdbcType=VARCHAR}, #{smyCd,jdbcType=VARCHAR}, 
+      #{smyDsc,jdbcType=VARCHAR}, #{rgonFlg,jdbcType=VARCHAR}, #{rgoncd,jdbcType=VARCHAR},
+      #{rcnclInfo,jdbcType=VARCHAR}
+      
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="java.util.Map" >
+    insert into TBL_ERR_TXN
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sysSeq != null" >
+        SYS_SEQ,
+      </if>
+      <if test="sysDt != null" >
+        SYS_DT,
+      </if>
+      <if test="txnCd != null" >
+        TXN_CD,
+      </if>
+      <if test="txnDesc != null" >
+        TXN_DESC,
+      </if>
+      <if test="txnSt != null" >
+        TXN_ST,
+      </if>
+      <if test="errCd != null" >
+        ERR_CD,
+      </if>
+      <if test="errMsg != null" >
+        ERR_MSG,
+      </if>
+      <if test="pan != null" >
+        PAN,
+      </if>
+      <if test="dateSettlmt != null" >
+        DATE_SETTLMT,
+      </if>
+      <if test="merId != null" >
+        MER_ID,
+      </if>
+      <if test="temId != null" >
+        TEM_ID,
+      </if>
+      <if test="disposeStatus != null" >
+        DISPOSE_STATUS,
+      </if>
+      <if test="fundFlg != null" >
+        FUND_FLG,
+      </if>
+      <if test="beginNo != null" >
+        BEGIN_NO,
+      </if>
+      <if test="queryNo != null" >
+        QUERY_NO,
+      </if>
+      <if test="uuid != null" >
+        UUID,
+      </if>
+      <if test="adjustFlg != null" >
+        ADJUST_FLG,
+      </if>
+      <if test="czPro != null" >
+        CZ_PRO,
+      </if>
+      <if test="tzDt != null" >
+        TZ_DT,
+      </if>
+      <if test="hostSsn != null" >
+        HOST_SSN,
+      </if>
+      <if test="hostDt != null" >
+        HOST_DT,
+      </if>
+      <if test="hostTp != null" >
+        HOST_TP,
+      </if>
+      <if test="hostErrCd != null" >
+        HOST_ERR_CD,
+      </if>
+      <if test="hostErrMssg != null" >
+        HOST_ERR_MSSG,
+      </if>
+      <if test="crtOpr != null" >
+        CRT_OPR,
+      </if>
+      <if test="crtDt != null" >
+        CRT_DT,
+      </if>
+      <if test="updOpr != null" >
+        UPD_OPR,
+      </if>
+      <if test="updDt != null" >
+        UPD_DT,
+      </if>
+      <if test="misc != null" >
+        MISC,
+      </if>
+      <if test="transDirection != null" >
+        TRANS_DIRECTION,
+      </if>
+      <if test="orgId != null" >
+        ORG_ID,
+      </if>
+      <if test="txnChnlTp != null" >
+        TXN_CHNL_TP,
+      </if>
+      <if test="smyCd != null" >
+        SMY_CD,
+      </if>
+      <if test="smyDsc != null" >
+        SMY_DSC,
+      </if>
+      <if test="rgonFlg != null" >
+        RGON_FLG,
+      </if>
+      <if test="rgoncd != null" >
+        RGONCD,
+      </if>
+      <if test="rcnclInfo != null" >
+        RCNCL_INFO,
+      </if>
+      <if test="fhPro != null" >
+        FH_PRO,
+      </if>
+      <if test="channelSeq != null" >
+        CHANNEL_SEQ,
+      </if>
+      <if test="mIp != null" >
+        M_IP,
+      </if>
+      <if test="snFlg != null" >
+        SN_FLG,
+      </if>
+      <if test="acctNo != null" >
+        ACCT_NO,
+      </if>
+      <if test="chrgCd != null" >
+        CHRG_CD,
+      </if>
+      <if test="tranAmt != null" >
+        TRAN_AMT,
+      </if>
+      <if test="mgtAcgLineNo != null" >
+        MGT_ACG_LINE_NO,
+      </if>
+      <if test="revFlg != null" >
+        REV_FLG,
+      </if>
+      <if test="revSeq != null" >
+        REV_SEQ,
+      </if>
+      <if test="hostTxnCd != null" >
+        HOST_TXN_CD,
+      </if>
+      <if test="reqSeq != null" >
+        REQ_SEQ,
+      </if>
+      <if test="errType != null" >
+        ERR_TYPE,
+      </if>
+      <if test="khStatus != null" >
+        KH_STATUS,
+      </if>
+      <if test="incomeStatus != null" >
+        INCOME_STATUS,
+      </if>
+      <if test="expendStatus != null" >
+        EXPEND_STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sysSeq != null" >
+        #{sysSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="sysDt != null" >
+        #{sysDt,jdbcType=VARCHAR},
+      </if>
+      <if test="txnCd != null" >
+        #{txnCd,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDesc != null" >
+        #{txnDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="txnSt != null" >
+        #{txnSt,jdbcType=VARCHAR},
+      </if>
+      <if test="errCd != null" >
+        #{errCd,jdbcType=VARCHAR},
+      </if>
+      <if test="errMsg != null" >
+        #{errMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="pan != null" >
+        #{pan,jdbcType=VARCHAR},
+      </if>
+      <if test="dateSettlmt != null" >
+        #{dateSettlmt,jdbcType=VARCHAR},
+      </if>
+      <if test="merId != null" >
+        #{merId,jdbcType=VARCHAR},
+      </if>
+      <if test="temId != null" >
+        #{temId,jdbcType=VARCHAR},
+      </if>
+      <if test="disposeStatus != null" >
+        #{disposeStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="fundFlg != null" >
+        #{fundFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="beginNo != null" >
+        #{beginNo,jdbcType=VARCHAR},
+      </if>
+      <if test="queryNo != null" >
+        #{queryNo,jdbcType=VARCHAR},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="adjustFlg != null" >
+        #{adjustFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="czPro != null" >
+        #{czPro,jdbcType=VARCHAR},
+      </if>
+      <if test="tzDt != null" >
+        #{tzDt,jdbcType=VARCHAR},
+      </if>
+      <if test="hostSsn != null" >
+        #{hostSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="hostDt != null" >
+        #{hostDt,jdbcType=VARCHAR},
+      </if>
+      <if test="hostTp != null" >
+        #{hostTp,jdbcType=VARCHAR},
+      </if>
+      <if test="hostErrCd != null" >
+        #{hostErrCd,jdbcType=VARCHAR},
+      </if>
+      <if test="hostErrMssg != null" >
+        #{hostErrMssg,jdbcType=VARCHAR},
+      </if>
+      <if test="crtOpr != null" >
+        #{crtOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="crtDt != null" >
+        #{crtDt,jdbcType=VARCHAR},
+      </if>
+      <if test="updOpr != null" >
+        #{updOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="updDt != null" >
+        #{updDt,jdbcType=VARCHAR},
+      </if>
+      <if test="misc != null" >
+        #{misc,jdbcType=VARCHAR},
+      </if>
+      <if test="transDirection != null" >
+        #{transDirection,jdbcType=CHAR},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="txnChnlTp != null" >
+        #{txnChnlTp,jdbcType=VARCHAR},
+      </if>
+      <if test="smyCd != null" >
+        #{smyCd,jdbcType=NVARCHAR},
+      </if>
+      <if test="smyDsc != null" >
+        #{smyDsc,jdbcType=NVARCHAR},
+      </if>
+      <if test="rgonFlg != null" >
+        #{rgonFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="rgoncd != null" >
+        #{rgoncd,jdbcType=VARCHAR},
+      </if>
+      <if test="rcnclInfo != null" >
+        #{rcnclInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="fhPro != null" >
+        #{fhPro,jdbcType=VARCHAR},
+      </if>
+      <if test="channelSeq != null" >
+        #{channelSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="mIp != null" >
+        #{mIp,jdbcType=VARCHAR},
+      </if>
+      <if test="snFlg != null" >
+        #{snFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="acctNo != null" >
+        #{acctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="chrgCd != null" >
+        #{chrgCd,jdbcType=VARCHAR},
+      </if>
+      <if test="tranAmt != null" >
+        #{tranAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="mgtAcgLineNo != null" >
+        #{mgtAcgLineNo,jdbcType=VARCHAR},
+      </if>
+      <if test="revFlg != null" >
+        #{revFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="revSeq != null" >
+        #{revSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="hostTxnCd != null" >
+        #{hostTxnCd,jdbcType=VARCHAR},
+      </if>
+      <if test="reqSeq != null" >
+        #{reqSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="errType != null" >
+        #{errType,jdbcType=VARCHAR},
+      </if>
+      <if test="khStatus != null" >
+        #{khStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="incomeStatus != null" >
+        #{incomeStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="expendStatus != null" >
+        #{expendStatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="java.util.Map" >
+    update TBL_ERR_TXN
+    <set >
+      <if test="txnCd != null" >
+        TXN_CD = #{txnCd,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDesc != null" >
+        TXN_DESC = #{txnDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="txnSt != null" >
+        TXN_ST = #{txnSt,jdbcType=VARCHAR},
+      </if>
+      <if test="errCd != null" >
+        ERR_CD = #{errCd,jdbcType=VARCHAR},
+      </if>
+      <if test="errMsg != null" >
+        ERR_MSG = #{errMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="pan != null" >
+        PAN = #{pan,jdbcType=VARCHAR},
+      </if>
+      <if test="dateSettlmt != null" >
+        DATE_SETTLMT = #{dateSettlmt,jdbcType=VARCHAR},
+      </if>
+      <if test="merId != null" >
+        MER_ID = #{merId,jdbcType=VARCHAR},
+      </if>
+      <if test="temId != null" >
+        TEM_ID = #{temId,jdbcType=VARCHAR},
+      </if>
+      <if test="disposeStatus != null" >
+        DISPOSE_STATUS = #{disposeStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="fundFlg != null" >
+        FUND_FLG = #{fundFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="beginNo != null" >
+        BEGIN_NO = #{beginNo,jdbcType=VARCHAR},
+      </if>
+      <if test="queryNo != null" >
+        QUERY_NO = #{queryNo,jdbcType=VARCHAR},
+      </if>
+      <if test="uuid != null" >
+        UUID = #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="adjustFlg != null" >
+        ADJUST_FLG = #{adjustFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="czPro != null" >
+        CZ_PRO = #{czPro,jdbcType=VARCHAR},
+      </if>
+      <if test="tzDt != null" >
+        TZ_DT = #{tzDt,jdbcType=VARCHAR},
+      </if>
+      <if test="hostSsn != null" >
+        HOST_SSN = #{hostSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="hostDt != null" >
+        HOST_DT = #{hostDt,jdbcType=VARCHAR},
+      </if>
+      <if test="hostTp != null" >
+        HOST_TP = #{hostTp,jdbcType=VARCHAR},
+      </if>
+      <if test="hostErrCd != null" >
+        HOST_ERR_CD = #{hostErrCd,jdbcType=VARCHAR},
+      </if>
+      <if test="hostErrMssg != null" >
+        HOST_ERR_MSSG = #{hostErrMssg,jdbcType=VARCHAR},
+      </if>
+      <if test="crtOpr != null" >
+        CRT_OPR = #{crtOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="crtDt != null" >
+        CRT_DT = #{crtDt,jdbcType=VARCHAR},
+      </if>
+      <if test="updOpr != null" >
+        UPD_OPR = #{updOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="updDt != null" >
+        UPD_DT = #{updDt,jdbcType=VARCHAR},
+      </if>
+      <if test="misc != null" >
+        MISC = #{misc,jdbcType=VARCHAR},
+      </if>
+      <if test="transDirection != null" >
+        TRANS_DIRECTION = #{transDirection,jdbcType=CHAR},
+      </if>
+      <if test="orgId != null" >
+        ORG_ID = #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="txnChnlTp != null" >
+        TXN_CHNL_TP = #{txnChnlTp,jdbcType=VARCHAR},
+      </if>
+      <if test="smyCd != null" >
+        SMY_CD = #{smyCd,jdbcType=NVARCHAR},
+      </if>
+      <if test="smyDsc != null" >
+        SMY_DSC = #{smyDsc,jdbcType=NVARCHAR},
+      </if>
+      <if test="rgonFlg != null" >
+        RGON_FLG = #{rgonFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="rgoncd != null" >
+        RGONCD = #{rgoncd,jdbcType=VARCHAR},
+      </if>
+      <if test="rcnclInfo != null" >
+        RCNCL_INFO = #{rcnclInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="fhPro != null" >
+        FH_PRO = #{fhPro,jdbcType=VARCHAR},
+      </if>
+      <if test="channelSeq != null" >
+        CHANNEL_SEQ = #{channelSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="mIp != null" >
+        M_IP = #{mIp,jdbcType=VARCHAR},
+      </if>
+      <if test="snFlg != null" >
+        SN_FLG = #{snFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="acctNo != null" >
+        ACCT_NO = #{acctNo,jdbcType=VARCHAR},
+      </if>
+      <if test="chrgCd != null" >
+        CHRG_CD = #{chrgCd,jdbcType=VARCHAR},
+      </if>
+      <if test="tranAmt != null" >
+        TRAN_AMT = #{tranAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="mgtAcgLineNo != null" >
+        MGT_ACG_LINE_NO = #{mgtAcgLineNo,jdbcType=VARCHAR},
+      </if>
+      <if test="revFlg != null" >
+        REV_FLG = #{revFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="revSeq != null" >
+        REV_SEQ = #{revSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="hostTxnCd != null" >
+        HOST_TXN_CD = #{hostTxnCd,jdbcType=VARCHAR},
+      </if>
+      <if test="reqSeq != null" >
+        REQ_SEQ = #{reqSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="errType != null" >
+        ERR_TYPE = #{errType,jdbcType=VARCHAR},
+      </if>
+      <if test="khStatus != null" >
+        KH_STATUS = #{khStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="incomeStatus != null" >
+        INCOME_STATUS = #{incomeStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="expendStatus != null" >
+        EXPEND_STATUS = #{expendStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SYS_DT = #{sysDt,jdbcType=VARCHAR}
+      and SYS_SEQ = #{sysSeq,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="java.util.Map" >
+    update TBL_ERR_TXN
+    set TXN_CD = #{txnCd,jdbcType=VARCHAR},
+      TXN_DESC = #{txnDesc,jdbcType=VARCHAR},
+      TXN_ST = #{txnSt,jdbcType=VARCHAR},
+      ERR_CD = #{errCd,jdbcType=VARCHAR},
+      ERR_MSG = #{errMsg,jdbcType=VARCHAR},
+      PAN = #{pan,jdbcType=VARCHAR},
+      DATE_SETTLMT = #{dateSettlmt,jdbcType=VARCHAR},
+      MER_ID = #{merId,jdbcType=VARCHAR},
+      TEM_ID = #{temId,jdbcType=VARCHAR},
+      DISPOSE_STATUS = #{disposeStatus,jdbcType=VARCHAR},
+      FUND_FLG = #{fundFlg,jdbcType=VARCHAR},
+      BEGIN_NO = #{beginNo,jdbcType=VARCHAR},
+      QUERY_NO = #{queryNo,jdbcType=VARCHAR},
+      UUID = #{uuid,jdbcType=VARCHAR},
+      ADJUST_FLG = #{adjustFlg,jdbcType=VARCHAR},
+      CZ_PRO = #{czPro,jdbcType=VARCHAR},
+      TZ_DT = #{tzDt,jdbcType=VARCHAR},
+      HOST_SSN = #{hostSsn,jdbcType=VARCHAR},
+      HOST_DT = #{hostDt,jdbcType=VARCHAR},
+      HOST_TP = #{hostTp,jdbcType=VARCHAR},
+      HOST_ERR_CD = #{hostErrCd,jdbcType=VARCHAR},
+      HOST_ERR_MSSG = #{hostErrMssg,jdbcType=VARCHAR},
+      CRT_OPR = #{crtOpr,jdbcType=VARCHAR},
+      CRT_DT = #{crtDt,jdbcType=VARCHAR},
+      UPD_OPR = #{updOpr,jdbcType=VARCHAR},
+      UPD_DT = #{updDt,jdbcType=VARCHAR},
+      MISC = #{misc,jdbcType=VARCHAR},
+      TRANS_DIRECTION = #{transDirection,jdbcType=CHAR},
+      ORG_ID = #{orgId,jdbcType=VARCHAR},
+      TXN_CHNL_TP = #{txnChnlTp,jdbcType=VARCHAR},
+      SMY_CD = #{smyCd,jdbcType=VARCHAR},
+      SMY_DSC = #{smyDsc,jdbcType=VARCHAR},
+      RGON_FLG = #{rgonFlg,jdbcType=VARCHAR},
+      RGONCD = #{rgoncd,jdbcType=VARCHAR}
+    where SYS_DT = #{sysDt,jdbcType=VARCHAR}
+      and SYS_SEQ = #{sysSeq,jdbcType=VARCHAR}
+  </update>
+  
+  <!-- CHANNEL_SEQ  channelSeq -->
+  <!-- 根据渠道流水统计 -->
+ <select id="countByChannelSeq"  resultType="java.lang.Integer"  parameterType="java.lang.String" >
+    select 
+    	count(CHANNEL_SEQ)
+    from TBL_ERR_TXN
+    where 
+    	CHANNEL_SEQ = #{channelSeq,jdbcType=VARCHAR}
+  </select> 
+  
+  
+  
+  <!-- 更新处理状态 -->
+  <update id="updateByPrimaryKeyHandleSt" parameterType="java.lang.String" >
+    update TBL_ERR_TXN
+    	set
+        HANDLE_ST = #{handleSt,jdbcType=VARCHAR}
+       
+    where SYS_DT = #{sysDt,jdbcType=VARCHAR}
+      and SYS_SEQ = #{sysSeq,jdbcType=VARCHAR}
+  </update>
+  
+  <!-- 查询有几笔交易正在处理 -->
+  <select id="selectTxnHandleSt"  resultType="java.lang.Integer" parameterType="java.lang.String" >
+    select 
+    	count(*)
+    from TBL_ERR_TXN
+    where 
+     	UUID = #{uuid,jdbcType=VARCHAR}
+     and
+      SN_FLG = #{snFlg,jdbcType=VARCHAR}
+     and
+     HANDLE_ST = #{handleSt,jdbcType=VARCHAR}
+  </select>
+  
+ 
+   <select id="selectSucceTxn"  resultType="java.lang.Integer" parameterType="java.lang.String" >
+    select 
+    	count(*)
+    from TBL_ERR_TXN
+    where 
+     	UUID = #{uuid,jdbcType=VARCHAR}
+     and
+      SN_FLG = #{snFlg,jdbcType=VARCHAR}
+     and
+     	HANDLE_ST = #{handleSt,jdbcType=VARCHAR}
+      and
+     	TXN_ST = '02'
+     AND
+     	ERR_CD ='000000'
+  </select>
+  
+    
+</mapper>

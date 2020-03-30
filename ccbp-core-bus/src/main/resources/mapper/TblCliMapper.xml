@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbp.core.bus.mapper.TblCliMapper">
+  <resultMap id="BaseResultMap" type="java.util.Map">
+  	<result column="CLI_STATE" jdbcType="VARCHAR" property="cliState" />
+  	<result column="CLI_MON" jdbcType="VARCHAR" property="cliMon" />
+  </resultMap>
+  
+  
+  <select id="selectCliRecordByPan" resultMap="BaseResultMap">
+		SELECT T.CLI_STATE,T.CLI_MON 
+		  FROM TBL_CLI T 
+		 WHERE T.TXN_CD = #{txnCd,jdbcType=VARCHAR} 
+		   AND T.TXN_TP = #{txnTp,jdbcType=VARCHAR} 
+		   AND T.MSG_TP = #{msgTp,jdbcType=VARCHAR} 
+		   AND T.PAN = #{pan,jdbcType=VARCHAR}
+  </select>
+  
+</mapper>

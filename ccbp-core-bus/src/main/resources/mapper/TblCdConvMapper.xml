@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbp.core.bus.mapper.TblCdConvMapper">
+  <resultMap id="BaseResultMap" type="java.util.Map" >
+    <id column="SRC_SYS_ID" property="srcSysId" jdbcType="VARCHAR" />
+    <id column="TAR_SYS_ID" property="tarSysId" jdbcType="VARCHAR" />
+    <result column="SRC_SYS_NM" property="srcSysNm" jdbcType="VARCHAR" />
+    <result column="TAR_SYS_NM" property="tarSysNm" jdbcType="VARCHAR" />
+    <result column="SRC_CD_LST" property="srcCdLst" jdbcType="VARCHAR" />
+    <result column="SRC_CD_MSG_LST" property="srcCdMsgLst" jdbcType="VARCHAR" />
+    <result column="TAR_CD_LST" property="tarCdLst" jdbcType="VARCHAR" />
+    <result column="TAR_CD_MSG_LST" property="tarCdMsgLst" jdbcType="VARCHAR" />
+    <result column="MAPPING_ID_LST" property="mappingIdLst" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    SRC_SYS_ID, TAR_SYS_ID, SRC_SYS_NM, TAR_SYS_NM, SRC_CD_LST, SRC_CD_MSG_LST, TAR_CD_LST, 
+    TAR_CD_MSG_LST, MAPPING_ID_LST
+  </sql>
+  
+  <select id="selectByPrimaryKey" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TBL_CD_CONV
+    where SRC_SYS_ID = #{srcSysId,jdbcType=VARCHAR}
+      and TAR_SYS_ID = #{tarSysId,jdbcType=VARCHAR}
+  </select>
+</mapper>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbp.core.bus.mapper.TblPreAuthSeqMapper">
+  <resultMap id="BaseResultMap" type="java.util.Map">
+    <result column="TF_PAN" jdbcType="VARCHAR" property="pan" />
+    <result column="TF_ACQID" jdbcType="VARCHAR" property="acqId" />
+    <result column="TF_AUTHRSPCD" jdbcType="VARCHAR" property="authRspCd" />
+    <result column="TF_EXPIRED" jdbcType="VARCHAR" property="expired" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    TF_PAN, TF_ACQID, TF_AUTHRSPCD, TF_EXPIRED
+  </sql>
+  
+	<select id="selectAuthRspCdMax" resultType="java.lang.String">
+		SELECT TF_AUTHRSPCD
+		  FROM (SELECT ROWNUM, t.*
+		          FROM (SELECT *
+		                  FROM TBL_PREAUTH_SEQ
+						<where>
+							<if test="pan != null"> and TF_PAN = #{pan,jdbcType=VARCHAR} </if>
+							<if test="acqId != null"> and TF_ACQID = #{acqId,jdbcType=VARCHAR} </if>
+							<if test="expired != null"> and TF_EXPIRED = #{expired,jdbcType=VARCHAR} </if>
+						</where> 		                  
+		                 ORDER BY TO_NUMBER(TF_AUTHRSPCD) DESC) t
+		         WHERE ROWNUM = 1)
+	</select>
+	
+	<insert id="insertPreAuthSeq" parameterType="java.util.Map">
+		insert into TBL_PREAUTH_SEQ
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="pan != null"> TF_PAN, </if>
+			<if test="acqId != null"> TF_ACQID, </if>
+			<if test="authRspCd != null"> TF_AUTHRSPCD, </if>
+			<if test="expired != null"> TF_EXPIRED, </if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="pan != null"> #{pan,jdbcType=VARCHAR}, </if>
+			<if test="acqId != null"> #{acqId,jdbcType=VARCHAR}, </if>
+			<if test="authRspCd != null"> #{authRspCd,jdbcType=VARCHAR}, </if>
+			<if test="expired != null"> #{expired,jdbcType=VARCHAR}, </if>
+		</trim>
+	</insert>
+  
+</mapper>

@@ -1,0 +1,1355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbp.core.bus.mapper.TblTfrMapper">
+  <resultMap id="BaseResultMap" type="java.util.Map">
+    <id column="CUPS_CD" property="cupsCd" jdbcType="VARCHAR" />
+    <result column="TXN_CD" property="txnCd" jdbcType="VARCHAR" />
+    <result column="TXN_DESC" property="txnDesc" jdbcType="VARCHAR" />
+    <result column="TXN_TP" property="txnTp" jdbcType="VARCHAR" />
+    <result column="TXN_ST" property="txnSt" jdbcType="VARCHAR" />
+    <result column="ERR_CD" property="errCd" jdbcType="VARCHAR" />
+    <result column="ERR_MSG" property="errMsg" jdbcType="VARCHAR" />
+    <result column="REV_FLG" property="revFlg" jdbcType="VARCHAR" />
+    <result column="REV_SEQ" property="revSeq" jdbcType="VARCHAR" />
+    <result column="CAN_FLG" property="canFlg" jdbcType="VARCHAR" />
+    <result column="CAN_SEQ" property="canSeq" jdbcType="VARCHAR" />
+    <result column="RFD_FLG" property="rfdFlg" jdbcType="VARCHAR" />
+    <result column="CUPS_STLM_DT" property="cupsStlmDt" jdbcType="VARCHAR" />
+    <result column="HD_BUF" property="hdBuf" jdbcType="VARCHAR" />
+    <result column="MSG_TP" property="msgTp" jdbcType="VARCHAR" />
+    <result column="PAN" property="pan" jdbcType="VARCHAR" />
+    <result column="CD_SEQ_NO" property="cdSeqNo" jdbcType="VARCHAR" />
+    <result column="PRC_CD" property="prcCd" jdbcType="VARCHAR" />
+    <result column="AMT_TXN" property="amtTxn" jdbcType="VARCHAR" />
+    <result column="AMT_STLM" property="amtStlm" jdbcType="VARCHAR" />
+    <result column="AMT_CDHLD" property="amtCdhld" jdbcType="VARCHAR" />
+    <result column="TXN_DT_TM" property="txnDtTm" jdbcType="VARCHAR" />
+    <result column="RAT_STLM" property="ratStlm" jdbcType="VARCHAR" />
+    <result column="RAT_CDHLD" property="ratCdhld" jdbcType="VARCHAR" />
+    <result column="CUP_SSN" property="cupSsn" jdbcType="VARCHAR" />
+    <result column="LCL_TM" property="lclTm" jdbcType="VARCHAR" />
+    <result column="LCL_DT" property="lclDt" jdbcType="VARCHAR" />
+    <result column="EXPR_DT" property="exprDt" jdbcType="VARCHAR" />
+    <result column="CONV_DT" property="convDt" jdbcType="VARCHAR" />
+    <result column="STLM_DT" property="stlmDt" jdbcType="VARCHAR" />
+    <result column="MCHT_TP" property="mchtTp" jdbcType="VARCHAR" />
+    <result column="ACQ_INS_CD" property="acqInsCd" jdbcType="VARCHAR" />
+    <result column="FWD_INS_CD" property="fwdInsCd" jdbcType="VARCHAR" />
+    <result column="RETL_REF" property="retlRef" jdbcType="VARCHAR" />
+    <result column="AUTH_RSP_CD" property="authRspCd" jdbcType="VARCHAR" />
+    <result column="CUPS_RSP_CD" property="cupsRspCd" jdbcType="VARCHAR" />
+    <result column="ACQ_TERM_ID" property="acqTermId" jdbcType="VARCHAR" />
+    <result column="ACQ_ID" property="acqId" jdbcType="VARCHAR" />
+    <result column="ACQ_NM" property="acqNm" jdbcType="VARCHAR" />
+    <result column="ADD_DATA" property="addData" jdbcType="VARCHAR" />
+    <result column="CUR_TXN" property="curTxn" jdbcType="VARCHAR" />
+    <result column="CUR_STLM" property="curStlm" jdbcType="VARCHAR" />
+    <result column="CUR_CDHLD" property="curCdhld" jdbcType="VARCHAR" />
+    <result column="ADD_AMT" property="addAmt" jdbcType="VARCHAR" />
+    <result column="FLD_RCS" property="fldRcs" jdbcType="VARCHAR" />
+    <result column="CDHLD_INF" property="cdhldInf" jdbcType="VARCHAR" />
+    <result column="ORG_SYS_DT" property="orgSysDt" jdbcType="VARCHAR" />
+    <result column="ORG_SYS_SEQ" property="orgSysSeq" jdbcType="VARCHAR" />
+    <result column="ORG_DATA_ELE" property="orgDataEle" jdbcType="VARCHAR" />
+    <result column="RCV_INS_CD" property="rcvInsCd" jdbcType="VARCHAR" />
+    <result column="ACCT_ID1" property="acctId1" jdbcType="VARCHAR" />
+    <result column="ACCT_ID2" property="acctId2" jdbcType="VARCHAR" />
+    <result column="IC_DATA" property="icData" jdbcType="VARCHAR" />
+    <result column="HOST_SSN" property="hostSsn" jdbcType="VARCHAR" />
+    <result column="HOST_DT" property="hostDt" jdbcType="VARCHAR" />
+    <result column="HOST_TP" property="hostTp" jdbcType="VARCHAR" />
+    <result column="HOST_ERR_CD" property="hostErrCd" jdbcType="VARCHAR" />
+    <result column="HOST_ERR_MSSG" property="hostErrMssg" jdbcType="VARCHAR" />
+    <result column="CRT_OPR" property="crtOpr" jdbcType="VARCHAR" />
+    <result column="CRT_DT" property="crtDt" jdbcType="VARCHAR" />
+    <result column="UPD_OPR" property="updOpr" jdbcType="VARCHAR" />
+    <result column="UPD_DT" property="updDt" jdbcType="VARCHAR" />
+    <result column="MISC" property="misc" jdbcType="VARCHAR" />
+    <result column="COND_CD" property="condCd" jdbcType="VARCHAR" />
+    <result column="OPEN_INST" property="openInst" jdbcType="VARCHAR" />
+    <result column="TRANS_DIRECTION" property="transDirection" jdbcType="CHAR" />
+    <result column="HOST_FEE" property="hostFee" jdbcType="VARCHAR" />
+    <result column="SYSTEM_FLG" property="systemFlg" jdbcType="VARCHAR" />
+    <result column="CHANNEL_SEQ" property="channelSeq" jdbcType="VARCHAR" />
+    <result column="CHILD_TXN_CD" property="childTxnCd" jdbcType="VARCHAR" />
+    <result column="FRZ_NO" property="frzNo" jdbcType="VARCHAR" />
+    <result column="DELAY_ST" property="delaySt" jdbcType="VARCHAR" />
+    <result column="CHARGE_INFO" property="chargeInfo" jdbcType="VARCHAR" />
+    <result column="TRANS_ACC" property="transAcc" jdbcType="VARCHAR" />
+    <result column="SAME_FLG" property="sameFlg" jdbcType="VARCHAR" />
+    <result column="TXN_TLT_ID" property="txnTltId" jdbcType="VARCHAR" />
+    <result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
+    <result column="TXN_CHNL_TP" property="txnChnlTp" jdbcType="VARCHAR" />
+    <result column="DROPD_LVI_CARD_FLG" property="dropdLviCardFlg" jdbcType="VARCHAR" />
+    <result column="ADDS_PRIV_DATA" property="addsPrivData" jdbcType="VARCHAR" />
+    <result column="ADD_DATA2" property="addData2" jdbcType="VARCHAR" />
+    <result column="SMY_CD" property="smyCd" jdbcType="VARCHAR" />
+    <result column="SMY_DSC" property="smyDsc" jdbcType="VARCHAR" />
+    <result column="EXECUTE_FLG" property="executeFlg" jdbcType="VARCHAR" />
+    <result column="CHARGE_CD" property="chargeCd" jdbcType="VARCHAR" />
+    <result column="MCHT_CD" property="mchtCd" jdbcType="VARCHAR" />
+    <result column="ENTRY_CD" property="entryCd" jdbcType="VARCHAR" />
+    <result column="PIN_CAP_CD" property="pinCapCd" jdbcType="VARCHAR" />
+    <result column="AMT_FEE" property="amtFee" jdbcType="VARCHAR" />
+    <result column="TRACK2_DATA" property="track2Data" jdbcType="VARCHAR" />
+    <result column="TRACK3_DATA" property="track3Data" jdbcType="VARCHAR" />
+    <result column="ADD_RES_DATA" property="addResData" jdbcType="VARCHAR" />
+    <result column="TRACK1_DATA" property="track1Data" jdbcType="VARCHAR" />
+    <result column="PIN_DATA" property="pinData" jdbcType="VARCHAR" />
+    <result column="SECURIT_INFO" property="securitInfo" jdbcType="VARCHAR" />
+    <result column="ADD_DATA1" property="addData1" jdbcType="VARCHAR" />
+    <result column="INQU_DETA" property="inquDeta" jdbcType="VARCHAR" />
+    <result column="SWITCHING_DATA" property="switchingData" jdbcType="VARCHAR" />
+    <result column="FINA_NET_DATA" property="finaNetData" jdbcType="VARCHAR" />
+    <result column="NET_MNG_CCD" property="netMngCcd" jdbcType="VARCHAR" />
+    <result column="MSG_SECUR_CODE" property="msgSecurCode" jdbcType="VARCHAR" />
+    <result column="ADD_DATA3" property="addData3" jdbcType="VARCHAR" />
+    <result column="ADD_DATA4" property="addData4" jdbcType="VARCHAR" />
+    <result column="ADD_DATA5" property="addData5" jdbcType="VARCHAR" />
+    <result column="CUPS_RESERVED" property="cupsReserved" jdbcType="VARCHAR" />
+    <result column="ACQ_INST_RESERVED" property="acqInstReserved" jdbcType="VARCHAR" />
+    <result column="ISS_INST_RESERVED" property="issInstReserved" jdbcType="VARCHAR" />
+    <result column="ADD_DATA6" property="addData6" jdbcType="VARCHAR" />
+    <result column="ADD_DATA7" property="addData7" jdbcType="VARCHAR" />
+    <result column="MAG_AUTH_CD" property="magAuthCd" jdbcType="VARCHAR" />
+    <result column="M_IP" property="mIp" jdbcType="VARCHAR" />
+     <result column="TR_OUT_ACC_NM" property="trOutAccNm" jdbcType="VARCHAR" />
+    <result column="TR_IN_ACC_NM" property="trInAccNm" jdbcType="VARCHAR" />
+    
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CUPS_CD, TXN_CD, TXN_DESC, TXN_TP, TXN_ST, ERR_CD, ERR_MSG, REV_FLG, REV_SEQ, CAN_FLG, 
+    CAN_SEQ, RFD_FLG, CUPS_STLM_DT, HD_BUF, MSG_TP, PAN, CD_SEQ_NO, PRC_CD, AMT_TXN, 
+    AMT_STLM, AMT_CDHLD, TXN_DT_TM, RAT_STLM, RAT_CDHLD, CUP_SSN, LCL_TM, LCL_DT, EXPR_DT, 
+    CONV_DT, STLM_DT, MCHT_TP, ACQ_INS_CD, FWD_INS_CD, RETL_REF, AUTH_RSP_CD, CUPS_RSP_CD, 
+    ACQ_TERM_ID, ACQ_ID, ACQ_NM, ADD_DATA, CUR_TXN, CUR_STLM, CUR_CDHLD, ADD_AMT, FLD_RCS, 
+    CDHLD_INF, ORG_SYS_DT, ORG_SYS_SEQ, ORG_DATA_ELE, RCV_INS_CD, ACCT_ID1, ACCT_ID2, 
+    IC_DATA, HOST_SSN, HOST_DT, HOST_TP, HOST_ERR_CD, HOST_ERR_MSSG, CRT_OPR, CRT_DT, 
+    UPD_OPR, UPD_DT, MISC, COND_CD, OPEN_INST, TRANS_DIRECTION, HOST_FEE, SYSTEM_FLG, 
+    CHANNEL_SEQ, CHILD_TXN_CD, FRZ_NO, DELAY_ST, CHARGE_INFO, TRANS_ACC, SAME_FLG, TXN_TLT_ID, 
+    ORG_ID, TXN_CHNL_TP, DROPD_LVI_CARD_FLG, ADDS_PRIV_DATA, ADD_DATA2, SMY_CD, SMY_DSC, 
+    EXECUTE_FLG, CHARGE_CD, MCHT_CD, ENTRY_CD, PIN_CAP_CD, AMT_FEE, TRACK2_DATA, TRACK3_DATA, 
+    ADD_RES_DATA, TRACK1_DATA, PIN_DATA, SECURIT_INFO, ADD_DATA1, INQU_DETA, SWITCHING_DATA, 
+    FINA_NET_DATA, NET_MNG_CCD, MSG_SECUR_CODE, ADD_DATA3, ADD_DATA4, ADD_DATA5, CUPS_RESERVED, 
+    ACQ_INST_RESERVED, ISS_INST_RESERVED, ADD_DATA6, ADD_DATA7, MAG_AUTH_CD, M_IP, TR_OUT_ACC_NM, TR_IN_ACC_NM
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TBL_TFR
+    where CUPS_CD = #{cupsCd,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectByOrgSysSeqAndOrgSysDt" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TBL_F_TXN
+    where ORG_SYS_SEQ = #{param1,jdbcType=VARCHAR}
+      and ORG_SYS_DT = #{param2,jdbcType=VARCHAR}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from TBL_TFR
+    where CUPS_CD = #{cupsCd,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="java.util.Map">
+    insert into TBL_TFR (CUPS_CD, TXN_CD, TXN_DESC, 
+      TXN_TP, TXN_ST, ERR_CD, 
+      ERR_MSG, REV_FLG, REV_SEQ, 
+      CAN_FLG, CAN_SEQ, RFD_FLG, 
+      CUPS_STLM_DT, HD_BUF, MSG_TP, 
+      PAN, CD_SEQ_NO, PRC_CD, 
+      AMT_TXN, AMT_STLM, AMT_CDHLD, 
+      TXN_DT_TM, RAT_STLM, RAT_CDHLD, 
+      CUP_SSN, LCL_TM, LCL_DT, 
+      EXPR_DT, CONV_DT, STLM_DT, 
+      MCHT_TP, ACQ_INS_CD, FWD_INS_CD, 
+      RETL_REF, AUTH_RSP_CD, CUPS_RSP_CD, 
+      ACQ_TERM_ID, ACQ_ID, ACQ_NM, 
+      ADD_DATA, CUR_TXN, CUR_STLM, 
+      CUR_CDHLD, ADD_AMT, FLD_RCS, 
+      CDHLD_INF, ORG_SYS_DT, ORG_SYS_SEQ, 
+      ORG_DATA_ELE, RCV_INS_CD, ACCT_ID1, 
+      ACCT_ID2, IC_DATA, HOST_SSN, 
+      HOST_DT, HOST_TP, HOST_ERR_CD, 
+      HOST_ERR_MSSG, CRT_OPR, CRT_DT, 
+      UPD_OPR, UPD_DT, MISC, 
+      COND_CD, OPEN_INST, TRANS_DIRECTION, 
+      HOST_FEE, SYSTEM_FLG, CHANNEL_SEQ, 
+      CHILD_TXN_CD, FRZ_NO, DELAY_ST, 
+      CHARGE_INFO, TRANS_ACC, SAME_FLG, 
+      TXN_TLT_ID, ORG_ID, TXN_CHNL_TP, 
+      DROPD_LVI_CARD_FLG, ADDS_PRIV_DATA, ADD_DATA2, 
+      SMY_CD, SMY_DSC, EXECUTE_FLG, 
+      CHARGE_CD, MCHT_CD, ENTRY_CD, 
+      PIN_CAP_CD, AMT_FEE, TRACK2_DATA, 
+      TRACK3_DATA, ADD_RES_DATA, TRACK1_DATA, 
+      PIN_DATA, SECURIT_INFO, ADD_DATA1, 
+      INQU_DETA, SWITCHING_DATA, FINA_NET_DATA, 
+      NET_MNG_CCD, MSG_SECUR_CODE, ADD_DATA3, 
+      ADD_DATA4, ADD_DATA5, CUPS_RESERVED, 
+      ACQ_INST_RESERVED, ISS_INST_RESERVED, ADD_DATA6, 
+      ADD_DATA7, MAG_AUTH_CD)
+    values (#{cupsCd,jdbcType=VARCHAR}, #{txnCd,jdbcType=VARCHAR}, #{txnDesc,jdbcType=VARCHAR}, 
+      #{txnTp,jdbcType=VARCHAR}, #{txnSt,jdbcType=VARCHAR}, #{errCd,jdbcType=VARCHAR}, 
+      #{errMsg,jdbcType=VARCHAR}, #{revFlg,jdbcType=VARCHAR}, #{revSeq,jdbcType=VARCHAR}, 
+      #{canFlg,jdbcType=VARCHAR}, #{canSeq,jdbcType=VARCHAR}, #{rfdFlg,jdbcType=VARCHAR}, 
+      #{cupsStlmDt,jdbcType=VARCHAR}, #{hdBuf,jdbcType=VARCHAR}, #{msgTp,jdbcType=VARCHAR}, 
+      #{pan,jdbcType=VARCHAR}, #{cdSeqNo,jdbcType=VARCHAR}, #{prcCd,jdbcType=VARCHAR}, 
+      #{amtTxn,jdbcType=VARCHAR}, #{amtStlm,jdbcType=VARCHAR}, #{amtCdhld,jdbcType=VARCHAR}, 
+      #{txnDtTm,jdbcType=VARCHAR}, #{ratStlm,jdbcType=VARCHAR}, #{ratCdhld,jdbcType=VARCHAR}, 
+      #{cupSsn,jdbcType=VARCHAR}, #{lclTm,jdbcType=VARCHAR}, #{lclDt,jdbcType=VARCHAR}, 
+      #{exprDt,jdbcType=VARCHAR}, #{convDt,jdbcType=VARCHAR}, #{stlmDt,jdbcType=VARCHAR}, 
+      #{mchtTp,jdbcType=VARCHAR}, #{acqInsCd,jdbcType=VARCHAR}, #{fwdInsCd,jdbcType=VARCHAR}, 
+      #{retlRef,jdbcType=VARCHAR}, #{authRspCd,jdbcType=VARCHAR}, #{cupsRspCd,jdbcType=VARCHAR}, 
+      #{acqTermId,jdbcType=VARCHAR}, #{acqId,jdbcType=VARCHAR}, #{acqNm,jdbcType=VARCHAR}, 
+      #{addData,jdbcType=VARCHAR}, #{curTxn,jdbcType=VARCHAR}, #{curStlm,jdbcType=VARCHAR}, 
+      #{curCdhld,jdbcType=VARCHAR}, #{addAmt,jdbcType=VARCHAR}, #{fldRcs,jdbcType=VARCHAR}, 
+      #{cdhldInf,jdbcType=VARCHAR}, #{orgSysDt,jdbcType=VARCHAR}, #{orgSysSeq,jdbcType=VARCHAR}, 
+      #{orgDataEle,jdbcType=VARCHAR}, #{rcvInsCd,jdbcType=VARCHAR}, #{acctId1,jdbcType=VARCHAR}, 
+      #{acctId2,jdbcType=VARCHAR}, #{icData,jdbcType=VARCHAR}, #{hostSsn,jdbcType=VARCHAR}, 
+      #{hostDt,jdbcType=VARCHAR}, #{hostTp,jdbcType=VARCHAR}, #{hostErrCd,jdbcType=VARCHAR}, 
+      #{hostErrMssg,jdbcType=VARCHAR}, #{crtOpr,jdbcType=VARCHAR}, #{crtDt,jdbcType=VARCHAR}, 
+      #{updOpr,jdbcType=VARCHAR}, #{updDt,jdbcType=VARCHAR}, #{misc,jdbcType=VARCHAR}, 
+      #{condCd,jdbcType=VARCHAR}, #{openInst,jdbcType=VARCHAR}, #{transDirection,jdbcType=CHAR}, 
+      #{hostFee,jdbcType=VARCHAR}, #{systemFlg,jdbcType=VARCHAR}, #{channelSeq,jdbcType=VARCHAR}, 
+      #{childTxnCd,jdbcType=VARCHAR}, #{frzNo,jdbcType=VARCHAR}, #{delaySt,jdbcType=VARCHAR}, 
+      #{chargeInfo,jdbcType=VARCHAR}, #{transAcc,jdbcType=VARCHAR}, #{sameFlg,jdbcType=VARCHAR}, 
+      #{txnTltId,jdbcType=VARCHAR}, #{orgId,jdbcType=VARCHAR}, #{txnChnlTp,jdbcType=VARCHAR}, 
+      #{dropdLviCardFlg,jdbcType=VARCHAR}, #{addsPrivData,jdbcType=VARCHAR}, #{addData2,jdbcType=VARCHAR}, 
+      #{smyCd,jdbcType=VARCHAR}, #{smyDsc,jdbcType=VARCHAR}, #{executeFlg,jdbcType=VARCHAR}, 
+      #{chargeCd,jdbcType=VARCHAR}, #{mchtCd,jdbcType=VARCHAR}, #{entryCd,jdbcType=VARCHAR}, 
+      #{pinCapCd,jdbcType=VARCHAR}, #{amtFee,jdbcType=VARCHAR}, #{track2Data,jdbcType=VARCHAR}, 
+      #{track3Data,jdbcType=VARCHAR}, #{addResData,jdbcType=VARCHAR}, #{track1Data,jdbcType=VARCHAR}, 
+      #{pinData,jdbcType=VARCHAR}, #{securitInfo,jdbcType=VARCHAR}, #{addData1,jdbcType=VARCHAR}, 
+      #{inquDeta,jdbcType=VARCHAR}, #{switchingData,jdbcType=VARCHAR}, #{finaNetData,jdbcType=VARCHAR}, 
+      #{netMngCcd,jdbcType=VARCHAR}, #{msgSecurCode,jdbcType=VARCHAR}, #{addData3,jdbcType=VARCHAR}, 
+      #{addData4,jdbcType=VARCHAR}, #{addData5,jdbcType=VARCHAR}, #{cupsReserved,jdbcType=VARCHAR}, 
+      #{acqInstReserved,jdbcType=VARCHAR}, #{issInstReserved,jdbcType=VARCHAR}, #{addData6,jdbcType=VARCHAR}, 
+      #{addData7,jdbcType=VARCHAR}, #{magAuthCd,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="java.util.Map">
+    insert into TBL_TFR
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cupsCd != null" >
+        CUPS_CD,
+      </if>
+      <if test="txnCd != null" >
+        TXN_CD,
+      </if>
+      <if test="txnDesc != null" >
+        TXN_DESC,
+      </if>
+      <if test="txnTp != null" >
+        TXN_TP,
+      </if>
+      <if test="txnSt != null" >
+        TXN_ST,
+      </if>
+      <if test="errCd != null" >
+        ERR_CD,
+      </if>
+      <if test="errMsg != null" >
+        ERR_MSG,
+      </if>
+      <if test="revFlg != null" >
+        REV_FLG,
+      </if>
+      <if test="revSeq != null" >
+        REV_SEQ,
+      </if>
+      <if test="canFlg != null" >
+        CAN_FLG,
+      </if>
+      <if test="canSeq != null" >
+        CAN_SEQ,
+      </if>
+      <if test="rfdFlg != null" >
+        RFD_FLG,
+      </if>
+      <if test="cupsStlmDt != null" >
+        CUPS_STLM_DT,
+      </if>
+      <if test="hdBuf != null" >
+        HD_BUF,
+      </if>
+      <if test="msgTp != null" >
+        MSG_TP,
+      </if>
+      <if test="pan != null" >
+        PAN,
+      </if>
+      <if test="cdSeqNo != null" >
+        CD_SEQ_NO,
+      </if>
+      <if test="prcCd != null" >
+        PRC_CD,
+      </if>
+      <if test="amtTxn != null" >
+        AMT_TXN,
+      </if>
+      <if test="amtStlm != null" >
+        AMT_STLM,
+      </if>
+      <if test="amtCdhld != null" >
+        AMT_CDHLD,
+      </if>
+      <if test="txnDtTm != null" >
+        TXN_DT_TM,
+      </if>
+      <if test="ratStlm != null" >
+        RAT_STLM,
+      </if>
+      <if test="ratCdhld != null" >
+        RAT_CDHLD,
+      </if>
+      <if test="cupSsn != null" >
+        CUP_SSN,
+      </if>
+      <if test="lclTm != null" >
+        LCL_TM,
+      </if>
+      <if test="lclDt != null" >
+        LCL_DT,
+      </if>
+      <if test="exprDt != null" >
+        EXPR_DT,
+      </if>
+      <if test="convDt != null" >
+        CONV_DT,
+      </if>
+      <if test="stlmDt != null" >
+        STLM_DT,
+      </if>
+      <if test="mchtTp != null" >
+        MCHT_TP,
+      </if>
+      <if test="acqInsCd != null" >
+        ACQ_INS_CD,
+      </if>
+      <if test="fwdInsCd != null" >
+        FWD_INS_CD,
+      </if>
+      <if test="retlRef != null" >
+        RETL_REF,
+      </if>
+      <if test="authRspCd != null" >
+        AUTH_RSP_CD,
+      </if>
+      <if test="cupsRspCd != null" >
+        CUPS_RSP_CD,
+      </if>
+      <if test="acqTermId != null" >
+        ACQ_TERM_ID,
+      </if>
+      <if test="acqId != null" >
+        ACQ_ID,
+      </if>
+      <if test="acqNm != null" >
+        ACQ_NM,
+      </if>
+      <if test="addData != null" >
+        ADD_DATA,
+      </if>
+      <if test="curTxn != null" >
+        CUR_TXN,
+      </if>
+      <if test="curStlm != null" >
+        CUR_STLM,
+      </if>
+      <if test="curCdhld != null" >
+        CUR_CDHLD,
+      </if>
+      <if test="addAmt != null" >
+        ADD_AMT,
+      </if>
+      <if test="fldRcs != null" >
+        FLD_RCS,
+      </if>
+      <if test="cdhldInf != null" >
+        CDHLD_INF,
+      </if>
+      <if test="orgSysDt != null" >
+        ORG_SYS_DT,
+      </if>
+      <if test="orgSysSeq != null" >
+        ORG_SYS_SEQ,
+      </if>
+      <if test="orgDataEle != null" >
+        ORG_DATA_ELE,
+      </if>
+      <if test="rcvInsCd != null" >
+        RCV_INS_CD,
+      </if>
+      <if test="acctId1 != null" >
+        ACCT_ID1,
+      </if>
+      <if test="acctId2 != null" >
+        ACCT_ID2,
+      </if>
+      <if test="icData != null" >
+        IC_DATA,
+      </if>
+      <if test="hostSsn != null" >
+        HOST_SSN,
+      </if>
+      <if test="hostDt != null" >
+        HOST_DT,
+      </if>
+      <if test="hostTp != null" >
+        HOST_TP,
+      </if>
+      <if test="hostErrCd != null" >
+        HOST_ERR_CD,
+      </if>
+      <if test="hostErrMssg != null" >
+        HOST_ERR_MSSG,
+      </if>
+      <if test="crtOpr != null" >
+        CRT_OPR,
+      </if>
+      <if test="crtDt != null" >
+        CRT_DT,
+      </if>
+      <if test="updOpr != null" >
+        UPD_OPR,
+      </if>
+      <if test="updDt != null" >
+        UPD_DT,
+      </if>
+      <if test="misc != null" >
+        MISC,
+      </if>
+      <if test="condCd != null" >
+        COND_CD,
+      </if>
+      <if test="openInst != null" >
+        OPEN_INST,
+      </if>
+      <if test="transDirection != null" >
+        TRANS_DIRECTION,
+      </if>
+      <if test="hostFee != null" >
+        HOST_FEE,
+      </if>
+      <if test="systemFlg != null" >
+        SYSTEM_FLG,
+      </if>
+      <if test="channelSeq != null" >
+        CHANNEL_SEQ,
+      </if>
+      <if test="childTxnCd != null" >
+        CHILD_TXN_CD,
+      </if>
+      <if test="frzNo != null" >
+        FRZ_NO,
+      </if>
+      <if test="delaySt != null" >
+        DELAY_ST,
+      </if>
+      <if test="chargeInfo != null" >
+        CHARGE_INFO,
+      </if>
+      <if test="transAcc != null" >
+        TRANS_ACC,
+      </if>
+      <if test="sameFlg != null" >
+        SAME_FLG,
+      </if>
+      <if test="txnTltId != null" >
+        TXN_TLT_ID,
+      </if>
+      <if test="orgId != null" >
+        ORG_ID,
+      </if>
+      <if test="txnChnlTp != null" >
+        TXN_CHNL_TP,
+      </if>
+      <if test="dropdLviCardFlg != null" >
+        DROPD_LVI_CARD_FLG,
+      </if>
+      <if test="addsPrivData != null" >
+        ADDS_PRIV_DATA,
+      </if>
+      <if test="addData2 != null" >
+        ADD_DATA2,
+      </if>
+      <if test="smyCd != null" >
+        SMY_CD,
+      </if>
+      <if test="smyDsc != null" >
+        SMY_DSC,
+      </if>
+      <if test="executeFlg != null" >
+        EXECUTE_FLG,
+      </if>
+      <if test="chargeCd != null" >
+        CHARGE_CD,
+      </if>
+      <if test="mchtCd != null" >
+        MCHT_CD,
+      </if>
+      <if test="entryCd != null" >
+        ENTRY_CD,
+      </if>
+      <if test="pinCapCd != null" >
+        PIN_CAP_CD,
+      </if>
+      <if test="amtFee != null" >
+        AMT_FEE,
+      </if>
+      <if test="track2Data != null" >
+        TRACK2_DATA,
+      </if>
+      <if test="track3Data != null" >
+        TRACK3_DATA,
+      </if>
+      <if test="addResData != null" >
+        ADD_RES_DATA,
+      </if>
+      <if test="track1Data != null" >
+        TRACK1_DATA,
+      </if>
+      <if test="pinData != null" >
+        PIN_DATA,
+      </if>
+      <if test="securitInfo != null" >
+        SECURIT_INFO,
+      </if>
+      <if test="addData1 != null" >
+        ADD_DATA1,
+      </if>
+      <if test="inquDeta != null" >
+        INQU_DETA,
+      </if>
+      <if test="switchingData != null" >
+        SWITCHING_DATA,
+      </if>
+      <if test="finaNetData != null" >
+        FINA_NET_DATA,
+      </if>
+      <if test="netMngCcd != null" >
+        NET_MNG_CCD,
+      </if>
+      <if test="msgSecurCode != null" >
+        MSG_SECUR_CODE,
+      </if>
+      <if test="addData3 != null" >
+        ADD_DATA3,
+      </if>
+      <if test="addData4 != null" >
+        ADD_DATA4,
+      </if>
+      <if test="addData5 != null" >
+        ADD_DATA5,
+      </if>
+      <if test="cupsReserved != null" >
+        CUPS_RESERVED,
+      </if>
+      <if test="acqInstReserved != null" >
+        ACQ_INST_RESERVED,
+      </if>
+      <if test="issInstReserved != null" >
+        ISS_INST_RESERVED,
+      </if>
+      <if test="addData6 != null" >
+        ADD_DATA6,
+      </if>
+      <if test="addData7 != null" >
+        ADD_DATA7,
+      </if>
+      <if test="magAuthCd != null" >
+        MAG_AUTH_CD,
+      </if>
+      <if test="mIp != null" >
+        M_IP,
+      </if>
+        <if test="trOutAccNm != null" >
+        TR_OUT_ACC_NM,
+      </if>
+      <if test="trInAccNm != null" >
+        TR_IN_ACC_NM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cupsCd != null" >
+        #{cupsCd,jdbcType=VARCHAR},
+      </if>
+      <if test="txnCd != null" >
+        #{txnCd,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDesc != null" >
+        #{txnDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="txnTp != null" >
+        #{txnTp,jdbcType=VARCHAR},
+      </if>
+      <if test="txnSt != null" >
+        #{txnSt,jdbcType=VARCHAR},
+      </if>
+      <if test="errCd != null" >
+        #{errCd,jdbcType=VARCHAR},
+      </if>
+      <if test="errMsg != null" >
+        #{errMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="revFlg != null" >
+        #{revFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="revSeq != null" >
+        #{revSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="canFlg != null" >
+        #{canFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="canSeq != null" >
+        #{canSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="rfdFlg != null" >
+        #{rfdFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="cupsStlmDt != null" >
+        #{cupsStlmDt,jdbcType=VARCHAR},
+      </if>
+      <if test="hdBuf != null" >
+        #{hdBuf,jdbcType=VARCHAR},
+      </if>
+      <if test="msgTp != null" >
+        #{msgTp,jdbcType=VARCHAR},
+      </if>
+      <if test="pan != null" >
+        #{pan,jdbcType=VARCHAR},
+      </if>
+      <if test="cdSeqNo != null" >
+        #{cdSeqNo,jdbcType=VARCHAR},
+      </if>
+      <if test="prcCd != null" >
+        #{prcCd,jdbcType=VARCHAR},
+      </if>
+      <if test="amtTxn != null" >
+        #{amtTxn,jdbcType=VARCHAR},
+      </if>
+      <if test="amtStlm != null" >
+        #{amtStlm,jdbcType=VARCHAR},
+      </if>
+      <if test="amtCdhld != null" >
+        #{amtCdhld,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDtTm != null" >
+        #{txnDtTm,jdbcType=VARCHAR},
+      </if>
+      <if test="ratStlm != null" >
+        #{ratStlm,jdbcType=VARCHAR},
+      </if>
+      <if test="ratCdhld != null" >
+        #{ratCdhld,jdbcType=VARCHAR},
+      </if>
+      <if test="cupSsn != null" >
+        #{cupSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="lclTm != null" >
+        #{lclTm,jdbcType=VARCHAR},
+      </if>
+      <if test="lclDt != null" >
+        #{lclDt,jdbcType=VARCHAR},
+      </if>
+      <if test="exprDt != null" >
+        #{exprDt,jdbcType=VARCHAR},
+      </if>
+      <if test="convDt != null" >
+        #{convDt,jdbcType=VARCHAR},
+      </if>
+      <if test="stlmDt != null" >
+        #{stlmDt,jdbcType=VARCHAR},
+      </if>
+      <if test="mchtTp != null" >
+        #{mchtTp,jdbcType=VARCHAR},
+      </if>
+      <if test="acqInsCd != null" >
+        #{acqInsCd,jdbcType=VARCHAR},
+      </if>
+      <if test="fwdInsCd != null" >
+        #{fwdInsCd,jdbcType=VARCHAR},
+      </if>
+      <if test="retlRef != null" >
+        #{retlRef,jdbcType=VARCHAR},
+      </if>
+      <if test="authRspCd != null" >
+        #{authRspCd,jdbcType=VARCHAR},
+      </if>
+      <if test="cupsRspCd != null" >
+        #{cupsRspCd,jdbcType=VARCHAR},
+      </if>
+      <if test="acqTermId != null" >
+        #{acqTermId,jdbcType=VARCHAR},
+      </if>
+      <if test="acqId != null" >
+        #{acqId,jdbcType=VARCHAR},
+      </if>
+      <if test="acqNm != null" >
+        #{acqNm,jdbcType=VARCHAR},
+      </if>
+      <if test="addData != null" >
+        #{addData,jdbcType=VARCHAR},
+      </if>
+      <if test="curTxn != null" >
+        #{curTxn,jdbcType=VARCHAR},
+      </if>
+      <if test="curStlm != null" >
+        #{curStlm,jdbcType=VARCHAR},
+      </if>
+      <if test="curCdhld != null" >
+        #{curCdhld,jdbcType=VARCHAR},
+      </if>
+      <if test="addAmt != null" >
+        #{addAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="fldRcs != null" >
+        #{fldRcs,jdbcType=VARCHAR},
+      </if>
+      <if test="cdhldInf != null" >
+        #{cdhldInf,jdbcType=VARCHAR},
+      </if>
+      <if test="orgSysDt != null" >
+        #{orgSysDt,jdbcType=VARCHAR},
+      </if>
+      <if test="orgSysSeq != null" >
+        #{orgSysSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="orgDataEle != null" >
+        #{orgDataEle,jdbcType=VARCHAR},
+      </if>
+      <if test="rcvInsCd != null" >
+        #{rcvInsCd,jdbcType=VARCHAR},
+      </if>
+      <if test="acctId1 != null" >
+        #{acctId1,jdbcType=VARCHAR},
+      </if>
+      <if test="acctId2 != null" >
+        #{acctId2,jdbcType=VARCHAR},
+      </if>
+      <if test="icData != null" >
+        #{icData,jdbcType=VARCHAR},
+      </if>
+      <if test="hostSsn != null" >
+        #{hostSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="hostDt != null" >
+        #{hostDt,jdbcType=VARCHAR},
+      </if>
+      <if test="hostTp != null" >
+        #{hostTp,jdbcType=VARCHAR},
+      </if>
+      <if test="hostErrCd != null" >
+        #{hostErrCd,jdbcType=VARCHAR},
+      </if>
+      <if test="hostErrMssg != null" >
+        #{hostErrMssg,jdbcType=VARCHAR},
+      </if>
+      <if test="crtOpr != null" >
+        #{crtOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="crtDt != null" >
+        #{crtDt,jdbcType=VARCHAR},
+      </if>
+      <if test="updOpr != null" >
+        #{updOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="updDt != null" >
+        #{updDt,jdbcType=VARCHAR},
+      </if>
+      <if test="misc != null" >
+        #{misc,jdbcType=VARCHAR},
+      </if>
+      <if test="condCd != null" >
+        #{condCd,jdbcType=VARCHAR},
+      </if>
+      <if test="openInst != null" >
+        #{openInst,jdbcType=VARCHAR},
+      </if>
+      <if test="transDirection != null" >
+        #{transDirection,jdbcType=CHAR},
+      </if>
+      <if test="hostFee != null" >
+        #{hostFee,jdbcType=VARCHAR},
+      </if>
+      <if test="systemFlg != null" >
+        #{systemFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="channelSeq != null" >
+        #{channelSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="childTxnCd != null" >
+        #{childTxnCd,jdbcType=VARCHAR},
+      </if>
+      <if test="frzNo != null" >
+        #{frzNo,jdbcType=VARCHAR},
+      </if>
+      <if test="delaySt != null" >
+        #{delaySt,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeInfo != null" >
+        #{chargeInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="transAcc != null" >
+        #{transAcc,jdbcType=VARCHAR},
+      </if>
+      <if test="sameFlg != null" >
+        #{sameFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="txnTltId != null" >
+        #{txnTltId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="txnChnlTp != null" >
+        #{txnChnlTp,jdbcType=VARCHAR},
+      </if>
+      <if test="dropdLviCardFlg != null" >
+        #{dropdLviCardFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="addsPrivData != null" >
+        #{addsPrivData,jdbcType=VARCHAR},
+      </if>
+      <if test="addData2 != null" >
+        #{addData2,jdbcType=VARCHAR},
+      </if>
+      <if test="smyCd != null" >
+        #{smyCd,jdbcType=VARCHAR},
+      </if>
+      <if test="smyDsc != null" >
+        #{smyDsc,jdbcType=VARCHAR},
+      </if>
+      <if test="executeFlg != null" >
+        #{executeFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeCd != null" >
+        #{chargeCd,jdbcType=VARCHAR},
+      </if>
+      <if test="mchtCd != null" >
+        #{mchtCd,jdbcType=VARCHAR},
+      </if>
+      <if test="entryCd != null" >
+        #{entryCd,jdbcType=VARCHAR},
+      </if>
+      <if test="pinCapCd != null" >
+        #{pinCapCd,jdbcType=VARCHAR},
+      </if>
+      <if test="amtFee != null" >
+        #{amtFee,jdbcType=VARCHAR},
+      </if>
+      <if test="track2Data != null" >
+        #{track2Data,jdbcType=VARCHAR},
+      </if>
+      <if test="track3Data != null" >
+        #{track3Data,jdbcType=VARCHAR},
+      </if>
+      <if test="addResData != null" >
+        #{addResData,jdbcType=VARCHAR},
+      </if>
+      <if test="track1Data != null" >
+        #{track1Data,jdbcType=VARCHAR},
+      </if>
+      <if test="pinData != null" >
+        #{pinData,jdbcType=VARCHAR},
+      </if>
+      <if test="securitInfo != null" >
+        #{securitInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="addData1 != null" >
+        #{addData1,jdbcType=VARCHAR},
+      </if>
+      <if test="inquDeta != null" >
+        #{inquDeta,jdbcType=VARCHAR},
+      </if>
+      <if test="switchingData != null" >
+        #{switchingData,jdbcType=VARCHAR},
+      </if>
+      <if test="finaNetData != null" >
+        #{finaNetData,jdbcType=VARCHAR},
+      </if>
+      <if test="netMngCcd != null" >
+        #{netMngCcd,jdbcType=VARCHAR},
+      </if>
+      <if test="msgSecurCode != null" >
+        #{msgSecurCode,jdbcType=VARCHAR},
+      </if>
+      <if test="addData3 != null" >
+        #{addData3,jdbcType=VARCHAR},
+      </if>
+      <if test="addData4 != null" >
+        #{addData4,jdbcType=VARCHAR},
+      </if>
+      <if test="addData5 != null" >
+        #{addData5,jdbcType=VARCHAR},
+      </if>
+      <if test="cupsReserved != null" >
+        #{cupsReserved,jdbcType=VARCHAR},
+      </if>
+      <if test="acqInstReserved != null" >
+        #{acqInstReserved,jdbcType=VARCHAR},
+      </if>
+      <if test="issInstReserved != null" >
+        #{issInstReserved,jdbcType=VARCHAR},
+      </if>
+      <if test="addData6 != null" >
+        #{addData6,jdbcType=VARCHAR},
+      </if>
+      <if test="addData7 != null" >
+        #{addData7,jdbcType=VARCHAR},
+      </if>
+      <if test="magAuthCd != null" >
+        #{magAuthCd,jdbcType=VARCHAR},
+      </if>
+        <if test="mIp != null" >
+        #{mIp,jdbcType=VARCHAR},
+      </if>
+         <if test="trOutAccNm != null" >
+        #{trOutAccNm,jdbcType=VARCHAR},
+      </if>
+      <if test="trInAccNm != null" >
+        #{trInAccNm,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="java.util.Map">
+    update TBL_TFR
+     <set >
+      <if test="mIp != null" >
+        M_IP = #{mIp,jdbcType=VARCHAR},
+      </if>
+      <if test="txnCd != null" >
+        TXN_CD = #{txnCd,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDesc != null" >
+        TXN_DESC = #{txnDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="txnTp != null" >
+        TXN_TP = #{txnTp,jdbcType=VARCHAR},
+      </if>
+      <if test="txnSt != null" >
+        TXN_ST = #{txnSt,jdbcType=VARCHAR},
+      </if>
+      <if test="errCd != null" >
+        ERR_CD = #{errCd,jdbcType=VARCHAR},
+      </if>
+      <if test="errMsg != null" >
+        ERR_MSG = #{errMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="revFlg != null" >
+        REV_FLG = #{revFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="revSeq != null" >
+        REV_SEQ = #{revSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="canFlg != null" >
+        CAN_FLG = #{canFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="canSeq != null" >
+        CAN_SEQ = #{canSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="rfdFlg != null" >
+        RFD_FLG = #{rfdFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="cupsStlmDt != null" >
+        CUPS_STLM_DT = #{cupsStlmDt,jdbcType=VARCHAR},
+      </if>
+      <if test="hdBuf != null" >
+        HD_BUF = #{hdBuf,jdbcType=VARCHAR},
+      </if>
+      <if test="msgTp != null" >
+        MSG_TP = #{msgTp,jdbcType=VARCHAR},
+      </if>
+      <if test="pan != null" >
+        PAN = #{pan,jdbcType=VARCHAR},
+      </if>
+      <if test="cdSeqNo != null" >
+        CD_SEQ_NO = #{cdSeqNo,jdbcType=VARCHAR},
+      </if>
+      <if test="prcCd != null" >
+        PRC_CD = #{prcCd,jdbcType=VARCHAR},
+      </if>
+      <if test="amtTxn != null" >
+        AMT_TXN = #{amtTxn,jdbcType=VARCHAR},
+      </if>
+      <if test="amtStlm != null" >
+        AMT_STLM = #{amtStlm,jdbcType=VARCHAR},
+      </if>
+      <if test="amtCdhld != null" >
+        AMT_CDHLD = #{amtCdhld,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDtTm != null" >
+        TXN_DT_TM = #{txnDtTm,jdbcType=VARCHAR},
+      </if>
+      <if test="ratStlm != null" >
+        RAT_STLM = #{ratStlm,jdbcType=VARCHAR},
+      </if>
+      <if test="ratCdhld != null" >
+        RAT_CDHLD = #{ratCdhld,jdbcType=VARCHAR},
+      </if>
+      <if test="cupSsn != null" >
+        CUP_SSN = #{cupSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="lclTm != null" >
+        LCL_TM = #{lclTm,jdbcType=VARCHAR},
+      </if>
+      <if test="lclDt != null" >
+        LCL_DT = #{lclDt,jdbcType=VARCHAR},
+      </if>
+      <if test="exprDt != null" >
+        EXPR_DT = #{exprDt,jdbcType=VARCHAR},
+      </if>
+      <if test="convDt != null" >
+        CONV_DT = #{convDt,jdbcType=VARCHAR},
+      </if>
+      <if test="stlmDt != null" >
+        STLM_DT = #{stlmDt,jdbcType=VARCHAR},
+      </if>
+      <if test="mchtTp != null" >
+        MCHT_TP = #{mchtTp,jdbcType=VARCHAR},
+      </if>
+      <if test="acqInsCd != null" >
+        ACQ_INS_CD = #{acqInsCd,jdbcType=VARCHAR},
+      </if>
+      <if test="fwdInsCd != null" >
+        FWD_INS_CD = #{fwdInsCd,jdbcType=VARCHAR},
+      </if>
+      <if test="retlRef != null" >
+        RETL_REF = #{retlRef,jdbcType=VARCHAR},
+      </if>
+      <if test="authRspCd != null" >
+        AUTH_RSP_CD = #{authRspCd,jdbcType=VARCHAR},
+      </if>
+      <if test="cupsRspCd != null" >
+        CUPS_RSP_CD = #{cupsRspCd,jdbcType=VARCHAR},
+      </if>
+      <if test="acqTermId != null" >
+        ACQ_TERM_ID = #{acqTermId,jdbcType=VARCHAR},
+      </if>
+      <if test="acqId != null" >
+        ACQ_ID = #{acqId,jdbcType=VARCHAR},
+      </if>
+      <if test="acqNm != null" >
+        ACQ_NM = #{acqNm,jdbcType=VARCHAR},
+      </if>
+      <if test="addData != null" >
+        ADD_DATA = #{addData,jdbcType=VARCHAR},
+      </if>
+      <if test="curTxn != null" >
+        CUR_TXN = #{curTxn,jdbcType=VARCHAR},
+      </if>
+      <if test="curStlm != null" >
+        CUR_STLM = #{curStlm,jdbcType=VARCHAR},
+      </if>
+      <if test="curCdhld != null" >
+        CUR_CDHLD = #{curCdhld,jdbcType=VARCHAR},
+      </if>
+      <if test="addAmt != null" >
+        ADD_AMT = #{addAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="fldRcs != null" >
+        FLD_RCS = #{fldRcs,jdbcType=VARCHAR},
+      </if>
+      <if test="cdhldInf != null" >
+        CDHLD_INF = #{cdhldInf,jdbcType=VARCHAR},
+      </if>
+      <if test="orgSysDt != null" >
+        ORG_SYS_DT = #{orgSysDt,jdbcType=VARCHAR},
+      </if>
+      <if test="orgSysSeq != null" >
+        ORG_SYS_SEQ = #{orgSysSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="orgDataEle != null" >
+        ORG_DATA_ELE = #{orgDataEle,jdbcType=VARCHAR},
+      </if>
+      <if test="rcvInsCd != null" >
+        RCV_INS_CD = #{rcvInsCd,jdbcType=VARCHAR},
+      </if>
+      <if test="acctId1 != null" >
+        ACCT_ID1 = #{acctId1,jdbcType=VARCHAR},
+      </if>
+      <if test="acctId2 != null" >
+        ACCT_ID2 = #{acctId2,jdbcType=VARCHAR},
+      </if>
+      <if test="icData != null" >
+        IC_DATA = #{icData,jdbcType=VARCHAR},
+      </if>
+      <if test="hostSsn != null" >
+        HOST_SSN = #{hostSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="hostDt != null" >
+        HOST_DT = #{hostDt,jdbcType=VARCHAR},
+      </if>
+      <if test="hostTp != null" >
+        HOST_TP = #{hostTp,jdbcType=VARCHAR},
+      </if>
+      <if test="hostErrCd != null" >
+        HOST_ERR_CD = #{hostErrCd,jdbcType=VARCHAR},
+      </if>
+      <if test="hostErrMssg != null" >
+        HOST_ERR_MSSG = #{hostErrMssg,jdbcType=VARCHAR},
+      </if>
+      <if test="crtOpr != null" >
+        CRT_OPR = #{crtOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="crtDt != null" >
+        CRT_DT = #{crtDt,jdbcType=VARCHAR},
+      </if>
+      <if test="updOpr != null" >
+        UPD_OPR = #{updOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="updDt != null" >
+        UPD_DT = #{updDt,jdbcType=VARCHAR},
+      </if>
+      <if test="misc != null" >
+        MISC = #{misc,jdbcType=VARCHAR},
+      </if>
+      <if test="condCd != null" >
+        COND_CD = #{condCd,jdbcType=VARCHAR},
+      </if>
+      <if test="openInst != null" >
+        OPEN_INST = #{openInst,jdbcType=VARCHAR},
+      </if>
+      <if test="transDirection != null" >
+        TRANS_DIRECTION = #{transDirection,jdbcType=CHAR},
+      </if>
+      <if test="hostFee != null" >
+        HOST_FEE = #{hostFee,jdbcType=VARCHAR},
+      </if>
+      <if test="systemFlg != null" >
+        SYSTEM_FLG = #{systemFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="channelSeq != null" >
+        CHANNEL_SEQ = #{channelSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="childTxnCd != null" >
+        CHILD_TXN_CD = #{childTxnCd,jdbcType=VARCHAR},
+      </if>
+      <if test="frzNo != null" >
+        FRZ_NO = #{frzNo,jdbcType=VARCHAR},
+      </if>
+      <if test="delaySt != null" >
+        DELAY_ST = #{delaySt,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeInfo != null" >
+        CHARGE_INFO = #{chargeInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="transAcc != null" >
+        TRANS_ACC = #{transAcc,jdbcType=VARCHAR},
+      </if>
+      <if test="sameFlg != null" >
+        SAME_FLG = #{sameFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="txnTltId != null" >
+        TXN_TLT_ID = #{txnTltId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        ORG_ID = #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="txnChnlTp != null" >
+        TXN_CHNL_TP = #{txnChnlTp,jdbcType=VARCHAR},
+      </if>
+      <if test="dropdLviCardFlg != null" >
+        DROPD_LVI_CARD_FLG = #{dropdLviCardFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="addsPrivData != null" >
+        ADDS_PRIV_DATA = #{addsPrivData,jdbcType=VARCHAR},
+      </if>
+      <if test="addData2 != null" >
+        ADD_DATA2 = #{addData2,jdbcType=VARCHAR},
+      </if>
+      <if test="smyCd != null" >
+        SMY_CD = #{smyCd,jdbcType=VARCHAR},
+      </if>
+      <if test="smyDsc != null" >
+        SMY_DSC = #{smyDsc,jdbcType=VARCHAR},
+      </if>
+      <if test="executeFlg != null" >
+        EXECUTE_FLG = #{executeFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeCd != null" >
+        CHARGE_CD = #{chargeCd,jdbcType=VARCHAR},
+      </if>
+      <if test="mchtCd != null" >
+        MCHT_CD = #{mchtCd,jdbcType=VARCHAR},
+      </if>
+      <if test="entryCd != null" >
+        ENTRY_CD = #{entryCd,jdbcType=VARCHAR},
+      </if>
+      <if test="pinCapCd != null" >
+        PIN_CAP_CD = #{pinCapCd,jdbcType=VARCHAR},
+      </if>
+      <if test="amtFee != null" >
+        AMT_FEE = #{amtFee,jdbcType=VARCHAR},
+      </if>
+      <if test="track2Data != null" >
+        TRACK2_DATA = #{track2Data,jdbcType=VARCHAR},
+      </if>
+      <if test="track3Data != null" >
+        TRACK3_DATA = #{track3Data,jdbcType=VARCHAR},
+      </if>
+      <if test="addResData != null" >
+        ADD_RES_DATA = #{addResData,jdbcType=VARCHAR},
+      </if>
+      <if test="track1Data != null" >
+        TRACK1_DATA = #{track1Data,jdbcType=VARCHAR},
+      </if>
+      <if test="pinData != null" >
+        PIN_DATA = #{pinData,jdbcType=VARCHAR},
+      </if>
+      <if test="securitInfo != null" >
+        SECURIT_INFO = #{securitInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="addData1 != null" >
+        ADD_DATA1 = #{addData1,jdbcType=VARCHAR},
+      </if>
+      <if test="inquDeta != null" >
+        INQU_DETA = #{inquDeta,jdbcType=VARCHAR},
+      </if>
+      <if test="switchingData != null" >
+        SWITCHING_DATA = #{switchingData,jdbcType=VARCHAR},
+      </if>
+      <if test="finaNetData != null" >
+        FINA_NET_DATA = #{finaNetData,jdbcType=VARCHAR},
+      </if>
+      <if test="netMngCcd != null" >
+        NET_MNG_CCD = #{netMngCcd,jdbcType=VARCHAR},
+      </if>
+      <if test="msgSecurCode != null" >
+        MSG_SECUR_CODE = #{msgSecurCode,jdbcType=VARCHAR},
+      </if>
+      <if test="addData3 != null" >
+        ADD_DATA3 = #{addData3,jdbcType=VARCHAR},
+      </if>
+      <if test="addData4 != null" >
+        ADD_DATA4 = #{addData4,jdbcType=VARCHAR},
+      </if>
+      <if test="addData5 != null" >
+        ADD_DATA5 = #{addData5,jdbcType=VARCHAR},
+      </if>
+      <if test="cupsReserved != null" >
+        CUPS_RESERVED = #{cupsReserved,jdbcType=VARCHAR},
+      </if>
+      <if test="acqInstReserved != null" >
+        ACQ_INST_RESERVED = #{acqInstReserved,jdbcType=VARCHAR},
+      </if>
+      <if test="issInstReserved != null" >
+        ISS_INST_RESERVED = #{issInstReserved,jdbcType=VARCHAR},
+      </if>
+      <if test="addData6 != null" >
+        ADD_DATA6 = #{addData6,jdbcType=VARCHAR},
+      </if>
+      <if test="addData7 != null" >
+        ADD_DATA7 = #{addData7,jdbcType=VARCHAR},
+      </if>
+      <if test="magAuthCd != null" >
+        MAG_AUTH_CD = #{magAuthCd,jdbcType=VARCHAR},
+      </if>
+        <if test="trOutAccNm != null" >
+        TR_OUT_ACC_NM = #{trOutAccNm,jdbcType=VARCHAR},
+      </if>
+      <if test="trInAccNm != null" >
+        TR_IN_ACC_NM = #{trInAccNm,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CUPS_CD = #{cupsCd,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="java.util.Map">
+    update TBL_TFR
+    set TXN_CD = #{txnCd,jdbcType=VARCHAR},
+      TXN_DESC = #{txnDesc,jdbcType=VARCHAR},
+      TXN_TP = #{txnTp,jdbcType=VARCHAR},
+      TXN_ST = #{txnSt,jdbcType=VARCHAR},
+      ERR_CD = #{errCd,jdbcType=VARCHAR},
+      ERR_MSG = #{errMsg,jdbcType=VARCHAR},
+      REV_FLG = #{revFlg,jdbcType=VARCHAR},
+      REV_SEQ = #{revSeq,jdbcType=VARCHAR},
+      CAN_FLG = #{canFlg,jdbcType=VARCHAR},
+      CAN_SEQ = #{canSeq,jdbcType=VARCHAR},
+      RFD_FLG = #{rfdFlg,jdbcType=VARCHAR},
+      CUPS_STLM_DT = #{cupsStlmDt,jdbcType=VARCHAR},
+      HD_BUF = #{hdBuf,jdbcType=VARCHAR},
+      MSG_TP = #{msgTp,jdbcType=VARCHAR},
+      PAN = #{pan,jdbcType=VARCHAR},
+      CD_SEQ_NO = #{cdSeqNo,jdbcType=VARCHAR},
+      PRC_CD = #{prcCd,jdbcType=VARCHAR},
+      AMT_TXN = #{amtTxn,jdbcType=VARCHAR},
+      AMT_STLM = #{amtStlm,jdbcType=VARCHAR},
+      AMT_CDHLD = #{amtCdhld,jdbcType=VARCHAR},
+      TXN_DT_TM = #{txnDtTm,jdbcType=VARCHAR},
+      RAT_STLM = #{ratStlm,jdbcType=VARCHAR},
+      RAT_CDHLD = #{ratCdhld,jdbcType=VARCHAR},
+      CUP_SSN = #{cupSsn,jdbcType=VARCHAR},
+      LCL_TM = #{lclTm,jdbcType=VARCHAR},
+      LCL_DT = #{lclDt,jdbcType=VARCHAR},
+      EXPR_DT = #{exprDt,jdbcType=VARCHAR},
+      CONV_DT = #{convDt,jdbcType=VARCHAR},
+      STLM_DT = #{stlmDt,jdbcType=VARCHAR},
+      MCHT_TP = #{mchtTp,jdbcType=VARCHAR},
+      ACQ_INS_CD = #{acqInsCd,jdbcType=VARCHAR},
+      FWD_INS_CD = #{fwdInsCd,jdbcType=VARCHAR},
+      RETL_REF = #{retlRef,jdbcType=VARCHAR},
+      AUTH_RSP_CD = #{authRspCd,jdbcType=VARCHAR},
+      CUPS_RSP_CD = #{cupsRspCd,jdbcType=VARCHAR},
+      ACQ_TERM_ID = #{acqTermId,jdbcType=VARCHAR},
+      ACQ_ID = #{acqId,jdbcType=VARCHAR},
+      ACQ_NM = #{acqNm,jdbcType=VARCHAR},
+      ADD_DATA = #{addData,jdbcType=VARCHAR},
+      CUR_TXN = #{curTxn,jdbcType=VARCHAR},
+      CUR_STLM = #{curStlm,jdbcType=VARCHAR},
+      CUR_CDHLD = #{curCdhld,jdbcType=VARCHAR},
+      ADD_AMT = #{addAmt,jdbcType=VARCHAR},
+      FLD_RCS = #{fldRcs,jdbcType=VARCHAR},
+      CDHLD_INF = #{cdhldInf,jdbcType=VARCHAR},
+      ORG_SYS_DT = #{orgSysDt,jdbcType=VARCHAR},
+      ORG_SYS_SEQ = #{orgSysSeq,jdbcType=VARCHAR},
+      ORG_DATA_ELE = #{orgDataEle,jdbcType=VARCHAR},
+      RCV_INS_CD = #{rcvInsCd,jdbcType=VARCHAR},
+      ACCT_ID1 = #{acctId1,jdbcType=VARCHAR},
+      ACCT_ID2 = #{acctId2,jdbcType=VARCHAR},
+      IC_DATA = #{ICCData,jdbcType=VARCHAR},
+      HOST_SSN = #{hostSsn,jdbcType=VARCHAR},
+      HOST_DT = #{hostDt,jdbcType=VARCHAR},
+      HOST_TP = #{hostTp,jdbcType=VARCHAR},
+      HOST_ERR_CD = #{hostErrCd,jdbcType=VARCHAR},
+      HOST_ERR_MSSG = #{hostErrMssg,jdbcType=VARCHAR},
+      CRT_OPR = #{crtOpr,jdbcType=VARCHAR},
+      CRT_DT = #{crtDt,jdbcType=VARCHAR},
+      UPD_OPR = #{updOpr,jdbcType=VARCHAR},
+      UPD_DT = #{updDt,jdbcType=VARCHAR},
+      MISC = #{misc,jdbcType=VARCHAR},
+       COND_CD = #{condCd,jdbcType=VARCHAR}
+    where CUPS_CD = #{cupsCd,jdbcType=VARCHAR}
+  </update>
+  
+  
+   <!-- 更新32 33域 -->
+  <update id="updateBySysDtAndSysSeq" parameterType="java.util.Map">
+  	 update TBL_TFR
+    <set>
+    	<if test="acqInsCd != null">
+        	ACQ_INS_CD = #{acqInsCd,jdbcType=VARCHAR},
+      	</if>
+      	<if test="fwdInsCd != null">
+        	FWD_INS_CD = #{fwdInsCd,jdbcType=VARCHAR},
+      	</if>
+     </set>
+     WHERE 
+     	SYS_DT = #{sysDt,jdbcType=VARCHAR}
+      and 
+      	SYS_SEQ = #{sysSeq,jdbcType=VARCHAR}
+   </update>
+   
+   
+     <update id="updateF55ByPrimaryKey" parameterType="java.util.Map">
+    	UPDATE TBL_F_TXN
+    	<set>
+    		IC_DATA = #{ICCData,jdbcType=VARCHAR}
+    	</set>
+    	where 
+    		SYS_DT = #{sysDt,jdbcType=VARCHAR}
+      	AND
+      	 	SYS_SEQ = #{sysSeq,jdbcType=VARCHAR}
+    </update>
+</mapper>

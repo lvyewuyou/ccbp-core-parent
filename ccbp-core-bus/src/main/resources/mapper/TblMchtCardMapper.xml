@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbp.core.bus.mapper.TblMchtCardMapper">
+
+	<resultMap id="BaseResultMap" type="java.util.Map">
+		<id column="MCHT_ID" jdbcType="VARCHAR" property="mchtId" />
+		<id column="PAN" jdbcType="VARCHAR" property="pan" />
+		<result column="MCHT_NAME" jdbcType="VARCHAR" property="mchtName" />
+		<result column="MCC_ID" jdbcType="VARCHAR" property="mccId" />
+		<result column="IS_USE" jdbcType="VARCHAR" property="isUse" />
+		<result column="CRT_OPR" jdbcType="VARCHAR" property="crtOpr" />
+	    <result column="CRT_DT" jdbcType="VARCHAR" property="crtDt" />
+	    <result column="UPD_OPR" jdbcType="VARCHAR" property="updOpr" />
+	    <result column="UPD_DT" jdbcType="VARCHAR" property="updDt" />
+	    <result column="MISC" jdbcType="VARCHAR" property="misc" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		MCHT_ID, MCHT_NAME, MCC_ID, IS_USE, PAN, CRT_OPR, CRT_DT, UPD_OPR, UPD_DT, MISC
+	</sql>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_MCHT_CARD
+		where MCHT_ID = #{mchtId,jdbcType=VARCHAR} and PAN = #{pan,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="query" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_MCHT_CARD
+		<where>
+			<if test="pan != null and pan != ''"> and PAN = #{pan,jdbcType=VARCHAR} </if>
+			<if test="mchtId != null and mchtId != ''"> and MCHT_ID = #{mchtId,jdbcType=VARCHAR} </if>
+			<if test="mchtName != null and mchtName != ''"> and MCHT_NAME like '%#{mchtName,jdbcType=VARCHAR}%' </if>
+			<if test="mccId != null and mccId != ''"> and MCC_ID = #{mccId,jdbcType=VARCHAR} </if>
+			<if test="isUse != null and isUse != ''"> and IS_USE = #{isUse,jdbcType=VARCHAR} </if>
+		</where>
+	</select>
+	
+	<select id="queryByPan" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_MCHT_CARD
+		where PAN = #{pan,jdbcType=VARCHAR}
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.util.Map">
+		delete from TBL_MCHT_CARD where MCHT_ID = #{mchtId,jdbcType=VARCHAR} and PAN = #{pan,jdbcType=VARCHAR}
+	</delete>
+	
+	<insert id="insert" parameterType="java.util.Map">
+		insert into TBL_MCHT_CARD
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="mchtId != null"> MCHT_ID, </if>
+			<if test="mchtName != null"> MCHT_NAME, </if>
+			<if test="mccId != null"> MCC_ID, </if>
+			<if test="pan != null"> PAN, </if>
+			<if test="isUse != null"> IS_USE, </if>
+			<if test="crtOpr != null"> CRT_OPR,	</if>
+			<if test="crtDt != null"> CRT_DT, </if>
+			<if test="updOpr != null"> UPD_OPR,	</if>
+			<if test="updDt != null"> UPD_DT, </if>
+			<if test="misc != null"> MISC, </if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="mchtId != null"> #{mchtId,jdbcType=VARCHAR}, </if>
+			<if test="mchtName != null"> #{mchtName,jdbcType=VARCHAR}, </if>
+			<if test="mccId != null"> #{mccId,jdbcType=VARCHAR}, </if>
+			<if test="pan != null">  #{pan,jdbcType=VARCHAR}, </if>
+			<if test="isUse != null">  #{isUse,jdbcType=VARCHAR},  </if>
+			<if test="crtOpr != null"> #{crtOpr,jdbcType=VARCHAR}, </if>
+			<if test="crtDt != null"> #{crtDt,jdbcType=VARCHAR}, </if>
+			<if test="updOpr != null"> #{updOpr,jdbcType=VARCHAR}, </if>
+			<if test="updDt != null"> #{updDt,jdbcType=VARCHAR}, </if>
+			<if test="misc != null"> #{misc,jdbcType=VARCHAR}, </if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+		update TBL_MCHT_CARD
+		<set>
+			<if test="mchtName != null"> MCHT_NAME = #{mchtName,jdbcType=VARCHAR}, </if>
+			<if test="mccId != null"> MCC_ID = #{mccId,jdbcType=VARCHAR}, </if>
+			<if test="isUse != null">  IS_USE = #{isUse,jdbcType=VARCHAR},  </if>
+			<if test="updOpr != null"> UPD_OPR = #{updOpr,jdbcType=VARCHAR}, </if>
+			<if test="updDt != null"> UPD_DT = #{updDt,jdbcType=VARCHAR}, </if>
+			<if test="misc != null"> MISC = #{misc,jdbcType=VARCHAR}, </if>
+		</set>
+		where MCHT_ID = #{mchtId,jdbcType=VARCHAR} and PAN = #{pan,jdbcType=VARCHAR}
+	</update>
+</mapper>

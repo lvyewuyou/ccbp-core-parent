@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbp.core.bus.mapper.TblOrderInfMapper">
+
+	<resultMap id="BaseResultMap" type="java.util.Map">
+		<id column="SYS_SEQ" jdbcType="VARCHAR" property="sysSeq" />
+		<result column="ORDER_NO" jdbcType="VARCHAR" property="orderNo" />
+		<result column="ACQ_INS_CD" jdbcType="VARCHAR" property="acqInsCd" />
+		<result column="FWD_INS_CD" jdbcType="VARCHAR" property="fwdInsCd" />
+		<result column="BIZ_TYPE" jdbcType="VARCHAR" property="bizType" />
+		<result column="PAN" jdbcType="VARCHAR" property="pan" />
+		<result column="AMT" jdbcType="VARCHAR" property="amt" />
+		<result column="MCHT_CD" jdbcType="VARCHAR" property="mchtCd" />
+	    <result column="MCHT_NAME" jdbcType="VARCHAR" property="mchtName" />
+	    <result column="TERMINAL_NO" jdbcType="VARCHAR" property="terminalNo" />
+		<result column="CRT_OPR" jdbcType="VARCHAR" property="crtOpr" />
+	    <result column="CRT_DT" jdbcType="VARCHAR" property="crtDt" />
+	    <result column="UPD_OPR" jdbcType="VARCHAR" property="updOpr" />
+	    <result column="UPD_DT" jdbcType="VARCHAR" property="updDt" />
+	    <result column="MISC" jdbcType="VARCHAR" property="misc" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		SYS_SEQ, ORDER_NO, ACQ_INS_CD, FWD_INS_CD, PAN, AMT, MCHT_CD, MCHT_NAME, TERMINAL_NO, BIZ_TYPE,
+		CRT_OPR, CRT_DT, UPD_OPR, UPD_DT, MISC
+	</sql>
+	
+	<select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_ORDER_INF
+		where SYS_SEQ = #{sysSeq,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="query" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_ORDER_INF
+		<where>
+			<if test="sysSeq != null and sysSeq != ''"> and SYS_SEQ = #{sysSeq,jdbcType=VARCHAR} </if>
+			<if test="orderNo != null and orderNo != ''"> and ORDER_NO = #{orderNo,jdbcType=VARCHAR} </if>
+			<if test="pan != null and orderNo != ''"> and PAN = #{pan,jdbcType=VARCHAR} </if>
+			<if test="bizType != null"> and BIZ_TYPE = #{bizType,jdbcType=VARCHAR} </if>
+			<if test="acqInsCd != null and acqInsCd != ''"> and ACQ_INS_CD = #{acqInsCd,jdbcType=VARCHAR} </if>
+			<if test="fwdInsCd != null and fwdInsCd != ''"> and FWD_INS_CD = #{fwdInsCd,jdbcType=VARCHAR} </if>
+			<if test="mchtCd != null and mchtCd != ''"> and MCHT_CD = #{mchtCd,jdbcType=VARCHAR} </if>
+			<if test="mchtName != null and mchtName != ''"> and MCHT_NAME = #{mchtName,jdbcType=VARCHAR} </if>
+			<if test="terminalNo != null and terminalNo != ''"> and TERMINAL_NO = #{terminalNo,jdbcType=VARCHAR} </if>
+		</where> 
+	</select>
+	
+	<select id="queryByOrderNo" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_ORDER_INF
+		where ORDER_NO = #{orderNo,jdbcType=VARCHAR} 
+		and ACQ_INS_CD = #{acqInsCd,jdbcType=VARCHAR} 
+		and FWD_INS_CD = #{fwdInsCd,jdbcType=VARCHAR} 
+	</select>
+	
+	<select id="queryByOrderNoAndPan" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_ORDER_INF
+		where ORDER_NO = #{orderNo,jdbcType=VARCHAR} 
+		and PAN = #{pan,jdbcType=VARCHAR}
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.util.Map">
+		delete from TBL_ORDER_INF where SYS_SEQ = #{sysSeq,jdbcType=VARCHAR}
+	</delete>
+	
+	<insert id="insert" parameterType="java.util.Map">
+		insert into TBL_ORDER_INF
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="sysSeq != null"> SYS_SEQ, </if>
+			<if test="orderNo != null"> ORDER_NO, </if>
+			<if test="pan != null"> PAN,</if>
+			<if test="bizType != null"> BIZ_TYPE, </if>
+			<if test="acqInsCd != null"> ACQ_INS_CD, </if>
+			<if test="fwdInsCd != null"> FWD_INS_CD, </if>
+			<if test="amt != null"> AMT, </if>
+			<if test="mchtCd != null"> MCHT_CD, </if>
+			<if test="mchtName != null"> MCHT_NAME, </if>
+			<if test="terminalNo != null"> TERMINAL_NO, </if>
+			<if test="crtOpr != null"> CRT_OPR,	</if>
+			<if test="crtDt != null"> CRT_DT, </if>
+			<if test="updOpr != null"> UPD_OPR,	</if>
+			<if test="updDt != null"> UPD_DT, </if>
+			<if test="misc != null"> MISC, </if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="sysSeq != null"> #{sysSeq,jdbcType=VARCHAR}, </if>
+			<if test="orderNo != null"> #{orderNo,jdbcType=VARCHAR}, </if>
+			<if test="pan != null"> #{pan,jdbcType=VARCHAR}, </if>
+			<if test="bizType != null"> #{bizType, jdbcType=VARCHAR}, </if>
+			<if test="acqInsCd != null"> #{acqInsCd,jdbcType=VARCHAR}, </if>
+			<if test="fwdInsCd != null"> #{fwdInsCd,jdbcType=VARCHAR}, </if>
+			<if test="amt != null"> #{amt,jdbcType=VARCHAR}, </if>
+			<if test="mchtCd != null"> #{mchtCd,jdbcType=VARCHAR}, </if>
+			<if test="mchtName != null"> #{mchtName,jdbcType=VARCHAR}, </if>
+			<if test="terminalNo != null"> #{terminalNo,jdbcType=VARCHAR}, </if>
+			<if test="crtOpr != null"> #{crtOpr,jdbcType=VARCHAR}, </if>
+			<if test="crtDt != null"> #{crtDt,jdbcType=VARCHAR}, </if>
+			<if test="updOpr != null"> #{updOpr,jdbcType=VARCHAR}, </if>
+			<if test="updDt != null"> #{updDt,jdbcType=VARCHAR}, </if>
+			<if test="misc != null"> #{misc,jdbcType=VARCHAR}, </if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+		update TBL_ORDER_INF
+		<set>
+			<if test="orderNo != null"> ORDER_NO = #{orderNo,jdbcType=VARCHAR}, </if>
+			<if test="pan != null"> PAN = #{pan,jdbcType=VARCHAR}, </if>
+			<if test="bizType != null"> BIZ_TYPE = #{bizType,jdbcType=VARCHAR}, </if>
+			<if test="acqInsCd != null"> ACQ_INS_CD = #{acqInsCd,jdbcType=VARCHAR}, </if>
+			<if test="fwdInsCd != null"> FWD_INS_CD = #{fwdInsCd,jdbcType=VARCHAR}, </if>
+			<if test="amt != null"> AMT = #{amt,jdbcType=VARCHAR}, </if>
+			<if test="mchtCd != null"> MCHT_CD = #{mchtCd,jdbcType=VARCHAR}, </if>
+			<if test="mchtName != null"> MCHT_NAME = #{mchtName,jdbcType=VARCHAR}, </if>
+			<if test="terminalNo != null"> TERMINAL_NO = #{terminalNo,jdbcType=VARCHAR}, </if>
+			<if test="updOpr != null"> UPD_OPR = #{updOpr,jdbcType=VARCHAR},	</if>
+			<if test="updDt != null"> UPD_DT = #{updDt,jdbcType=VARCHAR}, </if>
+			<if test="misc != null"> MISC = #{misc,jdbcType=VARCHAR}, </if>
+		</set>
+		where SYS_SEQ = #{sysSeq,jdbcType=VARCHAR}
+	</update>
+</mapper>

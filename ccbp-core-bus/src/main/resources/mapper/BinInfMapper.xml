@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbp.core.bus.mapper.BinInfMapper">
+  <resultMap id="BaseResultMap" type="java.util.Map">
+    <id column="CARD_BIN" jdbcType="VARCHAR" property="cardBin" />
+    <result column="CARD_BIN_LEN" jdbcType="VARCHAR" property="cardBinLen" />
+    <result column="CARD_FLG" jdbcType="VARCHAR" property="cardFlg" />
+    <result column="CRT_OPR" jdbcType="VARCHAR" property="crtOpr" />
+    <result column="UPD_DT" jdbcType="VARCHAR" property="updDt" />
+    <result column="UPD_OPR" jdbcType="VARCHAR" property="updOpr" />
+    <result column="MISC" jdbcType="VARCHAR" property="misc" />
+    <result column="CRT_DT" jdbcType="VARCHAR" property="crtDt" />
+    <result column="CARD_BIN_STA" jdbcType="VARCHAR" property="cardBinSta" />
+    <result column="CARD_NM" jdbcType="VARCHAR" property="cardNm" />
+    <result column="CARD_OWNER" jdbcType="VARCHAR" property="cardOwner" />
+    <result column="IC_FLG" jdbcType="VARCHAR" property="icFlg" />
+    <result column="IC_TYP" jdbcType="VARCHAR" property="icTyp" />
+    <result column="CARD_LEN" jdbcType="VARCHAR" property="cardLen" />
+    <result column="CARD_TYP" jdbcType="VARCHAR" property="cardTyp" />
+    <result column="BNK_BIN" jdbcType="VARCHAR" property="bnkBin" />
+    <result column="SND_BNK_CD" jdbcType="VARCHAR" property="sndBnkCd" />
+    <result column="CARD_ISSU_INST" jdbcType="VARCHAR" property="cardIssuInst" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+    CARD_BIN, CARD_BIN_LEN, CARD_FLG, CRT_OPR, UPD_DT, UPD_OPR, MISC, CRT_DT, CARD_BIN_STA, 
+    CARD_NM, CARD_OWNER, IC_FLG, IC_TYP, CARD_LEN, CARD_TYP, BNK_BIN, SND_BNK_CD,CARD_ISSU_INST
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TBL_BIN_INF
+    where CARD_BIN = #{cardBin,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll"  resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TBL_BIN_INF
+  </select>
+  
+  <select id="selectAllByBinLenDESC"  resultMap="BaseResultMap">
+    select 
+    	<include refid="Base_Column_List" />
+    from TBL_BIN_INF
+    order by to_number(CARD_BIN_LEN) desc
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from TBL_BIN_INF
+    where CARD_BIN = #{cardBin,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="java.util.Map">
+    insert into TBL_BIN_INF (CARD_BIN, CARD_BIN_LEN, CARD_FLG, 
+      CRT_OPR, UPD_DT, UPD_OPR, 
+      MISC, CRT_DT, CARD_BIN_STA, 
+      CARD_NM, CARD_OWNER, IC_FLG, 
+      IC_TYP, CARD_LEN, CARD_TYP, 
+      BNK_BIN, SND_BNK_CD)
+    values (#{cardBin,jdbcType=VARCHAR}, #{cardBinLen,jdbcType=VARCHAR}, #{cardFlg,jdbcType=VARCHAR}, 
+      #{crtOpr,jdbcType=VARCHAR}, #{updDt,jdbcType=VARCHAR}, #{updOpr,jdbcType=VARCHAR}, 
+      #{misc,jdbcType=VARCHAR}, #{crtDt,jdbcType=VARCHAR}, #{cardBinSta,jdbcType=VARCHAR}, 
+      #{cardNm,jdbcType=VARCHAR}, #{cardOwner,jdbcType=VARCHAR}, #{icFlg,jdbcType=VARCHAR}, 
+      #{icTyp,jdbcType=VARCHAR}, #{cardLen,jdbcType=VARCHAR}, #{cardTyp,jdbcType=VARCHAR}, 
+      #{bnkBin,jdbcType=VARCHAR}, #{sndBnkCd,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="java.util.Map">
+    insert into TBL_BIN_INF
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cardBin != null">
+        CARD_BIN,
+      </if>
+      <if test="cardBinLen != null">
+        CARD_BIN_LEN,
+      </if>
+      <if test="cardFlg != null">
+        CARD_FLG,
+      </if>
+      <if test="crtOpr != null">
+        CRT_OPR,
+      </if>
+      <if test="updDt != null">
+        UPD_DT,
+      </if>
+      <if test="updOpr != null">
+        UPD_OPR,
+      </if>
+      <if test="misc != null">
+        MISC,
+      </if>
+      <if test="crtDt != null">
+        CRT_DT,
+      </if>
+      <if test="cardBinSta != null">
+        CARD_BIN_STA,
+      </if>
+      <if test="cardNm != null">
+        CARD_NM,
+      </if>
+      <if test="cardOwner != null">
+        CARD_OWNER,
+      </if>
+      <if test="icFlg != null">
+        IC_FLG,
+      </if>
+      <if test="icTyp != null">
+        IC_TYP,
+      </if>
+      <if test="cardLen != null">
+        CARD_LEN,
+      </if>
+      <if test="cardTyp != null">
+        CARD_TYP,
+      </if>
+      <if test="bnkBin != null">
+        BNK_BIN,
+      </if>
+      <if test="sndBnkCd != null">
+        SND_BNK_CD,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cardBin != null">
+        #{cardBin,jdbcType=VARCHAR},
+      </if>
+      <if test="cardBinLen != null">
+        #{cardBinLen,jdbcType=VARCHAR},
+      </if>
+      <if test="cardFlg != null">
+        #{cardFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="crtOpr != null">
+        #{crtOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="updDt != null">
+        #{updDt,jdbcType=VARCHAR},
+      </if>
+      <if test="updOpr != null">
+        #{updOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="misc != null">
+        #{misc,jdbcType=VARCHAR},
+      </if>
+      <if test="crtDt != null">
+        #{crtDt,jdbcType=VARCHAR},
+      </if>
+      <if test="cardBinSta != null">
+        #{cardBinSta,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNm != null">
+        #{cardNm,jdbcType=VARCHAR},
+      </if>
+      <if test="cardOwner != null">
+        #{cardOwner,jdbcType=VARCHAR},
+      </if>
+      <if test="icFlg != null">
+        #{icFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="icTyp != null">
+        #{icTyp,jdbcType=VARCHAR},
+      </if>
+      <if test="cardLen != null">
+        #{cardLen,jdbcType=VARCHAR},
+      </if>
+      <if test="cardTyp != null">
+        #{cardTyp,jdbcType=VARCHAR},
+      </if>
+      <if test="bnkBin != null">
+        #{bnkBin,jdbcType=VARCHAR},
+      </if>
+      <if test="sndBnkCd != null">
+        #{sndBnkCd,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="java.util.Map">
+    update TBL_BIN_INF
+    <set>
+      <if test="cardBinLen != null">
+        CARD_BIN_LEN = #{cardBinLen,jdbcType=VARCHAR},
+      </if>
+      <if test="cardFlg != null">
+        CARD_FLG = #{cardFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="crtOpr != null">
+        CRT_OPR = #{crtOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="updDt != null">
+        UPD_DT = #{updDt,jdbcType=VARCHAR},
+      </if>
+      <if test="updOpr != null">
+        UPD_OPR = #{updOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="misc != null">
+        MISC = #{misc,jdbcType=VARCHAR},
+      </if>
+      <if test="crtDt != null">
+        CRT_DT = #{crtDt,jdbcType=VARCHAR},
+      </if>
+      <if test="cardBinSta != null">
+        CARD_BIN_STA = #{cardBinSta,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNm != null">
+        CARD_NM = #{cardNm,jdbcType=VARCHAR},
+      </if>
+      <if test="cardOwner != null">
+        CARD_OWNER = #{cardOwner,jdbcType=VARCHAR},
+      </if>
+      <if test="icFlg != null">
+        IC_FLG = #{icFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="icTyp != null">
+        IC_TYP = #{icTyp,jdbcType=VARCHAR},
+      </if>
+      <if test="cardLen != null">
+        CARD_LEN = #{cardLen,jdbcType=VARCHAR},
+      </if>
+      <if test="cardTyp != null">
+        CARD_TYP = #{cardTyp,jdbcType=VARCHAR},
+      </if>
+      <if test="bnkBin != null">
+        BNK_BIN = #{bnkBin,jdbcType=VARCHAR},
+      </if>
+      <if test="sndBnkCd != null">
+        SND_BNK_CD = #{sndBnkCd,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CARD_BIN = #{cardBin,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="java.util.Map">
+    update TBL_BIN_INF
+    set CARD_BIN_LEN = #{cardBinLen,jdbcType=VARCHAR},
+      CARD_FLG = #{cardFlg,jdbcType=VARCHAR},
+      CRT_OPR = #{crtOpr,jdbcType=VARCHAR},
+      UPD_DT = #{updDt,jdbcType=VARCHAR},
+      UPD_OPR = #{updOpr,jdbcType=VARCHAR},
+      MISC = #{misc,jdbcType=VARCHAR},
+      CRT_DT = #{crtDt,jdbcType=VARCHAR},
+      CARD_BIN_STA = #{cardBinSta,jdbcType=VARCHAR},
+      CARD_NM = #{cardNm,jdbcType=VARCHAR},
+      CARD_OWNER = #{cardOwner,jdbcType=VARCHAR},
+      IC_FLG = #{icFlg,jdbcType=VARCHAR},
+      IC_TYP = #{icTyp,jdbcType=VARCHAR},
+      CARD_LEN = #{cardLen,jdbcType=VARCHAR},
+      CARD_TYP = #{cardTyp,jdbcType=VARCHAR},
+      BNK_BIN = #{bnkBin,jdbcType=VARCHAR},
+      SND_BNK_CD = #{sndBnkCd,jdbcType=VARCHAR}
+    where CARD_BIN = #{cardBin,jdbcType=VARCHAR}
+  </update>
+</mapper>

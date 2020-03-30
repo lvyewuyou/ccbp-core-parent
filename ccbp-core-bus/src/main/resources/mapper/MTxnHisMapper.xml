@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbp.core.bus.mapper.MTxnHisMapper">
+  <resultMap id="BaseResultMap" type="java.util.Map">
+    <id column="SYS_DT" jdbcType="VARCHAR" property="sysDt" />
+    <id column="SYS_SEQ" jdbcType="VARCHAR" property="sysSeq" />
+    <result column="TXN_CD" jdbcType="VARCHAR" property="txnCd" />
+    <result column="TXN_DESC" jdbcType="VARCHAR" property="txnDesc" />
+    <result column="TXN_TP" jdbcType="VARCHAR" property="txnTp" />
+    <result column="TXN_ST" jdbcType="VARCHAR" property="txnSt" />
+    <result column="ERR_CD" jdbcType="VARCHAR" property="errCd" />
+    <result column="ERR_MSG" jdbcType="VARCHAR" property="errMsg" />
+    <result column="CUPS_STLM_DT" jdbcType="VARCHAR" property="cupsStlmDt" />
+    <result column="HD_BUF" jdbcType="VARCHAR" property="hdBuf" />
+    <result column="MSG_TP" jdbcType="VARCHAR" property="msgTp" />
+    <result column="PRC_CD" jdbcType="VARCHAR" property="prcCd" />
+    <result column="TXN_DT_TM" jdbcType="VARCHAR" property="txnDtTm" />
+    <result column="CUP_SSN" jdbcType="VARCHAR" property="cupSsn" />
+    <result column="LCL_TM" jdbcType="VARCHAR" property="lclTm" />
+    <result column="LCL_DT" jdbcType="VARCHAR" property="lclDt" />
+    <result column="STLM_DT" jdbcType="VARCHAR" property="stlmDt" />
+    <result column="ACQ_INS_CD" jdbcType="VARCHAR" property="acqInsCd" />
+    <result column="FWD_INS_CD" jdbcType="VARCHAR" property="fwdInsCd" />
+    <result column="CUPS_RSP_CD" jdbcType="VARCHAR" property="cupsRspCd" />
+    <result column="ADD_DATA" jdbcType="VARCHAR" property="addData" />
+    <result column="CRT_OPR" jdbcType="VARCHAR" property="crtOpr" />
+    <result column="CRT_DT" jdbcType="VARCHAR" property="crtDt" />
+    <result column="UPD_OPR" jdbcType="VARCHAR" property="updOpr" />
+    <result column="UPD_DT" jdbcType="VARCHAR" property="updDt" />
+    <result column="MISC" jdbcType="VARCHAR" property="misc" />
+    <result column="NET_MNG_CCD" jdbcType="VARCHAR" property="netMngCcd" />
+    <result column="FLD_RCS" jdbcType="VARCHAR" property="fldRcs" />
+    <result column="RCV_INS_CD" jdbcType="VARCHAR" property="rcvInsCd" />
+    <result column="HOST_ERR_CD" jdbcType="VARCHAR" property="hostErrCd" />
+    <result column="HOST_ERR_MSSG" jdbcType="VARCHAR" property="hostErrMssg" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    SYS_DT, SYS_SEQ, TXN_CD, TXN_DESC, TXN_TP, TXN_ST, ERR_CD, ERR_MSG, CUPS_STLM_DT, 
+    HD_BUF, MSG_TP, PRC_CD, TXN_DT_TM, CUP_SSN, LCL_TM, LCL_DT, STLM_DT, ACQ_INS_CD, 
+    FWD_INS_CD, CUPS_RSP_CD, ADD_DATA, CRT_OPR, CRT_DT, UPD_OPR, UPD_DT, MISC, NET_MNG_CCD, 
+    FLD_RCS, RCV_INS_CD,HOST_ERR_CD, HOST_ERR_MSSG
+  </sql>
+  <select id="selectByPrimaryKey"  resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TBL_M_TXN_HIS
+    where SYS_DT = #{sysDt,jdbcType=VARCHAR}
+      and SYS_SEQ = #{sysSeq,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" >
+    delete from TBL_M_TXN_HIS
+    where SYS_DT = #{sysDt,jdbcType=VARCHAR}
+      and SYS_SEQ = #{sysSeq,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="java.util.Map">
+    insert into TBL_M_TXN_HIS (SYS_DT, SYS_SEQ, TXN_CD, 
+      TXN_DESC, TXN_TP, TXN_ST, 
+      ERR_CD, ERR_MSG, CUPS_STLM_DT, 
+      HD_BUF, MSG_TP, PRC_CD, 
+      TXN_DT_TM, CUP_SSN, LCL_TM, 
+      LCL_DT, STLM_DT, ACQ_INS_CD, 
+      FWD_INS_CD, CUPS_RSP_CD, ADD_DATA, 
+      CRT_OPR, CRT_DT, UPD_OPR, 
+      UPD_DT, MISC, NET_MNG_CCD, 
+      FLD_RCS, RCV_INS_CD,
+      HOST_ERR_CD, HOST_ERR_MSSG)
+    values (#{sysDt,jdbcType=VARCHAR}, #{sysSeq,jdbcType=VARCHAR}, #{txnCd,jdbcType=VARCHAR}, 
+      #{txnDesc,jdbcType=VARCHAR}, #{txnTp,jdbcType=VARCHAR}, #{txnSt,jdbcType=VARCHAR}, 
+      #{errCd,jdbcType=VARCHAR}, #{errMsg,jdbcType=VARCHAR}, #{cupsStlmDt,jdbcType=VARCHAR}, 
+      #{hdBuf,jdbcType=VARCHAR}, #{msgTp,jdbcType=VARCHAR}, #{prcCd,jdbcType=VARCHAR}, 
+      #{txnDtTm,jdbcType=VARCHAR}, #{cupSsn,jdbcType=VARCHAR}, #{lclTm,jdbcType=VARCHAR}, 
+      #{lclDt,jdbcType=VARCHAR}, #{stlmDt,jdbcType=VARCHAR}, #{acqInsCd,jdbcType=VARCHAR}, 
+      #{fwdInsCd,jdbcType=VARCHAR}, #{cupsRspCd,jdbcType=VARCHAR}, #{addData,jdbcType=VARCHAR}, 
+      #{crtOpr,jdbcType=VARCHAR}, #{crtDt,jdbcType=VARCHAR}, #{updOpr,jdbcType=VARCHAR}, 
+      #{updDt,jdbcType=VARCHAR}, #{misc,jdbcType=VARCHAR}, #{netMngCcd,jdbcType=VARCHAR}, 
+      #{fldRcs,jdbcType=VARCHAR}, #{rcvInsCd,jdbcType=VARCHAR},
+      #{hostErrCd,jdbcType=VARCHAR},#{hostErrMssg,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="java.util.Map">
+    insert into TBL_M_TXN_HIS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sysDt != null">
+        SYS_DT,
+      </if>
+      <if test="sysSeq != null">
+        SYS_SEQ,
+      </if>
+      <if test="txnCd != null">
+        TXN_CD,
+      </if>
+      <if test="txnDesc != null">
+        TXN_DESC,
+      </if>
+      <if test="txnTp != null">
+        TXN_TP,
+      </if>
+      <if test="txnSt != null">
+        TXN_ST,
+      </if>
+      <if test="errCd != null">
+        ERR_CD,
+      </if>
+      <if test="errMsg != null">
+        ERR_MSG,
+      </if>
+      <if test="cupsStlmDt != null">
+        CUPS_STLM_DT,
+      </if>
+      <if test="hdBuf != null">
+        HD_BUF,
+      </if>
+      <if test="msgTp != null">
+        MSG_TP,
+      </if>
+      <if test="prcCd != null">
+        PRC_CD,
+      </if>
+      <if test="txnDtTm != null">
+        TXN_DT_TM,
+      </if>
+      <if test="cupSsn != null">
+        CUP_SSN,
+      </if>
+      <if test="lclTm != null">
+        LCL_TM,
+      </if>
+      <if test="lclDt != null">
+        LCL_DT,
+      </if>
+      <if test="stlmDt != null">
+        STLM_DT,
+      </if>
+      <if test="acqInsCd != null">
+        ACQ_INS_CD,
+      </if>
+      <if test="fwdInsCd != null">
+        FWD_INS_CD,
+      </if>
+      <if test="cupsRspCd != null">
+        CUPS_RSP_CD,
+      </if>
+      <if test="addData != null">
+        ADD_DATA,
+      </if>
+      <if test="crtOpr != null">
+        CRT_OPR,
+      </if>
+      <if test="crtDt != null">
+        CRT_DT,
+      </if>
+      <if test="updOpr != null">
+        UPD_OPR,
+      </if>
+      <if test="updDt != null">
+        UPD_DT,
+      </if>
+      <if test="misc != null">
+        MISC,
+      </if>
+      <if test="netMngCcd != null">
+        NET_MNG_CCD,
+      </if>
+      <if test="fldRcs != null">
+        FLD_RCS,
+      </if>
+      <if test="rcvInsCd != null">
+        RCV_INS_CD,
+      </if>
+      <if test="hostErrCd != null">
+        HOST_ERR_CD,
+      </if>
+      <if test="hostErrMssg != null">
+        HOST_ERR_MSSG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sysDt != null">
+        #{sysDt,jdbcType=VARCHAR},
+      </if>
+      <if test="sysSeq != null">
+        #{sysSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="txnCd != null">
+        #{txnCd,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDesc != null">
+        #{txnDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="txnTp != null">
+        #{txnTp,jdbcType=VARCHAR},
+      </if>
+      <if test="txnSt != null">
+        #{txnSt,jdbcType=VARCHAR},
+      </if>
+      <if test="errCd != null">
+        #{errCd,jdbcType=VARCHAR},
+      </if>
+      <if test="errMsg != null">
+        #{errMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="cupsStlmDt != null">
+        #{cupsStlmDt,jdbcType=VARCHAR},
+      </if>
+      <if test="hdBuf != null">
+        #{hdBuf,jdbcType=VARCHAR},
+      </if>
+      <if test="msgTp != null">
+        #{msgTp,jdbcType=VARCHAR},
+      </if>
+      <if test="prcCd != null">
+        #{prcCd,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDtTm != null">
+        #{txnDtTm,jdbcType=VARCHAR},
+      </if>
+      <if test="cupSsn != null">
+        #{cupSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="lclTm != null">
+        #{lclTm,jdbcType=VARCHAR},
+      </if>
+      <if test="lclDt != null">
+        #{lclDt,jdbcType=VARCHAR},
+      </if>
+      <if test="stlmDt != null">
+        #{stlmDt,jdbcType=VARCHAR},
+      </if>
+      <if test="acqInsCd != null">
+        #{acqInsCd,jdbcType=VARCHAR},
+      </if>
+      <if test="fwdInsCd != null">
+        #{fwdInsCd,jdbcType=VARCHAR},
+      </if>
+      <if test="cupsRspCd != null">
+        #{cupsRspCd,jdbcType=VARCHAR},
+      </if>
+      <if test="addData != null">
+        #{addData,jdbcType=VARCHAR},
+      </if>
+      <if test="crtOpr != null">
+        #{crtOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="crtDt != null">
+        #{crtDt,jdbcType=VARCHAR},
+      </if>
+      <if test="updOpr != null">
+        #{updOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="updDt != null">
+        #{updDt,jdbcType=VARCHAR},
+      </if>
+      <if test="misc != null">
+        #{misc,jdbcType=VARCHAR},
+      </if>
+      <if test="netMngCcd != null">
+        #{netMngCcd,jdbcType=VARCHAR},
+      </if>
+      <if test="fldRcs != null">
+        #{fldRcs,jdbcType=VARCHAR},
+      </if>
+      <if test="rcvInsCd != null">
+        #{rcvInsCd,jdbcType=VARCHAR},
+      </if>
+      <if test="hostErrCd != null">
+        #{hostErrCd,jdbcType=VARCHAR},
+      </if>
+      <if test="hostErrMssg != null">
+        #{hostErrMssg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="java.util.Map">
+    update TBL_M_TXN_HIS
+    <set>
+      <if test="txnCd != null">
+        TXN_CD = #{txnCd,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDesc != null">
+        TXN_DESC = #{txnDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="txnTp != null">
+        TXN_TP = #{txnTp,jdbcType=VARCHAR},
+      </if>
+      <if test="txnSt != null">
+        TXN_ST = #{txnSt,jdbcType=VARCHAR},
+      </if>
+      <if test="errCd != null">
+        ERR_CD = #{errCd,jdbcType=VARCHAR},
+      </if>
+      <if test="errMsg != null">
+        ERR_MSG = #{errMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="cupsStlmDt != null">
+        CUPS_STLM_DT = #{cupsStlmDt,jdbcType=VARCHAR},
+      </if>
+      <if test="hdBuf != null">
+        HD_BUF = #{hdBuf,jdbcType=VARCHAR},
+      </if>
+      <if test="msgTp != null">
+        MSG_TP = #{msgTp,jdbcType=VARCHAR},
+      </if>
+      <if test="prcCd != null">
+        PRC_CD = #{prcCd,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDtTm != null">
+        TXN_DT_TM = #{txnDtTm,jdbcType=VARCHAR},
+      </if>
+      <if test="cupSsn != null">
+        CUP_SSN = #{cupSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="lclTm != null">
+        LCL_TM = #{lclTm,jdbcType=VARCHAR},
+      </if>
+      <if test="lclDt != null">
+        LCL_DT = #{lclDt,jdbcType=VARCHAR},
+      </if>
+      <if test="stlmDt != null">
+        STLM_DT = #{stlmDt,jdbcType=VARCHAR},
+      </if>
+      <if test="acqInsCd != null">
+        ACQ_INS_CD = #{acqInsCd,jdbcType=VARCHAR},
+      </if>
+      <if test="fwdInsCd != null">
+        FWD_INS_CD = #{fwdInsCd,jdbcType=VARCHAR},
+      </if>
+      <if test="cupsRspCd != null">
+        CUPS_RSP_CD = #{cupsRspCd,jdbcType=VARCHAR},
+      </if>
+      <if test="addData != null">
+        ADD_DATA = #{addData,jdbcType=VARCHAR},
+      </if>
+      <if test="crtOpr != null">
+        CRT_OPR = #{crtOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="crtDt != null">
+        CRT_DT = #{crtDt,jdbcType=VARCHAR},
+      </if>
+      <if test="updOpr != null">
+        UPD_OPR = #{updOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="updDt != null">
+        UPD_DT = #{updDt,jdbcType=VARCHAR},
+      </if>
+      <if test="misc != null">
+        MISC = #{misc,jdbcType=VARCHAR},
+      </if>
+      <if test="netMngCcd != null">
+        NET_MNG_CCD = #{netMngCcd,jdbcType=VARCHAR},
+      </if>
+      <if test="fldRcs != null">
+        FLD_RCS = #{fldRcs,jdbcType=VARCHAR},
+      </if>
+      <if test="rcvInsCd != null">
+        RCV_INS_CD = #{rcvInsCd,jdbcType=VARCHAR},
+      </if>
+      <if test="hostErrCd != null">
+        HOST_ERR_CD = #{hostErrCd,jdbcType=VARCHAR},
+      </if>
+      <if test="hostErrMssg != null">
+        HOST_ERR_MSSG = #{hostErrMssg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SYS_DT = #{sysDt,jdbcType=VARCHAR}
+      and SYS_SEQ = #{sysSeq,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="java.util.Map">
+    update TBL_M_TXN_HIS
+    set TXN_CD = #{txnCd,jdbcType=VARCHAR},
+      TXN_DESC = #{txnDesc,jdbcType=VARCHAR},
+      TXN_TP = #{txnTp,jdbcType=VARCHAR},
+      TXN_ST = #{txnSt,jdbcType=VARCHAR},
+      ERR_CD = #{errCd,jdbcType=VARCHAR},
+      ERR_MSG = #{errMsg,jdbcType=VARCHAR},
+      CUPS_STLM_DT = #{cupsStlmDt,jdbcType=VARCHAR},
+      HD_BUF = #{hdBuf,jdbcType=VARCHAR},
+      MSG_TP = #{msgTp,jdbcType=VARCHAR},
+      PRC_CD = #{prcCd,jdbcType=VARCHAR},
+      TXN_DT_TM = #{txnDtTm,jdbcType=VARCHAR},
+      CUP_SSN = #{cupSsn,jdbcType=VARCHAR},
+      LCL_TM = #{lclTm,jdbcType=VARCHAR},
+      LCL_DT = #{lclDt,jdbcType=VARCHAR},
+      STLM_DT = #{stlmDt,jdbcType=VARCHAR},
+      ACQ_INS_CD = #{acqInsCd,jdbcType=VARCHAR},
+      FWD_INS_CD = #{fwdInsCd,jdbcType=VARCHAR},
+      CUPS_RSP_CD = #{cupsRspCd,jdbcType=VARCHAR},
+      ADD_DATA = #{addData,jdbcType=VARCHAR},
+      CRT_OPR = #{crtOpr,jdbcType=VARCHAR},
+      CRT_DT = #{crtDt,jdbcType=VARCHAR},
+      UPD_OPR = #{updOpr,jdbcType=VARCHAR},
+      UPD_DT = #{updDt,jdbcType=VARCHAR},
+      MISC = #{misc,jdbcType=VARCHAR},
+      NET_MNG_CCD = #{netMngCcd,jdbcType=VARCHAR},
+      FLD_RCS = #{fldRcs,jdbcType=VARCHAR},
+      RCV_INS_CD = #{rcvInsCd,jdbcType=VARCHAR},
+      HOST_ERR_CD = #{hostErrCd,jdbcType=VARCHAR},
+      HOST_ERR_MSSG = #{hostErrMssg,jdbcType=VARCHAR}
+    where SYS_DT = #{sysDt,jdbcType=VARCHAR}
+      and SYS_SEQ = #{sysSeq,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbp.core.bus.mapper.FTxnHisMapper">
+  
+   
+  <!-- 根据原始数据元修更新 -->
+  <update id="updateByParseF90" parameterType="java.util.Map">
+  	 update TBL_F_TXN_HIS
+    <set>
+    <if test="txnTltId != null">
+        TXN_TLT_ID = #{txnTltId,jdbcType=VARCHAR},
+     </if>
+     <if test="orgId != null">
+        ORG_ID = #{orgId,jdbcType=VARCHAR},
+     </if>
+     <if test="txnChnlTp != null">
+        TXN_CHNL_TP = #{txnChnlTp,jdbcType=VARCHAR},
+     </if>
+      <if test="txnCd != null">
+        TXN_CD = #{txnCd,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDesc != null">
+        TXN_DESC = #{txnDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="txnTp != null">
+        TXN_TP = #{txnTp,jdbcType=VARCHAR},
+      </if>
+      <if test="txnSt != null">
+        TXN_ST = #{txnSt,jdbcType=VARCHAR},
+      </if>
+      <if test="errCd != null">
+        ERR_CD = #{errCd,jdbcType=VARCHAR},
+      </if>
+      <if test="errMsg != null">
+        ERR_MSG = #{errMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="revFlg != null">
+        REV_FLG = #{revFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="revSeq != null">
+        REV_SEQ = #{revSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="canFlg != null">
+        CAN_FLG = #{canFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="canSeq != null">
+        CAN_SEQ = #{canSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="rfdFlg != null">
+        RFD_FLG = #{rfdFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="cupsStlmDt != null">
+        CUPS_STLM_DT = #{cupsStlmDt,jdbcType=VARCHAR},
+      </if>
+      <if test="hdBuf != null">
+        HD_BUF = #{hdBuf,jdbcType=VARCHAR},
+      </if>
+      <if test="pan != null">
+        PAN = #{pan,jdbcType=VARCHAR},
+      </if>
+      <if test="cdSeqNo != null">
+        CD_SEQ_NO = #{cdSeqNo,jdbcType=VARCHAR},
+      </if>
+      <if test="prcCd != null">
+        PRC_CD = #{prcCd,jdbcType=VARCHAR},
+      </if>
+      <if test="amtTxn != null">
+        AMT_TXN = #{amtTxn,jdbcType=VARCHAR},
+      </if>
+      <if test="amtStlm != null">
+        AMT_STLM = #{amtStlm,jdbcType=VARCHAR},
+      </if>
+      <if test="amtCdhld != null">
+        AMT_CDHLD = #{amtCdhld,jdbcType=VARCHAR},
+      </if>
+      <if test="ratStlm != null">
+        RAT_STLM = #{ratStlm,jdbcType=VARCHAR},
+      </if>
+      <if test="ratCdhld != null">
+        RAT_CDHLD = #{ratCdhld,jdbcType=VARCHAR},
+      </if>
+      <if test="lclTm != null">
+        LCL_TM = #{lclTm,jdbcType=VARCHAR},
+      </if>
+      <if test="lclDt != null">
+        LCL_DT = #{lclDt,jdbcType=VARCHAR},
+      </if>
+      <if test="exprDt != null">
+        EXPR_DT = #{exprDt,jdbcType=VARCHAR},
+      </if>
+      <if test="convDt != null">
+        CONV_DT = #{convDt,jdbcType=VARCHAR},
+      </if>
+      <if test="stlmDt != null">
+        STLM_DT = #{stlmDt,jdbcType=VARCHAR},
+      </if>
+      <if test="mchtTp != null">
+        MCHT_TP = #{mchtTp,jdbcType=VARCHAR},
+      </if>
+      <if test="retlRef != null">
+        RETL_REF = #{retlRef,jdbcType=VARCHAR},
+      </if>
+      <if test="authRspCd != null">
+        AUTH_RSP_CD = #{authRspCd,jdbcType=VARCHAR},
+      </if>
+      <if test="cupsRspCd != null">
+        CUPS_RSP_CD = #{cupsRspCd,jdbcType=VARCHAR},
+      </if>
+      <if test="acqTermId != null">
+        ACQ_TERM_ID = #{acqTermId,jdbcType=VARCHAR},
+      </if>
+      <if test="acqId != null">
+        ACQ_ID = #{acqId,jdbcType=VARCHAR},
+      </if>
+      <if test="acqNm != null">
+        ACQ_NM = #{acqNm,jdbcType=VARCHAR},
+      </if>
+      <if test="addData != null">
+        ADD_DATA = #{addData,jdbcType=VARCHAR},
+      </if>
+      <if test="curTxn != null">
+        CUR_TXN = #{curTxn,jdbcType=VARCHAR},
+      </if>
+      <if test="curStlm != null">
+        CUR_STLM = #{curStlm,jdbcType=VARCHAR},
+      </if>
+      <if test="curCdhld != null">
+        CUR_CDHLD = #{curCdhld,jdbcType=VARCHAR},
+      </if>
+      <if test="addAmt != null">
+        ADD_AMT = #{addAmt,jdbcType=VARCHAR},
+      </if>
+      <if test="fldRcs != null">
+        FLD_RCS = #{fldRcs,jdbcType=VARCHAR},
+      </if>
+      <if test="cdhldInf != null">
+        CDHLD_INF = #{cdhldInf,jdbcType=VARCHAR},
+      </if>
+      <if test="orgSysDt != null">
+        ORG_SYS_DT = #{orgSysDt,jdbcType=VARCHAR},
+      </if>
+      <if test="orgSysSeq != null">
+        ORG_SYS_SEQ = #{orgSysSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="orgDataEle != null">
+        ORG_DATA_ELE = #{orgDataEle,jdbcType=VARCHAR},
+      </if>
+      <if test="rcvInsCd != null">
+        RCV_INS_CD = #{rcvInsCd,jdbcType=VARCHAR},
+      </if>
+      <if test="acctId1 != null">
+        ACCT_ID1 = #{acctId1,jdbcType=VARCHAR},
+      </if>
+      <if test="acctId2 != null">
+        ACCT_ID2 = #{acctId2,jdbcType=VARCHAR},
+      </if>
+      <if test="ICCData != null">
+        IC_DATA = #{ICCData,jdbcType=VARCHAR},
+      </if>
+      <if test="hostSsn != null">
+        HOST_SSN = #{hostSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="hostDt != null">
+        HOST_DT = #{hostDt,jdbcType=VARCHAR},
+      </if>
+      <if test="hostTp != null">
+        HOST_TP = #{hostTp,jdbcType=VARCHAR},
+      </if>
+      <if test="hostErrCd != null">
+        HOST_ERR_CD = #{hostErrCd,jdbcType=VARCHAR},
+      </if>
+      <if test="hostErrMssg != null">
+        HOST_ERR_MSSG = #{hostErrMssg,jdbcType=VARCHAR},
+      </if>
+      <if test="crtOpr != null">
+        CRT_OPR = #{crtOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="crtDt != null">
+        CRT_DT = #{crtDt,jdbcType=VARCHAR},
+      </if>
+      <if test="updOpr != null">
+        UPD_OPR = #{updOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="updDt != null">
+        UPD_DT = #{updDt,jdbcType=VARCHAR},
+      </if>
+      <if test="misc != null">
+        MISC = #{misc,jdbcType=VARCHAR},
+      </if>
+       <if test="cardTp != null">
+        CARD_TP = #{cardTp,jdbcType=VARCHAR},
+      </if>
+      <if test="condCd != null">
+        COND_CD = #{condCd,jdbcType=VARCHAR},
+      </if>
+      <if test="transDirection != null">
+      	TRANS_DIRECTION = #{transDirection,jdbcType=CHAR},
+      </if>
+      <if test="systemFlg != null">
+	  	SYSTEM_FLG = #{systemFlg,jdbcType=VARCHAR},
+     </if>
+     <if test="addsPrivData != null">
+	  	ADDS_PRIV_DATA = #{addsPrivData,jdbcType=VARCHAR},
+     </if>
+     <if test="addData2 != null">
+	  	ADD_DATA2 = #{addData2,jdbcType=VARCHAR},
+     </if>
+     <if test="openInst != null" >
+        OPEN_INST = #{openInst,jdbcType=VARCHAR},
+      </if>
+      	<if test="mchtCd != null" >MCHT_CD = #{mchtCd,jdbcType=VARCHAR},</if>
+		<if test="entryCd != null" >ENTRY_CD = #{entryCd,jdbcType=VARCHAR},</if>
+		<if test="pinCapCd != null" >PIN_CAP_CD = #{pinCapCd,jdbcType=VARCHAR},</if>
+		<if test="amtFee != null" >AMT_FEE = #{amtFee,jdbcType=VARCHAR},</if>
+		<if test="track2Data != null" >TRACK2_DATA = #{track2Data,jdbcType=VARCHAR},</if>
+		<if test="track3Data != null" >TRACK3_DATA = #{track3Data,jdbcType=VARCHAR},</if>
+		<if test="addResData != null" >ADD_RES_DATA = #{addResData,jdbcType=VARCHAR},</if>
+		<if test="track1Data != null" >TRACK1_DATA = #{track1Data,jdbcType=VARCHAR},</if>
+		<if test="pinData != null" >PIN_DATA = #{pinData,jdbcType=VARCHAR},</if>
+		<if test="securitInfo != null" >SECURIT_INFO = #{securitInfo,jdbcType=VARCHAR},</if>
+		<if test="addData1 != null" >ADD_DATA1 = #{addData1,jdbcType=VARCHAR},</if>
+		<if test="inquDeta != null" >INQU_DETA = #{inquDeta,jdbcType=VARCHAR},</if>
+		<if test="switchingData != null" >SWITCHING_DATA = #{switchingData,jdbcType=VARCHAR},</if>
+		<if test="finaNetData != null" >FINA_NET_DATA = #{finaNetData,jdbcType=VARCHAR},</if>
+		<if test="netMngCcd != null" >NET_MNG_CCD = #{netMngCcd,jdbcType=VARCHAR},</if>
+		<if test="msgSecurCode != null" >MSG_SECUR_CODE = #{msgSecurCode,jdbcType=VARCHAR},</if>
+		<if test="addData3 != null" >ADD_DATA3 = #{addData3,jdbcType=VARCHAR},</if>
+		<if test="addData4 != null" >ADD_DATA4 = #{addData4,jdbcType=VARCHAR},</if>
+		<if test="addData5 != null" >ADD_DATA5 = #{addData5,jdbcType=VARCHAR},</if>
+		<if test="CUPSReserved != null" >CUPS_RESERVED = #{CUPSReserved,jdbcType=VARCHAR},</if>
+		<if test="acqInstReserved != null" >ACQ_INST_RESERVED = #{acqInstReserved,jdbcType=VARCHAR},</if>
+		<if test="issInstReserved != null" >ISS_INST_RESERVED = #{issInstReserved,jdbcType=VARCHAR},</if>
+		<if test="addData6 != null" >ADD_DATA6 = #{addData6,jdbcType=VARCHAR},</if>
+		<if test="addData7 != null" >ADD_DATA7 = #{addData7,jdbcType=VARCHAR},</if>
+		<if test="magAuthCd != null" >MAG_AUTH_CD = #{magAuthCd,jdbcType=VARCHAR},</if>
+		<if test="hostTxnCd != null" >HOST_TXN_CD = #{hostTxnCd,jdbcType=VARCHAR},</if>
+		<if test="reqSeq != null" >REQ_SEQ = #{reqSeq,jdbcType=VARCHAR},</if>
+    </set>
+    where 
+		 	<!-- 信息类型 -->
+    		MSG_TP = #{msgTp,jdbcType=VARCHAR}
+    		<!-- 交易传输日期时间 -->
+      and   TXN_DT_TM = #{txnDtTm,jdbcType=VARCHAR}
+      		<!-- 银联系统跟踪号 -->
+      and   CUP_SSN = #{cupSsn,jdbcType=VARCHAR}
+      		<!-- 受理方机构代码 -->
+      and   ACQ_INS_CD = #{acqInsCd,jdbcType=VARCHAR} 
+      		<!-- 发送方机构代码 -->
+      and   FWD_INS_CD = #{fwdInsCd,jdbcType=VARCHAR}
+  </update>
+   <!-- 根据 银联原始报文类型，系统跟踪号，交易传输日期时间，受理方机构代码，发送方机构代码  -->
+  <select id="selectByUnionPrimary" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TBL_F_TXN_HIS
+    where 
+    	MSG_TP=#{msgTp}
+      and CUP_SSN = #{cupSsn,jdbcType=VARCHAR}
+      and TXN_DT_TM = #{txnDtTm,jdbcType=VARCHAR}
+      and ACQ_INS_CD=#{acqInsCd}
+      and FWD_INS_CD=#{fwdInsCd}
+       
+  </select>
+  
+  
+  
+  <!-- 数据迁移 -->
+  <insert id="insertHistory"  parameterType="java.lang.String">
+  	insert into 
+  	TBL_F_TXN_HIS(
+	  	 <include refid="Base_Column_List" />
+	) 
+    SELECT 
+	     <include refid="Base_Column_List" />
+    
+    FROM 
+     
+    	TBL_F_TXN    
+    	
+    WHERE 
+   	<!-- 几天前数据  -->
+  	 
+    TO_DATE(sys_dt,'YYYYMMDD')   <![CDATA[ < =  TO_DATE(#{beforDate},'YYYYMMDD')]]>
+  </insert>
+  
+  <!-- 数据迁移 -->
+  <insert id="insertHistoryByTxnCd"  parameterType="java.lang.Integer">
+  	insert into 
+  	TBL_F_TXN_HIS(
+	  	 <include refid="Base_Column_List" />
+	) 
+    SELECT 
+	     <include refid="Base_Column_List" />
+    
+    FROM 
+     
+    	TBL_F_TXN    
+    	
+    WHERE 
+	   	<!-- 几天前数据  -->
+	  	TO_DATE(sys_dt,'YYYYMMDD') <![CDATA[ <  =TRUNC(SYSDATE)-#{day}]]>
+			
+  
+  </insert>
+  
+ <!-- 插入到历史表-一般交易（除消费，除预授权） -->
+	 <insert id="insertHistoryGeneral"  parameterType="java.lang.String">
+  	insert into 
+  	TBL_F_TXN_HIS(
+	  	 <include refid="Base_Column_List" />
+	) 
+    SELECT 
+	     <include refid="Base_Column_List" />
+    
+    FROM 
+    	TBL_F_TXN    
+    WHERE 
+	   	<!-- 几天前数据  -->
+	    TO_DATE(sys_dt,'YYYYMMDD')   <![CDATA[ < =  TO_DATE(#{beforDate},'YYYYMMDD')]]>
+	 AND
+	 		TXN_CD 
+	 	NOT IN
+	 		('300014','300015', '300038', '300057','300006')
+  </insert>
+	 
+
+ 
+	 <!-- 插入到历史表 消费交易 -->
+	 <insert id="insertHistoryConsum"  parameterType="java.lang.String">
+  	insert into 
+  	TBL_F_TXN_HIS(
+	  	 <include refid="Base_Column_List" />
+	) 
+    SELECT 
+	     <include refid="Base_Column_List" />
+    FROM 
+    	TBL_F_TXN    
+    WHERE 
+   		<!-- 几天前数据  -->
+    	TO_DATE(sys_dt,'YYYYMMDD')   <![CDATA[ < =  TO_DATE(#{beforDate},'YYYYMMDD')]]>
+     AND
+	 		TXN_CD 
+	 	 IN
+	 		('300014','300015', '300038', '300057','300006')
+  </insert>
+</mapper>

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbp.core.bus.mapper.BatchUpXmlFileMapper">
+   <resultMap id="BaseResultMap" type="com.ccbp.core.bus.model.BatchXmlFileds">
+      <id column="TXN_DATE" property="txnDate" jdbcType="CHAR" />
+    <id column="TXN_TIME" property="txnTime" jdbcType="CHAR" />
+    <id column="TXN_SEQ" property="txnSeq" jdbcType="VARCHAR" />
+    <result column="TXN_ST" property="txnSt" jdbcType="CHAR" />
+    <result column="TRX_CTGY" property="trxCtgy" jdbcType="CHAR" />
+    <result column="HOST_ERR_CD" property="hostErrCd" jdbcType="VARCHAR" />
+    <result column="HOST_ERR_INFO" property="hostErrInfo" jdbcType="VARCHAR" />
+    <result column="ERR_CD" property="errCd" jdbcType="VARCHAR" />
+    <result column="ERR_DESC" property="errDesc" jdbcType="VARCHAR" />
+    <result column="TXN_CD" property="txnCd" jdbcType="VARCHAR" />
+    <result column="TXN_ACT_TP" property="txnActTp" jdbcType="CHAR" />
+    <result column="TXN_ACT_NO" property="txnActNo" jdbcType="VARCHAR" />
+    <result column="PAY_ORG_ID" property="payOrgId" jdbcType="VARCHAR" />
+    <result column="PAY_ACT_NO" property="payActNo" jdbcType="VARCHAR" />
+    <result column="PROT_ID" property="protId" jdbcType="VARCHAR" />
+    <result column="TXN_AMT" property="txnAmt" jdbcType="DECIMAL" />
+    <result column="ACT_IN_TP" property="actInTp" jdbcType="CHAR" />
+    <result column="MCHNT_ID" property="mchntId" jdbcType="VARCHAR" />
+    <result column="MCHNT_PLAT" property="mchntPlat" jdbcType="VARCHAR" />
+    <result column="ORD_ID" property="ordId" jdbcType="VARCHAR" />
+    <result column="ORD_DESC" property="ordDesc" jdbcType="VARCHAR" />
+    <result column="SETTLMT_DT" property="settlmtDt" jdbcType="VARCHAR" />
+    <result column="TRM_TP" property="trmTp" jdbcType="CHAR" />
+    <result column="PYER_TRM_NO" property="pyerTrmNo" jdbcType="VARCHAR" />
+    <result column="PYEE_TRM_TP" property="pyeeTrmTp" jdbcType="VARCHAR" />
+    <result column="PYEE_TRM_NO" property="pyeeTrmNo" jdbcType="VARCHAR" />
+    <result column="DEV_INF" property="devInf" jdbcType="VARCHAR" />
+    <result column="UST_RD" property="ustRd" jdbcType="VARCHAR" />
+    <result column="HOST_KEY" property="hostKey" jdbcType="VARCHAR" />
+    <result column="CNCP_KEY" property="cncpKey" jdbcType="VARCHAR" />
+    <result column="ORI_TXN_DATE" property="oriTxnDate" jdbcType="VARCHAR" />
+    <result column="ORI_TXN_TIME" property="oriTxnTime" jdbcType="VARCHAR" />
+    <result column="ORI_TXN_SEQ" property="oriTxnSeq" jdbcType="VARCHAR" />
+    <result column="ORI_HOST_KEY" property="oriHostKey" jdbcType="VARCHAR" />
+    <result column="ORI_CNCP_KEY" property="oriCncpKey" jdbcType="VARCHAR" />
+    <result column="LST_UPD_DT" property="lstUpdDt" jdbcType="VARCHAR" />
+    <result column="LST_UPD_TM" property="lstUpdTm" jdbcType="VARCHAR" />
+    <result column="MISC1" property="misc1" jdbcType="VARCHAR" />
+    <result column="MISC2" property="misc2" jdbcType="VARCHAR" />
+    <result column="MISC3" property="misc3" jdbcType="VARCHAR" />
+    <result column="MISC4" property="misc4" jdbcType="VARCHAR" />
+    <result column="PYER_ACCT_ISSR_ID" property="pyerAcctIssrId" jdbcType="VARCHAR" />
+    <result column="PYER_ACCT_ID" property="pyerAcctId" jdbcType="VARCHAR" />
+    <result column="PYER_NM" property="pyerNm" jdbcType="VARCHAR" />
+    <result column="PYER_ACCT_TP" property="pyerAcctTp" jdbcType="VARCHAR" />
+    <result column="ID_TP" property="idTp" jdbcType="CHAR" />
+    <result column="ID_NO" property="idNo" jdbcType="VARCHAR" />
+    <result column="MOB_NO" property="mobNo" jdbcType="VARCHAR" />
+    <result column="PYER_ACCT_LVL" property="pyerAcctLvl" jdbcType="VARCHAR" />
+    <result column="PYEE_ACCT_ISSR_ID" property="pyeeAcctIssrId" jdbcType="VARCHAR" />
+    <result column="PYEE_ACCT_ID" property="pyeeAcctId" jdbcType="VARCHAR" />
+    <result column="PYEE_NM" property="pyeeNm" jdbcType="VARCHAR" />
+    <result column="PYEE_ACCT_TP" property="pyeeAcctTp" jdbcType="VARCHAR" />
+    <result column="PYEE_CTRY_NO" property="pyeeCtryNo" jdbcType="VARCHAR" />
+    <result column="PYEE_AREA_NO" property="pyeeAreaNo" jdbcType="VARCHAR" />
+    <result column="INSTG_ACCT_ID" property="instgAcctId" jdbcType="VARCHAR" />
+    <result column="ORI_BIZ_TP" property="oriBizTp" jdbcType="VARCHAR" />
+    <result column="ORI_TRX_TP" property="oriTrxTp" jdbcType="VARCHAR" />
+    <result column="RP_FLG" property="rpFlg" jdbcType="CHAR" />
+    <result column="INSTG_ACCT_NM" property="instgAcctNm" jdbcType="VARCHAR" />
+    <result column="SND_TIME" property="sndTime" jdbcType="VARCHAR" />
+    <result column="SND_DATE" property="sndDate" jdbcType="VARCHAR" />
+    <result column="SDER_ACCT_ISSR_ID" property="sderAcctIssrId" jdbcType="VARCHAR" />
+    <result column="SDER_ACCT_ID" property="sderAcctId" jdbcType="VARCHAR" />
+    <result column="RTN_CD" property="rtnCd" jdbcType="VARCHAR" />
+    <result column="RTN_DESC" property="rtnDesc" jdbcType="VARCHAR" />
+    <result column="RTN_TM" property="rtnTm" jdbcType="VARCHAR" />
+    <result column="TXN_TIME_MILLIS" property="txnTimeMillis" jdbcType="VARCHAR" />
+    <result column="CNCP_BIZ_STS_CD" property="cncpBizStsCd" jdbcType="VARCHAR" />
+    <result column="CNCP_BIZ_STS_DESC" property="cncpBizStsDesc" jdbcType="VARCHAR" />
+    <result column="BIZ_TP" property="bizTp" jdbcType="VARCHAR" />
+    <result column="RESFD_ACCT_ISSR_ID" property="resfdAcctIssrId" jdbcType="VARCHAR" />
+    <result column="CURRENCY" property="currency" jdbcType="VARCHAR" />
+    <result column="SMS_KEY" property="smsKey" jdbcType="VARCHAR" />
+    <result column="BNK_DEF_PHN_NM" property="bnkDefPhnNm" jdbcType="VARCHAR" />
+    <result column="CNCP_SYS_RTN_CD" property="cncpSysRtnCd" jdbcType="VARCHAR" />
+    <result column="CNCP_SYS_RTN_DESC" property="cncpSysRtnDesc" jdbcType="VARCHAR" />
+    <result column="CHKSTAT" property="chkstat" jdbcType="VARCHAR" />
+    <result column="UNIQUE_ID" property="uniqueId" jdbcType="VARCHAR" />
+    <result column="CHK_STAT" property="chkStat" jdbcType="VARCHAR" />
+    <result column="SETTLMT_INF" property="settlmtInf" jdbcType="VARCHAR" />
+    <result column="HOST_DATE" property="hostDate" jdbcType="VARCHAR" />
+    <result column="TXN_ACT_INST" property="txnActInst" jdbcType="VARCHAR" />
+    <result column="TXN_DESC" property="txnDesc" jdbcType="VARCHAR" />
+    <result column="SMY_CD" property="smyCd" jdbcType="VARCHAR" />
+    <result column="SMY_DSC" property="smyDsc" jdbcType="VARCHAR" />
+    <result column="CORE_CD" property="coreCd" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  
+  <sql id="Base_Column_List" >
+    UNIQUE_ID,TXN_DATE,TXN_TIME,TXN_SEQ,TXN_ST,TRX_CTGY,
+    TXN_CD,TXN_ACT_TP,TXN_ACT_NO,PAY_ORG_ID,PAY_ACT_NO,PROT_ID,TXN_AMT,ACT_IN_TP,MCHNT_ID,
+    MCHNT_PLAT,ORD_ID,ORD_DESC,SETTLMT_DT,TRM_TP,PYER_TRM_NO,PYEE_TRM_TP,PYEE_TRM_NO,DEV_INF,UST_RD,
+    HOST_KEY,CNCP_KEY,ORI_TXN_DATE,ORI_TXN_TIME,ORI_TXN_SEQ,ORI_HOST_KEY,ORI_CNCP_KEY,PYER_ACCT_ISSR_ID,
+    PYER_ACCT_ID,PYER_NM,PYER_ACCT_TP,ID_TP,ID_NO,MOB_NO,PYER_ACCT_LVL,PYEE_ACCT_ISSR_ID,PYEE_ACCT_ID,
+    PYEE_NM,PYEE_ACCT_TP,PYEE_CTRY_NO,PYEE_AREA_NO,INSTG_ACCT_ID,ORI_BIZ_TP,ORI_TRX_TP,RP_FLG,INSTG_ACCT_NM,
+    SDER_ACCT_ISSR_ID,SDER_ACCT_ID,
+    TXN_TIME_MILLIS,CNCP_BIZ_STS_CD,CNCP_BIZ_STS_DESC,BIZ_TP,RESFD_ACCT_ISSR_ID,CURRENCY,SETTLMT_INF
+  </sql>
+  
+    <select id="selectTxn" parameterType="java.lang.String" resultMap="BaseResultMap">
+    	SELECT UNIQUE_ID,
+       TXN_DATE,
+       TXN_TIME,
+       TXN_SEQ,
+       TXN_ST,
+       TRX_CTGY,
+       TXN_CD,
+       TXN_ACT_TP,
+       TXN_ACT_NO,
+       PAY_ORG_ID,
+       PAY_ACT_NO,
+       PROT_ID,
+       TXN_AMT,
+       ACT_IN_TP,
+       MCHNT_ID,
+       MCHNT_PLAT,
+       ORD_ID,
+       ORD_DESC,
+       SETTLMT_DT,
+       TRM_TP,
+       PYER_TRM_NO,
+       PYEE_TRM_TP,
+       PYEE_TRM_NO,
+       DEV_INF,
+       UST_RD,
+       HOST_KEY,
+       CNCP_KEY,
+       ORI_TXN_DATE,
+       ORI_TXN_TIME,
+       ORI_TXN_SEQ,
+       ORI_HOST_KEY,
+       ORI_CNCP_KEY,
+       PYER_ACCT_ISSR_ID,
+       PYER_ACCT_ID,
+       PYER_NM,
+       PYER_ACCT_TP,
+       ID_TP,
+       ID_NO,
+       MOB_NO,
+       PYER_ACCT_LVL,
+       PYEE_ACCT_ISSR_ID,
+       PYEE_ACCT_ID,
+       PYEE_NM,
+       PYEE_ACCT_TP,
+       PYEE_CTRY_NO,
+       PYEE_AREA_NO,
+       INSTG_ACCT_ID,
+       ORI_BIZ_TP,
+       ORI_TRX_TP,
+       RP_FLG,
+       INSTG_ACCT_NM,
+       SDER_ACCT_ISSR_ID,
+       SDER_ACCT_ID,
+       TXN_TIME_MILLIS,
+       CNCP_BIZ_STS_CD,
+       CNCP_BIZ_STS_DESC,
+       BIZ_TP,
+       RESFD_ACCT_ISSR_ID,
+       CURRENCY,
+       SETTLMT_INF
+  FROM TBL_CP_TXN
+ WHERE SETTLMT_DT = #{stlmDt,jdbcType=VARCHAR}
+   AND TXN_CD IN ('CNCP_SIGN_PAY',
+                  'CNCP_DIR_PAY',
+                  'CNCP_DEB_TRAN',
+                   'CNCP_REFUND_SKH',
+                  'CNCP_CREDIT_SKH',
+                  'CNCP_ASYN_RVS')
+    
+    </select>
+   
+</mapper>

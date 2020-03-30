@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccbp.core.bus.mapper.SeqFlowMapper" >
+  <resultMap id="BaseResultMap" type="com.ccbp.core.bus.model.SeqFlow" >
+    <id column="SYS_SEQ" property="sysSeq" jdbcType="VARCHAR" />
+    <result column="CRT_DT" property="crtDt" jdbcType="VARCHAR" />
+    <result column="UPD_DT" property="updDt" jdbcType="VARCHAR" />
+    <result column="C_IP" property="cIp" jdbcType="VARCHAR" />
+    <result column="RSP_SEQ" property="rspSeq" jdbcType="VARCHAR" />
+    <result column="REQ_LOG_ID" property="reqLogId" jdbcType="VARCHAR" />
+    <result column="RSP_LOG_ID" property="rspLogId" jdbcType="VARCHAR" />
+    <result column="TXN_DT" property="txnDt" jdbcType="VARCHAR" />
+	 <result column="SEQ_DATA" property="seqData" jdbcType="CLOB" />
+    <result column="RSP_DATA" property="rspData" jdbcType="CLOB" />
+  </resultMap>
+   
+  <sql id="Base_Column_List" >
+    SYS_SEQ, CRT_DT, UPD_DT, C_IP, RSP_SEQ, REQ_LOG_ID, RSP_LOG_ID, TXN_DT,  SEQ_DATA, RSP_DATA
+  </sql>
+   
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    
+    from TBL_SEQ_FLOW
+    where SYS_SEQ = #{sysSeq,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TBL_SEQ_FLOW
+    where SYS_SEQ = #{sysSeq,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ccbp.core.bus.model.SeqFlow" >
+    insert into TBL_SEQ_FLOW (SYS_SEQ, CRT_DT, UPD_DT, 
+      C_IP, RSP_SEQ, REQ_LOG_ID, 
+      RSP_LOG_ID, TXN_DT, SEQ_DATA, 
+      RSP_DATA)
+    values (#{sysSeq,jdbcType=VARCHAR}, #{crtDt,jdbcType=VARCHAR}, #{updDt,jdbcType=VARCHAR}, 
+      #{cIp,jdbcType=VARCHAR}, #{rspSeq,jdbcType=VARCHAR}, #{reqLogId,jdbcType=VARCHAR}, 
+      #{rspLogId,jdbcType=VARCHAR}, #{txnDt,jdbcType=VARCHAR}, #{seqData,jdbcType=CLOB}, 
+      #{rspData,jdbcType=CLOB})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ccbp.core.bus.model.SeqFlow" >
+    insert into TBL_SEQ_FLOW
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sysSeq != null" >
+        SYS_SEQ,
+      </if>
+      <if test="crtDt != null" >
+        CRT_DT,
+      </if>
+      <if test="updDt != null" >
+        UPD_DT,
+      </if>
+      <if test="cIp != null" >
+        C_IP,
+      </if>
+      <if test="rspSeq != null" >
+        RSP_SEQ,
+      </if>
+      <if test="reqLogId != null" >
+        REQ_LOG_ID,
+      </if>
+      <if test="rspLogId != null" >
+        RSP_LOG_ID,
+      </if>
+      <if test="txnDt != null" >
+        TXN_DT,
+      </if>
+      <if test="seqData != null" >
+        SEQ_DATA,
+      </if>
+      <if test="rspData != null" >
+        RSP_DATA,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sysSeq != null" >
+        #{sysSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="crtDt != null" >
+        #{crtDt,jdbcType=VARCHAR},
+      </if>
+      <if test="updDt != null" >
+        #{updDt,jdbcType=VARCHAR},
+      </if>
+      <if test="cIp != null" >
+        #{cIp,jdbcType=VARCHAR},
+      </if>
+      <if test="rspSeq != null" >
+        #{rspSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="reqLogId != null" >
+        #{reqLogId,jdbcType=VARCHAR},
+      </if>
+      <if test="rspLogId != null" >
+        #{rspLogId,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDt != null" >
+        #{txnDt,jdbcType=VARCHAR},
+      </if>
+      <if test="seqData != null" >
+        #{seqData,jdbcType=CLOB},
+      </if>
+      <if test="rspData != null" >
+        #{rspData,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ccbp.core.bus.model.SeqFlow" >
+    update TBL_SEQ_FLOW
+    <set >
+      <if test="crtDt != null and  crtDt != '' " >
+        CRT_DT = #{crtDt,jdbcType=VARCHAR},
+      </if>
+      <if test="updDt != null and  updDt != ''  " >
+        UPD_DT = #{updDt,jdbcType=VARCHAR},
+      </if>
+      <if test="cIp != null and  cIp != '' " >
+        C_IP = #{cIp,jdbcType=VARCHAR},
+      </if>
+      <if test="rspSeq != null and  rspSeq != '' " >
+        RSP_SEQ = #{rspSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="reqLogId != null and  reqLogId != '' " >
+        REQ_LOG_ID = #{reqLogId,jdbcType=VARCHAR},
+      </if>
+      <if test="rspLogId != null and  rspLogId != '' " >
+        RSP_LOG_ID = #{rspLogId,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDt != null and  txnDt != '' " >
+        TXN_DT = #{txnDt,jdbcType=VARCHAR},
+      </if>
+      <if test="seqData != null and  seqData != '' " >
+        SEQ_DATA = #{seqData,jdbcType=CLOB},
+      </if>
+      <if test="rspData != null and  rspData != '' " >
+        RSP_DATA = #{rspData,jdbcType=CLOB},
+      </if>
+    </set>
+    where SYS_SEQ = #{sysSeq,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ccbp.core.bus.model.SeqFlow" >
+    update TBL_SEQ_FLOW
+    set CRT_DT = #{crtDt,jdbcType=VARCHAR},
+      UPD_DT = #{updDt,jdbcType=VARCHAR},
+      C_IP = #{cIp,jdbcType=VARCHAR},
+      RSP_SEQ = #{rspSeq,jdbcType=VARCHAR},
+      REQ_LOG_ID = #{reqLogId,jdbcType=VARCHAR},
+      RSP_LOG_ID = #{rspLogId,jdbcType=VARCHAR},
+      TXN_DT = #{txnDt,jdbcType=VARCHAR},
+      SEQ_DATA = #{seqData,jdbcType=CLOB},
+      RSP_DATA = #{rspData,jdbcType=CLOB}
+    where SYS_SEQ = #{sysSeq,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ccbp.core.bus.model.SeqFlow" >
+    update TBL_SEQ_FLOW
+    set CRT_DT = #{crtDt,jdbcType=VARCHAR},
+      UPD_DT = #{updDt,jdbcType=VARCHAR},
+      C_IP = #{cIp,jdbcType=VARCHAR},
+      RSP_SEQ = #{rspSeq,jdbcType=VARCHAR},
+      REQ_LOG_ID = #{reqLogId,jdbcType=VARCHAR},
+      RSP_LOG_ID = #{rspLogId,jdbcType=VARCHAR},
+      TXN_DT = #{txnDt,jdbcType=VARCHAR}
+    where SYS_SEQ = #{sysSeq,jdbcType=VARCHAR}
+  </update>
+  
+  
+  <select id="selectCountBySysSeq" resultType="java.lang.Integer" parameterType="java.lang.String" >
+    select 
+     COUNT(SYS_SEQ)
+    from TBL_SEQ_FLOW
+    where 
+		 SYS_SEQ = #{sysSeq,jdbcType=VARCHAR}
+  </select>
+  
+  
+  
+  
+  
+  
+   <!-- 插入到历史表  -->
+	 <insert id="insertHistory"  parameterType="java.lang.String">
+  	insert into 
+  	TBL_SEQ_FLOW_HIS(
+	  	 <include refid="Base_Column_List" />
+	) 
+    SELECT 
+	     <include refid="Base_Column_List" />
+    FROM 
+    	TBL_SEQ_FLOW    
+    WHERE 
+   		<!-- 几天前数据  -->
+    	TO_DATE(TXN_DT,'YYYYMMDD')   <![CDATA[ < =  TO_DATE(#{beforDate},'YYYYMMDD')]]>
+    
+  </insert>
+  
+   <!-- 删除历史数据 删除已经迁移数据  -->
+	<delete id="deleteHistory" parameterType="java.lang.String">
+	  	delete 
+	  		TBL_SEQ_FLOW 
+	  	where
+	  	<!-- 前几天数据 -->
+	    TO_DATE(TXN_DT,'YYYYMMDD')   <![CDATA[ < =  TO_DATE(#{beforDate},'YYYYMMDD')]]>
+	
+  </delete>
+</mapper>

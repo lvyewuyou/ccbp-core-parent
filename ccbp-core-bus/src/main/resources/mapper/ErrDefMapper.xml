@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbp.core.bus.mapper.ErrDefMapper">
+  <resultMap id="BaseResultMap" type="java.util.Map">
+    <id column="SYS_ID" jdbcType="VARCHAR" property="sysId" />
+    <result column="ERR_CD_TAG_LST" jdbcType="VARCHAR" property="errCdTagLst" />
+    <result column="ERR_MS_TAG_LST" jdbcType="VARCHAR" property="errMsTagLst" />
+    <result column="CRT_OPR" jdbcType="VARCHAR" property="crtOpr" />
+    <result column="CRT_DT" jdbcType="VARCHAR" property="crtDt" />
+    <result column="UPD_OPR" jdbcType="VARCHAR" property="updOpr" />
+    <result column="UPD_DT" jdbcType="VARCHAR" property="updDt" />
+    <result column="MISC" jdbcType="VARCHAR" property="misc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    SYS_ID, ERR_CD_TAG_LST, ERR_MS_TAG_LST, CRT_OPR, CRT_DT, UPD_OPR, UPD_DT, MISC
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TBL_ERR_DEF
+    where SYS_ID = #{sysId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from TBL_ERR_DEF
+    where SYS_ID = #{sysId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="java.util.Map">
+    insert into TBL_ERR_DEF (SYS_ID, ERR_CD_TAG_LST, ERR_MS_TAG_LST, 
+      CRT_OPR, CRT_DT, UPD_OPR, 
+      UPD_DT, MISC)
+    values (#{sysId,jdbcType=VARCHAR}, #{errCdTagLst,jdbcType=VARCHAR}, #{errMsTagLst,jdbcType=VARCHAR}, 
+      #{crtOpr,jdbcType=VARCHAR}, #{crtDt,jdbcType=VARCHAR}, #{updOpr,jdbcType=VARCHAR}, 
+      #{updDt,jdbcType=VARCHAR}, #{misc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="java.util.Map">
+    insert into TBL_ERR_DEF
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sysId != null">
+        SYS_ID,
+      </if>
+      <if test="errCdTagLst != null">
+        ERR_CD_TAG_LST,
+      </if>
+      <if test="errMsTagLst != null">
+        ERR_MS_TAG_LST,
+      </if>
+      <if test="crtOpr != null">
+        CRT_OPR,
+      </if>
+      <if test="crtDt != null">
+        CRT_DT,
+      </if>
+      <if test="updOpr != null">
+        UPD_OPR,
+      </if>
+      <if test="updDt != null">
+        UPD_DT,
+      </if>
+      <if test="misc != null">
+        MISC,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sysId != null">
+        #{sysId,jdbcType=VARCHAR},
+      </if>
+      <if test="errCdTagLst != null">
+        #{errCdTagLst,jdbcType=VARCHAR},
+      </if>
+      <if test="errMsTagLst != null">
+        #{errMsTagLst,jdbcType=VARCHAR},
+      </if>
+      <if test="crtOpr != null">
+        #{crtOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="crtDt != null">
+        #{crtDt,jdbcType=VARCHAR},
+      </if>
+      <if test="updOpr != null">
+        #{updOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="updDt != null">
+        #{updDt,jdbcType=VARCHAR},
+      </if>
+      <if test="misc != null">
+        #{misc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="java.util.Map">
+    update TBL_ERR_DEF
+    <set>
+      <if test="errCdTagLst != null">
+        ERR_CD_TAG_LST = #{errCdTagLst,jdbcType=VARCHAR},
+      </if>
+      <if test="errMsTagLst != null">
+        ERR_MS_TAG_LST = #{errMsTagLst,jdbcType=VARCHAR},
+      </if>
+      <if test="crtOpr != null">
+        CRT_OPR = #{crtOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="crtDt != null">
+        CRT_DT = #{crtDt,jdbcType=VARCHAR},
+      </if>
+      <if test="updOpr != null">
+        UPD_OPR = #{updOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="updDt != null">
+        UPD_DT = #{updDt,jdbcType=VARCHAR},
+      </if>
+      <if test="misc != null">
+        MISC = #{misc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SYS_ID = #{sysId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="java.util.Map">
+    update TBL_ERR_DEF
+    set ERR_CD_TAG_LST = #{errCdTagLst,jdbcType=VARCHAR},
+      ERR_MS_TAG_LST = #{errMsTagLst,jdbcType=VARCHAR},
+      CRT_OPR = #{crtOpr,jdbcType=VARCHAR},
+      CRT_DT = #{crtDt,jdbcType=VARCHAR},
+      UPD_OPR = #{updOpr,jdbcType=VARCHAR},
+      UPD_DT = #{updDt,jdbcType=VARCHAR},
+      MISC = #{misc,jdbcType=VARCHAR}
+    where SYS_ID = #{sysId,jdbcType=VARCHAR}
+  </update>
+</mapper>

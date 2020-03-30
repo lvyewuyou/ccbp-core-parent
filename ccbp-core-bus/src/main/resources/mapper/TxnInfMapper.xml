@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbp.core.bus.mapper.TxnInfMapper">
+  <resultMap id="BaseResultMap" type="java.util.Map">
+    <id column="TXN_CD" jdbcType="VARCHAR" property="txnCd" />
+    <result column="TXN_DESC" jdbcType="VARCHAR" property="txnDesc" />
+    <result column="TXN_TP" jdbcType="VARCHAR" property="txnTp" />
+    <result column="PAY_SNC" jdbcType="VARCHAR" property="paySnc" />
+    <result column="TXN_CHNL" jdbcType="VARCHAR" property="txnChnl" />
+    <result column="CTL_FLG" jdbcType="VARCHAR" property="ctlFlg" />
+    <result column="REV_FLG" jdbcType="VARCHAR" property="revFlg" />
+    <result column="CAN_FLG" jdbcType="VARCHAR" property="canFlg" />
+    <result column="RFD_FLG" jdbcType="VARCHAR" property="rfdFlg" />
+    <result column="CTL_BIT" jdbcType="VARCHAR" property="ctlBit" />
+    <result column="CRT_OPR" jdbcType="VARCHAR" property="crtOpr" />
+    <result column="CRT_DT" jdbcType="VARCHAR" property="crtDt" />
+    <result column="UPD_OPR" jdbcType="VARCHAR" property="updOpr" />
+    <result column="UPD_DT" jdbcType="VARCHAR" property="updDt" />
+    <result column="MISC" jdbcType="VARCHAR" property="misc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    TXN_CD, TXN_DESC, TXN_TP, PAY_SNC, TXN_CHNL, CTL_FLG, REV_FLG, CAN_FLG, RFD_FLG, 
+    CTL_BIT, CRT_OPR, CRT_DT, UPD_OPR, UPD_DT, MISC
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TBL_TXN_INF
+    where TXN_CD = #{txnCd,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from TBL_TXN_INF
+    where TXN_CD = #{txnCd,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="java.util.Map">
+    insert into TBL_TXN_INF (TXN_CD, TXN_DESC, TXN_TP, 
+      PAY_SNC, TXN_CHNL, CTL_FLG, 
+      REV_FLG, CAN_FLG, RFD_FLG, 
+      CTL_BIT, CRT_OPR, CRT_DT, 
+      UPD_OPR, UPD_DT, MISC
+      )
+    values (#{txnCd,jdbcType=VARCHAR}, #{txnDesc,jdbcType=VARCHAR}, #{txnTp,jdbcType=VARCHAR}, 
+      #{paySnc,jdbcType=VARCHAR}, #{txnChnl,jdbcType=VARCHAR}, #{ctlFlg,jdbcType=VARCHAR}, 
+      #{revFlg,jdbcType=VARCHAR}, #{canFlg,jdbcType=VARCHAR}, #{rfdFlg,jdbcType=VARCHAR}, 
+      #{ctlBit,jdbcType=VARCHAR}, #{crtOpr,jdbcType=VARCHAR}, #{crtDt,jdbcType=VARCHAR}, 
+      #{updOpr,jdbcType=VARCHAR}, #{updDt,jdbcType=VARCHAR}, #{misc,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="java.util.Map">
+    insert into TBL_TXN_INF
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="txnCd != null">
+        TXN_CD,
+      </if>
+      <if test="txnDesc != null">
+        TXN_DESC,
+      </if>
+      <if test="txnTp != null">
+        TXN_TP,
+      </if>
+      <if test="paySnc != null">
+        PAY_SNC,
+      </if>
+      <if test="txnChnl != null">
+        TXN_CHNL,
+      </if>
+      <if test="ctlFlg != null">
+        CTL_FLG,
+      </if>
+      <if test="revFlg != null">
+        REV_FLG,
+      </if>
+      <if test="canFlg != null">
+        CAN_FLG,
+      </if>
+      <if test="rfdFlg != null">
+        RFD_FLG,
+      </if>
+      <if test="ctlBit != null">
+        CTL_BIT,
+      </if>
+      <if test="crtOpr != null">
+        CRT_OPR,
+      </if>
+      <if test="crtDt != null">
+        CRT_DT,
+      </if>
+      <if test="updOpr != null">
+        UPD_OPR,
+      </if>
+      <if test="updDt != null">
+        UPD_DT,
+      </if>
+      <if test="misc != null">
+        MISC,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="txnCd != null">
+        #{txnCd,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDesc != null">
+        #{txnDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="txnTp != null">
+        #{txnTp,jdbcType=VARCHAR},
+      </if>
+      <if test="paySnc != null">
+        #{paySnc,jdbcType=VARCHAR},
+      </if>
+      <if test="txnChnl != null">
+        #{txnChnl,jdbcType=VARCHAR},
+      </if>
+      <if test="ctlFlg != null">
+        #{ctlFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="revFlg != null">
+        #{revFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="canFlg != null">
+        #{canFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="rfdFlg != null">
+        #{rfdFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="ctlBit != null">
+        #{ctlBit,jdbcType=VARCHAR},
+      </if>
+      <if test="crtOpr != null">
+        #{crtOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="crtDt != null">
+        #{crtDt,jdbcType=VARCHAR},
+      </if>
+      <if test="updOpr != null">
+        #{updOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="updDt != null">
+        #{updDt,jdbcType=VARCHAR},
+      </if>
+      <if test="misc != null">
+        #{misc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="java.util.Map">
+    update TBL_TXN_INF
+    <set>
+      <if test="txnDesc != null">
+        TXN_DESC = #{txnDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="txnTp != null">
+        TXN_TP = #{txnTp,jdbcType=VARCHAR},
+      </if>
+      <if test="paySnc != null">
+        PAY_SNC = #{paySnc,jdbcType=VARCHAR},
+      </if>
+      <if test="txnChnl != null">
+        TXN_CHNL = #{txnChnl,jdbcType=VARCHAR},
+      </if>
+      <if test="ctlFlg != null">
+        CTL_FLG = #{ctlFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="revFlg != null">
+        REV_FLG = #{revFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="canFlg != null">
+        CAN_FLG = #{canFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="rfdFlg != null">
+        RFD_FLG = #{rfdFlg,jdbcType=VARCHAR},
+      </if>
+      <if test="ctlBit != null">
+        CTL_BIT = #{ctlBit,jdbcType=VARCHAR},
+      </if>
+      <if test="crtOpr != null">
+        CRT_OPR = #{crtOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="crtDt != null">
+        CRT_DT = #{crtDt,jdbcType=VARCHAR},
+      </if>
+      <if test="updOpr != null">
+        UPD_OPR = #{updOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="updDt != null">
+        UPD_DT = #{updDt,jdbcType=VARCHAR},
+      </if>
+      <if test="misc != null">
+        MISC = #{misc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where TXN_CD = #{txnCd,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="java.util.Map">
+    update TBL_TXN_INF
+    set TXN_DESC = #{txnDesc,jdbcType=VARCHAR},
+      TXN_TP = #{txnTp,jdbcType=VARCHAR},
+      PAY_SNC = #{paySnc,jdbcType=VARCHAR},
+      TXN_CHNL = #{txnChnl,jdbcType=VARCHAR},
+      CTL_FLG = #{ctlFlg,jdbcType=VARCHAR},
+      REV_FLG = #{revFlg,jdbcType=VARCHAR},
+      CAN_FLG = #{canFlg,jdbcType=VARCHAR},
+      RFD_FLG = #{rfdFlg,jdbcType=VARCHAR},
+      CTL_BIT = #{ctlBit,jdbcType=VARCHAR},
+      CRT_OPR = #{crtOpr,jdbcType=VARCHAR},
+      CRT_DT = #{crtDt,jdbcType=VARCHAR},
+      UPD_OPR = #{updOpr,jdbcType=VARCHAR},
+      UPD_DT = #{updDt,jdbcType=VARCHAR},
+      MISC = #{misc,jdbcType=VARCHAR}
+    where TXN_CD = #{txnCd,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccbp.core.bus.mapper.TblProtInfMapper" >
+  <resultMap id="BaseResultMap" type="java.util.Map" >
+    <id column="PROT_ID" property="protId" jdbcType="VARCHAR" />
+    <result column="LMT_SIGN_AMT" property="lmtSignAmt" jdbcType="DECIMAL" />
+    <result column="LMT_DAY_AMT" property="lmtDayAmt" jdbcType="DECIMAL" />
+    <result column="LMT_MON_AMT" property="lmtMonAmt" jdbcType="DECIMAL" />
+    <result column="BNK_ORG_ID" property="bnkOrgId" jdbcType="VARCHAR" />
+    <result column="PROT_ACT_TP" property="protActTp" jdbcType="VARCHAR" />
+    <result column="PROT_ACT_NO" property="protActNo" jdbcType="VARCHAR" />
+    <result column="PROT_ACT_NM" property="protActNm" jdbcType="VARCHAR" />
+    <result column="PROT_CERT_TP" property="protCertTp" jdbcType="VARCHAR" />
+    <result column="PROT_CERT_ID" property="protCertId" jdbcType="VARCHAR" />
+    <result column="BNK_DEF_PHN_NM" property="bnkDefPhnNm" jdbcType="VARCHAR" />
+    <result column="PAY_ORG_ID" property="payOrgId" jdbcType="VARCHAR" />
+    <result column="PAY_ACT_NO" property="payActNo" jdbcType="VARCHAR" />
+    <result column="PAY_ACT_LVL" property="payActLvl" jdbcType="VARCHAR" />
+    <result column="EXP_DATE" property="expDate" jdbcType="VARCHAR" />
+    <result column="PROT_ST" property="protSt" jdbcType="VARCHAR" />
+    <result column="CRT_DATE" property="crtDate" jdbcType="VARCHAR" />
+    <result column="CRT_TIME" property="crtTime" jdbcType="VARCHAR" />
+    <result column="CRT_SEQ" property="crtSeq" jdbcType="VARCHAR" />
+    <result column="DEL_DATE" property="delDate" jdbcType="VARCHAR" />
+    <result column="DEL_TIME" property="delTime" jdbcType="VARCHAR" />
+    <result column="DEL_SEQ" property="delSeq" jdbcType="VARCHAR" />
+    <result column="PROT_TYPE" property="protType" jdbcType="VARCHAR" />
+    <result column="MISC1" property="misc1" jdbcType="VARCHAR" />
+    <result column="MISC2" property="misc2" jdbcType="VARCHAR" />
+    <result column="MISC3" property="misc3" jdbcType="VARCHAR" />
+    <result column="MISC4" property="misc4" jdbcType="VARCHAR" />
+    <result column="CUST_ID" property="custId" jdbcType="VARCHAR" />
+    <result column="SIGN_TYPE" property="signType" jdbcType="VARCHAR" />
+    <result column="SIGN_DESC" property="signDesc" jdbcType="VARCHAR" />
+    <result column="SIGN_TELLER_NO" property="signTellerNo" jdbcType="VARCHAR" />
+    <result column="SIGNOFF_TELLER_NO" property="signoffTellerNo" jdbcType="VARCHAR" />
+    <result column="SIGN_CHANNEL" property="signChannel" jdbcType="VARCHAR" />
+    <result column="TXN_ACT_INST" property="txnActInst" jdbcType="VARCHAR" />
+    <result column="CUPS_LS_YU" property="cupsLsYu" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    PROT_ID, LMT_SIGN_AMT, LMT_DAY_AMT, LMT_MON_AMT, BNK_ORG_ID, PROT_ACT_TP, PROT_ACT_NO, 
+    PROT_ACT_NM, PROT_CERT_TP, PROT_CERT_ID, BNK_DEF_PHN_NM, PAY_ORG_ID, PAY_ACT_NO, 
+    PAY_ACT_LVL, EXP_DATE, PROT_ST, CRT_DATE, CRT_TIME, CRT_SEQ, DEL_DATE, DEL_TIME, 
+    DEL_SEQ, PROT_TYPE, MISC1, MISC2, MISC3, MISC4, CUST_ID, SIGN_TYPE, SIGN_DESC, SIGN_TELLER_NO, 
+    SIGNOFF_TELLER_NO, SIGN_CHANNEL, TXN_ACT_INST, CUPS_LS_YU
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from TBL_PROT_INF
+    where PROT_ID = #{protId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TBL_PROT_INF
+    where PROT_ID = #{protId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="java.util.Map" >
+    insert into TBL_PROT_INF (PROT_ID, LMT_SIGN_AMT, LMT_DAY_AMT, 
+      LMT_MON_AMT, BNK_ORG_ID, PROT_ACT_TP, 
+      PROT_ACT_NO, PROT_ACT_NM, PROT_CERT_TP, 
+      PROT_CERT_ID, BNK_DEF_PHN_NM, PAY_ORG_ID, 
+      PAY_ACT_NO, PAY_ACT_LVL, EXP_DATE, 
+      PROT_ST, CRT_DATE, CRT_TIME, 
+      CRT_SEQ, DEL_DATE, DEL_TIME, 
+      DEL_SEQ, PROT_TYPE, MISC1, 
+      MISC2, MISC3, MISC4, 
+      CUST_ID, SIGN_TYPE, SIGN_DESC, 
+      SIGN_TELLER_NO, SIGNOFF_TELLER_NO, SIGN_CHANNEL, 
+      TXN_ACT_INST, CUPS_LS_YU)
+    values (#{protId,jdbcType=VARCHAR}, #{lmtSignAmt,jdbcType=DECIMAL}, #{lmtDayAmt,jdbcType=DECIMAL}, 
+      #{lmtMonAmt,jdbcType=DECIMAL}, #{bnkOrgId,jdbcType=VARCHAR}, #{protActTp,jdbcType=VARCHAR}, 
+      #{protActNo,jdbcType=VARCHAR}, #{protActNm,jdbcType=VARCHAR}, #{protCertTp,jdbcType=VARCHAR}, 
+      #{protCertId,jdbcType=VARCHAR}, #{bnkDefPhnNm,jdbcType=VARCHAR}, #{payOrgId,jdbcType=VARCHAR}, 
+      #{payActNo,jdbcType=VARCHAR}, #{payActLvl,jdbcType=VARCHAR}, #{expDate,jdbcType=VARCHAR}, 
+      #{protSt,jdbcType=VARCHAR}, #{crtDate,jdbcType=VARCHAR}, #{crtTime,jdbcType=VARCHAR}, 
+      #{crtSeq,jdbcType=VARCHAR}, #{delDate,jdbcType=VARCHAR}, #{delTime,jdbcType=VARCHAR}, 
+      #{delSeq,jdbcType=VARCHAR}, #{protType,jdbcType=VARCHAR}, #{misc1,jdbcType=VARCHAR}, 
+      #{misc2,jdbcType=VARCHAR}, #{misc3,jdbcType=VARCHAR}, #{misc4,jdbcType=VARCHAR}, 
+      #{custId,jdbcType=VARCHAR}, #{signType,jdbcType=VARCHAR}, #{signDesc,jdbcType=VARCHAR}, 
+      #{signTellerNo,jdbcType=VARCHAR}, #{signoffTellerNo,jdbcType=VARCHAR}, #{signChannel,jdbcType=VARCHAR}, 
+      #{txnActInst,jdbcType=VARCHAR}, #{cupsLsYu,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="java.util.Map" >
+    insert into TBL_PROT_INF
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="protId != null" >
+        PROT_ID,
+      </if>
+      <if test="lmtSignAmt != null" >
+        LMT_SIGN_AMT,
+      </if>
+      <if test="lmtDayAmt != null" >
+        LMT_DAY_AMT,
+      </if>
+      <if test="lmtMonAmt != null" >
+        LMT_MON_AMT,
+      </if>
+      <if test="bnkOrgId != null" >
+        BNK_ORG_ID,
+      </if>
+      <if test="protActTp != null" >
+        PROT_ACT_TP,
+      </if>
+      <if test="protActNo != null" >
+        PROT_ACT_NO,
+      </if>
+      <if test="protActNm != null" >
+        PROT_ACT_NM,
+      </if>
+      <if test="protCertTp != null" >
+        PROT_CERT_TP,
+      </if>
+      <if test="protCertId != null" >
+        PROT_CERT_ID,
+      </if>
+      <if test="bnkDefPhnNm != null" >
+        BNK_DEF_PHN_NM,
+      </if>
+      <if test="payOrgId != null" >
+        PAY_ORG_ID,
+      </if>
+      <if test="payActNo != null" >
+        PAY_ACT_NO,
+      </if>
+      <if test="payActLvl != null" >
+        PAY_ACT_LVL,
+      </if>
+      <if test="expDate != null" >
+        EXP_DATE,
+      </if>
+      <if test="protSt != null" >
+        PROT_ST,
+      </if>
+      <if test="crtDate != null" >
+        CRT_DATE,
+      </if>
+      <if test="crtTime != null" >
+        CRT_TIME,
+      </if>
+      <if test="crtSeq != null" >
+        CRT_SEQ,
+      </if>
+      <if test="delDate != null" >
+        DEL_DATE,
+      </if>
+      <if test="delTime != null" >
+        DEL_TIME,
+      </if>
+      <if test="delSeq != null" >
+        DEL_SEQ,
+      </if>
+      <if test="protType != null" >
+        PROT_TYPE,
+      </if>
+      <if test="misc1 != null" >
+        MISC1,
+      </if>
+      <if test="misc2 != null" >
+        MISC2,
+      </if>
+      <if test="misc3 != null" >
+        MISC3,
+      </if>
+      <if test="misc4 != null" >
+        MISC4,
+      </if>
+      <if test="custId != null" >
+        CUST_ID,
+      </if>
+      <if test="signType != null" >
+        SIGN_TYPE,
+      </if>
+      <if test="signDesc != null" >
+        SIGN_DESC,
+      </if>
+      <if test="signTellerNo != null" >
+        SIGN_TELLER_NO,
+      </if>
+      <if test="signoffTellerNo != null" >
+        SIGNOFF_TELLER_NO,
+      </if>
+      <if test="signChannel != null" >
+        SIGN_CHANNEL,
+      </if>
+      <if test="txnActInst != null" >
+        TXN_ACT_INST,
+      </if>
+      <if test="cupsLsYu != null" >
+        CUPS_LS_YU,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="protId != null" >
+        #{protId,jdbcType=VARCHAR},
+      </if>
+      <if test="lmtSignAmt != null" >
+        #{lmtSignAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="lmtDayAmt != null" >
+        #{lmtDayAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="lmtMonAmt != null" >
+        #{lmtMonAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="bnkOrgId != null" >
+        #{bnkOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="protActTp != null" >
+        #{protActTp,jdbcType=VARCHAR},
+      </if>
+      <if test="protActNo != null" >
+        #{protActNo,jdbcType=VARCHAR},
+      </if>
+      <if test="protActNm != null" >
+        #{protActNm,jdbcType=VARCHAR},
+      </if>
+      <if test="protCertTp != null" >
+        #{protCertTp,jdbcType=VARCHAR},
+      </if>
+      <if test="protCertId != null" >
+        #{protCertId,jdbcType=VARCHAR},
+      </if>
+      <if test="bnkDefPhnNm != null" >
+        #{bnkDefPhnNm,jdbcType=VARCHAR},
+      </if>
+      <if test="payOrgId != null" >
+        #{payOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="payActNo != null" >
+        #{payActNo,jdbcType=VARCHAR},
+      </if>
+      <if test="payActLvl != null" >
+        #{payActLvl,jdbcType=VARCHAR},
+      </if>
+      <if test="expDate != null" >
+        #{expDate,jdbcType=VARCHAR},
+      </if>
+      <if test="protSt != null" >
+        #{protSt,jdbcType=VARCHAR},
+      </if>
+      <if test="crtDate != null" >
+        #{crtDate,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTime != null" >
+        #{crtTime,jdbcType=VARCHAR},
+      </if>
+      <if test="crtSeq != null" >
+        #{crtSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="delDate != null" >
+        #{delDate,jdbcType=VARCHAR},
+      </if>
+      <if test="delTime != null" >
+        #{delTime,jdbcType=VARCHAR},
+      </if>
+      <if test="delSeq != null" >
+        #{delSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="protType != null" >
+        #{protType,jdbcType=VARCHAR},
+      </if>
+      <if test="misc1 != null" >
+        #{misc1,jdbcType=VARCHAR},
+      </if>
+      <if test="misc2 != null" >
+        #{misc2,jdbcType=VARCHAR},
+      </if>
+      <if test="misc3 != null" >
+        #{misc3,jdbcType=VARCHAR},
+      </if>
+      <if test="misc4 != null" >
+        #{misc4,jdbcType=VARCHAR},
+      </if>
+      <if test="custId != null" >
+        #{custId,jdbcType=VARCHAR},
+      </if>
+      <if test="signType != null" >
+        #{signType,jdbcType=VARCHAR},
+      </if>
+      <if test="signDesc != null" >
+        #{signDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="signTellerNo != null" >
+        #{signTellerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="signoffTellerNo != null" >
+        #{signoffTellerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="signChannel != null" >
+        #{signChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="txnActInst != null" >
+        #{txnActInst,jdbcType=VARCHAR},
+      </if>
+      <if test="cupsLsYu != null" >
+        #{cupsLsYu,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="java.util.Map" >
+    update TBL_PROT_INF
+    <set >
+      <if test="lmtSignAmt != null" >
+        LMT_SIGN_AMT = #{lmtSignAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="lmtDayAmt != null" >
+        LMT_DAY_AMT = #{lmtDayAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="lmtMonAmt != null" >
+        LMT_MON_AMT = #{lmtMonAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="bnkOrgId != null" >
+        BNK_ORG_ID = #{bnkOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="protActTp != null" >
+        PROT_ACT_TP = #{protActTp,jdbcType=VARCHAR},
+      </if>
+      <if test="protActNo != null" >
+        PROT_ACT_NO = #{protActNo,jdbcType=VARCHAR},
+      </if>
+      <if test="protActNm != null" >
+        PROT_ACT_NM = #{protActNm,jdbcType=VARCHAR},
+      </if>
+      <if test="protCertTp != null" >
+        PROT_CERT_TP = #{protCertTp,jdbcType=VARCHAR},
+      </if>
+      <if test="protCertId != null" >
+        PROT_CERT_ID = #{protCertId,jdbcType=VARCHAR},
+      </if>
+      <if test="bnkDefPhnNm != null" >
+        BNK_DEF_PHN_NM = #{bnkDefPhnNm,jdbcType=VARCHAR},
+      </if>
+      <if test="payOrgId != null" >
+        PAY_ORG_ID = #{payOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="payActNo != null" >
+        PAY_ACT_NO = #{payActNo,jdbcType=VARCHAR},
+      </if>
+      <if test="payActLvl != null" >
+        PAY_ACT_LVL = #{payActLvl,jdbcType=VARCHAR},
+      </if>
+      <if test="expDate != null" >
+        EXP_DATE = #{expDate,jdbcType=VARCHAR},
+      </if>
+      <if test="protSt != null" >
+        PROT_ST = #{protSt,jdbcType=VARCHAR},
+      </if>
+      <if test="crtDate != null" >
+        CRT_DATE = #{crtDate,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTime != null" >
+        CRT_TIME = #{crtTime,jdbcType=VARCHAR},
+      </if>
+      <if test="crtSeq != null" >
+        CRT_SEQ = #{crtSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="delDate != null" >
+        DEL_DATE = #{delDate,jdbcType=VARCHAR},
+      </if>
+      <if test="delTime != null" >
+        DEL_TIME = #{delTime,jdbcType=VARCHAR},
+      </if>
+      <if test="delSeq != null" >
+        DEL_SEQ = #{delSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="protType != null" >
+        PROT_TYPE = #{protType,jdbcType=VARCHAR},
+      </if>
+      <if test="misc1 != null" >
+        MISC1 = #{misc1,jdbcType=VARCHAR},
+      </if>
+      <if test="misc2 != null" >
+        MISC2 = #{misc2,jdbcType=VARCHAR},
+      </if>
+      <if test="misc3 != null" >
+        MISC3 = #{misc3,jdbcType=VARCHAR},
+      </if>
+      <if test="misc4 != null" >
+        MISC4 = #{misc4,jdbcType=VARCHAR},
+      </if>
+      <if test="custId != null" >
+        CUST_ID = #{custId,jdbcType=VARCHAR},
+      </if>
+      <if test="signType != null" >
+        SIGN_TYPE = #{signType,jdbcType=VARCHAR},
+      </if>
+      <if test="signDesc != null" >
+        SIGN_DESC = #{signDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="signTellerNo != null" >
+        SIGN_TELLER_NO = #{signTellerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="signoffTellerNo != null" >
+        SIGNOFF_TELLER_NO = #{signoffTellerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="signChannel != null" >
+        SIGN_CHANNEL = #{signChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="txnActInst != null" >
+        TXN_ACT_INST = #{txnActInst,jdbcType=VARCHAR},
+      </if>
+      <if test="cupsLsYu != null" >
+        CUPS_LS_YU = #{cupsLsYu,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where PROT_ID = #{protId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="java.util.Map" >
+    update TBL_PROT_INF
+    set LMT_SIGN_AMT = #{lmtSignAmt,jdbcType=DECIMAL},
+      LMT_DAY_AMT = #{lmtDayAmt,jdbcType=DECIMAL},
+      LMT_MON_AMT = #{lmtMonAmt,jdbcType=DECIMAL},
+      BNK_ORG_ID = #{bnkOrgId,jdbcType=VARCHAR},
+      PROT_ACT_TP = #{protActTp,jdbcType=VARCHAR},
+      PROT_ACT_NO = #{protActNo,jdbcType=VARCHAR},
+      PROT_ACT_NM = #{protActNm,jdbcType=VARCHAR},
+      PROT_CERT_TP = #{protCertTp,jdbcType=VARCHAR},
+      PROT_CERT_ID = #{protCertId,jdbcType=VARCHAR},
+      BNK_DEF_PHN_NM = #{bnkDefPhnNm,jdbcType=VARCHAR},
+      PAY_ORG_ID = #{payOrgId,jdbcType=VARCHAR},
+      PAY_ACT_NO = #{payActNo,jdbcType=VARCHAR},
+      PAY_ACT_LVL = #{payActLvl,jdbcType=VARCHAR},
+      EXP_DATE = #{expDate,jdbcType=VARCHAR},
+      PROT_ST = #{protSt,jdbcType=VARCHAR},
+      CRT_DATE = #{crtDate,jdbcType=VARCHAR},
+      CRT_TIME = #{crtTime,jdbcType=VARCHAR},
+      CRT_SEQ = #{crtSeq,jdbcType=VARCHAR},
+      DEL_DATE = #{delDate,jdbcType=VARCHAR},
+      DEL_TIME = #{delTime,jdbcType=VARCHAR},
+      DEL_SEQ = #{delSeq,jdbcType=VARCHAR},
+      PROT_TYPE = #{protType,jdbcType=VARCHAR},
+      MISC1 = #{misc1,jdbcType=VARCHAR},
+      MISC2 = #{misc2,jdbcType=VARCHAR},
+      MISC3 = #{misc3,jdbcType=VARCHAR},
+      MISC4 = #{misc4,jdbcType=VARCHAR},
+      CUST_ID = #{custId,jdbcType=VARCHAR},
+      SIGN_TYPE = #{signType,jdbcType=VARCHAR},
+      SIGN_DESC = #{signDesc,jdbcType=VARCHAR},
+      SIGN_TELLER_NO = #{signTellerNo,jdbcType=VARCHAR},
+      SIGNOFF_TELLER_NO = #{signoffTellerNo,jdbcType=VARCHAR},
+      SIGN_CHANNEL = #{signChannel,jdbcType=VARCHAR},
+      TXN_ACT_INST = #{txnActInst,jdbcType=VARCHAR},
+      CUPS_LS_YU = #{cupsLsYu,jdbcType=VARCHAR}
+    where PROT_ID = #{protId,jdbcType=VARCHAR}
+  </update>
+  
+    <!-- 协议检查 -->
+	<select id="checkProtocol" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from tbl_prot_inf
+		where 1=1
+		and PROT_ST <![CDATA[= '00']]>
+		<if test="protId != null">
+			and PROT_ID = #{protId,jdbcType=CHAR}
+		</if>
+		<if test="bnkOrgId != null">
+			and BNK_ORG_ID = #{bnkOrgId,jdbcType=CHAR}
+		</if>
+		<if test="protActNo != null">
+			and PROT_ACT_NO = #{protActNo,jdbcType=CHAR}
+		</if>
+		<!-- 不需要检查收款方账户编号、收款方账户所属机构标识 -->
+		<!-- <if test="payActNo != null"> and PAY_ACT_NO = #{payActNo,jdbcType=CHAR} 
+			</if> <if test="payOrgId != null"> and PAY_ORG_ID = #{payOrgId,jdbcType=CHAR} 
+			</if> -->
+		<if test="expDate != null">
+			and EXP_DATE <![CDATA[>= #{expDate,jdbcType=VARCHAR}]]>
+		</if>
+
+	</select>
+	<!-- 协议检查(账户后4位) -->
+	<select id="checkProtocolOfLastFour" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from tbl_prot_inf
+		where 1=1
+		<!-- and PROT_ST <![CDATA[= '00']]> -->
+		<if test="protId != null">
+			and PROT_ID = #{protId,jdbcType=CHAR}
+		</if>
+		<if test="bnkOrgId != null">
+			and BNK_ORG_ID = #{bnkOrgId,jdbcType=CHAR}
+		</if>
+		<if test="protActNo != null">
+			and RIGHT(PROT_ACT_NO,4) = #{protActNo,jdbcType=CHAR}
+		</if>
+		<if test="payOrgId != null">
+			and PAY_ORG_ID = #{payOrgId,jdbcType=CHAR}
+		</if>
+
+		<!-- <if test="expDate != null"> and EXP_DATE <![CDATA[>= #{expDate,jdbcType=VARCHAR}]]> 
+			</if> -->
+
+	</select>
+
+	<!-- 根据协议号 银行机构标识 签约人银行账户编号 查找协议信息 -->
+	<select id="checkProtocolDetail" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from tbl_prot_inf
+		where 1=1
+		<if test="protId != null">
+			and PROT_ID = #{protId,jdbcType=VARCHAR}
+		</if>
+		<if test="bnkOrgId != null">
+			and BNK_ORG_ID = #{bnkOrgId,jdbcType=VARCHAR}
+		</if>
+		<if test="protActNo != null">
+			and PROT_ACT_NO = #{protActNo,jdbcType=VARCHAR}
+		</if>
+		<if test="protActTp != null">
+			and PROT_ACT_TP = #{protActTp,jdbcType=CHAR}
+		</if>
+	</select>
+
+	<!-- 协议检查(不检查状态) -->
+	<select id="checkProtocolWithoutSt" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		select * from (
+		select
+		<include refid="Base_Column_List" />
+		from tbl_prot_inf
+		where 1=1
+		<!-- and PROT_ST <![CDATA[= '00']]> -->
+		<if test="protId != null">
+			and PROT_ID = #{protId,jdbcType=CHAR}
+		</if>
+		<if test="bnkOrgId != null">
+			and BNK_ORG_ID = #{bnkOrgId,jdbcType=CHAR}
+		</if>
+		<if test="protActNo != null">
+			and PROT_ACT_NO = #{protActNo,jdbcType=CHAR}
+		</if>
+		<if test="payOrgId != null">
+			and PAY_ORG_ID = #{payOrgId,jdbcType=CHAR}
+		</if>
+		<if test="protType != null">
+			and PROT_TYPE = #{protType,jdbcType=CHAR}
+		</if>
+
+		<!-- <if test="expDate != null"> and EXP_DATE <![CDATA[>= #{expDate,jdbcType=VARCHAR}]]> 
+			</if> -->
+		)
+		where rownum=1
+
+	</select>
+	
+	
+	<!-- 根据卡号、签约机构号，检查有效签约 -->
+	<select id="getProtocol" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from tbl_prot_inf
+		where 1=1
+		and PROT_ST <![CDATA[= '00']]>
+		<if test="bnkOrgId != null">
+			and BNK_ORG_ID = #{bnkOrgId,jdbcType=CHAR}
+		</if>
+		<if test="protActNo != null">
+			and PROT_ACT_NO = #{protActNo,jdbcType=CHAR}
+		</if>
+		<if test="expDate != null">
+			and EXP_DATE <![CDATA[>= #{expDate,jdbcType=VARCHAR}]]>
+		</if>
+		<if test="protType != null">
+			and PROT_TYPE = #{protType,jdbcType=CHAR}
+		</if>
+	</select>
+  
+  
+</mapper>

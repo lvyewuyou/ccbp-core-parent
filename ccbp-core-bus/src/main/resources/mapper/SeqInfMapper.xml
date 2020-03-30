@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbp.core.bus.mapper.SeqInfMapper">
+	<resultMap id="BaseResultMap" type="java.util.Map">
+		<id column="SEQ_KEY" jdbcType="VARCHAR" property="seqKey" />
+		<id column="SYS_ID" jdbcType="VARCHAR" property="sysId" />
+		<result column="LMT_UP" jdbcType="VARCHAR" property="lmtUp" />
+		<result column="LMT_DOWN" jdbcType="VARCHAR" property="lmtDown" />
+		<result column="VAL_MAX" jdbcType="VARCHAR" property="valMax" />
+		<result column="VAL_INIT" jdbcType="VARCHAR" property="valInit" />
+		<result column="RULE_DEF" jdbcType="VARCHAR" property="ruleDef" />
+		<result column="INC_RULE_VAL" jdbcType="VARCHAR" property="incRuleVal" />
+		<result column="CRT_OPR" jdbcType="VARCHAR" property="crtOpr" />
+		<result column="CRT_DT" jdbcType="VARCHAR" property="crtDt" />
+		<result column="UPD_OPR" jdbcType="VARCHAR" property="updOpr" />
+		<result column="UPD_DT" jdbcType="VARCHAR" property="updDt" />
+		<result column="MISC1" jdbcType="VARCHAR" property="misc1" />
+		<result column="MISC2" jdbcType="VARCHAR" property="misc2" />
+		<result column="MISC3" jdbcType="VARCHAR" property="misc3" />
+		<result column="MISC4" jdbcType="VARCHAR" property="misc4" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		SEQ_KEY, SYS_ID, LMT_UP, LMT_DOWN, VAL_MAX, VAL_INIT, RULE_DEF, 
+		INC_RULE_VAL, CRT_OPR, CRT_DT, UPD_OPR, UPD_DT,	MISC1,MISC2,MISC3,MISC4
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_SEQ_INF
+		where SEQ_KEY = #{seqKey,jdbcType=VARCHAR}
+		and SYS_ID =
+		#{sysId,jdbcType=VARCHAR}
+		for update
+	</select>
+	<delete id="deleteByPrimaryKey">
+		delete from TBL_SEQ_INF
+		where SEQ_KEY =
+		#{seqKey,jdbcType=VARCHAR}
+		and SYS_ID = #{sysId,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="java.util.Map">
+		insert into TBL_SEQ_INF
+		(SEQ_KEY, SYS_ID, LMT_UP, LMT_DOWN, VAL_MAX, VAL_INIT, RULE_DEF,
+		INC_RULE_VAL, CRT_OPR, CRT_DT, UPD_OPR, UPD_DT, MISC1, MISC2, MISC3,
+		MISC4)
+		values (#{seqKey,jdbcType=VARCHAR}, #{sysId,jdbcType=VARCHAR},
+		#{lmtUp,jdbcType=VARCHAR},#{lmtDown,jdbcType=VARCHAR},
+		#{valMax,jdbcType=VARCHAR},	#{valInit,jdbcType=VARCHAR},#{ruleDef,jdbcType=VARCHAR},
+		#{incRuleVal,jdbcType=VARCHAR},#{crtOpr,jdbcType=VARCHAR},#{crtDt,jdbcType=VARCHAR},
+		#{updOpr,jdbcType=VARCHAR}, #{updDt,jdbcType=VARCHAR},#{misc1,jdbcType=VARCHAR},
+		#{misc2,jdbcType=VARCHAR},#{misc3,jdbcType=VARCHAR},#{misc4,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="java.util.Map">
+		insert into TBL_SEQ_INF
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="seqKey != null">
+				SEQ_KEY,
+			</if>
+			<if test="sysId != null">
+				SYS_ID,
+			</if>
+			<if test="lmtUp != null">
+				LMT_UP,
+			</if>
+			<if test="lmtDown != null">
+				LMT_DOWN,
+			</if>
+			<if test="valMax != null">
+				VAL_MAX,
+			</if>
+			<if test="valInit != null">
+				VAL_INIT,
+			</if>
+			<if test="ruleDef != null">
+				RULE_DEF,
+			</if>
+			<if test="incRuleVal != null">
+				INC_RULE_VAL,
+			</if>
+			<if test="crtOpr != null">
+				CRT_OPR,
+			</if>
+			<if test="crtDt != null">
+				CRT_DT,
+			</if>
+			<if test="updOpr != null">
+				UPD_OPR,
+			</if>
+			<if test="updDt != null">
+				UPD_DT,
+			</if>
+			<if test="misc1 != null">
+				MISC1,
+			</if>
+			<if test="misc2 != null">
+				MISC2,
+			</if>
+			<if test="misc3 != null">
+				MISC3,
+			</if>
+			<if test="misc4 != null">
+				MISC4,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="seqKey != null">
+				#{seqKey,jdbcType=VARCHAR},
+			</if>
+			<if test="sysId != null">
+				#{sysId,jdbcType=VARCHAR},
+			</if>
+			<if test="lmtUp != null">
+				#{lmtUp,jdbcType=VARCHAR},
+			</if>
+			<if test="lmtDown != null">
+				#{lmtDown,jdbcType=VARCHAR},
+			</if>
+			<if test="valMax != null">
+				#{valMax,jdbcType=VARCHAR},
+			</if>
+			<if test="valInit != null">
+				#{valInit,jdbcType=VARCHAR},
+			</if>
+			<if test="ruleDef != null">
+				#{ruleDef,jdbcType=VARCHAR},
+			</if>
+			<if test="incRuleVal != null">
+				#{incRuleVal,jdbcType=VARCHAR},
+			</if>
+			<if test="crtOpr != null">
+				#{crtOpr,jdbcType=VARCHAR},
+			</if>
+			<if test="crtDt != null">
+				#{crtDt,jdbcType=VARCHAR},
+			</if>
+			<if test="updOpr != null">
+				#{updOpr,jdbcType=VARCHAR},
+			</if>
+			<if test="updDt != null">
+				#{updDt,jdbcType=VARCHAR},
+			</if>
+			<if test="misc1 != null">
+				#{misc1,jdbcType=VARCHAR},
+			</if>
+			<if test="misc2 != null">
+				#{misc2,jdbcType=VARCHAR},
+			</if>
+			<if test="misc3 != null">
+				#{misc3,jdbcType=VARCHAR},
+			</if>
+			<if test="misc4 != null">
+				#{misc4,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="java.util.Map">
+		update TBL_SEQ_INF
+		<set>
+			<if test="lmtUp != null">
+				LMT_UP = #{lmtUp,jdbcType=VARCHAR},
+			</if>
+			<if test="lmtDown != null">
+				LMT_DOWN = #{lmtDown,jdbcType=VARCHAR},
+			</if>
+			<if test="valMax != null">
+				VAL_MAX = #{valMax,jdbcType=VARCHAR},
+			</if>
+			<if test="valInit != null">
+				VAL_INIT = #{valInit,jdbcType=VARCHAR},
+			</if>
+			<if test="ruleDef != null">
+				RULE_DEF = #{ruleDef,jdbcType=VARCHAR},
+			</if>
+			<if test="incRuleVal != null">
+				INC_RULE_VAL = #{incRuleVal,jdbcType=VARCHAR},
+			</if>
+			<if test="crtOpr != null">
+				CRT_OPR = #{crtOpr,jdbcType=VARCHAR},
+			</if>
+			<if test="crtDt != null">
+				CRT_DT = #{crtDt,jdbcType=VARCHAR},
+			</if>
+			<if test="updOpr != null">
+				UPD_OPR = #{updOpr,jdbcType=VARCHAR},
+			</if>
+			<if test="updDt != null">
+				UPD_DT = #{updDt,jdbcType=VARCHAR},
+			</if>
+			<if test="misc1 != null">
+				MISC1 = #{misc1,jdbcType=VARCHAR},
+			</if>
+			<if test="misc2 != null">
+				MISC2 = #{misc2,jdbcType=VARCHAR},
+			</if>
+			<if test="misc3 != null">
+				MISC3 = #{misc3,jdbcType=VARCHAR},
+			</if>
+			<if test="misc4 != null">
+				MISC4 = #{misc4,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where SEQ_KEY = #{seqKey,jdbcType=VARCHAR}
+		and SYS_ID = #{sysId,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+		update TBL_SEQ_INF
+		set LMT_UP = #{lmtUp,jdbcType=VARCHAR},
+		LMT_DOWN = #{lmtDown,jdbcType=VARCHAR},
+		VAL_MAX = #{valMax,jdbcType=VARCHAR},
+		VAL_INIT = #{valInit,jdbcType=VARCHAR},
+		RULE_DEF = #{ruleDef,jdbcType=VARCHAR},
+		INC_RULE_VAL = #{incRuleVal,jdbcType=VARCHAR},
+		CRT_OPR = #{crtOpr,jdbcType=VARCHAR},
+		CRT_DT = #{crtDt,jdbcType=VARCHAR},
+		UPD_OPR = #{updOpr,jdbcType=VARCHAR},
+		UPD_DT = #{updDt,jdbcType=VARCHAR},
+		MISC1 = #{misc1,jdbcType=VARCHAR},
+		MISC2 = #{misc2,jdbcType=VARCHAR},
+		MISC3 = #{misc3,jdbcType=VARCHAR},
+		MISC4 = #{misc4,jdbcType=VARCHAR}
+		where SEQ_KEY = #{seqKey,jdbcType=VARCHAR}
+		and SYS_ID = #{sysId,jdbcType=VARCHAR}
+	</update>
+</mapper>

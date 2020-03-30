@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbp.core.bus.mapper.TblMchtInfMapper">
+
+	<resultMap id="BaseResultMap" type="java.util.Map">
+		<id column="MCHT_ID" jdbcType="VARCHAR" property="mchtId" />
+		<result column="MCHT_NAME" jdbcType="VARCHAR" property="mchtName" />
+		<result column="MCC_ID" jdbcType="VARCHAR" property="mccId" />
+		<result column="IN_FLG" jdbcType="VARCHAR" property="inFlg" />
+		<result column="OUT_FLG" jdbcType="VARCHAR" property="outFlg" />
+		<result column="SINGLE_LIM_AMT" jdbcType="VARCHAR" property="singleLimAmt" />
+		<result column="DAY_LIM_AMT" jdbcType="VARCHAR" property="dayLimAmt" />
+		<result column="CRT_OPR" jdbcType="VARCHAR" property="crtOpr" />
+	    <result column="CRT_DT" jdbcType="VARCHAR" property="crtDt" />
+	    <result column="UPD_OPR" jdbcType="VARCHAR" property="updOpr" />
+	    <result column="UPD_DT" jdbcType="VARCHAR" property="updDt" />
+	    <result column="MISC" jdbcType="VARCHAR" property="misc" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		MCHT_ID, MCHT_NAME, MCC_ID, IN_FLG, OUT_FLG,SINGLE_LIM_AMT,DAY_LIM_AMT, CRT_OPR, CRT_DT, UPD_OPR, UPD_DT, MISC
+	</sql>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_MCHT_INF
+		where MCHT_ID = #{mchtId,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="selectByMchtName" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_MCHT_INF
+		where MCHT_NAME = #{mchtName,jdbcType=VARCHAR}
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.util.Map">
+		delete from TBL_MCHT_INF where MCHT_ID = #{mchtId,jdbcType=VARCHAR}
+	</delete>
+	
+	<insert id="insert" parameterType="java.util.Map">
+		insert into TBL_MCHT_INF
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="mchtId != null"> MCHT_ID, </if>
+			<if test="mchtName != null"> MCHT_NAME, </if>
+			<if test="mccId != null"> MCC_ID, </if>
+			<if test="inFlg != null"> IN_FLG, </if>
+			<if test="outFlg != null"> OUT_FLG, </if>
+			<if test="singleLimAmt != null"> SINGLE_LIM_AMT, </if>
+			<if test="dayLimAmt != null"> DAY_LIM_AMT, </if>
+			<if test="crtOpr != null"> CRT_OPR,	</if>
+			<if test="crtDt != null"> CRT_DT, </if>
+			<if test="updOpr != null"> UPD_OPR,	</if>
+			<if test="updDt != null"> UPD_DT, </if>
+			<if test="misc != null"> MISC, </if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="mchtId != null"> #{mchtId,jdbcType=VARCHAR}, </if>
+			<if test="mchtName != null"> #{mchtName,jdbcType=VARCHAR}, </if>
+			<if test="mccId != null"> #{mccId,jdbcType=VARCHAR}, </if>
+			<if test="inFlg != null"> #{inFlg,jdbcType=VARCHAR}, </if>
+			<if test="outFlg != null"> #{outFlg,jdbcType=VARCHAR}, </if>
+			<if test="singleLimAmt != null"> #{singleLimAmt,jdbcType=VARCHAR}, </if>
+			<if test="dayLimAmt != null"> #{dayLimAmt,jdbcType=VARCHAR}, </if>
+			<if test="crtOpr != null"> #{crtOpr,jdbcType=VARCHAR}, </if>
+			<if test="crtDt != null"> #{crtDt,jdbcType=VARCHAR}, </if>
+			<if test="updOpr != null"> #{updOpr,jdbcType=VARCHAR}, </if>
+			<if test="updDt != null"> #{updDt,jdbcType=VARCHAR}, </if>
+			<if test="misc != null"> #{misc,jdbcType=VARCHAR}, </if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+		update TBL_MCHT_INF
+		<set>
+			<if test="mchtName != null"> MCHT_NAME = #{mchtName,jdbcType=VARCHAR}, </if>
+			<if test="mccId != null"> MCC_ID = #{mccId,jdbcType=VARCHAR}, </if>
+			<if test="inFlg != null"> IN_FLG = #{inFlg,jdbcType=VARCHAR}, </if>
+			<if test="outFlg != null"> OUT_FLG = #{outFlg,jdbcType=VARCHAR}, </if>
+			<if test="singleLimAmt != null"> SINGLE_LIM_AMT = #{singleLimAmt,jdbcType=VARCHAR}, </if>
+			<if test="dayLimAmt != null"> DAY_LIM_AMT = #{dayLimAmt,jdbcType=VARCHAR}, </if>
+			<if test="updOpr != null"> UPD_OPR = #{updOpr,jdbcType=VARCHAR}, </if>
+			<if test="updDt != null"> UPD_DT = #{updDt,jdbcType=VARCHAR}, </if>
+			<if test="misc != null"> MISC = #{misc,jdbcType=VARCHAR}, </if>
+		</set>
+		where MCHT_ID = #{mchtId,jdbcType=VARCHAR}
+	</update>
+</mapper>

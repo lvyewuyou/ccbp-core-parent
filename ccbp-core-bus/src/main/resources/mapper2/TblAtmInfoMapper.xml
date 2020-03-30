@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.icss.instutry.nap.unifiedpay.batch.TblAtmInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.ccbp.core.bus.model.TblAtmInfo" >
+    <result column="MINOR_ID" property="minorId" jdbcType="VARCHAR" />
+    <result column="TERM_NUM" property="termNum" jdbcType="VARCHAR" />
+    <result column="MINOR_TP" property="minorTp" jdbcType="VARCHAR" />
+    <result column="MINOR_MOLD" property="minorMold" jdbcType="VARCHAR" />
+    <result column="MINOR_BRAND" property="minorBrand" jdbcType="VARCHAR" />
+    <result column="TERM_NAME" property="termName" jdbcType="VARCHAR" />
+    <result column="TLR_ID" property="tlrId" jdbcType="VARCHAR" />
+    <result column="INSTALL_DATE" property="installDate" jdbcType="VARCHAR" />
+    <result column="USE_DATE" property="useDate" jdbcType="VARCHAR" />
+    <result column="FIX_STATUS" property="fixStatus" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="ADDR" property="addr" jdbcType="VARCHAR" />
+    <result column="INSTALL_TP" property="installTp" jdbcType="VARCHAR" />
+    <result column="BRANCH" property="branch" jdbcType="VARCHAR" />
+    <result column="SUB_BRANCH" property="subBranch" jdbcType="VARCHAR" />
+    <result column="ADMIN_NAME" property="adminName" jdbcType="VARCHAR" />
+    <result column="ADMIN_TEL" property="adminTel" jdbcType="VARCHAR" />
+    <result column="AREA" property="area" jdbcType="VARCHAR" />
+    <result column="UPD_DT_TM" property="updDtTm" jdbcType="VARCHAR" />
+    <result column="MISC1" property="misc1" jdbcType="VARCHAR" />
+    <result column="MISC2" property="misc2" jdbcType="VARCHAR" />
+    <result column="MISC3" property="misc3" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <select id="getCountAtmInfoByMinorId" parameterType="string" resultType="int">
+    SELECT COUNT(*) FROM TBL_ATM_INFO WHERE MINOR_ID = #{eqmtNo}
+  </select>
+  
+  <insert id="insert" parameterType="com.ccbp.core.bus.model.TblAtmInfo" >
+    insert into TBL_ATM_INFO (MINOR_ID, TERM_NUM, MINOR_TP, 
+      MINOR_MOLD, MINOR_BRAND, TERM_NAME, 
+      TLR_ID, INSTALL_DATE, USE_DATE, 
+      FIX_STATUS, STATUS, ADDR, 
+      INSTALL_TP, BRANCH, SUB_BRANCH, 
+      ADMIN_NAME, ADMIN_TEL, AREA, 
+      UPD_DT_TM, MISC1, MISC2, 
+      MISC3)
+    values (#{minorId,jdbcType=VARCHAR}, #{termNum,jdbcType=VARCHAR}, #{minorTp,jdbcType=VARCHAR}, 
+      #{minorMold,jdbcType=VARCHAR}, #{minorBrand,jdbcType=VARCHAR}, #{termName,jdbcType=VARCHAR}, 
+      #{tlrId,jdbcType=VARCHAR}, #{installDate,jdbcType=VARCHAR}, #{useDate,jdbcType=VARCHAR}, 
+      #{fixStatus,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR}, 
+      #{installTp,jdbcType=VARCHAR}, #{branch,jdbcType=VARCHAR}, #{subBranch,jdbcType=VARCHAR}, 
+      #{adminName,jdbcType=VARCHAR}, #{adminTel,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, 
+      #{updDtTm,jdbcType=VARCHAR}, #{misc1,jdbcType=VARCHAR}, #{misc2,jdbcType=VARCHAR}, 
+      #{misc3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ccbp.core.bus.model.TblAtmInfo" >
+    insert into TBL_ATM_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="minorId != null" >
+        MINOR_ID,
+      </if>
+      <if test="termNum != null" >
+        TERM_NUM,
+      </if>
+      <if test="minorTp != null" >
+        MINOR_TP,
+      </if>
+      <if test="minorMold != null" >
+        MINOR_MOLD,
+      </if>
+      <if test="minorBrand != null" >
+        MINOR_BRAND,
+      </if>
+      <if test="termName != null" >
+        TERM_NAME,
+      </if>
+      <if test="tlrId != null" >
+        TLR_ID,
+      </if>
+      <if test="installDate != null" >
+        INSTALL_DATE,
+      </if>
+      <if test="useDate != null" >
+        USE_DATE,
+      </if>
+      <if test="fixStatus != null" >
+        FIX_STATUS,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="addr != null" >
+        ADDR,
+      </if>
+      <if test="installTp != null" >
+        INSTALL_TP,
+      </if>
+      <if test="branch != null" >
+        BRANCH,
+      </if>
+      <if test="subBranch != null" >
+        SUB_BRANCH,
+      </if>
+      <if test="adminName != null" >
+        ADMIN_NAME,
+      </if>
+      <if test="adminTel != null" >
+        ADMIN_TEL,
+      </if>
+      <if test="area != null" >
+        AREA,
+      </if>
+      <if test="updDtTm != null" >
+        UPD_DT_TM,
+      </if>
+      <if test="misc1 != null" >
+        MISC1,
+      </if>
+      <if test="misc2 != null" >
+        MISC2,
+      </if>
+      <if test="misc3 != null" >
+        MISC3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="minorId != null" >
+        #{minorId,jdbcType=VARCHAR},
+      </if>
+      <if test="termNum != null" >
+        #{termNum,jdbcType=VARCHAR},
+      </if>
+      <if test="minorTp != null" >
+        #{minorTp,jdbcType=VARCHAR},
+      </if>
+      <if test="minorMold != null" >
+        #{minorMold,jdbcType=VARCHAR},
+      </if>
+      <if test="minorBrand != null" >
+        #{minorBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="termName != null" >
+        #{termName,jdbcType=VARCHAR},
+      </if>
+      <if test="tlrId != null" >
+        #{tlrId,jdbcType=VARCHAR},
+      </if>
+      <if test="installDate != null" >
+        #{installDate,jdbcType=VARCHAR},
+      </if>
+      <if test="useDate != null" >
+        #{useDate,jdbcType=VARCHAR},
+      </if>
+      <if test="fixStatus != null" >
+        #{fixStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null" >
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="installTp != null" >
+        #{installTp,jdbcType=VARCHAR},
+      </if>
+      <if test="branch != null" >
+        #{branch,jdbcType=VARCHAR},
+      </if>
+      <if test="subBranch != null" >
+        #{subBranch,jdbcType=VARCHAR},
+      </if>
+      <if test="adminName != null" >
+        #{adminName,jdbcType=VARCHAR},
+      </if>
+      <if test="adminTel != null" >
+        #{adminTel,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="updDtTm != null" >
+        #{updDtTm,jdbcType=VARCHAR},
+      </if>
+      <if test="misc1 != null" >
+        #{misc1,jdbcType=VARCHAR},
+      </if>
+      <if test="misc2 != null" >
+        #{misc2,jdbcType=VARCHAR},
+      </if>
+      <if test="misc3 != null" >
+        #{misc3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.ccbp.core.bus.model.TblAtmInfo">
+    update TBL_ATM_INFO
+    <set>
+      <if test="termNum != null">
+        TERM_NUM = #{termNum,jdbcType=VARCHAR},
+      </if>
+      <if test="minorTp != null">
+        MINOR_TP = #{minorTp,jdbcType=VARCHAR},
+      </if>
+      <if test="minorMold != null">
+        MINOR_MOLD = #{minorMold,jdbcType=VARCHAR},
+      </if>
+      <if test="minorBrand != null">
+        MINOR_BRAND = #{minorBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="termName != null">
+        TERM_NAME = #{termName,jdbcType=VARCHAR},
+      </if>
+      <if test="tlrId != null">
+        TLR_ID = #{tlrId,jdbcType=VARCHAR},
+      </if>
+      <if test="installDate != null">
+        INSTALL_DATE = #{installDate,jdbcType=VARCHAR},
+      </if>
+      <if test="useDate != null">
+        USE_DATE = #{useDate,jdbcType=VARCHAR},
+      </if>
+      <if test="fixStatus != null">
+        FIX_STATUS = #{fixStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null">
+        ADDR = #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="installTp != null">
+        INSTALL_TP = #{installTp,jdbcType=VARCHAR},
+      </if>
+      <if test="branch != null">
+        BRANCH = #{branch,jdbcType=VARCHAR},
+      </if>
+      <if test="subBranch != null">
+        SUB_BRANCH = #{subBranch,jdbcType=VARCHAR},
+      </if>
+      <if test="adminName != null">
+        ADMIN_NAME = #{adminName,jdbcType=VARCHAR},
+      </if>
+      <if test="adminTel != null">
+        ADMIN_TEL = #{adminTel,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        AREA = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="updDtTm != null">
+        UPD_DT_TM = #{updDtTm,jdbcType=VARCHAR},
+      </if>
+      <if test="misc1 != null">
+        MISC1 = #{misc1,jdbcType=VARCHAR},
+      </if>
+      <if test="misc2 != null">
+        MISC2 = #{misc2,jdbcType=VARCHAR},
+      </if>
+      <if test="misc3 != null">
+        MISC3 = #{misc3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where MINOR_ID = #{minorId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ccbp.core.bus.model.TblAtmInfo">
+    update TBL_ATM_INFO
+    set TERM_NUM = #{termNum,jdbcType=VARCHAR},
+      MINOR_TP = #{minorTp,jdbcType=VARCHAR},
+      MINOR_MOLD = #{minorMold,jdbcType=VARCHAR},
+      MINOR_BRAND = #{minorBrand,jdbcType=VARCHAR},
+      TERM_NAME = #{termName,jdbcType=VARCHAR},
+      TLR_ID = #{tlrId,jdbcType=VARCHAR},
+      INSTALL_DATE = #{installDate,jdbcType=VARCHAR},
+      USE_DATE = #{useDate,jdbcType=VARCHAR},
+      FIX_STATUS = #{fixStatus,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      ADDR = #{addr,jdbcType=VARCHAR},
+      INSTALL_TP = #{installTp,jdbcType=VARCHAR},
+      BRANCH = #{branch,jdbcType=VARCHAR},
+      SUB_BRANCH = #{subBranch,jdbcType=VARCHAR},
+      ADMIN_NAME = #{adminName,jdbcType=VARCHAR},
+      ADMIN_TEL = #{adminTel,jdbcType=VARCHAR},
+      AREA = #{area,jdbcType=VARCHAR},
+      UPD_DT_TM = #{updDtTm,jdbcType=VARCHAR},
+      MISC1 = #{misc1,jdbcType=VARCHAR},
+      MISC2 = #{misc2,jdbcType=VARCHAR},
+      MISC3 = #{misc3,jdbcType=VARCHAR}
+    where MINOR_ID = #{minorId,jdbcType=VARCHAR}
+  </update>
+</mapper>

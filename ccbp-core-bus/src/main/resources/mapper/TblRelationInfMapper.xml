@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccbp.core.bus.mapper.TblRelationInfMapper">
+
+	<resultMap id="BaseResultMap" type="java.util.Map">
+		<id column="CARD_NUM" jdbcType="VARCHAR" property="cardNum" />
+		<id column="MCHNT_CD" jdbcType="VARCHAR" property="mchntCd" />
+		<id column="REL_TYPE" jdbcType="VARCHAR" property="relType" />
+		<id column="USER_NUM" jdbcType="VARCHAR" property="userNum" />
+		<result column="CLIENT_NUM" jdbcType="VARCHAR" property="clientNum" />
+		<result column="MCHNT_NAME" jdbcType="VARCHAR" property="mchntName" />
+		<result column="TERM_CD" jdbcType="VARCHAR" property="termCd" />
+		<result column="REL_LOCAL" jdbcType="VARCHAR" property="relLocal" />
+		<result column="REL_STAT" jdbcType="VARCHAR" property="relStat" />
+		<result column="USER_TYPE" jdbcType="VARCHAR" property="userType" />
+		<result column="AREA_NUM" jdbcType="VARCHAR" property="areaNum" />
+		<result column="O_AREA_NUM" jdbcType="VARCHAR" property="oAreaNum" />
+		<result column="PAY_TYPE_FLAG" jdbcType="VARCHAR" property="payTypeFlag" />
+		<result column="PAY_TYPE" jdbcType="VARCHAR" property="payType" />
+		<result column="PAY_NUM" jdbcType="VARCHAR" property="payNum" />
+		<result column="VALID_MON" jdbcType="VARCHAR" property="validMon" />
+		<result column="PAY_LIMT_MAX" jdbcType="VARCHAR" property="payLimtMax" />
+		<result column="PAY_LIMT_MIN" jdbcType="VARCHAR" property="payLimtMin" />
+		<result column="PAY_INTL" jdbcType="VARCHAR" property="payIntl" />
+		<result column="PAY_LIMT_ONE" jdbcType="VARCHAR" property="payLimtOne" />
+		<result column="PAY_LIMT_DAT" jdbcType="VARCHAR" property="payLimtDat" />
+		<result column="PAY_LIMT_MON" jdbcType="VARCHAR" property="payLimtMon" />
+		<result column="TEA_OPEN" jdbcType="VARCHAR" property="teaOpen" />
+		<result column="PHONE_NUM" jdbcType="VARCHAR" property="phoneNum" />
+		<result column="CLIENT_NAME" jdbcType="VARCHAR" property="clientName" />
+		<result column="MISC_1" jdbcType="VARCHAR" property="misc1" />
+		<result column="MISC_2" jdbcType="VARCHAR" property="misc2" />
+		<result column="MISC_3" jdbcType="VARCHAR" property="misc3" />
+		<result column="INST_DATE" jdbcType="VARCHAR" property="instDate" />
+		<result column="SUCC_DATE" jdbcType="VARCHAR" property="succDate" />
+		<result column="ARK_DATE" jdbcType="VARCHAR" property="arkDate" />
+		<result column="UPDT_DATE" jdbcType="VARCHAR" property="updtDate" />
+		<result column="OPEN_INST" property="openInst" jdbcType="VARCHAR" />
+		<result column="FREQ_NUM" property="freqNum" jdbcType="INTEGER"/>
+		<result column="UNIT_TIME" property="unitTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CARD_NUM, REL_TYPE, MCHNT_CD, CLIENT_NUM, MCHNT_NAME, TERM_CD, REL_LOCAL, REL_STAT, 
+    USER_TYPE, USER_NUM, AREA_NUM, O_AREA_NUM, PAY_TYPE_FLAG, PAY_TYPE, PAY_NUM, VALID_MON, 
+    PAY_LIMT_MAX, PAY_LIMT_MIN, PAY_INTL, PAY_LIMT_ONE, PAY_LIMT_DAT, PAY_LIMT_MON, TEA_OPEN, 
+    PHONE_NUM, CLIENT_NAME, MISC_1, MISC_2, MISC_3, INST_DATE, SUCC_DATE, ARK_DATE, UPDT_DATE, 
+    OPEN_INST, FREQ_NUM, UNIT_TIME
+  </sql>
+
+	<select id="selectByPrimaryKey" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_RELATION_INF
+		where CARD_NUM = #{cardNum,jdbcType=VARCHAR} 
+		and MCHNT_CD = #{mchntCd,jdbcType=VARCHAR}
+		and REL_TYPE = #{relType,jdbcType=VARCHAR}
+		and USER_NUM = #{userNum,jdbcType=VARCHAR}
+	</select>
+		
+	<select id="query" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_RELATION_INF
+		<where>
+			<if test="cardNum != null"> and CARD_NUM = #{cardNum,jdbcType=VARCHAR} </if>
+			<if test="clientNum != null"> and CLIENT_NUM = #{clientNum,jdbcType=VARCHAR} </if>
+			<if test="mchntCd != null"> and MCHNT_CD = #{mchntCd,jdbcType=VARCHAR} </if>
+			<if test="mchntName != null"> and MCHNT_NAME = #{mchntName,jdbcType=VARCHAR} </if>
+			<if test="termCd != null"> and TERM_CD = #{termCd,jdbcType=VARCHAR} </if>
+			<if test="relType != null"> and REL_TYPE = #{relType,jdbcType=VARCHAR} </if>
+			<if test="relStat != null"> and REL_STAT = #{relStat,jdbcType=VARCHAR} </if>
+			<if test="phoneNum != null"> and PHONE_NUM = #{phoneNum,jdbcType=VARCHAR} </if>
+			<if test="userType != null"> and USER_TYPE = #{userType,jdbcType=VARCHAR} </if>
+			<if test="userNum != null"> and USER_NUM = #{userNum,jdbcType=VARCHAR} </if>
+		</where>  
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.util.Map">
+		delete from TBL_RELATION_INF
+		where CARD_NUM = #{cardNum,jdbcType=VARCHAR} 
+		and MCHNT_CD = #{mchntCd,jdbcType=VARCHAR}
+		and REL_TYPE = #{relType,jdbcType=VARCHAR}
+		and USER_NUM = #{userNum,jdbcType=VARCHAR}
+	</delete>
+	
+	<insert id="insert" parameterType="java.util.Map">
+		insert into TBL_RELATION_INF
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="cardNum != null">CARD_NUM,</if>
+			<if test="clientNum != null">CLIENT_NUM,</if>
+			<if test="mchntCd != null">MCHNT_CD,</if>
+			<if test="mchntName != null">MCHNT_NAME,</if>
+			<if test="termCd != null">TERM_CD,</if>
+			<if test="relLocal != null">REL_LOCAL,</if>
+			<if test="relType != null">REL_TYPE,</if>
+			<if test="relStat != null">REL_STAT,</if>
+			<if test="userType != null">USER_TYPE,</if>
+			<if test="userNum != null">USER_NUM,</if>
+			<if test="areaNum != null">AREA_NUM,</if>
+			<if test="oAreaNum != null">O_AREA_NUM,</if>
+			<if test="payTypeFlag != null">PAY_TYPE_FLAG,</if>
+			<if test="payType != null">PAY_TYPE,</if>
+			<if test="payNum != null">PAY_NUM,</if>
+			<if test="validMon != null">VALID_MON,</if>
+			<if test="payLimtMax != null">PAY_LIMT_MAX,</if>
+			<if test="payLimtMin != null">PAY_LIMT_MIN,</if>
+			<if test="payIntl != null">PAY_INTL,</if>
+			<if test="payLimtOne != null">PAY_LIMT_ONE,</if>
+			<if test="payLimtDat != null">PAY_LIMT_DAT,</if>
+			<if test="payLimtMon != null">PAY_LIMT_MON,</if>
+			<if test="teaOpen != null">TEA_OPEN,</if>
+			<if test="phoneNum != null">PHONE_NUM,</if>
+			<if test="clientName != null">CLIENT_NAME,</if>
+			<if test="misc1 != null">MISC_1,</if>
+			<if test="misc2 != null">MISC_2,</if>
+			<if test="misc3 != null">MISC_3,</if>
+			<if test="instDate != null">INST_DATE,</if>
+			<if test="succDate != null">SUCC_DATE,</if>
+			<if test="arkDate != null">ARK_DATE,</if>
+			<if test="updtDate != null">UPDT_DATE,</if>
+			<if test="openInst != null" >OPEN_INST,</if>
+			<if test="freqNum != null">FREQ_NUM, </if>
+			<if test="unitTime != null">UNIT_TIME,</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="cardNum != null">#{cardNum,jdbcType=VARCHAR},</if>
+			<if test="clientNum != null">#{clientNum,jdbcType=VARCHAR},</if>
+			<if test="mchntCd != null">#{mchntCd,jdbcType=VARCHAR},</if>
+			<if test="mchntName != null">#{mchntName,jdbcType=VARCHAR},</if>
+			<if test="termCd != null">#{termCd,jdbcType=VARCHAR},</if>
+			<if test="relLocal != null">#{relLocal,jdbcType=VARCHAR},</if>
+			<if test="relType != null">#{relType,jdbcType=VARCHAR},</if>
+			<if test="relStat != null">#{relStat,jdbcType=VARCHAR},</if>
+			<if test="userType != null">#{userType,jdbcType=VARCHAR},</if>
+			<if test="userNum != null">#{userNum,jdbcType=VARCHAR},</if>
+			<if test="areaNum != null">#{areaNum,jdbcType=VARCHAR},</if>
+			<if test="oAreaNum != null">#{oAreaNum,jdbcType=VARCHAR},</if>
+			<if test="payTypeFlag != null">#{payTypeFlag,jdbcType=VARCHAR},</if>
+			<if test="payType != null">#{payType,jdbcType=VARCHAR},</if>
+			<if test="payNum != null">#{payNum,jdbcType=VARCHAR},</if>
+			<if test="validMon != null">#{validMon,jdbcType=VARCHAR},</if>
+			<if test="payLimtMax != null">#{payLimtMax,jdbcType=VARCHAR},</if>
+			<if test="payLimtMin != null">#{payLimtMin,jdbcType=VARCHAR},</if>
+			<if test="payIntl != null">#{payIntl,jdbcType=VARCHAR},</if>
+			<if test="payLimtOne != null">#{payLimtOne,jdbcType=VARCHAR},</if>
+			<if test="payLimtDat != null">#{payLimtDat,jdbcType=VARCHAR},</if>
+			<if test="payLimtMon != null">#{payLimtMon,jdbcType=VARCHAR},</if>
+			<if test="teaOpen != null">#{teaOpen,jdbcType=VARCHAR},</if>
+			<if test="phoneNum != null">#{phoneNum,jdbcType=VARCHAR},</if>
+			<if test="clientName != null">#{clientName,jdbcType=VARCHAR},</if>
+			<if test="misc1 != null">#{misc1,jdbcType=VARCHAR},</if>
+			<if test="misc2 != null">#{misc2,jdbcType=VARCHAR},</if>
+			<if test="misc3 != null">#{misc3,jdbcType=VARCHAR},</if>
+			<if test="instDate != null">#{instDate,jdbcType=VARCHAR},</if>
+			<if test="succDate != null">#{succDate,jdbcType=VARCHAR},</if>
+			<if test="arkDate != null">#{arkDate,jdbcType=VARCHAR},</if>
+			<if test="updtDate != null">#{updtDate,jdbcType=VARCHAR},</if>
+			<if test="openInst != null" >#{openInst,jdbcType=VARCHAR},</if>
+			<if test="freqNum != null">#{freqNum,jdbcType=INTEGER}, </if>
+			<if test="unitTime != null">#{unitTime,jdbcType=VARCHAR},</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="java.util.Map">
+		update TBL_RELATION_INF
+		<set>
+			<if test="clientNum != null">CLIENT_NUM = #{clientNum,jdbcType=VARCHAR},</if>
+			<if test="mchntName != null">MCHNT_NAME = #{mchntName,jdbcType=VARCHAR},</if>
+			<if test="termCd != null">TERM_CD = #{termCd,jdbcType=VARCHAR},</if>
+			<if test="relLocal != null">REL_LOCAL = #{relLocal,jdbcType=VARCHAR},</if>
+			<if test="relStat != null">REL_STAT = #{relStat,jdbcType=VARCHAR},</if>
+			<if test="userType != null">USER_TYPE = #{userType,jdbcType=VARCHAR},</if>
+			<if test="areaNum != null">AREA_NUM = #{areaNum,jdbcType=VARCHAR},</if>
+			<if test="oAreaNum != null">O_AREA_NUM = #{oAreaNum,jdbcType=VARCHAR},</if>
+			<if test="payTypeFlag != null">PAY_TYPE_FLAG = #{payTypeFlag,jdbcType=VARCHAR},</if>
+			<if test="payType != null">PAY_TYPE = #{payType,jdbcType=VARCHAR},</if>
+			<if test="payNum != null">PAY_NUM = #{payNum,jdbcType=VARCHAR},</if>
+			<if test="validMon != null">VALID_MON = #{validMon,jdbcType=VARCHAR},</if>
+			<if test="payLimtMax != null">PAY_LIMT_MAX = #{payLimtMax,jdbcType=VARCHAR},</if>
+			<if test="payLimtMin != null">PAY_LIMT_MIN = #{payLimtMin,jdbcType=VARCHAR},</if>
+			<if test="payIntl != null">PAY_INTL = #{payIntl,jdbcType=VARCHAR},</if>
+			<if test="payLimtOne != null">PAY_LIMT_ONE = #{payLimtOne,jdbcType=VARCHAR},</if>
+			<if test="payLimtDat != null">PAY_LIMT_DAT = #{payLimtDat,jdbcType=VARCHAR},</if>
+			<if test="payLimtMon != null">PAY_LIMT_MON = #{payLimtMon,jdbcType=VARCHAR},</if>
+			<if test="teaOpen != null">TEA_OPEN = #{teaOpen,jdbcType=VARCHAR},</if>
+			<if test="phoneNum != null">PHONE_NUM = #{phoneNum,jdbcType=VARCHAR},</if>
+			<if test="clientName != null">CLIENT_NAME = #{clientName,jdbcType=VARCHAR},</if>
+			<if test="misc1 != null">MISC_1 = #{misc1,jdbcType=VARCHAR},</if>
+			<if test="misc2 != null">MISC_2 = #{misc2,jdbcType=VARCHAR},</if>
+			<if test="misc3 != null">MISC_3 = #{misc3,jdbcType=VARCHAR},</if>
+			<if test="instDate != null">INST_DATE = #{instDate,jdbcType=VARCHAR},</if>
+			<if test="succDate != null">SUCC_DATE = #{succDate,jdbcType=VARCHAR},</if>
+			<if test="arkDate != null">ARK_DATE = #{arkDate,jdbcType=VARCHAR},</if>
+			<if test="updtDate != null">UPDT_DATE = #{updtDate,jdbcType=VARCHAR},</if>
+			<if test="openInst != null" >OPEN_INST = #{openInst,jdbcType=VARCHAR},</if>
+			<if test="freqNum != null">FREQ_NUM = #{freqNum,jdbcType=INTEGER}, </if>
+			<if test="unitTime != null">UNIT_TIME = #{unitTime,jdbcType=VARCHAR},</if>
+		</set>
+		where CARD_NUM = #{cardNum,jdbcType=VARCHAR} 
+		and MCHNT_CD = #{mchntCd,jdbcType=VARCHAR}
+		and REL_TYPE = #{relType,jdbcType=VARCHAR}
+		and USER_NUM = #{userNum,jdbcType=VARCHAR}
+	</update>
+
+</mapper>

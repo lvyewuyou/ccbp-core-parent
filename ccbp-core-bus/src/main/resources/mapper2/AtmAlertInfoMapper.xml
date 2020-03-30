@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.icss.instutry.nap.unifiedpay.batch.AtmAlertInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.ccbp.core.bus.model.AtmAlertInfo" >
+    <id column="MINOR_ID" property="minorId" jdbcType="VARCHAR" />
+    <id column="DATE_SETTLMT" property="dateSettlmt" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="DOWNLOAD_DT" property="downloadDt" jdbcType="VARCHAR" />
+    <result column="FILE_NAME" property="fileName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    MINOR_ID, DATE_SETTLMT, STATUS, DOWNLOAD_DT, FILE_NAME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.ccbp.core.bus.model.AtmAlertInfoKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from TBL_ATM_ALERT_INFO
+    where MINOR_ID = #{minorId,jdbcType=VARCHAR}
+      and DATE_SETTLMT = #{dateSettlmt,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.ccbp.core.bus.model.AtmAlertInfoKey" >
+    delete from TBL_ATM_ALERT_INFO
+    where MINOR_ID = #{minorId,jdbcType=VARCHAR}
+      and DATE_SETTLMT = #{dateSettlmt,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ccbp.core.bus.model.AtmAlertInfo" >
+    insert into TBL_ATM_ALERT_INFO (MINOR_ID, DATE_SETTLMT, STATUS, 
+      DOWNLOAD_DT, FILE_NAME)
+    values (#{minorId,jdbcType=VARCHAR}, #{dateSettlmt,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{downloadDt,jdbcType=VARCHAR}, #{fileName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ccbp.core.bus.model.AtmAlertInfo" >
+    insert into TBL_ATM_ALERT_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="minorId != null" >
+        MINOR_ID,
+      </if>
+      <if test="dateSettlmt != null" >
+        DATE_SETTLMT,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="downloadDt != null" >
+        DOWNLOAD_DT,
+      </if>
+      <if test="fileName != null" >
+        FILE_NAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="minorId != null" >
+        #{minorId,jdbcType=VARCHAR},
+      </if>
+      <if test="dateSettlmt != null" >
+        #{dateSettlmt,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="downloadDt != null" >
+        #{downloadDt,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null" >
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ccbp.core.bus.model.AtmAlertInfo" >
+    update TBL_ATM_ALERT_INFO
+    <set >
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="downloadDt != null" >
+        DOWNLOAD_DT = #{downloadDt,jdbcType=VARCHAR},
+      </if>
+      <if test="fileName != null" >
+        FILE_NAME = #{fileName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where MINOR_ID = #{minorId,jdbcType=VARCHAR}
+      and DATE_SETTLMT = #{dateSettlmt,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ccbp.core.bus.model.AtmAlertInfo" >
+    update TBL_ATM_ALERT_INFO
+    set STATUS = #{status,jdbcType=VARCHAR},
+      DOWNLOAD_DT = #{downloadDt,jdbcType=VARCHAR},
+      FILE_NAME = #{fileName,jdbcType=VARCHAR}
+    where MINOR_ID = #{minorId,jdbcType=VARCHAR}
+      and DATE_SETTLMT = #{dateSettlmt,jdbcType=VARCHAR}
+  </update>
+</mapper>

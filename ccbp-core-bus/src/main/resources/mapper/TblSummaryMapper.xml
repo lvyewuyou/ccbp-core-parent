@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccbp.core.bus.mapper.TblSummaryMapper" >
+  <resultMap id="BaseResultMap" type="java.util.Map" >
+    <result column="TXN_CD" property="txnCd" jdbcType="VARCHAR" />
+    <result column="SUMMARY_CODE" property="summaryCode" jdbcType="VARCHAR" />
+    <result column="SUMMARY_INFO" property="summaryInfo" jdbcType="VARCHAR" />
+    <result column="MARK" property="mark" jdbcType="VARCHAR" />
+    <result column="OP_SMY_CD" property="opSmyCd" jdbcType="VARCHAR" />
+    <result column="OP_SMY_INFO" property="opSmyInfo" jdbcType="VARCHAR" />
+      
+  </resultMap>
+  <insert id="insert" parameterType="java.util.Map">
+    insert into TBL_SUMMMARY (TXN_CD, SUMMARY_CODE, SUMMARY_INFO
+      )
+    values (#{txnCd,jdbcType=VARCHAR}, #{summaryCode,jdbcType=VARCHAR}, #{summaryInfo,jdbcType=VARCHAR}
+      )
+  </insert>
+  <sql id="Base_Column_List">
+  	TXN_CD, SUMMARY_CODE, SUMMARY_INFO,OP_SMY_CD,OP_SMY_INFO
+  </sql>
+  
+  <insert id="insertSelective" parameterType="java.util.Map">
+    insert into TBL_SUMMMARY
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="txnCd != null" >
+        TXN_CD,
+      </if>
+      <if test="summaryCode != null" >
+        SUMMARY_CODE,
+      </if>
+      <if test="summaryInfo != null" >
+        SUMMARY_INFO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="txnCd != null" >
+        #{txnCd,jdbcType=VARCHAR},
+      </if>
+      <if test="summaryCode != null" >
+        #{summaryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="summaryInfo != null" >
+        #{summaryInfo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="selectByTxnCd"  resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TBL_SUMMMARY
+    where TXN_CD = #{txnCd,jdbcType=VARCHAR}
+      
+  </select>
+</mapper>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccbp.core.bus.mapper.TblQuotaMapper">
+	<resultMap id="BaseResultMap" type="java.util.Map">
+		<result column="SUMMARY_CODE" property="summaryCode" jdbcType="VARCHAR" />
+		<result column="CONTR_TP" property="contrTp" jdbcType="VARCHAR" />
+		<result column="CONTR_VALUE" property="contrValue" jdbcType="VARCHAR" />
+		<result column="SINGLE_LIM_AMT" property="singleLimAmt" jdbcType="VARCHAR" />
+		<result column="SINGLE_LIM_STATUS" property="singleLimStatus" jdbcType="VARCHAR" />
+		<result column="DAY_LIM_AMT" property="dayLimAmt" jdbcType="VARCHAR" />
+		<result column="DAY_LIM_STATUS" property="dayLimStatus" jdbcType="VARCHAR" />
+		<result column="CRT_DT" property="crtDt" jdbcType="VARCHAR" />
+		<result column="UPD_DT" property="updDt" jdbcType="VARCHAR" />
+		<result column="MARK" property="mark" jdbcType="VARCHAR" />
+		<result column="MISC" property="misc" jdbcType="VARCHAR" />
+		<result column="MISC2" property="misc2" jdbcType="VARCHAR" />
+		<result column="MISC3" property="misc3" jdbcType="VARCHAR" />
+		<result column="DAY_LIM_NUM" property="dayLimNum" jdbcType="VARCHAR" />
+		<result column="DAY_LIM_NUM_STATUS" property="dayLimNumStatus" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		SUMMARY_CODE, CONTR_TP, CONTR_VALUE, SINGLE_LIM_AMT, SINGLE_LIM_STATUS,	DAY_LIM_AMT,
+		DAY_LIM_STATUS, CRT_DT, UPD_DT, MARK, MISC, MISC2, MISC3, DAY_LIM_NUM, DAY_LIM_NUM_STATUS
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_QUOTA
+		where SUMMARY_CODE = #{summaryCode,jdbcType=VARCHAR}
+		and CONTR_TP = #{contrTp,jdbcType=VARCHAR}
+		and CONTR_VALUE = #{contrValue,jdbcType=VARCHAR}
+	</select>
+	<!-- 根据摘要码获取限制规则 -->
+	<select id="selectBySummaryCode" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from TBL_QUOTA
+		where SUMMARY_CODE = #{summaryCode,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.util.Map">
+		delete from TBL_QUOTA
+		where SUMMARY_CODE = #{summaryCode,jdbcType=VARCHAR}
+		and CONTR_TP = #{contrTp,jdbcType=VARCHAR}
+		and CONTR_VALUE = #{contrValue,jdbcType=VARCHAR}
+	</delete>
+
+	<insert id="insertSelective" parameterType="java.util.Map">
+		insert into TBL_QUOTA
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="summaryCode != null">	SUMMARY_CODE, </if>
+			<if test="contrTp != null"> CONTR_TP, </if>
+			<if test="contrValue != null"> CONTR_VALUE,</if>
+			<if test="singleLimAmt != null">SINGLE_LIM_AMT,</if>
+			<if test="singleLimStatus != null">	SINGLE_LIM_STATUS,</if>
+			<if test="dayLimAmt != null">DAY_LIM_AMT,</if>
+			<if test="dayLimStatus != null">DAY_LIM_STATUS,</if>
+			<if test="crtDt != null">CRT_DT,</if>
+			<if test="updDt != null">UPD_DT,</if>
+			<if test="mark != null">MARK,</if>
+			<if test="misc != null">MISC,</if>
+			<if test="misc2 != null">MISC2,</if>
+			<if test="misc3 != null">MISC3,</if>
+			<if test="dayLimNum != null">	DAY_LIM_NUM,</if>
+			<if test="dayLimNumStatus != null">	DAY_LIM_NUM_STATUS,</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="summaryCode != null">	#{summaryCode,jdbcType=VARCHAR},</if>
+			<if test="contrTp != null">	#{contrTp,jdbcType=VARCHAR},</if>
+			<if test="contrValue != null">#{contrValue,jdbcType=VARCHAR},</if>
+			<if test="singleLimAmt != null">#{singleLimAmt,jdbcType=VARCHAR},</if>
+			<if test="singleLimStatus != null">	#{singleLimStatus,jdbcType=VARCHAR},</if>
+			<if test="dayLimAmt != null">	#{dayLimAmt,jdbcType=VARCHAR},</if>
+			<if test="dayLimStatus != null">#{dayLimStatus,jdbcType=VARCHAR},</if>
+			<if test="crtDt != null">#{crtDt,jdbcType=VARCHAR},</if>
+			<if test="updDt != null">#{updDt,jdbcType=VARCHAR},</if>
+			<if test="mark != null">#{mark,jdbcType=VARCHAR},</if>
+			<if test="misc != null">#{misc,jdbcType=VARCHAR},</if>
+			<if test="misc2 != null">#{misc2,jdbcType=VARCHAR},</if>
+			<if test="misc3 != null">#{misc3,jdbcType=VARCHAR},</if>
+			<if test="dayLimNum != null">#{dayLimNum,jdbcType=VARCHAR},</if>
+			<if test="dayLimNumStatus != null">	#{dayLimNumStatus,jdbcType=VARCHAR},</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="java.util.Map">
+		update TBL_QUOTA
+		<set>
+			<if test="contrValue != null">CONTR_VALUE = #{contrValue,jdbcType=VARCHAR},</if>
+			<if test="singleLimAmt != null">SINGLE_LIM_AMT = #{singleLimAmt,jdbcType=VARCHAR},</if>
+			<if test="singleLimStatus != null">	SINGLE_LIM_STATUS = #{singleLimStatus,jdbcType=VARCHAR},</if>
+			<if test="dayLimAmt != null">DAY_LIM_AMT = #{dayLimAmt,jdbcType=VARCHAR},</if>
+			<if test="dayLimStatus != null">DAY_LIM_STATUS = #{dayLimStatus,jdbcType=VARCHAR},</if>
+			<if test="crtDt != null">CRT_DT = #{crtDt,jdbcType=VARCHAR},</if>
+			<if test="updDt != null">UPD_DT = #{updDt,jdbcType=VARCHAR},</if>
+			<if test="mark != null">MARK = #{mark,jdbcType=VARCHAR},</if>
+			<if test="misc != null">MISC = #{misc,jdbcType=VARCHAR},</if>
+			<if test="misc2 != null">MISC2 = #{misc2,jdbcType=VARCHAR},</if>
+			<if test="misc3 != null">MISC3 = #{misc3,jdbcType=VARCHAR},</if>
+			<if test="dayLimNum != null">DAY_LIM_NUM = #{dayLimNum,jdbcType=VARCHAR},</if>
+			<if test="dayLimNumStatus != null">	DAY_LIM_NUM_STATUS = #{dayLimNumStatus,jdbcType=VARCHAR},</if>
+		</set>
+		where SUMMARY_CODE = #{summaryCode,jdbcType=VARCHAR}
+		and CONTR_TP = #{contrTp,jdbcType=VARCHAR}
+		and CONTR_VALUE = #{contrValue,jdbcType=VARCHAR}
+	</update>
+
+</mapper>

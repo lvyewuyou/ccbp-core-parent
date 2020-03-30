@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccbp.core.bus.mapper.SysStatMapper" >
+  <resultMap id="BaseResultMap" type="java.util.Map" >
+    <id column="RCD_ID" property="rcdId" jdbcType="VARCHAR" />
+    <id column="RCD_TYPE" property="rcdType" jdbcType="VARCHAR" />
+    <result column="RCD_ST" property="rcdSt" jdbcType="VARCHAR" />
+    <result column="CUPS_FWD_ST" property="cupsFwdSt" jdbcType="VARCHAR" />
+    <result column="CUPS_ACQ_ST" property="cupsAcqSt" jdbcType="VARCHAR" />
+    <result column="CUPS_STLM_DT" property="cupsStlmDt" jdbcType="VARCHAR" />
+    <result column="CUPS_STLM_DT_LST" property="cupsStlmDtLst" jdbcType="VARCHAR" />
+    <result column="CRT_OPR" property="crtOpr" jdbcType="VARCHAR" />
+    <result column="CRT_DT" property="crtDt" jdbcType="VARCHAR" />
+    <result column="UPD_OPR" property="updOpr" jdbcType="VARCHAR" />
+    <result column="UPD_DT" property="updDt" jdbcType="VARCHAR" />
+    <result column="MISC" property="misc" jdbcType="VARCHAR" />
+    <result column="NO_CARD_CUPS_FWD_ST" property="noCardCupsFwdSt" jdbcType="VARCHAR" />
+    <result column="NO_CARD_CUPS_ACQ_ST" property="noCardCupsAcqSt" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    RCD_ID, RCD_TYPE, RCD_ST, CUPS_FWD_ST, CUPS_ACQ_ST, CUPS_STLM_DT, CUPS_STLM_DT_LST, 
+    CRT_OPR, CRT_DT, UPD_OPR, UPD_DT, MISC, NO_CARD_CUPS_FWD_ST, NO_CARD_CUPS_ACQ_ST
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from TBL_SYS_STAT
+    where RCD_ID = #{rcdId,jdbcType=VARCHAR}
+      and RCD_TYPE = #{rcdType,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.util.Map" >
+    delete from TBL_SYS_STAT
+    where RCD_ID = #{rcdId,jdbcType=VARCHAR}
+      and RCD_TYPE = #{rcdType,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="java.util.Map" >
+    insert into TBL_SYS_STAT (RCD_ID, RCD_TYPE, RCD_ST, 
+      CUPS_FWD_ST, CUPS_ACQ_ST, CUPS_STLM_DT, 
+      CUPS_STLM_DT_LST, CRT_OPR, CRT_DT, 
+      UPD_OPR, UPD_DT, MISC, 
+      NO_CARD_CUPS_FWD_ST, NO_CARD_CUPS_ACQ_ST)
+    values (#{rcdId,jdbcType=VARCHAR}, #{rcdType,jdbcType=VARCHAR}, #{rcdSt,jdbcType=VARCHAR}, 
+      #{cupsFwdSt,jdbcType=VARCHAR}, #{cupsAcqSt,jdbcType=VARCHAR}, #{cupsStlmDt,jdbcType=VARCHAR}, 
+      #{cupsStlmDtLst,jdbcType=VARCHAR}, #{crtOpr,jdbcType=VARCHAR}, #{crtDt,jdbcType=VARCHAR}, 
+      #{updOpr,jdbcType=VARCHAR}, #{updDt,jdbcType=VARCHAR}, #{misc,jdbcType=VARCHAR}, 
+      #{noCardCupsFwdSt,jdbcType=VARCHAR}, #{noCardCupsAcqSt,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="java.util.Map" >
+    insert into TBL_SYS_STAT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rcdId != null" >
+        RCD_ID,
+      </if>
+      <if test="rcdType != null" >
+        RCD_TYPE,
+      </if>
+      <if test="rcdSt != null" >
+        RCD_ST,
+      </if>
+      <if test="cupsFwdSt != null" >
+        CUPS_FWD_ST,
+      </if>
+      <if test="cupsAcqSt != null" >
+        CUPS_ACQ_ST,
+      </if>
+      <if test="cupsStlmDt != null" >
+        CUPS_STLM_DT,
+      </if>
+      <if test="cupsStlmDtLst != null" >
+        CUPS_STLM_DT_LST,
+      </if>
+      <if test="crtOpr != null" >
+        CRT_OPR,
+      </if>
+      <if test="crtDt != null" >
+        CRT_DT,
+      </if>
+      <if test="updOpr != null" >
+        UPD_OPR,
+      </if>
+      <if test="updDt != null" >
+        UPD_DT,
+      </if>
+      <if test="misc != null" >
+        MISC,
+      </if>
+      <if test="noCardCupsFwdSt != null" >
+        NO_CARD_CUPS_FWD_ST,
+      </if>
+      <if test="noCardCupsAcqSt != null" >
+        NO_CARD_CUPS_ACQ_ST,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rcdId != null" >
+        #{rcdId,jdbcType=VARCHAR},
+      </if>
+      <if test="rcdType != null" >
+        #{rcdType,jdbcType=VARCHAR},
+      </if>
+      <if test="rcdSt != null" >
+        #{rcdSt,jdbcType=VARCHAR},
+      </if>
+      <if test="cupsFwdSt != null" >
+        #{cupsFwdSt,jdbcType=VARCHAR},
+      </if>
+      <if test="cupsAcqSt != null" >
+        #{cupsAcqSt,jdbcType=VARCHAR},
+      </if>
+      <if test="cupsStlmDt != null" >
+        #{cupsStlmDt,jdbcType=VARCHAR},
+      </if>
+      <if test="cupsStlmDtLst != null" >
+        #{cupsStlmDtLst,jdbcType=VARCHAR},
+      </if>
+      <if test="crtOpr != null" >
+        #{crtOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="crtDt != null" >
+        #{crtDt,jdbcType=VARCHAR},
+      </if>
+      <if test="updOpr != null" >
+        #{updOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="updDt != null" >
+        #{updDt,jdbcType=VARCHAR},
+      </if>
+      <if test="misc != null" >
+        #{misc,jdbcType=VARCHAR},
+      </if>
+      <if test="noCardCupsFwdSt != null" >
+        #{noCardCupsFwdSt,jdbcType=VARCHAR},
+      </if>
+      <if test="noCardCupsAcqSt != null" >
+        #{noCardCupsAcqSt,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="java.util.Map" >
+    update TBL_SYS_STAT
+    <set >
+      <if test="rcdSt != null" >
+        RCD_ST = #{rcdSt,jdbcType=VARCHAR},
+      </if>
+      <if test="cupsFwdSt != null" >
+        CUPS_FWD_ST = #{cupsFwdSt,jdbcType=VARCHAR},
+      </if>
+      <if test="cupsAcqSt != null" >
+        CUPS_ACQ_ST = #{cupsAcqSt,jdbcType=VARCHAR},
+      </if>
+      <if test="cupsStlmDt != null" >
+        CUPS_STLM_DT = #{cupsStlmDt,jdbcType=VARCHAR},
+      </if>
+      <if test="cupsStlmDtLst != null" >
+        CUPS_STLM_DT_LST = #{cupsStlmDtLst,jdbcType=VARCHAR},
+      </if>
+      <if test="crtOpr != null" >
+        CRT_OPR = #{crtOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="crtDt != null" >
+        CRT_DT = #{crtDt,jdbcType=VARCHAR},
+      </if>
+      <if test="updOpr != null" >
+        UPD_OPR = #{updOpr,jdbcType=VARCHAR},
+      </if>
+      <if test="updDt != null" >
+        UPD_DT = #{updDt,jdbcType=VARCHAR},
+      </if>
+      <if test="misc != null" >
+        MISC = #{misc,jdbcType=VARCHAR},
+      </if>
+      <if test="noCardCupsFwdSt != null" >
+        NO_CARD_CUPS_FWD_ST = #{noCardCupsFwdSt,jdbcType=VARCHAR},
+      </if>
+      <if test="noCardCupsAcqSt != null" >
+        NO_CARD_CUPS_ACQ_ST = #{noCardCupsAcqSt,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where RCD_ID = #{rcdId,jdbcType=VARCHAR}
+      and RCD_TYPE = #{rcdType,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="java.util.Map" >
+    update TBL_SYS_STAT
+    set RCD_ST = #{rcdSt,jdbcType=VARCHAR},
+      CUPS_FWD_ST = #{cupsFwdSt,jdbcType=VARCHAR},
+      CUPS_ACQ_ST = #{cupsAcqSt,jdbcType=VARCHAR},
+      CUPS_STLM_DT = #{cupsStlmDt,jdbcType=VARCHAR},
+      CUPS_STLM_DT_LST = #{cupsStlmDtLst,jdbcType=VARCHAR},
+      CRT_OPR = #{crtOpr,jdbcType=VARCHAR},
+      CRT_DT = #{crtDt,jdbcType=VARCHAR},
+      UPD_OPR = #{updOpr,jdbcType=VARCHAR},
+      UPD_DT = #{updDt,jdbcType=VARCHAR},
+      MISC = #{misc,jdbcType=VARCHAR},
+      NO_CARD_CUPS_FWD_ST = #{noCardCupsFwdSt,jdbcType=VARCHAR},
+      NO_CARD_CUPS_ACQ_ST = #{noCardCupsAcqSt,jdbcType=VARCHAR}
+    where RCD_ID = #{rcdId,jdbcType=VARCHAR}
+      and RCD_TYPE = #{rcdType,jdbcType=VARCHAR}
+  </update>
+</mapper>
